@@ -5,14 +5,14 @@ SESSION_CONFIGS = [
         'name': 'test',
         'display_name': 'test',
         'num_demo_participants': 1, 
-        'app_sequence': ['home'],
+        'app_sequence': ['icl'],
     },
     {
         'name': 'app',
         'display_name': 'app',
         'num_demo_participants': 1, 
         # sequence = [home, icl, allocation, icl, la, results, survey]
-        'app_sequence': ['home'],
+        'app_sequence': ['home',],
     },
 ]
 

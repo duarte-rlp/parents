@@ -1,0 +1,12 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Matemáticas {{ pregunta }}
+{% endblock %}
+
+{% block content %}
+    {% formfields %}
+    {% next_button %}
+
+{% endblock %}

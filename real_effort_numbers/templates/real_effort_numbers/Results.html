@@ -1,0 +1,21 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Results
+{% endblock %}
+
+{% block content %}
+   <p>
+        Usted completó correctamente las 10 operaciones matemáticas.
+    </p>
+    <p>
+        Recuerde que su presupuesto de inversión son $100.000 y sus ganancias en la actividad corresponden SOLO a la RENTABILIDAD que obtenga de sus inversiones. 
+    </p>
+    <p>
+        <b>Es decir, los $100.000 le permitirán participar de la actividad y hacer inversiones, pero no hacen parte de sus ganancias.</b>
+    </p>
+    {% next_button %}
+{% endblock %}
+
+

@@ -1,0 +1,50 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Instrucciones Generales
+{% endblock %}
+
+{% block content %}
+
+<p>
+    Esta actividad tiene (4) cuatro partes y en cada parte hay (5) cinco de tomar 5 decisiones. 
+    En cada parte se le darán instrucciones sobre sus opciones de inversión y la rentabilidad de cada una.
+</p>
+
+<p>
+    Tome el tiempo que necesite para entender las instrucciones de cada parte. 
+    Si hay algo que entiende, por favor levante la mano, uno de los monitores se acercará y tratará de ayudarlo de manera individual.
+</p>
+
+<p>
+    Su pago por completar toda la actividad corresponde a las ganancias de UNA de las VEINTE decisiones elegida al azar. 
+    Podrá ganar entre $10.000 y $60.000 dependiendo de sus decisiones, de la parte seleccionada y del azar.  
+</p>
+
+<p>
+    La actividad es individual. Le pedimos que por favor no hable ni trate de mirar las respuestas de los demás participantes. 
+</p>
+
+<h5>Código de participante</h5>
+
+<p>Con su invitación a participar recibió un código de participante, esa es su identificación durante toda la actividad. 
+    Nunca le pediremos su nombre ni su número de documento de identidad. 
+    Por favor no pierda ni entregue su código de participante, lo necesitará para reclamar sus ganancias. </p>
+
+    <p><b>
+        {% formfields %}
+    </b></p>
+
+<h5>Pago</h5>
+
+        <p>Presentando su código de participante le entregarán sus pagos en efectivo. 
+        La persona que hace los pagos no conocerá sus respuestas, ni cómo fueron generados, solamente cuánto tiene que pagarle.</p>
+   
+<p>
+    Haga clic en <i>"Siguiente"</i> para comenzar. 
+
+</p>        
+    {% next_button %}
+
+{% endblock %}

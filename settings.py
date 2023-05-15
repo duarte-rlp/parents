@@ -14,6 +14,13 @@ SESSION_CONFIGS = [
         # sequence = [home, icl, allocation, icl, la, results, survey]
         'app_sequence': ['home','icl'],
     },
+    {
+        'name': 'graphs',
+        'display_name': 'graphs',
+        'num_demo_participants': 1, 
+        # sequence = [home, icl, allocation, icl, la, results, survey]
+        'app_sequence': ['alocations'],
+    },
 ]
 
 # if you set a property in SESSION_CONFIG_DEFAULTS, it will be inherited by all configs

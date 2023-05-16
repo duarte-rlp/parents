@@ -1,0 +1,47 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block scripts %}
+    
+    <script src="{% static 'js/highcharts.js' %}"></script>
+    
+    <script>
+        // Construcción de la gráfica
+        
+        Highcharts.chart('graph01', {
+            title: {
+                text: 'Inversión 1 y 2'
+            },
+            yAxis: {
+                title: {
+                    text: 'Proporción de inversión'
+                }
+            },
+            series: [{
+                data: {{ data_01 }},
+                lineWidth: 1,
+                color: 'red',
+                name: 'Inversión 1'
+            },
+            {
+                data: {{ data_02 }},
+                lineWidth: 1,
+                color: 'blue',
+                name: 'Inversión 2'
+            }]
+        });
+
+    </script>
+{% endblock %}
+
+{% block title %}
+    Dos gráficas superpuestas
+{% endblock %}
+
+{% block content %}
+
+    <div id="graph01" style="width: 100%;"></div>
+
+    {% next_button %}
+
+{% endblock %}

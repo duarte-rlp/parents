@@ -19,7 +19,7 @@ SESSION_CONFIGS = [
         'display_name': 'graphs',
         'num_demo_participants': 1, 
         # sequence = [home, icl, allocation, icl, la, results, survey]
-        'app_sequence': ['alocations'],
+        'app_sequence': ['allocations'],
     },
 ]
 

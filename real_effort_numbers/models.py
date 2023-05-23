@@ -20,7 +20,7 @@ A mental arithmetic task
 
 
 class Constants(BaseConstants):
-    name_in_url = 'math'
+    name_in_url = 'real_effort_numbers'
     players_per_group = None
     task_timer = 60
     num_rounds = 1000

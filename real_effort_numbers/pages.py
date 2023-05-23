@@ -8,6 +8,9 @@ class intro_math(Page):
 #    Show the player the rules, and allow them to start the task
 #    """
     def is_displayed(self):
+        # Only show this on the first round
+        # Need to show only to effort group participants
+        # (and to add IntroLuckGroup IntroMixedGroup page) up here and in page sequence
         return self.round_number == 1    
 
 

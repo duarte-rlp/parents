@@ -9,8 +9,12 @@ class consent(Page):
 
     def is_displayed(self):
         return self.round_number == 1
+    
+class welcome_home(Page):
+    def is_displayed(self):
+        return self.round_number == 1
 
-class welcome(Page):
+class intro_home(Page):
     form_model = 'player'
     form_fields = ['identificador']
 
@@ -20,5 +24,4 @@ class welcome(Page):
     def before_next_page(self):
         self.subsession.set_id_players()
 
-
-page_sequence = [consent, welcome]
+page_sequence = [consent, welcome_home, intro_home]

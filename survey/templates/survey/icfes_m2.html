@@ -1,0 +1,16 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+{% load static %}
+
+{% block title %} Pregunta 2: Matemáticas{% endblock %} 
+
+{% block content %}
+    <p class="aligncenter" >
+        <img src = "{% static 'survey/icfes_m2.png' %}" width="1000px" title="Matemáticas 1"/>
+    </p> 
+
+    {% formfields %}
+
+{% next_button %}
+
+{% endblock %}

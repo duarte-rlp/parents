@@ -5,7 +5,7 @@ SESSION_CONFIGS = [
         'name': 'test',
         'display_name': 'test',
         'num_demo_participants': 1, 
-        'app_sequence': ['real_effort_numbers'],
+        'app_sequence': ['math'],
     },
     {
         'name': 'app',

@@ -1,0 +1,455 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+{% block scripts %}
+    <!-- custom style sheet-->
+    <link href="{% static 'survey/css/styles.css' %}" rel="stylesheet">
+    <!-- functions and more -->
+    <script src="{% static 'survey/js/consistency.js' %}"></script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            formulario = document.getElementById("form");
+        });
+
+        document.getElementById("puntaje_20000").addEventListener("change", function() {
+            let v = parseInt(this.value);
+            if (v < 0) this.value = 0;
+            if (v > 100) this.value = 100;
+        });
+
+        document.getElementById("puntaje_15000").addEventListener("change", function() {
+            let v = parseInt(this.value);
+            if (v < 0) this.value = 0;
+            if (v > 100) this.value = 100;
+        });
+
+        document.getElementById("puntaje_10000").addEventListener("change", function() {
+            let v = parseInt(this.value);
+            if (v < 0) this.value = 0;
+            if (v > 100) this.value = 100;
+        });
+
+        document.getElementById("puntaje_5000").addEventListener("change", function() {
+            let v = parseInt(this.value);
+            if (v < 0) this.value = 0;
+            if (v > 100) this.value = 100;
+        });
+
+        function allowDrop(ev) {
+            ev.preventDefault();
+        }
+
+        function drag(ev) {
+            ev.dataTransfer.setData("text", ev.target.id);
+            ev.dataTransfer.setData("parent", ev.target.parentElement.id);
+        }
+
+        function drop(ev) {
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData("text");
+            var padre = ev.dataTransfer.getData("parent");
+            var class_drag = document.getElementById(data).className;
+            var class_drop = ev.target.className;
+            if(class_drop == 'receiver_default_prueba'){
+                if(class_drag == 'option_prueba') {
+                    ev.target.appendChild(document.getElementById(data));
+                    document.getElementById(padre).style.borderColor = "#ff000077";
+                    document.getElementById(padre).firstElementChild.removeAttribute("value");
+                }
+            } else if(class_drop == 'receiver_default_puntua') { 
+                if(class_drag == 'option_puntua') {
+                    ev.target.appendChild(document.getElementById(data));
+                    document.getElementById(padre).style.borderColor = "#ff000077";
+                    document.getElementById(padre).firstElementChild.removeAttribute("value");
+                }
+            } else {
+                if(ev.target.childElementCount == 1){ // Para que sea solamente 1 por 
+                    if(class_drag == 'option_prueba') { 
+                        if(class_drop == 'receiver_prueba'){
+                            ev.target.firstElementChild.value = document.getElementById(data).textContent;
+                            ev.target.appendChild(document.getElementById(data));
+                            ev.target.style.borderColor = "#ffffffff";
+                            if(document.getElementById(padre).className == 'receiver_prueba') {
+                                document.getElementById(padre).style.borderColor = "#ff000077";
+                                document.getElementById(padre).firstElementChild.removeAttribute("value");
+                            }
+                        }
+                    } else if(class_drag == 'option_puntua'){
+                        if(class_drop == 'receiver_puntua'){
+                            ev.target.firstElementChild.value = document.getElementById(data).textContent;
+                            ev.target.appendChild(document.getElementById(data));
+                            ev.target.style.borderColor = "#ffffffff";
+                            if(document.getElementById(padre).className == 'receiver_puntua') {
+                                document.getElementById(padre).style.borderColor = "#ff000077";
+                                document.getElementById(padre).firstElementChild.removeAttribute("value");
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        function enviar_local(){
+            formulario.submit();
+        }
+
+        $(document).ready(function () {
+            $('input[id=efficacy]').on('input change', function () {
+                $('input[id=efficacy]').addClass('myclass');
+            });
+        });
+    </script>
+    <style>
+    .otree-btn-next {
+        display: none;
+    }
+
+    .div_tables .options_tables{
+        width: 100%;
+    }
+
+    .tabla {
+        margin: 20px;
+        margin-bottom: 20px;
+        width: 100%;
+    }
+
+    .tabla td {
+        padding: 10px 12px;
+        text-align: center;
+        border-color: #000000;
+        border-style: solid;
+        border-width: 1px;
+    }
+
+    .option_prueba {
+        padding: 5px 10px;
+        border-color: #000000;
+        border-style: solid;
+        border-width: 1px;
+        border-radius: 10px;
+        margin-right: 5px;
+        margin-left: 5px;
+        height: 35px;
+    }
+
+    .option_puntua {
+        padding: 5px 10px;
+        border-color: #000000;
+        border-style: solid;
+        border-width: 1px;
+        border-radius: 10px;
+        margin-right: 5px;
+        margin-left: 5px;
+        height: 35px;
+    }
+
+    .option_prueba:hover {
+        background-color: #e7e7e7;
+    }
+
+    .option_puntua:hover {
+        background-color: #e7e7e7;
+    }
+
+    .receiver_prueba {
+        width: 100%;
+        border-color: #ff000077;
+        border-style: solid;
+        border-width: 1px;
+        border-radius: 10px;
+        height: 33px;
+        padding-top: 4px;
+    }
+
+    .receiver_puntua {
+        width: 100%;
+        border-color: #ff000077;
+        border-style: solid;
+        border-width: 1px;
+        border-radius: 10px;
+        height: 40px;
+        padding-top: 7px;
+    }
+
+    .receiver_default_prueba {
+        width: 100%;
+        height: 40px;
+        display: inline-flex;
+    }
+
+    .receiver_default_puntua {
+        width: 100%;
+        height: 40px;
+        display: inline-flex;
+    }
+
+    .btn_next {
+        cursor: pointer;
+        display: block !important;
+        color: #ffffff;
+        background-color: #007bff;
+        border-color: #007bff;
+        font-weight: 400;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        user-select: none;
+        border: 1px solid transparent;
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        border-radius: 0.25rem;
+        transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        position: absolute;
+        width: 8vw;
+        left: 46vw;
+    }
+
+    .btn_next:hover {
+        background-color: #0069d9;
+        border-color: #0069d9;
+    }
+
+    .input_number {
+        text-align: center;
+        height: 33px;
+        width: 80px;
+    }
+    .otree-btn-next{
+        display: none !important;
+    }
+    </style>
+
+{% endblock %}
+
+{% block title %}
+    Aspiraciones Saber 11 - ICFES
+{% endblock %}
+
+{% block content %}
+
+<p>Ahora va a llenar una tabla donde usted va a predecir su puntaje en el examen <i>Saber 11</i> como si estuviera haciendo una <i>apuesta.</i> <br>
+    Las ganancias las entregaremos en una segunda visita al colegio, luego de la publicación de los resultados del examen por parte del ICFES.</p>
+
+<p>Las reglas de la apuesta son las siguientes:</p>
+<ol>
+<li> 
+    El examen tiene cuatro pruebas: Matemáticas, Lectura Crítica, Sociales y Ciudadanas, Ciencias Naturales.<br> 
+    Cada prueba se califica de <b>0</b> (puntaje más bajo) a <b>100</b> (puntaje más alto).
+</li>
+<li> 
+    Usted debe ordenar las pruebas según qué tan <i>confiable</i> es su predicción sobre cómo le va a ir.<br>
+    En la que tenga más seguridad de su puntaje, póngala en la primera fila (que paga $20.000 si acierta). <br> 
+    En la segunda en la que tenga más seguridad sobre su puntaje, póngala en la segunda fila (que paga $15.000 si acierta), y así sucesivamente.
+</li>
+<li> 
+    Para cada prueba, escriba su <i>PUNTAJE ESPERADO</i> como un número entre <b>0</b> y <b>100</b>. Marcaremos como un acierto, y recibirá el pago correspondiente, 
+    <i>si el puntaje que usted escriba como PUNTAJE ESPERADO este máximo <b>10 puntos por debajo o por encima</b> de su PUNTAJE REAL de la prueba</u>.</i>
+</li>
+<li>
+    Cuéntenos, de acuerdo a sus gustos por los contenidos de cada prueba, cómo las organizaría desde su menos favorita, con el número <b>1</b>, hasta la más favorita, con el número <b>4</b>. 
+    <u>Debe arrastrar un número a cada casilla</u> de la última columna, y no se pueden repetir números. 
+</li>
+</ol>
+
+<p><b>Nota:</b> Tenga en cuenta que su predicción más confiable no necesariamente debe asignarse a su prueba favorita.
+    Por ejemplo, puede que su prueba favorita sea <i>Matemáticas</i> (en cuyo caso le asignaría un 4 en la última columna), 
+    pero tiene más confianza en cuál puntaje cree que sacará en <i>Lectura crítica</i> (en cuyo caso esta prueba iría en la primera fila).</p>
+
+<h5>Tabla de respuestas: arrastre y escriba</h5>
+
+<div class="options_tables">
+    <table>
+        <tr>
+            <td style="height: 48px;"><b>Prueba: </b></td>
+            <td style="width: 100%;">
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="receiver_default_prueba">
+                    <span draggable="true" ondragstart="drag(event)" id="opt_prueba_01" class="option_prueba">Matemáticas</span>
+                    <span draggable="true" ondragstart="drag(event)" id="opt_prueba_02" class="option_prueba">Lectura Crítica</span>
+                    <span draggable="true" ondragstart="drag(event)" id="opt_prueba_03" class="option_prueba">Sociales y Ciudadanas</span>
+                    <span draggable="true" ondragstart="drag(event)" id="opt_prueba_04" class="option_prueba">Ciencias Naturales</span>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-right: 10px; height: 48px;"><b>Calificación de Preferencia: </b></td>
+            <td style="width: 100%">
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="receiver_default_puntua">
+                    <span draggable="true" ondragstart="drag(event)" id="opt_prefer_01" class="option_puntua">1</span>
+                    <span draggable="true" ondragstart="drag(event)" id="opt_prefer_02" class="option_puntua">2</span>
+                    <span draggable="true" ondragstart="drag(event)" id="opt_prefer_03" class="option_puntua">3</span>
+                    <span draggable="true" ondragstart="drag(event)" id="opt_prefer_04" class="option_puntua">4</span>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+</div>
+
+<div class="div_tables">
+
+<table class="tabla">
+    <tr>
+        <td class="head" style="width: 25%;">
+            <b>Ganancia si acierta en el puntaje</b>
+        </td>
+        <td class="head" style="width: 35%;">
+            <b>Prueba</b>
+        </td>
+        <td class="head" style="width: 20%;">
+            <b>Puntaje esperado Prueba</b><br>(Número de <b>0</b> a <b>100</b>)
+        </td>
+        <td class="head" style="width: 20%;">
+            <b>Califique su preferencia</b><br>(<b>1</b> la menos preferida y <b>4</b> la más preferida)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            $ 20.000
+        </td>
+        <td>
+            <div name="prueba_20000" ondrop="drop(event)" ondragover="allowDrop(event)" id="rec_prueba_01" class="receiver_prueba"><input type="hidden" name="prueba_20000"></div>
+        </td>
+        <td>
+            <input type="number" min="0" max="100" title="Coloque un número entre 0 y 100" class="input_number" name="puntaje_20000" id="puntaje_20000">
+        </td>
+        <td>
+            <div name="prefer_20000" ondrop="drop(event)" ondragover="allowDrop(event)" id="rec_prefer_01" class="receiver_puntua"><input type="hidden" name="prefer_20000"></div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            $ 15.000
+        </td>
+        <td>
+            <div name="prueba_15000" ondrop="drop(event)" ondragover="allowDrop(event)" id="rec_prueba_02" class="receiver_prueba"><input type="hidden" name="prueba_15000"></div>
+        </td>
+        <td>
+            <input type="number" min="0" max="100" title="Coloque un número entre 0 y 100" class="input_number" name="puntaje_15000" id="puntaje_15000">
+        </td>
+        <td>
+            <div name="prefer_15000" ondrop="drop(event)" ondragover="allowDrop(event)" id="rec_prefer_02" class="receiver_puntua"><input type="hidden" name="prefer_15000"></div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            $10.000
+        </td>
+        <td>
+            <div name="prueba_10000" ondrop="drop(event)" ondragover="allowDrop(event)" id="rec_prueba_03" class="receiver_prueba"><input type="hidden" name="prueba_10000"></div>
+        </td>
+        <td>
+            <input type="number" min="0" max="100" title="Coloque un número entre 0 y 100" class="input_number" name="puntaje_10000" id="puntaje_10000">
+        </td>
+        <td>
+            <div name="prefer_10000" ondrop="drop(event)" ondragover="allowDrop(event)" id="rec_prefer_03" class="receiver_puntua"><input type="hidden" name="prefer_10000"></div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            $ 5.000
+        </td>
+        <td>
+            <div name="prueba_5000" ondrop="drop(event)" ondragover="allowDrop(event)" id="rec_prueba_04" class="receiver_prueba"><input type="hidden" name="prueba_5000"></div>
+        </td>
+        <td>
+            <input type="number" min="0" max="100" title="Coloque un número entre 0 y 100" class="input_number" name="puntaje_5000" id="puntaje_5000">
+        </td>
+        <td>
+            <div name="prefer_5000" ondrop="drop(event)" ondragover="allowDrop(event)" id="rec_prefer_04" class="receiver_puntua"><input type="hidden" name="prefer_5000"></div>
+        </td>
+    </tr>
+</table>
+
+<hr>
+
+<h5>Puntaje global</h5>
+
+<p>
+    Cuando se publiquen los resultados del examen <i>Saber 11</i>, vamos a ordenar a los estudiantes de SU SALÓN en (4) cuatro grupos según el puntaje global en las pruebas. 
+    Cada grupo tendrá igual número de personas. <i>También queremos conocer su predicción.</i>  
+</p>
+
+<p>
+    ¿Usted en que grupo cree que será clasificado? Si acierta el grupo en el que quedará recibirá <b>$5.000</b> adicionales.
+</p>
+<table class="tabla">
+    <tr>
+        <td class="head" style="width: 40%;">
+            <b>Desempeño</b>
+        </td>
+        <td class="head" style="width: 15%;">
+            <b>Bajo</b>
+        </td>
+        <td class="head" style="width: 15%;">
+            <b>Básico</b>
+        </td>
+        <td class="head" style="width: 15%;">
+            <b>Alto</b>
+        </td>
+        <td class="head" style="width: 15%;">
+            <b>Superior</b>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Seleccione solo <b>UN</b> círculo
+        </td>
+        <td>
+            <input type="radio" name="grupo_puntaje_global" value="1">
+        </td>
+        <td>
+            <input type="radio" name="grupo_puntaje_global" value="2">
+        </td>
+        <td>
+            <input type="radio" name="grupo_puntaje_global" value="3">
+        </td>
+        <td>
+            <input type="radio" name="grupo_puntaje_global" value="4">
+        </td>
+    </tr>  
+</table>
+
+</div>
+
+<h5>Capacidad para acertar</h5>
+
+<p>
+    Queremos saber qué tan capaz se siente de acertar en sus puntajes de las pruebas. ¿En cuántas pruebas cree que su <i>PUNTAJE ESPERADO</i> estará a menos de <b>10</b> puntos (por encima o por debajo) de su <i>PUNTAJE REAL</i>?
+</p>
+<p>
+    Haga <i>clic</i> sobre la línea y luego mueva el recuadro para elegir un número entre 0 y 4.
+</p>
+
+<!--slider --> 
+<div class="card_table" id="h-slider-div" style="text-align: center;">
+    <div id="slider"></div>
+    </div>
+    
+            {{ form.check_slider_efficacy.errors }}
+            <div class="card_table" id="h-slider-div" style="text-align: center;">
+                <table class="table_question">
+                    <tr>
+                        <td class="text_slider"><b id="d_pa"></b></td>
+                        <td class="text_slider"><b id="efficacy_score"> - </b></td>
+                        <td class="text_slider"><b id="d_pb"></b></td>
+                    </tr>
+                    <tr>
+                        <td class="td_text_slider">Ninguna</td>
+                        <td class="td_slider">
+                            <input type="range" name="efficacy" value="" min="0" max="4" step="1" id="efficacy" class="slider_efficacy" required>
+                            <input type="hidden" name="check_slider_efficacy" value="" id="id_check_slider_educsup" required>
+                        </td>
+                        <td class="td_text_slider">Todas</td>
+                    </tr>
+                </table>
+            </div>
+<!--slider --> 
+
+<input type="button" value="Siguiente" class="btn_next" onclick="enviar_local()">
+
+
+{% endblock %}
+

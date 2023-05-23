@@ -1,0 +1,21 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+{% load static %}
+
+{% block title %} Pregunta 4: Lectura crítica {% endblock %} 
+
+{% block content %}
+    <p class="aligncenter" >
+        <img src = "{% static 'survey/icfes_l.png' %}" width="1000px" title="Texto Lectura crítica"/>
+    </p> 
+
+    <p>Pregunta</p>
+    <p class="aligncenter" >
+        <img src = "{% static 'survey/icfes_l2.png' %}" width="1000px" title="Lectura crítica 2"/>
+    </p> 
+
+    {% formfields %}
+
+{% next_button %}
+
+{% endblock %}

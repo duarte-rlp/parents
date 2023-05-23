@@ -1,0 +1,46 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block scripts %}
+    <!-- custom style sheet-->
+    <link href="{% static 'survey/css/styles.css' %}" rel="stylesheet">
+    <!-- functions and more -->
+    <script src="{% static 'survey/js/consistency.js' %}"></script>
+    
+    <style>
+    </style>
+{% endblock %}
+
+{% block title %}
+    De la Escuela al Trabajo
+{% endblock %}
+
+
+{% block content %}
+
+<p>Los resultados del Saber 11 se clasifican en 3 rangos según el puntaje: ALTO, MEDIO, BAJO (Ver Tabla abajo). <br>
+    En las siguientes preguntas por favor díganos cómo cree que los resultados del Saber 11 afectarán su ocupación el siguiente año, específicamente en <b>JUNIO de 2023.</b>
+</p>
+
+<div class="div_page_center">
+    <div class="div_table_center">
+        <table class="table_center">
+            <tr>
+                <th style="background: #FFA5A5;">BAJO</th>
+                <th style="background: #FFEFA5;">MEDIO</th>
+                <th style="background: #C4FFA5;">ALTO</th>
+            </tr>
+            <tr>
+                <td>Menos de 250</td>
+                <td>Entre 251 y 350</td>
+                <td>Más de 350</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+
+    {% next_button %}
+
+{% endblock %}

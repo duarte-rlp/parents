@@ -1,0 +1,60 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Aspiraciones ocupacionales
+{% endblock %}
+
+{% block content %}
+
+<p>¿Qué tipo de carrera considera necesaria para hacer lo que más le gustaría?:</p>
+<div class="wrapper">
+    <p>           
+        <table>
+            <tr style="text-align: center; vertical-align: middle;">
+                <td style="width: 20px; text-align: center; vertical-align: middle;">
+                    <input type="radio" id="etype_opc1" name="educ_type" value="1">
+                </td><td style="text-align: left; vertical-align: middle;">
+                    <label for="etype_opc1">Técnica</label><br>
+                </td>
+            </tr>
+            <tr style="text-align: center; vertical-align: middle;">
+                <td style="width: 20px; text-align: center; vertical-align: middle;">
+                    <input type="radio" id="etype_opc2" name="educ_type" value="2">
+                </td><td style="text-align: left; vertical-align: middle;">
+                    <label for="etype_opc2">Tecnológica</label><br>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 20px; text-align: center; vertical-align: middle;">
+                    <input type="radio" id="etype_opc3" name="educ_type" value="3">
+                </td><td style="text-align: left; vertical-align: middle;">
+                    <label for="etype_opc3">Profesional</label><br>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 20px; text-align: center; vertical-align: middle;">
+                    <input type="radio" id="etype_opc3" name="educ_type" value="3">
+                </td><td style="text-align: left; vertical-align: middle;">
+                    <label for="etype_opc3">Militar</label><br>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 20px; text-align: center; vertical-align: middle;">
+                    <input type="radio" id="etype_opc4" name="educ_type" value="4">
+                </td><td style="text-align: left; vertical-align: middle;">
+                    <label for="etype_opc4">Ninguna </label><br>
+                </td>
+            </tr>
+        </table>
+    </p>
+
+    <p>Escriba el nombre de la institución educativa en la que desea estudiar. También puede escribir <b>"NO SÉ"</b>.</p>
+    <textarea name="educ_university" id="educ_university" class="form-control text_input" placeholder="Coloque su respuesta aquí por favor" required style="margin-bottom: 10px;"></textarea>
+
+    <p>¿Tiene una segunda opción? En caso de que sí, escriba el nombre de la institución educativa donde también le gustaría estudiar. Puede escribir <b>"NO SÉ"</b> o <b>"NO TENGO SEGUNDA OPCIÓN": </b></p>
+    <textarea name="educ_university2" id="educ_university2" class="form-control text_input" placeholder="Coloque su respuesta aquí por favor" required style="margin-bottom: 10px;"></textarea>
+
+    {% next_button %}
+
+{% endblock %}

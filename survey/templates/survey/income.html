@@ -1,0 +1,188 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block scripts %}
+    <!-- custom style sheet-->
+    <link href="{% static 'survey/css/styles.css' %}" rel="stylesheet">
+    <!-- functions and more -->
+    <script src="{% static 'survey/js/consistency.js' %}"></script>
+    <script>
+        // Cambiar por el total de sliders que haya en la página
+        var total_check = 5;
+        $(document).ready(function () {
+            $('input[class=multislider_money]').on('input change', function (event) {
+                var all_checks_sliders = document.getElementsByClassName('check_slider');
+                var sum_checks = Number(0);
+                for(const s of all_checks_sliders) {
+                    sum_checks = Number(sum_checks);
+                    sum_checks = sum_checks + Number(s.value);
+                }
+                if(sum_checks == total_check) {
+                    var next_button = document.getElementsByClassName('otree-btn-next');
+                    next_button[0].style.cssText += 'display: block !important;';
+                }
+            });
+        });
+
+    </script> 
+
+    <style>
+        .otree-btn-next{
+            display: none !important;
+        }
+    </style>
+{% endblock %}
+
+{% block title %}
+    Ingresos esperados
+{% endblock %}
+
+{% block content %}
+
+<p>
+    Suponga que usted elige alguno de los siguientes <b>tipos de carreras</b> y se gradúa.<br> 
+    ¿Cuánto cree que usted ganaría mensualmente dentro de 5 años, a <i>salarios de hoy</i>?
+</p>
+<p>
+    Haga <i>clic</i> sobre la línea y luego mueva el recuadro para elegir un número entre $ 0 y $ 10.000.000 <i>en cada caso</i>.
+</p>
+
+<p><b>Técnica/Tecnológica:</b></p>
+<!--slider --> 
+<div class="card_table" id="h-slider-div" style="text-align: center;">
+    <div id="slider"></div>
+    </div>
+    
+            {{ form.check_slider_educ_inc1.errors }}
+            <div class="card_table" id="h-slider-div" style="text-align: center;">
+                <table class="table_question">
+                    <tr>
+                        <td class="text_slider"></td>
+                        <td class="text_slider"><b id="efficacy_score"> - </b></td>
+                        <td class="text_slider"></td>
+                    </tr>
+                    <tr>
+                        <td class="td_text_slider">$ 0</td>
+                        <td class="td_slider">
+                            <input type="range" name="educ_inc1" value="" min="0" max="10000000" step="10000" id="multislider_educ_inc1" class="multislider_money" required>
+                            <input type="hidden" name="check_slider_educ_inc1" value="" id="id_check_slider_educ_inc1" class="check_slider" required>
+                        </td>
+                        <td class="td_text_slider">$ 10.000.000</td>
+                    </tr>
+                </table>
+            </div>
+<!--slider --> 
+<br>
+
+<p><b>Carrera Militar:</b></p>
+<!--slider --> 
+<div class="card_table" id="h-slider-div" style="text-align: center;">
+    <div id="slider"></div>
+    </div>
+    
+            {{ form.check_slider_educ_inc2.errors }}
+            <div class="card_table" id="h-slider-div" style="text-align: center;">
+                <table class="table_question">
+                    <tr>
+                        <td class="text_slider"></td>
+                        <td class="text_slider"><b id="efficacy_score"> - </b></td>
+                        <td class="text_slider"></td>
+                    </tr>
+                    <tr>
+                        <td class="td_text_slider">$ 0</td>
+                        <td class="td_slider">
+                            <input type="range" name="educ_inc2" value="" min="0" max="10000000" step="10000" id="multislider_educ_inc2" class="multislider_money" required>
+                            <input type="hidden" name="check_slider_educ_inc2" value="" id="id_check_slider_educ_inc2" class="check_slider" required>
+                        </td>
+                        <td class="td_text_slider">$ 10.000.000</td>
+                    </tr>
+                </table>
+            </div>
+<!--slider --> 
+<br>
+
+<p><b>Profesional:</b></p>
+<!--slider --> 
+<div class="card_table" id="h-slider-div" style="text-align: center;">
+    <div id="slider"></div>
+    </div>
+    
+            {{ form.check_slider_educ_inc3.errors }}
+            <div class="card_table" id="h-slider-div" style="text-align: center;">
+                <table class="table_question">
+                    <tr>
+                        <td class="text_slider"></td>
+                        <td class="text_slider"><b id="efficacy_score"> - </b></td>
+                        <td class="text_slider"></td>
+                    </tr>
+                    <tr>
+                        <td class="td_text_slider">$ 0</td>
+                        <td class="td_slider">
+                            <input type="range" name="educ_inc3" value="" min="0" max="10000000" step="10000" id="multislider_educ_inc3" class="multislider_money" required>
+                            <input type="hidden" name="check_slider_educ_inc3" value="" id="id_check_slider_educ_inc3" class="check_slider" required>
+                        </td>
+                        <td class="td_text_slider">$ 10.000.000</td>
+                    </tr>
+                </table>
+            </div>
+<!--slider --> 
+<br>
+
+<p><b>No estudia y crea su propio negocio:</b></p>
+<!--slider --> 
+<div class="card_table" id="h-slider-div" style="text-align: center;">
+    <div id="slider"></div>
+    </div>
+    
+            {{ form.check_slider_educ_inc4.errors }}
+            <div class="card_table" id="h-slider-div" style="text-align: center;">
+                <table class="table_question">
+                    <tr>
+                        <td class="text_slider"></td>
+                        <td class="text_slider"><b id="efficacy_score"> - </b></td>
+                        <td class="text_slider"></td>
+                    </tr>
+                    <tr>
+                        <td class="td_text_slider">$ 0</td>
+                        <td class="td_slider">
+                            <input type="range" name="educ_inc4" value="" min="0" max="10000000" step="10000" id="multislider_educ_inc4" class="multislider_money" required>
+                            <input type="hidden" name="check_slider_educ_inc4" value="" id="id_check_slider_educ_inc4" class="check_slider" required>
+                        </td>
+                        <td class="td_text_slider">$ 10.000.000</td>
+                    </tr>
+                </table>
+            </div>
+<!--slider --> 
+<br>
+
+<p><b>No estudia y empieza a trabajar:</b></p>
+<!--slider --> 
+<div class="card_table" id="h-slider-div" style="text-align: center;">
+    <div id="slider"></div>
+    </div>
+    
+            {{ form.check_slider_educ_inc5.errors }}
+            <div class="card_table" id="h-slider-div" style="text-align: center;">
+                <table class="table_question">
+                    <tr>
+                        <td class="text_slider"></td>
+                        <td class="text_slider"><b id="efficacy_score"> - </b></td>
+                        <td class="text_slider"></td>
+                    </tr>
+                    <tr>
+                        <td class="td_text_slider">$ 0</td>
+                        <td class="td_slider">
+                            <input type="range" name="educ_inc5" value="" min="0" max="10000000" step="10000" id="multislider_educ_inc5" class="multislider_money" required>
+                            <input type="hidden" name="check_slider_educ_inc5" value="" id="id_check_slider_educ_inc5" class="check_slider" required>
+                        </td>
+                        <td class="td_text_slider">$ 10.000.000</td>
+                    </tr>
+                </table>
+            </div>
+<!--slider --> 
+<br>
+
+    {% next_button %}
+
+{% endblock %}
+

@@ -1,0 +1,16 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+{% load static %}
+
+{% block title %} Pregunta 5: Sociales y competencias ciudadanas {% endblock %} 
+
+{% block content %}
+    <p class="aligncenter" >
+        <img src = "{% static 'survey/icfes_s1.png' %}" width="1000px" title="Sociales y competencias ciudadanas 1"/>
+    </p> 
+
+    {% formfields %}
+
+{% next_button %}
+
+{% endblock %}

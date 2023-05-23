@@ -1,0 +1,241 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block scripts %}
+    <!-- custom style sheet-->
+    <link href="{% static 'survey/css/styles.css' %}" rel="stylesheet">
+    <!-- functions and more -->
+    <script src="{% static 'survey/js/consistency.js' %}"></script>
+    <script>
+        // Cambiar por el total de sliders que haya en la página
+        var total_check = 7;
+        $(document).ready(function () {
+            $('input[class=multislider_efficacy]').on('input change', function (event) {
+                var all_checks_sliders = document.getElementsByClassName('check_slider');
+                var sum_checks = Number(0);
+                for(const s of all_checks_sliders) {
+                    sum_checks = Number(sum_checks);
+                    sum_checks = sum_checks + Number(s.value);
+                }
+                if(sum_checks == total_check) {
+                    var next_button = document.getElementsByClassName('otree-btn-next');
+                    next_button[0].style.cssText += 'display: block !important;';
+                }
+            });
+        });
+
+    </script> 
+
+    <style>
+        .otree-btn-next{
+            display: none !important;
+        }
+    </style>
+{% endblock %}
+
+{% block title %}
+    Barreras
+{% endblock %}
+
+{% block content %}
+
+<p>
+    En una escala del 0 al 100, donde <b>0</b> es "No afecta en nada el logro de mis aspiraciones educativas" y <b>100</b> es "Impide completamente el logro de mis aspiraciones educativas", 
+    por favor díganos ¿Qué tanto cree que las siguientes barreras podrían ser un obstáculo en el logro de sus aspiraciones educativas?
+</p>
+<p>
+    Haga <i>clic</i> sobre la línea y luego mueva el recuadro para elegir un número entre 0 y 100 <i>en cada caso</i>.
+</p>
+
+<p><b>El acceso a céditos educativos o financiación:</b></p>
+<!--slider --> 
+<div class="card_table" id="h-slider-div" style="text-align: center;">
+    <div id="slider"></div>
+    </div>
+    
+            {{ form.check_slider_educ_barrier1.errors }}
+            <div class="card_table" id="h-slider-div" style="text-align: center;">
+                <table class="table_question">
+                    <tr>
+                        <td class="text_slider"></td>
+                        <td class="text_slider"><b id="efficacy_score"> - </b></td>
+                        <td class="text_slider"></td>
+                    </tr>
+                    <tr>
+                        <td class="td_text_slider">No afecta <br> en nada</td>
+                        <td class="td_slider">
+                            <input type="range" name="educ_barrier1" value="" min="0" max="100" step="1" id="multislider_educ_barrier1" class="multislider_efficacy" required>
+                            <input type="hidden" name="check_slider_educ_barrier1" value="" id="id_check_slider_educ_barrier1" class="check_slider" required>
+                        </td>
+                        <td class="td_text_slider">Impide <br> completamente</td>
+                    </tr>
+                </table>
+            </div>
+<!--slider --> 
+<br>
+
+<p><b>El deseo de sus padres de que usted NO siga estudiando:</b></p>
+<!--slider --> 
+<div class="card_table" id="h-slider-div" style="text-align: center;">
+    <div id="slider"></div>
+    </div>
+    
+            {{ form.check_slider_educ_barrier2.errors }}
+            <div class="card_table" id="h-slider-div" style="text-align: center;">
+                <table class="table_question">
+                    <tr>
+                        <td class="text_slider"></td>
+                        <td class="text_slider"><b id="efficacy_score"> - </b></td>
+                        <td class="text_slider"></td>
+                    </tr>
+                    <tr>
+                        <td class="td_text_slider">No afecta <br> en nada</td>
+                        <td class="td_slider">
+                            <input type="range" name="educ_barrier2" value="" min="0" max="100" step="1" id="multislider_educ_barrier2" class="multislider_efficacy" required>
+                            <input type="hidden" name="check_slider_educ_barrier2" value="" id="id_check_slider_educ_barrier2" class="check_slider" required>
+                        </td>
+                        <td class="td_text_slider">Impide <br> completamente</td>
+                    </tr>
+                </table>
+            </div>
+<!--slider --> 
+<br>
+
+<p><b>La necesidad de empezar a trabajar:</b></p>
+<!--slider --> 
+<div class="card_table" id="h-slider-div" style="text-align: center;">
+    <div id="slider"></div>
+    </div>
+    
+            {{ form.check_slider_educ_barrier3.errors }}
+            <div class="card_table" id="h-slider-div" style="text-align: center;">
+                <table class="table_question">
+                    <tr>
+                        <td class="text_slider"></td>
+                        <td class="text_slider"><b id="efficacy_score"> - </b></td>
+                        <td class="text_slider"></td>
+                    </tr>
+                    <tr>
+                        <td class="td_text_slider">No afecta <br> en nada</td>
+                        <td class="td_slider">
+                            <input type="range" name="educ_barrier3" value="" min="0" max="100" step="1" id="multislider_educ_barrier3" class="multislider_efficacy" required>
+                            <input type="hidden" name="check_slider_educ_barrier3" value="" id="id_check_slider_educ_barrier3" class="check_slider" required>
+                        </td>
+                        <td class="td_text_slider">Impide <br> completamente</td>
+                    </tr>
+                </table>
+            </div>
+<!--slider --> 
+<br>
+
+<p><b>Los prejuicios de género asociado a las ocupaciones:</b></p>
+<!--slider --> 
+<div class="card_table" id="h-slider-div" style="text-align: center;">
+    <div id="slider"></div>
+    </div>
+    
+            {{ form.check_slider_educ_barrier4.errors }}
+            <div class="card_table" id="h-slider-div" style="text-align: center;">
+                <table class="table_question">
+                    <tr>
+                        <td class="text_slider"></td>
+                        <td class="text_slider"><b id="efficacy_score"> - </b></td>
+                        <td class="text_slider"></td>
+                    </tr>
+                    <tr>
+                        <td class="td_text_slider">No afecta <br> en nada</td>
+                        <td class="td_slider">
+                            <input type="range" name="educ_barrier4" value="" min="0" max="100" step="1" id="multislider_educ_barrier4" class="multislider_efficacy" required>
+                            <input type="hidden" name="check_slider_educ_barrier4" value="" id="id_check_slider_educ_barrier4" class="check_slider" required>
+                        </td>
+                        <td class="td_text_slider">Impide <br> completamente</td>
+                    </tr>
+                </table>
+            </div>
+<!--slider --> 
+<br>
+
+<p><b>La distancia geográfica a la institución de educación superior de su interés:</b></p>
+<!--slider --> 
+<div class="card_table" id="h-slider-div" style="text-align: center;">
+    <div id="slider"></div>
+    </div>
+    
+            {{ form.check_slider_educ_barrier5.errors }}
+            <div class="card_table" id="h-slider-div" style="text-align: center;">
+                <table class="table_question">
+                    <tr>
+                        <td class="text_slider"></td>
+                        <td class="text_slider"><b id="efficacy_score"> - </b></td>
+                        <td class="text_slider"></td>
+                    </tr>
+                    <tr>
+                        <td class="td_text_slider">No afecta <br> en nada</td>
+                        <td class="td_slider">
+                            <input type="range" name="educ_barrier5" value="" min="0" max="100" step="1" id="multislider_educ_barrier5" class="multislider_efficacy" required>
+                            <input type="hidden" name="check_slider_educ_barrier5" value="" id="id_check_slider_educ_barrier5" class="check_slider" required>
+                        </td>
+                        <td class="td_text_slider">Impide <br> completamente</td>
+                    </tr>
+                </table>
+            </div>
+<!--slider --> 
+<br>
+
+<p><b>Sus planes familiares (por ejemplo: casarse, tener hijos):</b></p>
+<!--slider --> 
+<div class="card_table" id="h-slider-div" style="text-align: center;">
+    <div id="slider"></div>
+    </div>
+    
+            {{ form.check_slider_educ_barrier6.errors }}
+            <div class="card_table" id="h-slider-div" style="text-align: center;">
+                <table class="table_question">
+                    <tr>
+                        <td class="text_slider"></td>
+                        <td class="text_slider"><b id="efficacy_score"> - </b></td>
+                        <td class="text_slider"></td>
+                    </tr>
+                    <tr>
+                        <td class="td_text_slider">No afecta <br> en nada</td>
+                        <td class="td_slider">
+                            <input type="range" name="educ_barrier6" value="" min="0" max="100" step="1" id="multislider_educ_barrier6" class="multislider_efficacy" required>
+                            <input type="hidden" name="check_slider_educ_barrier6" value="" id="id_check_slider_educ_barrier6" class="check_slider" required>
+                        </td>
+                        <td class="td_text_slider">Impide <br> completamente</td>
+                    </tr>
+                </table>
+            </div>
+<!--slider --> 
+<br>
+
+<p><b>Su capacidad para cumplir con los requisitos de admisión en un programa de educación superior:</b></p>
+<!--slider --> 
+<div class="card_table" id="h-slider-div" style="text-align: center;">
+    <div id="slider"></div>
+    </div>
+    
+            {{ form.check_slider_educ_barrier7.errors }}
+            <div class="card_table" id="h-slider-div" style="text-align: center;">
+                <table class="table_question">
+                    <tr>
+                        <td class="text_slider"></td>
+                        <td class="text_slider"><b id="efficacy_score"> - </b></td>
+                        <td class="text_slider"></td>
+                    </tr>
+                    <tr>
+                        <td class="td_text_slider">No afecta <br> en nada</td>
+                        <td class="td_slider">
+                            <input type="range" name="educ_barrier7" value="" min="0" max="100" step="1" id="multislider_educ_barrier7" class="multislider_efficacy" required>
+                            <input type="hidden" name="check_slider_educ_barrier7" value="" id="id_check_slider_educ_barrier7" class="check_slider" required>
+                        </td>
+                        <td class="td_text_slider">Impide <br> completamente</td>
+                    </tr>
+                </table>
+            </div>
+<!--slider --> 
+<br>
+
+    {% next_button %}
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Matemáticas 
+{% endblock %}
+
+{% block content %}
+
+<p>Le presentaremos diez (10) operaciones matemáticas, una por una.</p>
+
+<p>Si la respuesta es incorrecta, el computador le pedirá que la corrija. 
+    Si la respuesta es correcta, aparecerá la siguiente operación.</p>
+
+<p>Por resolver las diez operaciones matemáticas recibirá 100 puntos que serán el presupuesto que tendrá 
+    para invertir en la siguiente actividad.</p> 
+
+{% next_button %}
+
+{% endblock %}

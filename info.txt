@@ -1,17 +1,26 @@
+token: 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
+
 --
 
-Línea punteada
+1. Generar apps por sección: organizar el software
+- Home
+- ICL
+- Graphs
+- Maths
+- Problems
+- 
 
-Carga un punto por cada click en el botón siguiente
 
-Gráficas de igual tamaño (consistencia)
+2. Operaciones matemáticas: 
+	Orden aleatorio
+	Capturar tiempo en responder
+	Cantidad errores
 
-Colors: blue & green
-
-Operaciones matemáticas: 
-Orden aleatorio
-Capturar tiempo en responder
-Cantidad errores
+3. Cambios de gráficas:
+	Línea punteada
+	Carga un punto por cada click en el botón siguiente
+	Gráficas de igual tamaño (consistencia)
+	Colors: blue & green
 
 5 secciones o actividades para pagar
 

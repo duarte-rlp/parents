@@ -21,6 +21,12 @@ SESSION_CONFIGS = [
         # sequence = [home, icl, allocation, icl, la, results, survey]
         'app_sequence': ['allocations'],
     },
+    {
+        'name': 'math_operations',
+        'display_name': 'math operations',
+        'num_demo_participants': 1, 
+        'app_sequence': ['real_effort_numbers'],
+    },
 ]
 
 # if you set a property in SESSION_CONFIG_DEFAULTS, it will be inherited by all configs

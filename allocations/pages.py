@@ -14,6 +14,15 @@ class ResultsWaitPage(WaitPage):
 class Results(Page):
     pass
 
+class graph_01(Page):
+    def vars_for_template(self):
+        return {
+                'labels': Constants.inv_labels,
+                'data': Constants.inv_example,
+                'max_y': max(Constants.inv_example),
+                'min_y': min(Constants.inv_example)
+                }
+
 class graph_01_01(Page):
     def vars_for_template(self):
         return {
@@ -71,4 +80,4 @@ class graph_03(Page):
                 }
 
 
-page_sequence = [graph_01_01, graph_01_02, graph_01_03, graph_01_04, graph_01_05, graph_01_06, graph_02, graph_03]
+page_sequence = [graph_01, graph_01_01, graph_01_02, graph_01_03, graph_01_04, graph_01_05, graph_01_06, graph_02, graph_03]

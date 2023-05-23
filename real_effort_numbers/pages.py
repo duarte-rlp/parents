@@ -11,7 +11,7 @@ class intro_math(Page):
         # Only show this on the first round
         # Need to show only to effort group participants
         # (and to add IntroLuckGroup IntroMixedGroup page) up here and in page sequence
-        return self.round_number == 1    
+        return self.round_number == 1
 
 
 class p1(Page):
@@ -20,8 +20,14 @@ class p1(Page):
 
     def vars_for_template(self):
         return {
-            "pregunta":self.round_number,
+            'pregunta': self.round_number,
+            'question': Constants.questions[0],
+            'answer': Constants.answers[0],
+            'n_question': self.player.cnt_question,
         }
+
+    def before_next_page(self):
+        self.player.cnt_question += 1
 
 class p2(Page):
     form_model = "player"
@@ -30,7 +36,13 @@ class p2(Page):
     def vars_for_template(self):
         return {
             "pregunta":self.round_number,
+            'question': Constants.questions[1],
+            'answer': Constants.answers[1],
+            'n_question': self.player.cnt_question,
         }
+
+    def before_next_page(self):
+        self.player.cnt_question += 1
 
 class p3(Page):
     form_model = "player"
@@ -39,7 +51,13 @@ class p3(Page):
     def vars_for_template(self):
         return {
             "pregunta":self.round_number,
+            'question': Constants.questions[2],
+            'answer': Constants.answers[2],
+            'n_question': self.player.cnt_question,
         }
+
+    def before_next_page(self):
+        self.player.cnt_question += 1
 
 class p4(Page):
     form_model = "player"
@@ -48,7 +66,13 @@ class p4(Page):
     def vars_for_template(self):
         return {
             "pregunta":self.round_number,
+            'question': Constants.questions[3],
+            'answer': Constants.answers[3],
+            'n_question': self.player.cnt_question,
         }
+
+    def before_next_page(self):
+        self.player.cnt_question += 1
 
 class p5(Page):
     form_model = "player"
@@ -57,7 +81,13 @@ class p5(Page):
     def vars_for_template(self):
         return {
             "pregunta":self.round_number,
+            'question': Constants.questions[4],
+            'answer': Constants.answers[4],
+            'n_question': self.player.cnt_question,
         }
+
+    def before_next_page(self):
+        self.player.cnt_question += 1
 
 class p6(Page):
     form_model = "player"
@@ -66,7 +96,13 @@ class p6(Page):
     def vars_for_template(self):
         return {
             "pregunta":self.round_number,
+            'question': Constants.questions[5],
+            'answer': Constants.answers[5],
+            'n_question': self.player.cnt_question,
         }
+
+    def before_next_page(self):
+        self.player.cnt_question += 1
 
 class p7(Page):
     form_model = "player"
@@ -75,7 +111,13 @@ class p7(Page):
     def vars_for_template(self):
         return {
             "pregunta":self.round_number,
+            'question': Constants.questions[6],
+            'answer': Constants.answers[6],
+            'n_question': self.player.cnt_question,
         }
+
+    def before_next_page(self):
+        self.player.cnt_question += 1
 
 class p8(Page):
     form_model = "player"
@@ -84,7 +126,13 @@ class p8(Page):
     def vars_for_template(self):
         return {
             "pregunta":self.round_number,
+            'question': Constants.questions[7],
+            'answer': Constants.answers[7],
+            'n_question': self.player.cnt_question,
         }
+
+    def before_next_page(self):
+        self.player.cnt_question += 1
 
 class p9(Page):
     form_model = "player"
@@ -93,7 +141,13 @@ class p9(Page):
     def vars_for_template(self):
         return {
             "pregunta":self.round_number,
+            'question': Constants.questions[8],
+            'answer': Constants.answers[8],
+            'n_question': self.player.cnt_question,
         }
+
+    def before_next_page(self):
+        self.player.cnt_question += 1
 
 class p10(Page):
     form_model = "player"
@@ -102,6 +156,9 @@ class p10(Page):
     def vars_for_template(self):
         return {
             "pregunta":self.round_number,
+            'question': Constants.questions[9],
+            'answer': Constants.answers[9],
+            'n_question': self.player.cnt_question,
         }
 
 

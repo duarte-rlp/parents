@@ -1,0 +1,39 @@
+
+.div_btnNext {
+	width: 100%;
+	align-content: center;
+	text-align: center;
+}
+
+.div_graph {
+	width: 45%;
+	min-width: 250px;
+	max-width: 450px;
+	height: 450px;
+	margin: 0 auto;
+}
+
+.div_tabGraph {
+	width: 45%;
+	min-width: 250px;
+	max-width: 450px;
+	margin: 0 auto;
+	align-content: center;
+	text-align: center;
+	left: -5%;
+}
+
+.tabGraph {
+	border: black 1px solid;
+	margin-left: -4%;
+}
+
+.cell_graphInv {
+	padding: 3px 5px;
+}
+
+.cell_graph {
+	width: 10%;
+	border: black 1px solid;
+	padding: 3px 5px;
+}

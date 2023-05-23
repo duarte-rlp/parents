@@ -1,12 +1,40 @@
 {% extends "global/Page.html" %}
 {% load otree static %}
 
+{% block scripts %}
+    <link href="{% static 'real_effort_numbers/css/styles.css' %}" rel="stylesheet">
+    <script src="{% static 'real_effort_numbers/js/functions.js' %}"></script>
+
+    <script>
+        function validate() {
+            let in_answ = document.getElementById("id_p8");
+            validateAnswer(in_answ, Number({{ answer }}));
+        }
+    </script>
+{% endblock %}
+
 {% block title %}
-    Pregunta {{ pregunta }}
+    Matemáticas - Pregunta # {{ n_question }}
 {% endblock %}
 
 {% block content %}
-    {% formfields %}
-    {% next_button %}
+¿Cuál es la solución al siguiente problema de porcentajes?
 
+<div class="div_operation">
+    <table class="tab_operation">
+        <tr>
+            <td class="cell_question">{{ question }} = </td>
+            <td><input type="number" class="inNumber" name="p8" id="id_p8" oninput="restore_error('id_p8')" required></td>
+        </tr>
+    </table>
+    <div class="error_msg" id="div_error">
+        Error - La respuesta no es correcta, intente de nuevo
+    </div>
+
+</div>
+
+<div class="div_btnNext">
+    <input type="button" value="Siguiente" class="btnNext" onclick="validate()">
+    <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next">Siguiente</button>
+</div>
 {% endblock %}

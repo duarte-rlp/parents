@@ -4,35 +4,81 @@
 {% block scripts %}
     
     <script src="{% static 'js/highcharts.js' %}"></script>
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
     
     <script>
-        // Construcción de la gráfica
-        
+
+        // Gráfica
         Highcharts.chart('graph01', {
             title: {
-                text: 'Inversión en el tiempo'
+                text: ''
+            },
+            xAxis: {
+                min: 0,
+                max: 7,
+                categories: {{ labels }},
+                align: 'center'
             },
             yAxis: {
                 title: {
-                    text: 'Proporción de inversión'
-                }
+                    text: 'Retorno por cada $100'
+                },
+                min: {{ min_y }} - 1,
+                max: {{ max_y }} + 1
             },
             series: [{
+                animation: false,
                 data: {{ data }},
-                lineWidth: 0.5
-            }]
+                lineWidth: 0.0,
+                enableMouseTracking: false,
+                marker:{
+                    enabled:false
+                }
+            }],
+            legend: {
+                enabled: false
+            }
         });
     </script>
 {% endblock %}
 
 {% block title %}
-    Gráfica sencilla
+    Parte 2
 {% endblock %}
 
 {% block content %}
 
-<div id="graph01" width="400px" height="400px"></div>
+<div id="text01">
+    Frente a cada opción de inversión hay ocho (8) cartas.
+</div>
+<div id="text02" style="display: none;">
+    En cada carta está escrito un número. Ese número es el retorno por cada $100 que usted asigne a la <i>Inversión A</i>.
+</div>
 
+<br>  
+<div>
+    <div id="graph01" class="div_graph"></div>
+    <div class="div_tabGraph">
+        <table class="tabGraph">
+            <tr>
+                <td class="cell_graphInv">Inversión A</td>
+                <td class="cell_graph"></td>
+                <td class="cell_graph"></td>
+                <td class="cell_graph"></td>
+                <td class="cell_graph"></td>
+                <td class="cell_graph"></td>
+                <td class="cell_graph"></td>
+                <td class="cell_graph"></td>
+                <td class="cell_graph"></td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<br>
+
+<div class="div_btnNext">
     {% next_button %}
+</div>
 
 {% endblock %}

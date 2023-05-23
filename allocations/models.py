@@ -24,7 +24,7 @@ class Constants(BaseConstants):
     inv_a = [15, 15, 15, 15, -8, -8, -8, -8]
     inv_b = [-9, -9, -9, -9, 14, 14, 14, 14]
     inv_example = [10, 10, 10, 10, -5, -5, -5, -5]
-    inv_labels = ['', '', '', '', '', '', '', '']
+    inv_labels = ['1', '2', '3', '4', '5', '6', '7', '8']
 
 
 class Subsession(BaseSubsession):

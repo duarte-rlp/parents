@@ -33,10 +33,12 @@
                 enableMouseTracking: false,
                 marker:{
                     enabled:false
-                }
+                },
+                color: 'blue',
+                name: 'Inversión A'
             }],
             legend: {
-                enabled: false
+                enabled: true
             }
         });
     </script>
@@ -48,12 +50,15 @@
 
 {% block content %}
 
-<div id="text01">
-    Frente a cada opción de inversión hay ocho (8) cartas.
-</div>
-<div id="text02" style="display: none;">
-    En cada carta está escrito un número. Ese número es el retorno por cada $100 que usted asigne a la <i>Inversión A</i>.
-</div>
+<table class="table_question">
+    <tr>
+        <td class="cell_question">    
+            <div id="text01">
+                Frente a cada opción de inversión hay ocho (8) cartas.
+            </div>
+        </td>
+    </tr>
+</table>
 
 <br>  
 <div>

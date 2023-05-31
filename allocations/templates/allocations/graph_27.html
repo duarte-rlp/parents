@@ -1,0 +1,275 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block scripts %}
+    
+    <script src="{% static 'js/highcharts.js' %}"></script>
+    <script src="{% static 'js/functions.js' %}"></script>
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+    
+    <script>
+
+{% if graphType == 1 %}
+
+        // Gráfica para inversión A e inversión B
+        Highcharts.chart('graph01', {
+            title: {
+                text: ''
+            },
+            xAxis: {
+                min: 0,
+                max: 7,
+                categories: {{ labels }},
+                align: 'center'
+            },
+            yAxis: {
+                title: {
+                    text: 'Retorno por cada $100'
+                },
+                min: {{ min_y }} - 1,
+                max: {{ max_y }} + 1
+            },
+            series: [{
+                animation: false,
+                data: {{ data_a }},
+                lineWidth: 1,
+                enableMouseTracking: true,
+                marker:{
+                    enabled: true
+                },
+                color: 'blue',
+                name: 'Inversión A',
+                dashStyle: 'Dash'
+            }, {
+                animation: false,
+                data: {{ data_b }},
+                lineWidth: 1,
+                enableMouseTracking: true,
+                marker:{
+                    enabled: true
+                },
+                color: 'green',
+                name: 'Inversión B',
+                dashStyle: 'Dash'
+            }],
+            legend: {
+                enabled: false
+            }
+        });
+
+{% else %}
+
+        // Gráfica inversión A
+        Highcharts.chart('graph01', {
+            title: {
+                text: ''
+            },
+            xAxis: {
+                min: 0,
+                max: 7,
+                categories: {{ labels }},
+                align: 'center'
+            },
+            yAxis: {
+                title: {
+                    text: 'Retorno por cada $100'
+                },
+                min: {{ min_y }} - 1,
+                max: {{ max_y }} + 1
+            },
+            series: [{
+                animation: false,
+                data: {{ data_a }},
+                lineWidth: 1,
+                enableMouseTracking: true,
+                marker:{
+                    enabled: true
+                },
+                color: 'blue',
+                name: 'Inversión A',
+                dashStyle: 'Dash'
+            }],
+            legend: {
+                enabled: false
+            }
+        });
+
+        // Gráfica inversión B
+        Highcharts.chart('graph02', {
+            title: {
+                text: ''
+            },
+            xAxis: {
+                min: 0,
+                max: 7,
+                categories: {{ labels }},
+                align: 'center'
+            },
+            yAxis: {
+                title: {
+                    text: 'Retorno por cada $100'
+                },
+                min: {{ min_y }} - 1,
+                max: {{ max_y }} + 1
+            },
+            series: [{
+                animation: false,
+                data: {{ data_b }},
+                lineWidth: 1,
+                enableMouseTracking: true,
+                marker:{
+                    enabled: true
+                },
+                color: 'green',
+                name: 'Inversión B',
+                dashStyle: 'Dash'
+            }],
+            legend: {
+                enabled: false
+            }
+        });
+
+{% endif %}
+
+        function nextCard() {
+            let btn = document.getElementById("id_next");
+            btn.click();
+        }
+
+        function cardChoice(){
+            let card_index = Math.floor(Math.random() * 8) + 1;
+            let arr_a = document.querySelectorAll('*[id^="a_"]');
+            let arr_b = document.querySelectorAll('*[id^="b_"]');
+            document.getElementById("in_cardChoice").value = card_index;
+            for (var i = 0; i < arr_a.length; i++) {
+                if (arr_a[i].getAttribute('name') == card_index) {
+                    arr_a[i].style.backgroundColor = "#ffdf72";
+                    arr_a[i].style.fontWeight = "bold";
+                } else {
+                    arr_a[i].style.backgroundColor = "#ffffff";
+                    arr_a[i].style.fontWeight = "normal";
+                }
+                if (arr_b[i].getAttribute('name') == card_index) {
+                    arr_b[i].style.backgroundColor = "#ffdf72";
+                    arr_b[i].style.fontWeight = "bold";
+                } else {
+                    arr_b[i].style.backgroundColor = "#ffffff";
+                    arr_b[i].style.fontWeight = "normal";
+                }
+            }
+            if(document.getElementById("id_next").style.display == "none") {
+                document.getElementById("id_next").style.display = "block";
+            }
+        }
+
+    </script>
+{% endblock %}
+
+{% block title %}
+    Parte 2
+{% endblock %}
+
+{% block content %}
+
+<table class="table_question">
+    <tr>
+        <td class="cell_question" style="width: 100% !important;">    
+            <div id="text01">
+                Usted seleccionó ${{ inv_a }} para la <i>Inversión A</i> y ${{ inv_b }} para la <i>Inversión B</i>. Ahora elija una carta que desee y presione en "Siguiente".
+                <input type="number" style="display: none;" id="in_cardChoice" name="test_07_cardIndex">
+            </div>
+        </td>
+    </tr>
+</table>
+
+<br>  
+{% if graphType == 1 %}
+<div>
+    <div id="graph01" class="div_graph"></div>
+    <div class="div_tabGraph">
+        <table class="tabGraph">
+            <tr>
+                <td class="cell_graphInv">Inversión A</td>
+                <td class="cell_graph" id="a_1" name="1">{{ data_a.0 }}</td>
+                <td class="cell_graph" id="a_2" name="2">{{ data_a.1 }}</td>
+                <td class="cell_graph" id="a_3" name="3">{{ data_a.2 }}</td>
+                <td class="cell_graph" id="a_4" name="4">{{ data_a.3 }}</td>
+                <td class="cell_graph" id="a_5" name="5">{{ data_a.4 }}</td>
+                <td class="cell_graph" id="a_6" name="6">{{ data_a.5 }}</td>
+                <td class="cell_graph" id="a_7" name="7">{{ data_a.6 }}</td>
+                <td class="cell_graph" id="a_8" name="8">{{ data_a.7 }}</td>
+            </tr>
+            <tr>
+                <td class="cell_graphInv">Inversión B</td>
+                <td class="cell_graph" id="b_1" name="1">{{ data_b.0 }}</td>
+                <td class="cell_graph" id="b_2" name="2">{{ data_b.1 }}</td>
+                <td class="cell_graph" id="b_3" name="3">{{ data_b.2 }}</td>
+                <td class="cell_graph" id="b_4" name="4">{{ data_b.3 }}</td>
+                <td class="cell_graph" id="b_5" name="5">{{ data_b.4 }}</td>
+                <td class="cell_graph" id="b_6" name="6">{{ data_b.5 }}</td>
+                <td class="cell_graph" id="b_7" name="7">{{ data_b.6 }}</td>
+                <td class="cell_graph" id="b_8" name="8">{{ data_b.7 }}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+{% else %}
+<div>
+    <table class="tabDiv_GraphType2">
+        <tr>
+            <td style="width: 50%;">
+                <div id="graph01" class="div_graphType2"></div>
+                <div class="div_tabGraphType2">
+                    <table class="tabGraph">
+                        <tr>
+                            <td class="cell_graphInv">Inversión A</td>
+                            <td class="cell_graph" id="a_1" name="1">{{ data_a.0 }}</td>
+                            <td class="cell_graph" id="a_2" name="2">{{ data_a.1 }}</td>
+                            <td class="cell_graph" id="a_3" name="3">{{ data_a.2 }}</td>
+                            <td class="cell_graph" id="a_4" name="4">{{ data_a.3 }}</td>
+                            <td class="cell_graph" id="a_5" name="5">{{ data_a.4 }}</td>
+                            <td class="cell_graph" id="a_6" name="6">{{ data_a.5 }}</td>
+                            <td class="cell_graph" id="a_7" name="7">{{ data_a.6 }}</td>
+                            <td class="cell_graph" id="a_8" name="8">{{ data_a.7 }}</td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+            <td>
+                <div id="graph02" class="div_graphType2"></div>
+                <div class="div_tabGraphType2">
+                    <table class="tabGraph">
+                        <tr>
+                            <td class="cell_graphInv">Inversión B</td>
+                            <td class="cell_graph" id="b_1" name="1">{{ data_b.0 }}</td>
+                            <td class="cell_graph" id="b_2" name="2">{{ data_b.1 }}</td>
+                            <td class="cell_graph" id="b_3" name="3">{{ data_b.2 }}</td>
+                            <td class="cell_graph" id="b_4" name="4">{{ data_b.3 }}</td>
+                            <td class="cell_graph" id="b_5" name="5">{{ data_b.4 }}</td>
+                            <td class="cell_graph" id="b_6" name="6">{{ data_b.5 }}</td>
+                            <td class="cell_graph" id="b_7" name="7">{{ data_b.6 }}</td>
+                            <td class="cell_graph" id="b_8" name="8">{{ data_b.7 }}</td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+{% endif %}
+<br>
+
+<div class="div_btnNext">
+    <table style="width: 100%;">
+        <tr>
+            <td style="width: 50%; text-align: end; padding-right: 20px;">
+                <input type="button" value="Elegir carta" class="btnNext" onclick="cardChoice()">
+            </td>
+            <td style="width: 50%; text-align: initial; padding-left: 20px;">
+                <button class="otree-btn-next btn btn-primary" id="id_next" style="display: none;">Siguiente</button>
+            </td>
+        </tr>
+    </table>
+</div>
+
+{% endblock %}

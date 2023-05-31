@@ -1,0 +1,29 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block scripts %}
+    
+    <script src="{% static 'js/highcharts.js' %}"></script>
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+    
+{% endblock %}
+
+{% block title %}
+    Parte 2
+{% endblock %}
+
+{% block content %}
+
+En esta parte, le indicaremos cómo tomar las decisiones de inversión y le mostraremos un ejemplo.
+<br> <br>
+Supongamos que te damos 100.000 pesos y te pedimos que repartas este dinero entre dos opciones de inversión. Las opciones A y B. Puedes invertir toda tu dotación en A o en B, pero también puedes repartirla.  Al final tienes que invertir todos los 100.000 pesos.
+<br> <br>
+Cada decisión de inversión puede tener rendimientos positivos o negativos. Si la opción de inversión tiene rendimientos positivos, usted obtendrá una rentabilidad basada en cuánto invirtió en esa opción. Si, por el contrario, la inversión tiene rendimientos negativos, perderá parte del dinero que invirtió en esa opción.
+<br> <br>
+Si invierte en ambas opciones al mismo tiempo, puede ocurrir que ambas tengan una rentabilidad positiva, que ambas tengan una rentabilidad negativa o que una tenga una rentabilidad alta y la otra una rentabilidad baja.
+<br> <br>
+<div class="div_btnNext">
+    {% next_button %}
+</div>
+
+{% endblock %}

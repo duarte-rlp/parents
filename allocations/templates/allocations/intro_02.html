@@ -38,7 +38,7 @@
                 name: 'Inversión A'
             }],
             legend: {
-                enabled: true
+                enabled: false
             }
         });
     </script>
@@ -50,37 +50,7 @@
 
 {% block content %}
 
-<table class="table_question">
-    <tr>
-        <td class="cell_question" style="width: 100% !important;">    
-            <div id="text01">
-                En cada carta está escrito un número. Ese número es el retorno por cada $100 que usted asigne a la <i>Inversión A</i>.
-            </div>
-        </td>
-    </tr>
-</table>
 
-<br>  
-<div>
-    <div id="graph01" class="div_graph"></div>
-    <div class="div_tabGraph">
-        <table class="tabGraph">
-            <tr>
-                <td class="cell_graphInv">Inversión A</td>
-                <td class="cell_graph"></td>
-                <td class="cell_graph"></td>
-                <td class="cell_graph"></td>
-                <td class="cell_graph"></td>
-                <td class="cell_graph"></td>
-                <td class="cell_graph"></td>
-                <td class="cell_graph"></td>
-                <td class="cell_graph"></td>
-            </tr>
-        </table>
-    </div>
-</div>
-
-<br>
 
 <div class="div_btnNext">
     {% next_button %}

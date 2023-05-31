@@ -1,0 +1,49 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block scripts %}
+    
+    <script src="{% static 'js/highcharts.js' %}"></script>
+    <script src="{% static 'js/functions.js' %}"></script>
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+
+{% endblock %}
+
+{% block title %}
+    Parte 2
+{% endblock %}
+
+{% block content %}
+
+Para elegir la cantidad dinero a que desea asignar debe hacer clic sobre la barra y mueva el cuadro que aparecerá hasta lograr la asignación deseada. 
+<br> <br>
+La siguiente barra es un ejemplo. 
+<br> <br>
+        <div class="card_table" id="h-slider-div" style="text-align: center;">
+            <table class="table_question">
+                <tr>
+                    <td class="text_slider"> - </td>
+                    <td class="td_slider" rowspan="2">
+                        <input type="range" name="slider_example" value="" min="0" max="100000" step="1000" id="sliderDinero" class="slider_dinero" required>
+                        <input type="hidden" name="check_slider_example" value="" id="id_check_slider_example"/>
+                    </td>
+                    <td class="text_slider"> - </td>
+                </tr>
+                <tr>
+                    <td style="text-align: center;">
+                        <b>Inversión A</b>
+                    </td>
+                    <td style="text-align: center;">
+                        <b>Inversión B</b>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+<br>
+
+<div class="div_btnNext">
+    <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next">Siguiente</button>
+</div>
+
+{% endblock %}

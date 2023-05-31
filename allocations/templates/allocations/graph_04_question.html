@@ -27,12 +27,17 @@
                 max: {{ max_y }} + 1
             },
             series: [{
+                type: "scatter",
                 animation: false,
-                data: {{ data }},
-                lineWidth: 0.0,
-                enableMouseTracking: false,
+                data: [{
+                    x: 0,
+                    y: {{ data }},
+                    name: 'Carta 1'
+                    }],
+                lineWidth: 1,
+                enableMouseTracking: true,
                 marker:{
-                    enabled:false
+                    enabled: true
                 },
                 color: 'blue',
                 name: 'Inversión A'
@@ -41,6 +46,24 @@
                 enabled: true
             }
         });
+
+        function verify(val) {
+            let input_test = document.getElementById("in_test01").value;
+            let answer;
+            if (val < 0) {
+                answer = val * 10 * -1;
+            } else {
+                answer = val * 10;
+            }
+            if(answer == input_test) {
+                document.getElementById("test_01").value = 1;
+            } else {
+                document.getElementById("test_01").value = 0;
+            }
+            let btn = document.getElementById("id_next");
+            btn.click();
+        }
+
     </script>
 {% endblock %}
 
@@ -52,9 +75,21 @@
 
 <table class="table_question">
     <tr>
-        <td class="cell_question" style="width: 100% !important;">    
+        <td class="cell_question">
             <div id="text01">
-                En cada carta está escrito un número. Ese número es el retorno por cada $100 que usted asigne a la <i>Inversión A</i>.
+                <b>Pregunta:</b> ¿Cuánto 
+                {% if data < 0 %}
+                    perderá
+                {% else %}
+                    ganará
+                {% endif %} 
+                si asigna $1000 a la <i>Inversión A</i> y sale una carta con el número {{ data }}?
+            </div>
+        </td>
+        <td class="cell_input">
+            <div class="answer_test">
+                <input type="number" class="inNumber" name="test_01_number" id="in_test01" required>
+                <input type="number" style="display: none;" name="test_01_answer" id="test_01">
             </div>
         </td>
     </tr>
@@ -67,7 +102,7 @@
         <table class="tabGraph">
             <tr>
                 <td class="cell_graphInv">Inversión A</td>
-                <td class="cell_graph"></td>
+                <td class="cell_graph">{{ data }}</td>
                 <td class="cell_graph"></td>
                 <td class="cell_graph"></td>
                 <td class="cell_graph"></td>
@@ -83,7 +118,8 @@
 <br>
 
 <div class="div_btnNext">
-    {% next_button %}
+    <input type="button" value="Revisar" class="btnNext" onclick="verify({{ data }})">
+    <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next">Revisar</button>
 </div>
 
 {% endblock %}

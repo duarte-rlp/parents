@@ -4,44 +4,93 @@
 {% block scripts %}
     
     <script src="{% static 'js/highcharts.js' %}"></script>
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
     
     <script>
-        // Construcción de la gráfica
-        
+
+        // Gráfica
         Highcharts.chart('graph01', {
             title: {
-                text: 'Inversión 1 y 2'
+                text: ''
+            },
+            xAxis: {
+                min: 0,
+                max: 7,
+                categories: {{ labels }},
+                align: 'center'
             },
             yAxis: {
                 title: {
-                    text: 'Proporción de inversión'
-                }
+                    text: 'Retorno por cada $100'
+                },
+                min: {{ min_y }} - 1,
+                max: {{ max_y }} + 1
             },
             series: [{
-                data: {{ data_01 }},
-                lineWidth: 1,
-                color: 'red',
-                name: 'Inversión 1'
-            },
-            {
-                data: {{ data_02 }},
-                lineWidth: 1,
+                animation: false,
+                data: {{ data }},
+                lineWidth: 0.0,
+                enableMouseTracking: false,
+                marker:{
+                    enabled:false
+                },
                 color: 'blue',
-                name: 'Inversión 2'
-            }]
+                name: 'Inversión A'
+            }],
+            legend: {
+                enabled: true
+            }
         });
+
+        function nextCard() {
+            let btn = document.getElementById("id_next");
+            btn.click();
+        }
 
     </script>
 {% endblock %}
 
 {% block title %}
-    Dos gráficas superpuestas
+    Parte 2
 {% endblock %}
 
 {% block content %}
 
-    <div id="graph01" style="width: 100%;"></div>
+<table class="table_question">
+    <tr>
+        <td class="cell_question" style="width: 100% !important;">    
+            <div id="text01">
+                Haga clic en <i>“Iniciar mostrar cartas”</i> para destapar la primera carta que está frente a la <i>Inversión A</i>.
+            </div>
+        </td>
+    </tr>
+</table>
 
-    {% next_button %}
+<br>  
+<div>
+    <div id="graph01" class="div_graph"></div>
+    <div class="div_tabGraph">
+        <table class="tabGraph">
+            <tr>
+                <td class="cell_graphInv">Inversión A</td>
+                <td class="cell_graph"></td>
+                <td class="cell_graph"></td>
+                <td class="cell_graph"></td>
+                <td class="cell_graph"></td>
+                <td class="cell_graph"></td>
+                <td class="cell_graph"></td>
+                <td class="cell_graph"></td>
+                <td class="cell_graph"></td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<br>
+
+<div class="div_btnNext">
+    <input type="button" value="Iniciar mostrar cartas" class="btnNext" onclick="nextCard()">
+    <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next">Iniciar mostrar cartas</button>
+</div>
 
 {% endblock %}

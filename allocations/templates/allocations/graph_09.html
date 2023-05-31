@@ -29,18 +29,25 @@
             series: [{
                 animation: false,
                 data: {{ data }},
-                lineWidth: 0.0,
-                enableMouseTracking: false,
+                lineWidth: 1,
+                enableMouseTracking: true,
                 marker:{
-                    enabled:false
+                    enabled: true
                 },
                 color: 'blue',
-                name: 'Inversión A'
+                name: 'Inversión A',
+                dashStyle: 'Dash'
             }],
             legend: {
                 enabled: true
             }
         });
+
+        function nextCard() {
+            let btn = document.getElementById("id_next");
+            btn.click();
+        }
+
     </script>
 {% endblock %}
 
@@ -54,7 +61,7 @@
     <tr>
         <td class="cell_question" style="width: 100% !important;">    
             <div id="text01">
-                En cada carta está escrito un número. Ese número es el retorno por cada $100 que usted asigne a la <i>Inversión A</i>.
+                Haga clic en <i>“Mostrar carta”</i> para destapar la siguiente carta que está frente a la <i>Inversión A</i>.
             </div>
         </td>
     </tr>
@@ -67,12 +74,12 @@
         <table class="tabGraph">
             <tr>
                 <td class="cell_graphInv">Inversión A</td>
-                <td class="cell_graph"></td>
-                <td class="cell_graph"></td>
-                <td class="cell_graph"></td>
-                <td class="cell_graph"></td>
-                <td class="cell_graph"></td>
-                <td class="cell_graph"></td>
+                <td class="cell_graph">{{ data.0 }}</td>
+                <td class="cell_graph">{{ data.1 }}</td>
+                <td class="cell_graph">{{ data.2 }}</td>
+                <td class="cell_graph">{{ data.3 }}</td>
+                <td class="cell_graph">{{ data.4 }}</td>
+                <td class="cell_graph">{{ data.5 }}</td>
                 <td class="cell_graph"></td>
                 <td class="cell_graph"></td>
             </tr>
@@ -83,7 +90,8 @@
 <br>
 
 <div class="div_btnNext">
-    {% next_button %}
+    <input type="button" value="Mostrar carta" class="btnNext" onclick="nextCard()">
+    <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next">Mostrar carta</button>
 </div>
 
 {% endblock %}

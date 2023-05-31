@@ -1,0 +1,32 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block scripts %}
+    
+    <script src="{% static 'js/highcharts.js' %}"></script>
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+    
+{% endblock %}
+
+{% block title %}
+    Parte 2
+{% endblock %}
+
+{% block content %}
+
+Recuerde que en esta parte decidir cuánto de los $100.000 invertir en dos opciones de inversión.
+<br> <br>
+Su ganancia dependerá de: 
+<br> <br>
+<ol>
+<li>La cantidad de dinero que asigne a cada opción de inversión.</li>
+<li>El par de cartas que seleccione el computador al azar para determinar los rendimientos de las inversiones.</li>
+</ol>
+
+<br>
+
+<div class="div_btnNext">
+    {% next_button %}
+</div>
+
+{% endblock %}

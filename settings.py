@@ -8,24 +8,35 @@ SESSION_CONFIGS = [
         'app_sequence': ['home'],
     },
     {
+        'name': 'math_operations',
+        'display_name': 'Parte 1: Math',
+        'num_demo_participants': 1, 
+        'app_sequence': ['real_effort_numbers'],
+    },
+    {
+        'name': 'graphs',
+        'display_name': 'Parte 2: Training graphs',
+        'num_demo_participants': 1, 
+        'app_sequence': ['home', 'training'],
+    },
+    {
+        'name': 'problems',
+        'display_name': 'Parte 3: Allocation problems',
+        'num_demo_participants': 1, 
+        'app_sequence': ['home', 'allocations'],
+    },
+    {
+        'name': 'risk',
+        'display_name': 'Parte 4',
+        'num_demo_participants': 1, 
+        'app_sequence': ['home', 'risk'],
+    },
+    {
         'name': 'app',
         'display_name': 'app',
         'num_demo_participants': 1, 
         # sequence = [home, icl, allocation, icl, la, results, survey]
         'app_sequence': ['home','icl'],
-    },
-    {
-        'name': 'graphs',
-        'display_name': 'graphs',
-        'num_demo_participants': 1, 
-        # sequence = [home, icl, allocation, icl, la, results, survey]
-        'app_sequence': ['allocations'],
-    },
-    {
-        'name': 'math_operations',
-        'display_name': 'math operations',
-        'num_demo_participants': 1, 
-        'app_sequence': ['real_effort_numbers'],
     },
 ]
 
@@ -58,3 +69,5 @@ SECRET_KEY = 'ych58g9m8ay^q)l^*n^!=8!t#tjo%$-kb53wkh96i$es(yp7b+'
 
 # if an app is included in SESSION_CONFIGS, you don't need to list it here
 INSTALLED_APPS = ['otree']
+
+PARTICIPANT_FIELDS = ['graphType']

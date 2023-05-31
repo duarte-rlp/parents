@@ -1,6 +1,14 @@
 {% extends "global/Page.html" %}
 {% load otree static %}
 
+{% block scripts %}
+    <script>
+        let in_graph = document.getElementById("id_graphType");
+        in_graph.value = -1;
+        in_graph.style.display = "none";
+    </script>
+{% endblock %}
+
 {% block title %}
     Instrucciones Generales
 {% endblock %}

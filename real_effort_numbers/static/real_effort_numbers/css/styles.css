@@ -23,6 +23,11 @@
     transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
+.btnNext:hover {
+    background-color: #0069d9;
+    border-color: #0062cc;
+}
+
 .div_operation {
 	margin-top: 1rem;
 	margin-bottom: 1rem;

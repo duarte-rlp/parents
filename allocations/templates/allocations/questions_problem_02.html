@@ -1,0 +1,178 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block scripts %}
+    
+    <script src="{% static 'allocations/js/highcharts.js' %}"></script>
+    <script src="{% static 'allocations/js/functions.js' %}"></script>
+    <link href="{% static 'allocations/css/styles.css' %}" rel="stylesheet">
+    
+    <script>
+
+        function nextCard() {
+            let btn = document.getElementById("id_next");
+            btn.click();
+        }
+
+        function validate_next() {
+            let check_01 = document.getElementById("id_check_slider_return_b").value;
+            let check_02 = document.getElementById("check_radio_01").value;
+            let check_03 = document.getElementById("id_check_slider_probability_b").value;
+            let check_04 = document.getElementById("check_radio_02").value;
+            if((check_01 == 1) && (check_02 == 1) && (check_03 == 1) && (check_04 == 1)) {
+                let next_button = document.getElementsByClassName('otree-btn-next');
+                    next_button[0].style.cssText += 'display: block !important; margin: 0 auto;';
+            }
+        }
+
+    </script>
+{% endblock %}
+
+{% block title %}
+    Preguntas problema # 2
+{% endblock %}
+
+{% block content %}
+
+<table class="table_question">
+    <tr>
+        <td class="cell_question" style="width: 100% !important;">    
+            <div id="text01">
+                ...
+            </div>
+        </td>
+    </tr>
+</table>
+
+<br>
+
+<ol>
+<li style="margin-top: 10px;"> Si en una de las cartas la Inversión A tiene una rentabilidad del 20% ¿Cuál es la rentabilidad de la Inversión B?</li>
+<div class="card_table" id="h-slider-div" style="text-align: center; margin-top: 10px;">
+    <table class="table_question" style="margin: 0 auto; width: 70% !important;">
+        <tr>
+            <td>
+                Retorno Inversión B: <span>- %</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="td_slider">
+                <input type="range" name="problem_02_return_b" value="" min="0" max="100" step="1" id="slider_porcentaje_01" class="slider_porcentaje" required>
+                <input type="hidden" name="check_slider_return_b" value="0" id="id_check_slider_return_b"/>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<li style="margin-top: 10px;"> Si en una de las cartas la rentabilidad de la Inversión A 
+{% if assetA_order == 'Decreasing' %}
+    disminuye
+{% else %}
+    aumenta
+{% endif %}
+al 
+{% if assetA == 'Col_A' %}
+    {% if assetA_order == 'Decreasing' %}
+        -9%
+    {% else %}
+        20%
+    {% endif %}
+{% else %}
+    {% if assetA_order == 'Decreasing' %}
+        -10%
+    {% else %}
+        19%
+    {% endif %}
+{% endif %}
+¿Qué espera que suceda con la rentabilidad de la Inversión B?
+</li>
+<div class="card_table" id="h-slider-div" style="text-align: left; margin-top: 10px;">
+    <input type="radio" id="q2_o1" name="problem_02_expect_return_b" value="1" class="items01">
+    <label for="q2_o1" id="l_q2_o1" class="items01"> Disminuya a 
+{% if assetA == 'Col_A' %}
+    -9%
+{% else %}
+    -10%
+{% endif %}</label>
+    <br>
+    <input type="radio" id="q2_o2" name="problem_02_expect_return_b" value="2" class="items01">
+    <label for="q2_o2" id="l_q2_o2" class="items01">Se mantenga igual</label>
+    <br>
+    <input type="radio" id="q2_o3" name="problem_02_expect_return_b" value="3" class="items01">
+    <label for="q2_o3" id="l_q2_o3" class="items01">Aumente a
+{% if assetA == 'Col_A' %}
+    20%
+{% else %}
+    19%
+{% endif %}</label>
+    <input type="hidden" name="check_radio_01" value="0" id="check_radio_01"/>
+</div>
+
+<li style="margin-top: 10px;"> Supongamos que se dibuja otra carta adicional. Si el retorno de la Inversión A es del 
+{% if assetA == 'Col_A' %}
+    {% if assetA_order == 'Decreasing' %}
+        20%
+    {% else %}
+        -9%
+    {% endif %}
+{% else %}
+    {% if assetA_order == 'Decreasing' %}
+        19%
+    {% else %}
+        -10%
+    {% endif %}
+{% endif %}
+¿Cuál es la probabilidad de que la Inversión B tenga un retorno del 
+{% if assetA == 'Col_A' %}
+    {% if assetB_order == 'Decreasing' %}
+        19%
+    {% else %}
+        -10%
+    {% endif %}
+{% else %}
+    {% if assetB_order == 'Decreasing' %}
+        20%
+    {% else %}
+        -9%
+    {% endif %}
+{% endif %}
+?</li>
+<div class="card_table" id="h-slider-div" style="text-align: center; margin-top: 10px;">
+    <table class="table_question" style="margin: 0 auto; width: 70% !important;">
+        <tr>
+            <td>
+                Probabilidad del retorno de Inversión B sea del 19%: <span>- %</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="td_slider">
+                <input type="range" name="problem_02_probability_b" value="" min="0" max="100" step="1" id="slider_porcentaje_02" class="slider_porcentaje" required>
+                <input type="hidden" name="check_slider_probability_b" value="0" id="id_check_slider_probability_b"/>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<li style="margin-top: 10px;"> De acuerdo con las gráficas ¿Cuál cree usted que tiene la mayor variación?
+</li>
+<div class="card_table" id="h-slider-div" style="text-align: left; margin-top: 10px;">
+    <input type="radio" id="q4_o1" name="problem_02_var" value="1" class="items02">
+    <label for="q4_o1" id="l_q4_o1" class="items02"> Inversión A</label>
+    <br>
+    <input type="radio" id="q4_o2" name="problem_02_var" value="2" class="items02">
+    <label for="q4_o2" id="l_q4_o2" class="items02">Inversión B</label>
+    <br>
+    <input type="radio" id="q4_o3" name="problem_02_var" value="3" class="items02">
+    <label for="q4_o3" id="l_q4_o3" class="items02">Ambas son iguales</label>
+    <input type="hidden" name="check_radio_02" value="0" id="check_radio_02"/>
+</div>
+
+</ol>
+
+<br>
+
+<div class="div_btnNext">
+    <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next">Enviar</button>
+</div>
+
+{% endblock %}

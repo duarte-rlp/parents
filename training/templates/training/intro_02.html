@@ -1,0 +1,59 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block scripts %}
+    
+    <script src="{% static 'js/highcharts.js' %}"></script>
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+    
+    <script>
+
+        // Gráfica
+        Highcharts.chart('graph01', {
+            title: {
+                text: ''
+            },
+            xAxis: {
+                min: 0,
+                max: 7,
+                categories: {{ labels }},
+                align: 'center'
+            },
+            yAxis: {
+                title: {
+                    text: 'Retorno por cada $100'
+                },
+                min: {{ min_y }} - 1,
+                max: {{ max_y }} + 1
+            },
+            series: [{
+                animation: false,
+                data: {{ data }},
+                lineWidth: 0.0,
+                enableMouseTracking: false,
+                marker:{
+                    enabled:false
+                },
+                color: 'blue',
+                name: 'Inversión A'
+            }],
+            legend: {
+                enabled: false
+            }
+        });
+    </script>
+{% endblock %}
+
+{% block title %}
+    Parte 2
+{% endblock %}
+
+{% block content %}
+
+
+
+<div class="div_btnNext">
+    {% next_button %}
+</div>
+
+{% endblock %}

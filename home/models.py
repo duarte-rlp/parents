@@ -37,6 +37,7 @@ class Player(BasePlayer):
     consent = models.BooleanField(blank=True)
     consent_account = models.BooleanField(blank=True)
     identificador = models.StringField(label='Su código está compuesto por las iniciales de su primer nombre y apellido seguido de su fecha de nacimiento. Por ejemplo, si usted se llama Lina Ríos y usted nació el 11 de febrero de 1995, su código será LR11021995. Para iniciar por favor ingrese su código, escriba todo en mayúscula. Este código es importante para asegurar su participación en el resto de la actividad y la realización de los pagos.')
+    graphType = models.IntegerField()
 
     def set_id(self):
-            self.participant.vars['identificador'] = self.in_round(1).identificador
+        self.participant.vars['identificador'] = self.in_round(1).identificador

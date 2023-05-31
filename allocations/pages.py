@@ -3,515 +3,310 @@ from ._builtin import Page, WaitPage
 from .models import Constants
 
 import random
+import pandas as pd
 
-class MyPage(Page):
-    pass
+class instruc_01(Page):
+    def before_next_page(self):
+        # 1. Order asc or desc
+        self.player.order_problem_01_a = random.randint(0, 1)
+        self.player.order_problem_01_b = random.randint(0, 1)
+        self.player.order_problem_02_a = random.randint(0, 1)
+        self.player.order_problem_02_b = random.randint(0, 1)
+        self.player.order_problem_03_a = random.randint(0, 1)
+        self.player.order_problem_03_b = random.randint(0, 1)
 
+        p01_temp = Constants.problem_01.copy()
+        p01_temp = p01_temp.sort_values(['Col_A', 'Col_B'], ascending = [self.player.order_problem_01_a, self.player.order_problem_01_b])
+        p02_temp = Constants.problem_02.copy()
+        p02_temp = p02_temp.sort_values(['Col_A', 'Col_B'], ascending = [self.player.order_problem_02_a, self.player.order_problem_02_b])
+        p03_temp = Constants.problem_03.copy()
+        p03_temp = p03_temp.sort_values(['Col_A', 'Col_B'], ascending = [self.player.order_problem_03_a, self.player.order_problem_03_b])
 
-class ResultsWaitPage(WaitPage):
-    pass
+        # 2. Asset A: 1 -> Col_A | 0 -> Col_B
+        self.player.assetA_problem_01 = random.randint(0, 1)
+        self.player.assetA_problem_02 = random.randint(0, 1)
+        self.player.assetA_problem_03 = random.randint(0, 1)
 
+        if self.player.assetA_problem_01 == 1:
+            p01 = pd.DataFrame({
+                'AssetA': p01_temp['Col_A'],
+                'AssetB': p01_temp['Col_B']
+                })
+        else: 
+            p01 = pd.DataFrame({
+                'AssetA': p01_temp['Col_B'],
+                'AssetB': p01_temp['Col_A']
+                })
 
-class Results(Page):
-    pass
+        if self.player.assetA_problem_02 == 1:
+            p02 = pd.DataFrame({
+                'AssetA': p02_temp['Col_A'],
+                'AssetB': p02_temp['Col_B']
+                })
+        else: 
+            p02 = pd.DataFrame({
+                'AssetA': p02_temp['Col_B'],
+                'AssetB': p02_temp['Col_A']
+                })
 
-class intro_01(Page):
-    pass
+        if self.player.assetA_problem_03 == 1:
+            p03 = pd.DataFrame({
+                'AssetA': p03_temp['Col_A'],
+                'AssetB': p03_temp['Col_B']
+                })
+        else: 
+            p03 = pd.DataFrame({
+                'AssetA': p03_temp['Col_B'],
+                'AssetB': p03_temp['Col_A']
+                })
 
-class intro_02(Page):
-    pass
+        p01.index.name = 'Scenario'
+        p02.index.name = 'Scenario'
+        p03.index.name = 'Scenario'
 
-# intro
-class graph_01(Page):
+        n_order_problems = Constants.n_problems.copy()
+        random.shuffle(n_order_problems)
+
+        self.player.participant.vars['order_problems'] = []
+        self.player.participant.vars['name_order_problems'] = ""
+        self.player.n_order_problems = str(n_order_problems)
+        problems_temp = [p01, p02, p03]
+        problems = []
+        for i in n_order_problems:
+            self.player.participant.vars['order_problems'].append(Constants.problems[i])
+            self.player.participant.vars['name_order_problems'] += Constants.name_problems[i]
+            problems.append(problems_temp[i])
+            self.player.participant.vars['name_order_problems'] += ', '
+        self.player.name_order_problems = self.player.participant.vars['name_order_problems']
+        self.player.participant.vars['problems'] = problems
+
+class instruc_02(Page):
     def vars_for_template(self):
         return {
+                'order_problems': self.player.name_order_problems,
+                'n_order_problems': self.player.n_order_problems.strip('][').split(', '),
+                'order_problem_01_a': self.player.order_problem_01_a,
+                'order_problem_01_b': self.player.order_problem_01_b,
+                'order_problem_02_a': self.player.order_problem_02_a,
+                'order_problem_02_b': self.player.order_problem_02_b,
+                'order_problem_03_a': self.player.order_problem_03_a,
+                'order_problem_03_b': self.player.order_problem_03_b,
+                'assetA_problem_01': self.player.assetA_problem_01,
+                'assetA_problem_02': self.player.assetA_problem_02,
+                'assetA_problem_03': self.player.assetA_problem_03,
+                'problems': self.player.participant.vars['problems'],
+                'n_problems': list(range(len(self.player.participant.vars['problems'])))
+                }
+
+class graph_01(Page):
+    form_model = "player"
+    form_fields = ["problem_01_inv_a_slider"]
+    def vars_for_template(self):
+        return {
+                'data_a': list(self.player.participant.vars['problems'][0]['AssetA']),
+                'data_b': list(self.player.participant.vars['problems'][0]['AssetB']),
                 'labels': Constants.inv_labels,
-                'data': Constants.inv_example,
-                'max_y': max(Constants.inv_example),
-                'min_y': min(Constants.inv_example)
+                'graphType': self.player.participant.vars['graphType'],
+                'max_inv': Constants.max_inv,
+                'max_y': max(list(self.player.participant.vars['problems'][0]['AssetA']) + list(self.player.participant.vars['problems'][0]['AssetB'])),
+                'min_y': min(list(self.player.participant.vars['problems'][0]['AssetA']) + list(self.player.participant.vars['problems'][0]['AssetB']))
+                }
+
+class questions_problem_01(Page):
+    form_model = "player"
+    form_fields = ["problem_01_return_b", "problem_01_expect_return_b", "problem_01_probability_b", "problem_01_var"]
+    def vars_for_template(self):
+        orden = self.player.n_order_problems.strip('][').split(', ')
+        if orden[0] == '0':
+            self.player.problem_01_type = "-50%"
+            if self.player.assetA_problem_01 == 0:
+                self.player.problem_01_inv_a = 'Col_B'
+            else:
+                self.player.problem_01_inv_a = 'Col_A'
+            if self.player.order_problem_01_a == 0:
+                self.player.problem_01_order_a = 'Decreasing'
+            else:
+                self.player.problem_01_order_a = 'Increasing'
+            if self.player.order_problem_01_b == 0:
+                self.player.problem_01_order_b = 'Decreasing'
+            else:
+                self.player.problem_01_order_b = 'Increasing'
+        elif orden[0] == '1': 
+            self.player.problem_01_type = "0%"
+            if self.player.assetA_problem_02 == 0:
+                self.player.problem_01_inv_a = 'Col_B'
+            else:
+                self.player.problem_01_inv_a = 'Col_A'
+            if self.player.order_problem_02_a == 0:
+                self.player.problem_01_order_a = 'Decreasing'
+            else:
+                self.player.problem_01_order_a = 'Increasing'
+            if self.player.order_problem_02_b == 0:
+                self.player.problem_01_order_b = 'Decreasing'
+            else:
+                self.player.problem_01_order_b = 'Increasing'
+        else: 
+            self.player.problem_01_type = "+50%"
+            if self.player.assetA_problem_03 == 0:
+                self.player.problem_01_inv_a = 'Col_B'
+            else:
+                self.player.problem_01_inv_a = 'Col_A'
+            if self.player.order_problem_03_a == 0:
+                self.player.problem_01_order_a = 'Decreasing'
+            else:
+                self.player.problem_01_order_a = 'Increasing'
+            if self.player.order_problem_03_b == 0:
+                self.player.problem_01_order_b = 'Decreasing'
+            else:
+                self.player.problem_01_order_b = 'Increasing'
+        return {
+                'assetA_order': self.player.problem_01_order_a,
+                'assetB_order': self.player.problem_01_order_b,
+                'assetA': self.player.problem_01_inv_a,
                 }
 
 class graph_02(Page):
+    form_model = "player"
+    form_fields = ["problem_02_inv_a_slider"]
     def vars_for_template(self):
         return {
+                'data_a': list(self.player.participant.vars['problems'][1]['AssetA']),
+                'data_b': list(self.player.participant.vars['problems'][1]['AssetB']),
                 'labels': Constants.inv_labels,
-                'data': Constants.inv_example,
-                'max_y': max(Constants.inv_example),
-                'min_y': min(Constants.inv_example)
+                'graphType': self.player.participant.vars['graphType'],
+                'max_inv': Constants.max_inv,
+                'max_y': max(list(self.player.participant.vars['problems'][1]['AssetA']) + list(self.player.participant.vars['problems'][1]['AssetB'])),
+                'min_y': min(list(self.player.participant.vars['problems'][1]['AssetA']) + list(self.player.participant.vars['problems'][1]['AssetB']))
+                }
+
+class questions_problem_02(Page):
+    form_model = "player"
+    form_fields = ["problem_02_return_b", "problem_02_expect_return_b", "problem_02_probability_b", "problem_02_var"]
+    def vars_for_template(self):
+        orden = self.player.n_order_problems.strip('][').split(', ')
+        if orden[1] == '0':
+            self.player.problem_02_type = "-50%"
+            if self.player.assetA_problem_01 == 0:
+                self.player.problem_02_inv_a = 'Col_B'
+            else:
+                self.player.problem_02_inv_a = 'Col_A'
+            if self.player.order_problem_01_a == 0:
+                self.player.problem_02_order_a = 'Decreasing'
+            else:
+                self.player.problem_02_order_a = 'Increasing'
+            if self.player.order_problem_01_b == 0:
+                self.player.problem_02_order_b = 'Decreasing'
+            else:
+                self.player.problem_02_order_b = 'Increasing'
+        elif orden[1] == '1': 
+            self.player.problem_02_type = "0%"
+            if self.player.assetA_problem_02 == 0:
+                self.player.problem_02_inv_a = 'Col_B'
+            else:
+                self.player.problem_02_inv_a = 'Col_A'
+            if self.player.order_problem_02_a == 0:
+                self.player.problem_02_order_a = 'Decreasing'
+            else:
+                self.player.problem_02_order_a = 'Increasing'
+            if self.player.order_problem_02_b == 0:
+                self.player.problem_02_order_b = 'Decreasing'
+            else:
+                self.player.problem_02_order_b = 'Increasing'
+        else: 
+            self.player.problem_02_type = "+50%"
+            if self.player.assetA_problem_03 == 0:
+                self.player.problem_02_inv_a = 'Col_B'
+            else:
+                self.player.problem_02_inv_a = 'Col_A'
+            if self.player.order_problem_03_a == 0:
+                self.player.problem_02_order_a = 'Decreasing'
+            else:
+                self.player.problem_02_order_a = 'Increasing'
+            if self.player.order_problem_03_b == 0:
+                self.player.problem_02_order_b = 'Decreasing'
+            else:
+                self.player.problem_02_order_b = 'Increasing'
+        return {
+                'assetA_order': self.player.problem_02_order_a,
+                'assetB_order': self.player.problem_02_order_b,
+                'assetA': self.player.problem_02_inv_a,
                 }
 
 class graph_03(Page):
-    def vars_for_template(self):
-        return {
-                'labels': Constants.inv_labels,
-                'data': Constants.inv_example,
-                'max_y': max(Constants.inv_example),
-                'min_y': min(Constants.inv_example)
-                }
-
-# inicia a mostrar las cartas
-class graph_04(Page):
-    def vars_for_template(self):
-        return {
-                'labels': Constants.inv_labels,
-                'data': Constants.inv_example[0],
-                'max_y': max(Constants.inv_example),
-                'min_y': min(Constants.inv_example)
-                }
-
-# pregunta 
-class graph_04_question(Page):
     form_model = "player"
-    form_fields = ["test_01_number", "test_01_answer"]
+    form_fields = ["problem_03_inv_a_slider"]
     def vars_for_template(self):
         return {
+                'data_a': list(self.player.participant.vars['problems'][2]['AssetA']),
+                'data_b': list(self.player.participant.vars['problems'][2]['AssetB']),
                 'labels': Constants.inv_labels,
-                'data': Constants.inv_example[0],
-                'max_y': max(Constants.inv_example),
-                'min_y': min(Constants.inv_example)
-                }
-
-# respuesta correcta o incorrecta
-class graph_04_feedback(Page):
-    def vars_for_template(self):
-        return {
-                'labels': Constants.inv_labels,
-                'data': Constants.inv_example[0],
-                'max_y': max(Constants.inv_example),
-                'min_y': min(Constants.inv_example),
-                'feedback': self.player.test_01_answer
-                }
-
-class graph_05(Page):
-    def vars_for_template(self):
-        return {
-                'labels': Constants.inv_labels,
-                'data': Constants.inv_example[:2],
-                'max_y': max(Constants.inv_example),
-                'min_y': min(Constants.inv_example)
-                }
-
-class graph_06(Page):
-    def vars_for_template(self):
-        return {
-                'labels': Constants.inv_labels,
-                'data': Constants.inv_example[:3],
-                'max_y': max(Constants.inv_example),
-                'min_y': min(Constants.inv_example)
-                }
-
-class graph_07(Page):
-    def vars_for_template(self):
-        return {
-                'labels': Constants.inv_labels,
-                'data': Constants.inv_example[:4],
-                'max_y': max(Constants.inv_example),
-                'min_y': min(Constants.inv_example)
-                }
-
-class graph_08(Page):
-    def vars_for_template(self):
-        return {
-                'labels': Constants.inv_labels,
-                'data': Constants.inv_example[:5],
-                'max_y': max(Constants.inv_example),
-                'min_y': min(Constants.inv_example)
-                }
-
-class graph_09(Page):
-    def vars_for_template(self):
-        return {
-                'labels': Constants.inv_labels,
-                'data': Constants.inv_example[:6],
-                'max_y': max(Constants.inv_example),
-                'min_y': min(Constants.inv_example)
-                }
-
-class graph_10(Page):
-    def vars_for_template(self):
-        return {
-                'labels': Constants.inv_labels,
-                'data': Constants.inv_example[:7],
-                'max_y': max(Constants.inv_example),
-                'min_y': min(Constants.inv_example)
-                }
-
-class graph_11(Page):
-    def vars_for_template(self):
-        return {
-                'labels': Constants.inv_labels,
-                'data': Constants.inv_example,
-                'max_y': max(Constants.inv_example),
-                'min_y': min(Constants.inv_example)
-                }
-
-class graph_11_question(Page):
-    form_model = "player"
-    form_fields = ["test_02_number", "test_02_answer"]
-    def vars_for_template(self):
-        return {
-                'labels': Constants.inv_labels,
-                'data': Constants.inv_example,
-                'max_y': max(Constants.inv_example),
-                'min_y': min(Constants.inv_example)
-                }
-
-class graph_11_feedback(Page):
-    def vars_for_template(self):
-        return {
-                'labels': Constants.inv_labels,
-                'data': Constants.inv_example,
-                'max_y': max(Constants.inv_example),
-                'min_y': min(Constants.inv_example),
-                'feedback': self.player.test_02_answer
-                }
-
-class graph_12(Page):
-    def vars_for_template(self):
-        return {
-                'labels': Constants.inv_labels,
-                'data': Constants.inv_example,
-                'max_y': max(Constants.inv_example),
-                'min_y': min(Constants.inv_example)
-                }
-
-# intro para múltiples gráficas
-class graph_13(Page):
-    def vars_for_template(self):
-        return {
-                'labels': Constants.inv_labels,
-                'data_a': Constants.inv_a,
-                'data_b': Constants.inv_b,
-                'max_y': max(Constants.inv_a + Constants.inv_b),
-                'min_y': min(Constants.inv_a + Constants.inv_b),
-                'graphType': self.player.participant.vars['graphType']
-                }
-
-# inicia cartas
-class graph_14(Page):
-    def vars_for_template(self):
-        return {
-                'labels': Constants.inv_labels,
-                'data_a': Constants.inv_a[0],
-                'data_b': Constants.inv_b[0],
-                'max_y': max(Constants.inv_a + Constants.inv_b),
-                'min_y': min(Constants.inv_a + Constants.inv_b),
-                'graphType': self.player.participant.vars['graphType']
-                }
-
-class graph_15(Page):
-    def vars_for_template(self):
-        return {
-                'labels': Constants.inv_labels,
-                'data_a': Constants.inv_a[:2],
-                'data_b': Constants.inv_b[:2],
-                'max_y': max(Constants.inv_a + Constants.inv_b),
-                'min_y': min(Constants.inv_a + Constants.inv_b),
-                'graphType': self.player.participant.vars['graphType']
-                }
-
-class graph_16(Page):
-    def vars_for_template(self):
-        return {
-                'labels': Constants.inv_labels,
-                'data_a': Constants.inv_a[:3],
-                'data_b': Constants.inv_b[:3],
-                'max_y': max(Constants.inv_a + Constants.inv_b),
-                'min_y': min(Constants.inv_a + Constants.inv_b),
-                'graphType': self.player.participant.vars['graphType']
-                }
-
-class graph_17(Page):
-    def vars_for_template(self):
-        return {
-                'labels': Constants.inv_labels,
-                'data_a': Constants.inv_a[:4],
-                'data_b': Constants.inv_b[:4],
-                'max_y': max(Constants.inv_a + Constants.inv_b),
-                'min_y': min(Constants.inv_a + Constants.inv_b),
-                'graphType': self.player.participant.vars['graphType']
-                }
-
-class graph_18(Page):
-    def vars_for_template(self):
-        return {
-                'labels': Constants.inv_labels,
-                'data_a': Constants.inv_a[:5],
-                'data_b': Constants.inv_b[:5],
-                'max_y': max(Constants.inv_a + Constants.inv_b),
-                'min_y': min(Constants.inv_a + Constants.inv_b),
-                'graphType': self.player.participant.vars['graphType']
-                }
-
-class graph_19(Page):
-    def vars_for_template(self):
-        return {
-                'labels': Constants.inv_labels,
-                'data_a': Constants.inv_a[:6],
-                'data_b': Constants.inv_b[:6],
-                'max_y': max(Constants.inv_a + Constants.inv_b),
-                'min_y': min(Constants.inv_a + Constants.inv_b),
-                'graphType': self.player.participant.vars['graphType']
-                }
-
-class graph_20(Page):
-    def vars_for_template(self):
-        return {
-                'labels': Constants.inv_labels,
-                'data_a': Constants.inv_a[:7],
-                'data_b': Constants.inv_b[:7],
-                'max_y': max(Constants.inv_a + Constants.inv_b),
-                'min_y': min(Constants.inv_a + Constants.inv_b),
-                'graphType': self.player.participant.vars['graphType']
-                }
-
-class graph_21(Page):
-    def vars_for_template(self):
-        return {
-                'labels': Constants.inv_labels,
-                'data_a': Constants.inv_a,
-                'data_b': Constants.inv_b,
-                'max_y': max(Constants.inv_a + Constants.inv_b),
-                'min_y': min(Constants.inv_a + Constants.inv_b),
-                'graphType': self.player.participant.vars['graphType']
-                }
-
-# pregunta por cantidad de pérdidas
-class graph_21_question(Page):
-    form_model = "player"
-    form_fields = ["test_03_A_number", "test_03_A_answer", "test_03_B_number", "test_03_B_answer"]
-    def vars_for_template(self):
-        return {
-                'labels': Constants.inv_labels,
-                'data_a': Constants.inv_a,
-                'data_b': Constants.inv_b,
-                'max_y': max(Constants.inv_a + Constants.inv_b),
-                'min_y': min(Constants.inv_a + Constants.inv_b),
-                'graphType': self.player.participant.vars['graphType']
-                }
-
-class graph_21_feedback(Page):
-    def vars_for_template(self):
-        return {
-                'labels': Constants.inv_labels,
-                'data_a': Constants.inv_a,
-                'data_b': Constants.inv_b,
-                'max_y': max(Constants.inv_a + Constants.inv_b),
-                'min_y': min(Constants.inv_a + Constants.inv_b),
                 'graphType': self.player.participant.vars['graphType'],
-                'feedback_A': self.player.test_03_A_answer,
-                'feedback_B': self.player.test_03_B_answer,
-                'cnt_pos_A': len(list(filter(lambda x: (x > 0), Constants.inv_a))),
-                'cnt_pos_B': len(list(filter(lambda x: (x > 0), Constants.inv_a)))
+                'max_inv': Constants.max_inv,
+                'max_y': max(list(self.player.participant.vars['problems'][2]['AssetA']) + list(self.player.participant.vars['problems'][2]['AssetB'])),
+                'min_y': min(list(self.player.participant.vars['problems'][2]['AssetA']) + list(self.player.participant.vars['problems'][2]['AssetB']))
                 }
 
-class graph_22_question(Page):
+class questions_problem_03(Page):
     form_model = "player"
-    form_fields = ["test_04_A_number", "test_04_A_answer", "test_04_B_number", "test_04_B_answer"]
+    form_fields = ["problem_03_return_b", "problem_03_expect_return_b", "problem_03_probability_b", "problem_03_var"]
     def vars_for_template(self):
+        orden = self.player.n_order_problems.strip('][').split(', ')
+        if orden[2] == '0':
+            self.player.problem_03_type = "-50%"
+            if self.player.assetA_problem_01 == 0:
+                self.player.problem_03_inv_a = 'Col_B'
+            else:
+                self.player.problem_03_inv_a = 'Col_A'
+            if self.player.order_problem_01_a == 0:
+                self.player.problem_03_order_a = 'Decreasing'
+            else:
+                self.player.problem_03_order_a = 'Increasing'
+            if self.player.order_problem_01_b == 0:
+                self.player.problem_03_order_b = 'Decreasing'
+            else:
+                self.player.problem_03_order_b = 'Increasing'
+        elif orden[2] == '1': 
+            self.player.problem_03_type = "0%"
+            if self.player.assetA_problem_02 == 0:
+                self.player.problem_03_inv_a = 'Col_B'
+            else:
+                self.player.problem_03_inv_a = 'Col_A'
+            if self.player.order_problem_02_a == 0:
+                self.player.problem_03_order_a = 'Decreasing'
+            else:
+                self.player.problem_03_order_a = 'Increasing'
+            if self.player.order_problem_02_b == 0:
+                self.player.problem_03_order_b = 'Decreasing'
+            else:
+                self.player.problem_03_order_b = 'Increasing'
+        else: 
+            self.player.problem_03_type = "+50%"
+            if self.player.assetA_problem_03 == 0:
+                self.player.problem_03_inv_a = 'Col_B'
+            else:
+                self.player.problem_03_inv_a = 'Col_A'
+            if self.player.order_problem_03_a == 0:
+                self.player.problem_03_order_a = 'Decreasing'
+            else:
+                self.player.problem_03_order_a = 'Increasing'
+            if self.player.order_problem_03_b == 0:
+                self.player.problem_03_order_b = 'Decreasing'
+            else:
+                self.player.problem_03_order_b = 'Increasing'
         return {
-                'labels': Constants.inv_labels,
-                'data_a': Constants.inv_a,
-                'data_b': Constants.inv_b,
-                'max_y': max(Constants.inv_a + Constants.inv_b),
-                'min_y': min(Constants.inv_a + Constants.inv_b),
-                'graphType': self.player.participant.vars['graphType']
+                'assetA_order': self.player.problem_03_order_a,
+                'assetB_order': self.player.problem_03_order_b,
+                'assetA': self.player.problem_03_inv_a,
                 }
-
-class graph_22_feedback(Page):
-    def vars_for_template(self):
-        return {
-                'labels': Constants.inv_labels,
-                'data_a': Constants.inv_a,
-                'data_b': Constants.inv_b,
-                'max_y': max(Constants.inv_a + Constants.inv_b),
-                'min_y': min(Constants.inv_a + Constants.inv_b),
-                'graphType': self.player.participant.vars['graphType'],
-                'feedback_A': self.player.test_04_A_answer,
-                'feedback_B': self.player.test_04_B_answer,
-                'cnt_neg_A': len(list(filter(lambda x: (x < 0), Constants.inv_a))),
-                'cnt_neg_B': len(list(filter(lambda x: (x < 0), Constants.inv_a)))
-                }
-
-class graph_23(Page):
-    def vars_for_template(self):
-        return {
-                'labels': Constants.inv_labels,
-                'data_a': Constants.inv_a,
-                'data_b': Constants.inv_b,
-                'max_y': max(Constants.inv_a + Constants.inv_b),
-                'min_y': min(Constants.inv_a + Constants.inv_b),
-                'graphType': self.player.participant.vars['graphType']
-                }
-
-class graph_24(Page):
-    def vars_for_template(self):
-        self.player.test_05_cardIndex = random.randint(1, 8)
-        return {
-                'labels': Constants.inv_labels,
-                'data_a': Constants.inv_a,
-                'data_b': Constants.inv_b,
-                'max_y': max(Constants.inv_a + Constants.inv_b),
-                'min_y': min(Constants.inv_a + Constants.inv_b),
-                'graphType': self.player.participant.vars['graphType'],
-                'card_index': self.player.test_05_cardIndex
-                }
-
-class graph_24_question(Page):
-    form_model = "player"
-    form_fields = ["test_05_A_number", "test_05_A_answer", "test_05_B_number", "test_05_B_answer"]
-    def vars_for_template(self):
-        return {
-                'labels': Constants.inv_labels,
-                'data_a': Constants.inv_a,
-                'data_b': Constants.inv_b,
-                'max_y': max(Constants.inv_a + Constants.inv_b),
-                'min_y': min(Constants.inv_a + Constants.inv_b),
-                'graphType': self.player.participant.vars['graphType'],
-                'card_index': self.player.test_05_cardIndex
-                }
-
-class graph_24_feedback(Page):
-    def vars_for_template(self):
-        return {
-                'labels': Constants.inv_labels,
-                'data_a': Constants.inv_a,
-                'data_b': Constants.inv_b,
-                'max_y': max(Constants.inv_a + Constants.inv_b),
-                'min_y': min(Constants.inv_a + Constants.inv_b),
-                'graphType': self.player.participant.vars['graphType'],
-                'feedback_A': self.player.test_05_A_answer,
-                'feedback_B': self.player.test_05_B_answer,
-                'card_index': self.player.test_05_cardIndex,
-                'val_a': Constants.inv_a[self.player.test_05_cardIndex-1],
-                'val_b': Constants.inv_b[self.player.test_05_cardIndex-1]
-                }
-
-class graph_25(Page):
-    form_model = "player"
-    form_fields = ["test_06_cardIndex"]
-    def vars_for_template(self):
-        return {
-                'labels': Constants.inv_labels,
-                'data_a': Constants.inv_a,
-                'data_b': Constants.inv_b,
-                'max_y': max(Constants.inv_a + Constants.inv_b),
-                'min_y': min(Constants.inv_a + Constants.inv_b),
-                'graphType': self.player.participant.vars['graphType']
-                }
-
-class instruc_01(Page):
-    pass
-
-class instruc_02(Page):
-    pass
-
-class graph_26(Page):
-    form_model = "player"
-    form_fields = ["slider_example"]
-    def vars_for_template(self):
-        return {
-                'labels': Constants.inv_labels,
-                'data_a': Constants.inv_a,
-                'data_b': Constants.inv_b,
-                'max_y': max(Constants.inv_a + Constants.inv_b),
-                'min_y': min(Constants.inv_a + Constants.inv_b),
-                'graphType': self.player.participant.vars['graphType']
-                }
-
-class graph_27(Page):
-    form_model = "player"
-    form_fields = ["test_07_cardIndex"]
-    def vars_for_template(self):
-        return {
-                'labels': Constants.inv_labels,
-                'data_a': Constants.inv_a,
-                'data_b': Constants.inv_b,
-                'max_y': max(Constants.inv_a + Constants.inv_b),
-                'min_y': min(Constants.inv_a + Constants.inv_b),
-                'graphType': self.player.participant.vars['graphType'],
-                'inv_a': self.player.slider_example,
-                'inv_b': 100000-self.player.slider_example
-                }
-
-class graph_28_question(Page):
-    form_model = "player"
-    form_fields = ["test_07_payment", "test_07_answer"]
-    def vars_for_template(self):
-        return {
-                'labels': Constants.inv_labels,
-                'data_a': Constants.inv_a,
-                'data_b': Constants.inv_b,
-                'max_y': max(Constants.inv_a + Constants.inv_b),
-                'min_y': min(Constants.inv_a + Constants.inv_b),
-                'graphType': self.player.participant.vars['graphType'],
-                'inv_a': self.player.slider_example,
-                'inv_b': 100000-self.player.slider_example,
-                'card_index': self.player.test_07_cardIndex
-                }
-
-class graph_28_feedback(Page):
-    def vars_for_template(self):
-        return {
-                'labels': Constants.inv_labels,
-                'data_a': Constants.inv_a,
-                'data_b': Constants.inv_b,
-                'max_y': max(Constants.inv_a + Constants.inv_b),
-                'min_y': min(Constants.inv_a + Constants.inv_b),
-                'graphType': self.player.participant.vars['graphType'],
-                'inv_a': self.player.slider_example,
-                'inv_b': 100000-self.player.slider_example,
-                'card_index': self.player.test_07_cardIndex,
-                'feedback': self.player.test_07_answer,
-                'val_a': Constants.inv_a[self.player.test_07_cardIndex-1],
-                'val_b': Constants.inv_b[self.player.test_07_cardIndex-1],
-                'pay_a': (Constants.inv_a[self.player.test_07_cardIndex-1] * self.player.slider_example)/100,
-                'pay_b': (Constants.inv_b[self.player.test_07_cardIndex-1] * (100000-self.player.slider_example))/100,
-                'payment': ((Constants.inv_a[self.player.test_07_cardIndex-1] * self.player.slider_example)+(Constants.inv_b[self.player.test_07_cardIndex-1] * (100000-self.player.slider_example)))/100
-                }
-
 
 
 page_sequence = [
-    intro_01, 
-    graph_01, 
-    graph_02, 
-    graph_03, 
-    graph_04, 
-    graph_04_question, 
-    graph_04_feedback, 
-    graph_05, 
-    graph_06, 
-    graph_07, 
-    graph_08, 
-    graph_09, 
-    graph_10, 
-    graph_11, 
-    graph_11_question, 
-    graph_11_feedback, 
-    graph_12, 
-    graph_13, 
-    graph_14, 
-    graph_15, 
-    graph_16, 
-    graph_17, 
-    graph_18, 
-    graph_19, 
-    graph_20, 
-    graph_21, 
-    graph_21_question, 
-    graph_21_feedback, 
-    graph_22_question, 
-    graph_22_feedback,
-    graph_23,
-    graph_24,
-    graph_24_question,
-    graph_24_feedback,
-    graph_25,
-    instruc_01,
-    instruc_02,
-    graph_26,
-    graph_27,
-    graph_28_question,
-    graph_28_feedback
-    ]
+                instruc_01, 
+                instruc_02, # retro de cómo quedan los datos ordenados
+                graph_01, # gráfica del primer problema
+                questions_problem_01,
+                graph_02,
+                questions_problem_02,
+                graph_03,
+                questions_problem_03
+                ]

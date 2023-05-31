@@ -9,10 +9,10 @@ from otree.api import (
     currency_range,
 )
 
+import pandas as pd
 import random
 
-
-author = 'Ferley, Jorge'
+author = 'Your name here'
 
 doc = """
 Your app description
@@ -23,13 +23,86 @@ class Constants(BaseConstants):
     name_in_url = 'allocations'
     players_per_group = None
     num_rounds = 1
-    # Datos de inversiones
     inv_labels = [1, 2, 3, 4, 5, 6, 7, 8]
-    inv_example = [10, 10, 10, 10, -5, -5, -5, -5]
-    inv_a = [15, 15, 15, 15, -8, -8, -8, -8]
-    #random.shuffle(inv_a) # si se desea que el orden sea aleatorio
-    inv_b = [-9, -9, -9, -9, 14, 14, 14, 14]
-    #random.shuffle(inv_b) # si se desea que el orden sea aleatorio
+    max_inv = 100000
+
+    # Problema de -50%
+    problem_01 = pd.DataFrame({
+        'Col_A': [
+            20,
+            20,
+            20,
+            20,
+            -9,
+            -9,
+            -9,
+            -9
+            ],
+        'Col_B': [
+            -10,
+            -10,
+            -10,
+            19,
+            19,
+            19,
+            19,
+            -10
+            ]
+        }, index = [1, 2, 3, 4, 5, 6, 7, 8])
+
+    # Problema de 0%
+    problem_02 = pd.DataFrame({
+        'Col_A': [
+            20,
+            20,
+            20,
+            20,
+            -9,
+            -9,
+            -9,
+            -9
+            ],
+        'Col_B': [
+            -10,
+            -10,
+            19,
+            19,
+            19,
+            19,
+            -10,
+            -10
+            ]
+        }, index = [1, 2, 3, 4, 5, 6, 7, 8])
+
+    # Problema de 50%
+    problem_03 = pd.DataFrame({
+        'Col_A': [
+            20,
+            20,
+            20,
+            20,
+            -9,
+            -9,
+            -9,
+            -9
+            ],
+        'Col_B': [
+            -10,
+            19,
+            19,
+            19,
+            19,
+            -10,
+            -10,
+            -10
+            ]
+        }, index = [1, 2, 3, 4, 5, 6, 7, 8])
+
+    # List of the problems
+    problems = [problem_01, problem_02, problem_03]
+    # Numbers of problems 0 -> n
+    n_problems = list(range(3))
+    name_problems = ['-50%', '0%', '+50%']
 
 
 class Subsession(BaseSubsession):
@@ -41,42 +114,50 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
+    # El orden de los problemas
+    name_order_problems = models.StringField()
+    n_order_problems = models.StringField()
+    # El orden de la column 0 -> decreciente | 1 -> ascendente
+    order_problem_01_a = models.IntegerField()
+    order_problem_01_b = models.IntegerField()
+    order_problem_02_a = models.IntegerField()
+    order_problem_02_b = models.IntegerField()
+    order_problem_03_a = models.IntegerField()
+    order_problem_03_b = models.IntegerField()
+    # Saber cual es la primera columna, la inversión A
+    assetA_problem_01 = models.IntegerField()
+    assetA_problem_02 = models.IntegerField()
+    assetA_problem_03 = models.IntegerField()
 
-    # Para almacenar el número ingresado la primera pregunta del retorno de la primera carta, así como si fue correcto o no
-    test_01_number = models.IntegerField()
-    test_01_answer = models.IntegerField() # 0 -> respuesta incorrecta | 1 -> respuesta correcta
+    # Datos sobre problemas ya reorganizados
+    problem_01_type = models.StringField()
+    problem_01_inv_a = models.StringField()
+    problem_01_order_a = models.StringField()
+    problem_01_order_b = models.StringField()
+    problem_01_inv_a_slider = models.IntegerField()
+    problem_01_return_b = models.IntegerField()
+    problem_01_expect_return_b = models.IntegerField()
+    problem_01_probability_b = models.IntegerField()
+    problem_01_var = models.IntegerField()
 
-    # Para almacenar el número ingresado la segunda pregunta del retorno de la última carta, así como si fue correcto o no
-    test_02_number = models.IntegerField()
-    test_02_answer = models.IntegerField() # 0 -> respuesta incorrecta | 1 -> respuesta correcta
+    problem_02_type = models.StringField()
+    problem_02_inv_a = models.StringField()
+    problem_02_order_a = models.StringField()
+    problem_02_order_b = models.StringField()
+    problem_02_inv_a_slider = models.IntegerField()
+    problem_02_return_b = models.IntegerField()
+    problem_02_expect_return_b = models.IntegerField()
+    problem_02_probability_b = models.IntegerField()
+    problem_02_var = models.IntegerField()
 
-    # Para almacenar las respuestas de la cantidad de cartas positivas
-    test_03_A_number = models.IntegerField()
-    test_03_A_answer = models.IntegerField() # 0 -> respuesta incorrecta | 1 -> respuesta correcta
-    test_03_B_number = models.IntegerField()
-    test_03_B_answer = models.IntegerField() # 0 -> respuesta incorrecta | 1 -> respuesta correcta
+    problem_03_type = models.StringField()
+    problem_03_inv_a = models.StringField()
+    problem_03_order_a = models.StringField()
+    problem_03_order_b = models.StringField()
+    problem_03_inv_a_slider = models.IntegerField()
+    problem_03_return_b = models.IntegerField()
+    problem_03_expect_return_b = models.IntegerField()
+    problem_03_probability_b = models.IntegerField()
+    problem_03_var = models.IntegerField()
 
-    # Para almacenar las respuestas de la cantidad de cartas negativas
-    test_04_A_number = models.IntegerField()
-    test_04_A_answer = models.IntegerField() # 0 -> respuesta incorrecta | 1 -> respuesta correcta
-    test_04_B_number = models.IntegerField()
-    test_04_B_answer = models.IntegerField() # 0 -> respuesta incorrecta | 1 -> respuesta correcta
-
-    # Almacenar lo relacionado a la posición de la carta
-    test_05_cardIndex = models.IntegerField()
-    # Y los valores que se consultan después relacionado a estos
-    test_05_A_number = models.IntegerField()
-    test_05_A_answer = models.IntegerField()
-    test_05_B_number = models.IntegerField()
-    test_05_B_answer = models.IntegerField()
-
-    # Almacenar lo relacionado a la posición de la carta
-    test_06_cardIndex = models.IntegerField()
-
-    # Almacenar el ejemplo del slider
-    slider_example = models.IntegerField()
-    # Almacenar el random del ejemplo
-    test_07_cardIndex = models.IntegerField()
-    test_07_payment = models.IntegerField()
-    test_07_answer = models.IntegerField()
 

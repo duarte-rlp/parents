@@ -42,7 +42,7 @@ class Constants(BaseConstants):
                 60,
                 114,
                 11,
-                51,
+                41,
                 -2,
                 10,
                 80,

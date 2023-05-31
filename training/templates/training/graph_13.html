@@ -1,0 +1,241 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block scripts %}
+    
+    <script src="{% static 'js/highcharts.js' %}"></script>
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+    
+    <script>
+
+{% if graphType == 1 %}
+
+        // Gráfica para inversión A e inversión B
+        Highcharts.chart('graph01', {
+            title: {
+                text: ''
+            },
+            xAxis: {
+                min: 0,
+                max: 7,
+                categories: {{ labels }},
+                align: 'center'
+            },
+            yAxis: {
+                title: {
+                    text: 'Retorno por cada $100'
+                },
+                min: {{ min_y }} - 1,
+                max: {{ max_y }} + 1
+            },
+            series: [{
+                animation: false,
+                data: {{ data_a }},
+                lineWidth: 0.0,
+                enableMouseTracking: false,
+                marker:{
+                    enabled: false
+                },
+                color: 'blue',
+                name: 'Inversión A',
+                dashStyle: 'Dash'
+            }, {
+                animation: false,
+                data: {{ data_b }},
+                lineWidth: 0.0,
+                enableMouseTracking: false,
+                marker:{
+                    enabled: false
+                },
+                color: 'green',
+                name: 'Inversión B',
+                dashStyle: 'Dash'
+            }],
+            legend: {
+                enabled: true
+            }
+        });
+
+{% else %}
+
+        // Gráfica inversión A
+        Highcharts.chart('graph01', {
+            title: {
+                text: ''
+            },
+            xAxis: {
+                min: 0,
+                max: 7,
+                categories: {{ labels }},
+                align: 'center'
+            },
+            yAxis: {
+                title: {
+                    text: 'Retorno por cada $100'
+                },
+                min: {{ min_y }} - 1,
+                max: {{ max_y }} + 1
+            },
+            series: [{
+                animation: false,
+                data: {{ data_a }},
+                lineWidth: 0.0,
+                enableMouseTracking: false,
+                marker:{
+                    enabled: false
+                },
+                color: 'blue',
+                name: 'Inversión A',
+                dashStyle: 'Dash'
+            }],
+            legend: {
+                enabled: true
+            }
+        });
+
+        // Gráfica inversión B
+        Highcharts.chart('graph02', {
+            title: {
+                text: ''
+            },
+            xAxis: {
+                min: 0,
+                max: 7,
+                categories: {{ labels }},
+                align: 'center'
+            },
+            yAxis: {
+                title: {
+                    text: 'Retorno por cada $100'
+                },
+                min: {{ min_y }} - 1,
+                max: {{ max_y }} + 1
+            },
+            series: [{
+                animation: false,
+                data: {{ data_b }},
+                lineWidth: 0.0,
+                enableMouseTracking: false,
+                marker:{
+                    enabled: false
+                },
+                color: 'green',
+                name: 'Inversión B',
+                dashStyle: 'Dash'
+            }],
+            legend: {
+                enabled: true
+            }
+        });
+
+{% endif %}
+
+        function nextCard() {
+            let btn = document.getElementById("id_next");
+            btn.click();
+        }
+
+    </script>
+{% endblock %}
+
+{% block title %}
+    Parte 2
+{% endblock %}
+
+{% block content %}
+
+<table class="table_question">
+    <tr>
+        <td class="cell_question" style="width: 100% !important;">    
+            <div id="text01">
+                Ahora le presentaremos los retornos de dos opciones de inversión al mismo tiempo. <br>
+                Haga clic en <i>“Iniciar mostrar cartas”</i> para ir iniciar a destapar las cartas que están en la misma posición tanto para la <i>Inversión A</i> como para la <i>Inversión B</i>.
+            </div>
+        </td>
+    </tr>
+</table>
+
+<br>  
+{% if graphType == 1 %}
+<div>
+    <div id="graph01" class="div_graph"></div>
+    <div class="div_tabGraph">
+        <table class="tabGraph">
+            <tr>
+                <td class="cell_graphInv">Inversión A</td>
+                <td class="cell_graph"></td>
+                <td class="cell_graph"></td>
+                <td class="cell_graph"></td>
+                <td class="cell_graph"></td>
+                <td class="cell_graph"></td>
+                <td class="cell_graph"></td>
+                <td class="cell_graph"></td>
+                <td class="cell_graph"></td>
+            </tr>
+            <tr>
+                <td class="cell_graphInv">Inversión B</td>
+                <td class="cell_graph"></td>
+                <td class="cell_graph"></td>
+                <td class="cell_graph"></td>
+                <td class="cell_graph"></td>
+                <td class="cell_graph"></td>
+                <td class="cell_graph"></td>
+                <td class="cell_graph"></td>
+                <td class="cell_graph"></td>
+            </tr>
+        </table>
+    </div>
+</div>
+{% else %}
+<div>
+    <table class="tabDiv_GraphType2">
+        <tr>
+            <td style="width: 50%;">
+                <div id="graph01" class="div_graphType2"></div>
+                <div class="div_tabGraphType2">
+                    <table class="tabGraph">
+                        <tr>
+                            <td class="cell_graphInv">Inversión A</td>
+                            <td class="cell_graph"></td>
+                            <td class="cell_graph"></td>
+                            <td class="cell_graph"></td>
+                            <td class="cell_graph"></td>
+                            <td class="cell_graph"></td>
+                            <td class="cell_graph"></td>
+                            <td class="cell_graph"></td>
+                            <td class="cell_graph"></td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+            <td>
+                <div id="graph02" class="div_graphType2"></div>
+                <div class="div_tabGraphType2">
+                    <table class="tabGraph">
+                        <tr>
+                            <td class="cell_graphInv">Inversión B</td>
+                            <td class="cell_graph"></td>
+                            <td class="cell_graph"></td>
+                            <td class="cell_graph"></td>
+                            <td class="cell_graph"></td>
+                            <td class="cell_graph"></td>
+                            <td class="cell_graph"></td>
+                            <td class="cell_graph"></td>
+                            <td class="cell_graph"></td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+{% endif %}
+
+<br>
+
+<div class="div_btnNext">
+    <input type="button" value="Iniciar mostrar cartas" class="btnNext" onclick="nextCard()">
+    <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next">Iniciar mostrar cartas</button>
+</div>
+
+{% endblock %}

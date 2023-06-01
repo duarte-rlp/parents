@@ -33,7 +33,7 @@ SESSION_CONFIGS = [
     },
     {
         'name': 'real',
-        'display_name': 'Parte 5: Real reversal',
+        'display_name': 'Parte 5: Real assets',
         'num_demo_participants': 1, 
         'app_sequence': ['home', 'real'],
     },

@@ -15,7 +15,7 @@
 {# *** TITLE *** #}
 {# ****************************************************************************************************************** #}
 {% block title %}
-    {% trans "Parte final" %}
+    {% trans "Rentabilidad fija o variable" %}
 {% endblock %}
 
 
@@ -24,30 +24,16 @@
 {# ****************************************************************************************************************** #}
 {% block content %}
 
-<div class="wrapper instructions">
-    <p>
-        {% blocktrans trimmed with p_hi=p_hi hi=hi p_lo=p_lo lo=lo %}
-        <h3>Situaciones</h3>
-            A continuación, puede elegir entre un <i>pago seguro</i> y un <i>lanzamiento de moneda</i>.<br>
-            En el lanzamiento de moneda, si cae <i>cara</i> usted recibe 30.000 pesos y si cae <i>sello</i> no recibe nada (0 pesos).<br>
-        {% endblocktrans %}
-        {% blocktrans trimmed with n=Constants.num_choices %}
-            Le vamos a presentar {{n}} situaciones diferentes. 
-            El pago de <i>cara</i> y <i>sello</i> será el mismo en todos los lanzamientos de moneda pero el <i>pago seguro</i> cambiará en cada situación. 
-        {% endblocktrans %}
-    </p>
-    <p>
-        {% blocktrans trimmed with n=Constants.num_choices %}
-        <h3>Pago</h3>
-        Al final de esta parte, una de las situaciones será elegida al azar para determinar su pago. 
-        Si en esta usted eligió el <i>lanzamiento de moneda</i>, el computador hará un sorteo aleatorio para determinar su ganancia; 
-        de lo contrario, el <i>pago seguro</i> determinará su ganancia. 
-    </p>
-    <p>
-        Esta parte de la actividad le será pagada con una probabilidad del 10% (Es decir, a 1 de cada 10 personas que participen en todas las sesiones). Si usted es seleccionado, las ganancias de esta parte se sumarán a sus ganancias del <i>Torneo</i>. <br> Por favor elija de acuerdo a lo que usted prefiere, no hay respuestas correctas o incorrectas.
-        {% endblocktrans %}
-        </p>
-    </div>
+<p>En esta parte debe tomar cinco (5) decisiones de inversión. En cada decisión decidir cuánto invertir en cada una de las siguiente opciones: </p>
+<p><b>Si tienes 100 puntos cuanto invertirías en</b></p>
+<ul>
+  <li> <b>Inversión con una <i>rentabilidad fija</i></b>: La rentabilidad no depende de nada.</li>
+  <li> <b>Inversión con una <i>rentabilidad variable</i></b>: La rentabilidad depende de un lanzamiento de moneda, si cae cara usted ganará $60.000 y si cae sello usted no ganará nada ($0).</li>
+</ul>
+
+<p>Las posibles ganancias de la inversión con <i>rentabilidad variable</i> serán las mismas en TODAS las decisiones, pero la posible ganancia de la inversión con <i>rentabilidad fija</i> irá cambiando. </p> 
+<p>Recuerde que, UNA de las decisiones de esta parte podrá ser elegida por el computador al azar para determinar su ganancia total. Si en la decisión de inversión elegida usted escogió la inversión con <i>rentabilidad variable</i>, el computador hará un lanzamiento de moneda para determinar su ganancia, de lo contrario, recibirá la <i>rentabilidad fija. </i> </p> 
+<p>Por favor elija de acuerdo con lo que usted prefiere, no hay respuestas correctas o incorrectas. </p>
 
     {% next_button %}
 {% endblock %}

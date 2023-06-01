@@ -66,35 +66,6 @@ class Decision(Page):
         self.player.set_payoffs()
         self.player.set_ganador_pago()
 
-
-# ******************************************************************************************************************** #
-# *** PAGE RESULTS *** #
-# ******************************************************************************************************************** #
-class Results(Page):
-
-    # skip results until last page
-    # ----------------------------------------------------------------------------------------------------------------
-    def is_displayed(self):
-        return self.subsession.round_number == Constants.num_rounds
-
-    # variables for template
-    # ----------------------------------------------------------------------------------------------------------------
-    def vars_for_template(self):
-
-        # payoff information
-        choice_to_pay = self.participant.vars['icl_choice_to_pay']
-        option_to_pay = self.player.in_round(choice_to_pay).choice
-        payoff_relevant = self.player.in_round(choice_to_pay).payoff_relevant
-        sure_payoff = self.player.participant.vars['icl_sure_payoffs'][choice_to_pay - 1]
-
-        return {
-            'sure_payoff':     "$"+format(int(str(sure_payoff*100).split(",")[0]), ',d'),
-            'option_to_pay':   option_to_pay,
-            'payoff_relevant': payoff_relevant,
-            'payoff':          "$"+format(int(str(self.player.in_round(choice_to_pay).payoff*100).split(",")[0]), ',d')
-        }
-
-
 # ******************************************************************************************************************** #
 # *** PAGE SEQUENCE *** #
 # ******************************************************************************************************************** #
@@ -102,6 +73,3 @@ page_sequence = [Decision]
 
 if Constants.instructions:
     page_sequence.insert(0, Instructions)
-
-if Constants.results:
-    page_sequence.append(Results)

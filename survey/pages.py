@@ -6,14 +6,14 @@ import random
 
 class questions1(Page):
     form_model = 'player'
-    form_fields = ['p_vocational', 'p_preicfes', 'p_sex', 'p_age', 'p_work', 'p_hwork', 'p_wage', 'p_desertion', 'p_years' ]
+    form_fields = []
     def is_displayed(self):
         return self.round_number == 1
  
 
 class questions2(Page):
     form_model = 'player'
-    form_fields = ['p_internet', 'p_tinternet', 'p_care', 'p_family', 'p_rooms', 'p_poverty', 'p_migration', 'p_health', 'p_pension2', 'ocu_mother', 'ocu_father'] 
+    form_fields = ['p_sex', 'p_age', 'p_educ', 'p_job', 'p_inc', 'p_inc1', 'p_married', 'p_children', 'ocu_father'] 
     def is_displayed(self):
         return self.round_number == 1
 
@@ -38,6 +38,6 @@ random.shuffle(transitions)
 for t in transitions:
     page_sequence.append(t)
 
-for t in [instructions_icfes, icfes_m1, icfes_m2, icfes_l1, icfes_l2, icfes_s1, icfes_s2, icfes_n1, icfes_n2, time, questions1, questions2, thanks]:
+for t in [questions1, thanks]:
     page_sequence.append(t)
 

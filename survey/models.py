@@ -109,7 +109,7 @@ class Player(BasePlayer):
         [11,'Pensionado'],
         [12,'Desempleado'],
         [13,'Otra actividad u ocupación'],
-    ], label="20. Ocupación u oficio del padre")
+    ], label="7. Ocupación u oficio del padre")
 
 
 

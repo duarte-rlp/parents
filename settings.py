@@ -26,16 +26,21 @@ SESSION_CONFIGS = [
         'app_sequence': ['home', 'allocations'],
     },
     {
-        'name': 'risk',
-        'display_name': 'Parte 4',
+        'name': 'choice',
+        'display_name': 'Parte 4: Choice - Loss averssion',
         'num_demo_participants': 1, 
-        'app_sequence': ['home', 'risk'],
+        'app_sequence': ['choice'],
     },
     {
-        'name': 'app',
-        'display_name': 'app',
+        'name': 'real',
+        'display_name': 'Parte 5: Real reversal',
         'num_demo_participants': 1, 
-        # sequence = [home, icl, allocation, icl, la, results, survey]
+        'app_sequence': ['home', 'real'],
+    },
+    {
+        'name': 'icl',
+        'display_name': 'icl',
+        'num_demo_participants': 1, 
         'app_sequence': ['home','icl'],
     },
 ]

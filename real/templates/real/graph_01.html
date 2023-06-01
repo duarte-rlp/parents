@@ -1,0 +1,249 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block scripts %}
+    
+    <script src="{% static 'real/js/highcharts.js' %}"></script>
+    <script src="{% static 'real/js/functions.js' %}"></script>
+    <link href="{% static 'real/css/styles.css' %}" rel="stylesheet">
+    
+    <script>
+
+{% if graphType == 1 %}
+
+        // Gráfica para Banano y Caña juntas
+        Highcharts.chart('graph01', {
+            title: {
+                text: ''
+            },
+            xAxis: {
+                categories: {{ labels }},
+                align: 'center',
+                labels: {
+                    rotation: -45
+                }
+            },
+            yAxis: [{
+                title: {
+                    text: 'Rendimiento',
+                    style: {
+                        color: 'blue'
+                    }
+                },
+                labels: {
+                    format: '{value} ton/ha',
+                    style: {
+                        color: 'blue'
+                    }
+                }
+            }, {
+                title: {
+                    text: 'Rendimiento',
+                    style: {
+                        color: 'green'
+                    }
+                },
+                labels: {
+                    format: '{value} ton/ha',
+                    style: {
+                        color: 'green'
+                    }
+                },
+                opposite: true
+            }],
+            series: [{
+                animation: false,
+                yAxis: 1,
+                data: {{ banano }},
+                lineWidth: 1,
+                enableMouseTracking: true,
+                marker:{
+                    enabled: true
+                },
+                color: 'blue',
+                name: '{{ title_1 }}',
+                dashStyle: 'Solid'
+            }, {
+                animation: false,
+                data: {{ canha }},
+                lineWidth: 1,
+                enableMouseTracking: true,
+                marker:{
+                    enabled: true
+                },
+                color: 'green',
+                name: '{{ title_2 }}',
+                dashStyle: 'Solid'
+            }],
+            legend: {
+                enabled: true
+            }
+        });
+
+{% else %}
+
+        // Gráfica Banano
+        Highcharts.chart('graph01', {
+            title: {
+                text: ''
+            },
+            xAxis: {
+                categories: {{ labels }},
+                align: 'center',
+                labels: {
+                    rotation: -45
+                }
+            },
+            yAxis: {
+                title: {
+                    text: 'Rendimiento',
+                  style: {
+                    color: 'blue'
+                  }
+                },
+                labels: {
+                    format: '{value} ton/ha',
+                    style: {
+                        color: 'blue'
+                    }
+                }
+            },
+            series: [{
+                animation: false,
+                data: {{ banano }},
+                lineWidth: 1,
+                enableMouseTracking: true,
+                marker:{
+                    enabled: true
+                },
+                color: 'blue',
+                name: '{{ title_1 }}',
+                dashStyle: 'Solid'
+            }],
+            legend: {
+                enabled: true
+            }
+        });
+
+        // Gráfica Caña de azúcar
+        Highcharts.chart('graph02', {
+            title: {
+                text: ''
+            },
+            xAxis: {
+                categories: {{ labels }},
+                align: 'center',
+                labels: {
+                    rotation: -45
+                }
+            },
+            yAxis: {
+                title: {
+                    text: 'Rendimiento'
+                },
+                labels: {
+                    format: '{value} ton/ha',
+                    style: {
+                        color: 'green'
+                    }
+                }
+            },
+            series: [{
+                animation: false,
+                data: {{ canha }},
+                lineWidth: 1,
+                enableMouseTracking: true,
+                marker:{
+                    enabled: true
+                },
+                color: 'green',
+                name: '{{ title_2 }}',
+                dashStyle: 'Solid'
+            }],
+            legend: {
+                enabled: true
+            }
+        });
+
+{% endif %}
+
+        function validate_next() {
+            let check_01 = document.getElementById("check_slider").value;
+            if(check_01 == 1) {
+                let next_button = document.getElementById('id_next');
+                next_button.style.cssText += 'display: block !important; margin: 0 auto;';
+            }
+        }
+
+    </script>
+{% endblock %}
+
+{% block title %}
+    Decisión problema # 1
+{% endblock %}
+
+{% block content %}
+
+<table class="table_question">
+    <tr>
+        <td class="cell_question" style="width: 100% !important;">    
+            <div id="text01">
+                ....
+            </div>
+        </td>
+    </tr>
+</table>
+
+<br>  
+{% if graphType == 1 %}
+<div>
+    <div id="graph01" class="div_graph"></div>
+</div>
+{% else %}
+<div>
+    <table class="tabDiv_GraphType2">
+        <tr>
+            <td style="width: 50%;">
+                <div id="graph01" class="div_graphType2"></div>
+            </td>
+            <td>
+                <div id="graph02" class="div_graphType2"></div>
+            </td>
+        </tr>
+    </table>
+</div>
+{% endif %}
+<br>
+<table class="table_question">
+    <tr>
+        <td class="cell_question" style="width: 100% !important;">    
+            <div id="text01">
+                Si en el siguiente periodo el rendimiento de la Caña de Azúcar disminuye 
+            </div>
+        </td>
+    </tr>
+</table>
+<br>
+<div class="card_table" id="h-slider-div" style="text-align: center;">
+    <table class="table_question" style="margin: 0 auto; width: 70% !important;">
+        <tr>
+            <td>
+                ¿Cuál es la probabilidad que el rendimiento del Banano disminuya? <span>- %</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="td_slider">
+                <input type="range" name="return_banano" value="" min="0" max="100" step="1" id="slider_porcentaje_01" class="slider_porcentaje" required>
+                <input type="hidden" name="check_slider" value="0" id="check_slider"/>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<br>
+
+<div class="div_btnNext">
+    <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next">Enviar</button>
+</div>
+
+{% endblock %}

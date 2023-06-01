@@ -32,4 +32,9 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    pass
+    row_1 = models.IntegerField()
+    row_2 = models.IntegerField()
+    row_3 = models.IntegerField()
+    row_4 = models.IntegerField()
+    row_5 = models.IntegerField()
+    row_6 = models.IntegerField()

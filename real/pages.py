@@ -3,16 +3,18 @@ from ._builtin import Page, WaitPage
 from .models import Constants
 
 
-class MyPage(Page):
-    pass
+class graph_01(Page):
+    form_model = 'player'
+    form_fields = ['return_banano']
+    def vars_for_template(self):
+        return {
+            'graphType': self.player.participant.vars['graphType'],
+            'labels': Constants.anhos,
+            'banano': Constants.banano,
+            'title_1': 'Banano',
+            'canha': Constants.canha,
+            'title_2': 'Caña de azúcar'
+        }
 
 
-class ResultsWaitPage(WaitPage):
-    pass
-
-
-class Results(Page):
-    pass
-
-
-page_sequence = [MyPage, ResultsWaitPage, Results]
+page_sequence = [graph_01]

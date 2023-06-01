@@ -1,0 +1,161 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block scripts %}
+    
+    <script src="{% static 'choice/js/functions.js' %}"></script>
+    <link href="{% static 'choice/css/styles.css' %}" rel="stylesheet">
+    
+    <script>
+
+        $(document).ready(function () {
+            $('.radios').click(
+                function (event) {
+
+                    var clickedRadio = this;
+                    var afterClickedRadio = false;
+
+                    var radios = $('.radios');
+                    var i_clicked = -1;
+
+                    for (i = 0; i < radios.length; ++i) {
+                        var radio = radios[i];
+
+                        if (!afterClickedRadio && clickedRadio.value === '0' && radio.value === '0') {
+                            radio.checked = true;
+                        }
+
+                        if (!afterClickedRadio && clickedRadio.value === '1' && radio.value === '1') {
+                            radio.checked = true;
+                        }
+
+                        if (afterClickedRadio && clickedRadio.value === '0' && radio.value === '1') {
+                            radio.checked = true;
+                        }
+
+                        if (afterClickedRadio && clickedRadio.value === '1' && radio.value === '0') {
+                            radio.checked = true;
+                        }
+
+                        if (radio === clickedRadio) {
+                            if(i%2 == 0) {
+                                i++;
+                            }
+                            afterClickedRadio = true;
+                        }
+                    }
+                    let next_button = document.getElementsByClassName('otree-btn-next');
+                    next_button[0].style.cssText += 'display: block !important; margin: 0 auto;';
+                }
+            );
+        });
+
+    </script>
+{% endblock %}
+
+{% block title %}
+    Choice
+{% endblock %}
+
+{% block content %}
+
+<table class="table_question">
+    <tr>
+        <td class="cell_question" style="width: 100% !important;">    
+            <div id="text01">
+                En la siguiente tabla, encontrará una lista de lanzamientos de monedas con diferentes pagos. Los pagos difieren en cuanto se pierde si la moneda sale cara. Para cada fila, debe indicar si desea lanzar la moneda o no.
+                <br>
+                Para determinar su pago, se seleccionará al azar una de las seis filas lanzando un dado de seis caras. Si ha indicado que para la fila seleccionada al azar desea lanzar la moneda, se lanzará la moneda y se le pagará en consecuencia.
+            </div>
+        </td>
+    </tr>
+</table>
+
+<br>  
+
+<table style="width: 100%;">
+    <tr>
+        <td style="width: 70%;">
+        </td>
+        <td style="width: 15%; text-align: center; border: 1px solid #aaaaaaaa;" class="cell_radio">
+            No tirar la moneda
+        </td>
+        <td style="width: 15%; text-align: center; border: 1px solid #aaaaaaaa;" class="cell_radio">
+            Tirar la moneda
+        </td>
+    </tr>
+    <tr class="row_option">
+        <td class="cell_option">
+            Si la moneda cae en <b>cara</b> usted <b>pierde $2</b>, si la moneda cae en <b>cruz</b> usted <b>gana $6</b>.
+        </td>
+        <td class="cell_radio">
+            <input type="radio" class="radios" name="row_1" value="0">
+        </td>
+        <td class="cell_radio">
+            <input type="radio" class="radios" name="row_1" value="1">
+        </td>
+    </tr>
+    <tr class="row_option">
+        <td class="cell_option">
+            Si la moneda cae en <b>cara</b> usted <b>pierde $3</b>, si la moneda cae en <b>cruz</b> usted <b>gana $6</b>.
+        </td>
+        <td class="cell_radio">
+            <input type="radio" class="radios" name="row_2" value="0">
+        </td>
+        <td class="cell_radio">
+            <input type="radio" class="radios" name="row_2" value="1">
+        </td>
+    </tr>
+    <tr class="row_option">
+        <td class="cell_option">
+            Si la moneda cae en <b>cara</b> usted <b>pierde $4</b>, si la moneda cae en <b>cruz</b> usted <b>gana $6</b>.
+        </td>
+        <td class="cell_radio">
+            <input type="radio" class="radios" name="row_3" value="0">
+        </td>
+        <td class="cell_radio">
+            <input type="radio" class="radios" name="row_3" value="1">
+        </td>
+    </tr>
+    <tr class="row_option">
+        <td class="cell_option">
+            Si la moneda cae en <b>cara</b> usted <b>pierde $5</b>, si la moneda cae en <b>cruz</b> usted <b>gana $6</b>.
+        </td>
+        <td class="cell_radio">
+            <input type="radio" class="radios" name="row_4" value="0">
+        </td>
+        <td class="cell_radio">
+            <input type="radio" class="radios" name="row_4" value="1">
+        </td>
+    </tr>
+    <tr class="row_option">
+        <td class="cell_option">
+            Si la moneda cae en <b>cara</b> usted <b>pierde $6</b>, si la moneda cae en <b>cruz</b> usted <b>gana $6</b>.
+        </td>
+        <td class="cell_radio">
+            <input type="radio" class="radios" name="row_5" value="0">
+        </td>
+        <td class="cell_radio">
+            <input type="radio" class="radios" name="row_5" value="1">
+        </td>
+    </tr>
+    <tr class="row_option">
+        <td class="cell_option">
+            Si la moneda cae en <b>cara</b> usted <b>pierde $7</b>, si la moneda cae en <b>cruz</b> usted <b>gana $6</b>.
+        </td>
+        <td class="cell_radio">
+            <input type="radio" class="radios" name="row_6" value="0">
+        </td>
+        <td class="cell_radio">
+            <input type="radio" class="radios" name="row_6" value="1">
+        </td>
+    </tr>
+</table>
+
+<br>
+
+<div class="div_btnNext">
+    <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next">Enviar</button>
+</div>
+
+{% endblock %}

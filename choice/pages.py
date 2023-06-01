@@ -3,16 +3,9 @@ from ._builtin import Page, WaitPage
 from .models import Constants
 
 
-class MyPage(Page):
-    pass
+class choice(Page):
+    form_model = 'player'
+    form_fields = ['row_1', 'row_2', 'row_3', 'row_4', 'row_5', 'row_6']
 
 
-class ResultsWaitPage(WaitPage):
-    pass
-
-
-class Results(Page):
-    pass
-
-
-page_sequence = [MyPage, ResultsWaitPage, Results]
+page_sequence = [choice]

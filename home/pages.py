@@ -11,10 +11,6 @@ class consent(Page):
 
     def is_displayed(self):
         return self.round_number == 1
-    
-class welcome_home(Page):
-    def is_displayed(self):
-        return self.round_number == 1
 
 class intro_home(Page):
     form_model = 'player'
@@ -34,4 +30,4 @@ class retro(Page):
             'graphType': self.player.participant.vars['graphType']
         }
 
-page_sequence = [consent, welcome_home, intro_home]
+page_sequence = [consent, intro_home]

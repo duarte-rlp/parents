@@ -20,14 +20,6 @@ class Constants(BaseConstants):
     name_in_url = 'survey'
     players_per_group = None
     num_rounds = 1
-    table_options = {
-        0: {'label': 'Estudiando', 'name': '_study'},
-        1: {'label': 'Prestando servicio militar', 'name': '_militar'},
-        2: {'label': 'Trabajando por un salario para un empleador', 'name': '_worker'},
-        3: {'label': 'Trabajando por cuenta propia', 'name': '_selfemployed'},
-        4: {'label': 'Trabajando con familiares sin remuneración', 'name': '_nonwage'},
-        5: {'label': 'No este trabajando, ni estudiando', 'name': '_nini'}
-    }
 
 
 class Subsession(BaseSubsession):
@@ -109,7 +101,7 @@ class Player(BasePlayer):
         [11,'Pensionado'],
         [12,'Desempleado'],
         [13,'Otra actividad u ocupación'],
-    ], label="7. Ocupación u oficio del padre")
+    ], label="8. Ocupación u oficio del padre")
 
 
 

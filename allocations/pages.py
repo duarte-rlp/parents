@@ -302,7 +302,7 @@ class questions_problem_03(Page):
 
 page_sequence = [
                 instruc_01, 
-                instruc_02, # retro de cómo quedan los datos ordenados
+                #instruc_02, # retro de cómo quedan los datos ordenados
                 graph_01, # gráfica del primer problema
                 questions_problem_01,
                 graph_02,

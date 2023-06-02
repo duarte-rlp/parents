@@ -34,4 +34,4 @@ class retro(Page):
             'graphType': self.player.participant.vars['graphType']
         }
 
-page_sequence = [consent, welcome_home, intro_home, retro]
+page_sequence = [consent, welcome_home, intro_home]

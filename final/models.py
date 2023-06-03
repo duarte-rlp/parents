@@ -18,7 +18,7 @@ Your app description
 
 
 class Constants(BaseConstants):
-    name_in_url = 'choice'
+    name_in_url = 'final'
     players_per_group = None
     num_rounds = 1
 
@@ -32,11 +32,6 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    row_1 = models.IntegerField()
-    row_2 = models.IntegerField()
-    row_3 = models.IntegerField()
-    row_4 = models.IntegerField()
-    row_5 = models.IntegerField()
-    row_6 = models.IntegerField()
-
-    name_app = models.StringField(default = 'choice')
+    pago_total = models.IntegerField()
+    menor_pago = models.IntegerField()
+    pago_calculo = models.IntegerField()

@@ -160,4 +160,6 @@ class Player(BasePlayer):
     problem_03_probability_b = models.IntegerField()
     problem_03_var = models.IntegerField()
 
+    name_app = models.StringField(default = 'allocations')
+
 

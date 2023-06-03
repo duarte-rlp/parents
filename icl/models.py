@@ -48,6 +48,8 @@ class Player(BasePlayer):
     switching_row = models.IntegerField()
     pago = models.IntegerField()
 
+    name_app = models.StringField(default = 'icl')
+
 
     # set sure payoff for next choice
     # ----------------------------------------------------------------------------------------------------------------

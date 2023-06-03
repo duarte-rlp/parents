@@ -43,6 +43,12 @@ SESSION_CONFIGS = [
         'num_demo_participants': 1, 
         'app_sequence': ['home','icl', 'checker1'],
     },
+    {
+        'name': 'final',
+        'display_name': 'Test Payoffs',
+        'num_demo_participants': 1, 
+        'app_sequence': ['home', 'allocations', 'choice', 'final'],
+    },
 ]
 
 # if you set a property in SESSION_CONFIG_DEFAULTS, it will be inherited by all configs

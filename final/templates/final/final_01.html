@@ -1,0 +1,83 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block scripts %}
+    
+    <script src="{% static 'final/js/functions.js' %}"></script>
+    <link href="{% static 'final/css/styles.css' %}" rel="stylesheet">
+    
+{% endblock %}
+
+{% block title %}
+    Descripción del pago
+{% endblock %}
+
+{% block content %}
+
+De las aplicaciones posibles para pago la seleccionada fue <b>{{ data.nombre_app }}</b> usando los siguientes parámetros y cálculos:
+
+<br><br>
+
+{% if data.nombre_app == 'Choice' %}
+
+Se lanza el dado y se obtiene el número <b>{{ data.dado }}</b> correspondiente a la fila de igual número.
+
+<br><br>
+
+En esta fila usted seleccionó
+    {% if data.eleccion == 0 %}
+        no tirar la moneda, por lo cual su pago calculado es <b><toMoney>{{ data.pago_calculo }}</toMoney></b>.
+    {% else %}
+        tirar la moneda, la cual sale en
+            {% if data.moneda == 0 %}
+                <b>cara</b>, por lo cual su pago calculado es <b><toMoney>{{ data.pago_calculo }}</toMoney></b>.
+            {% else %}
+                <b>cruz</b>, por lo cual su pago calculado es <b><toMoney>{{ data.pago_calculo }}</toMoney></b>.
+            {% endif %}
+    {% endif %}
+
+{% elif data.nombre_app == 'Allocations' %}
+
+En donde de los 3 problemas posibles se ha seleccionado el problema del tipo <b>{{ data.tipo_problema }}</b>.
+
+<br><br>
+
+De los datos graficados se selecciona aleatoriamente el escenario <b>{{ data.n_escenario }}</b> en donde la <i>Inversión A</i> obtiene un retorno del <b>{{ data.retorno_a }}</b> mientras la <i>Inversión B</i> obtiene un retorno del <b>{{ data.retorno_b }}</b>.
+
+<br><br>
+
+Teniendo en cuenta que usted seleccionó que de los <toMoney>100000</toMoney> colocar <b><toMoney>{{ data.inversion_a }}</toMoney></b> en la <i>Inversión A</i> y <b><toMoney>{{ data.inversion_b }}</toMoney></b> en la <i>Inversión B</i>, haciendo los cálculos:
+
+<br><br>
+
+<toMoney>{{ data.inversion_a }}</toMoney> x {{ data.retorno_a }} = <toMoney>{{ data.calc1 }}</toMoney>
+<br>
+<toMoney>{{ data.inversion_b }}</toMoney> x {{ data.retorno_b }} = <toMoney>{{ data.calc2 }}</toMoney>
+
+<br><br>
+
+Dando un total de pago calculado <toMoney>{{ data.pago_calculo }}</toMoney>.
+
+{% elif data.nombre_app == 'ICL1' %}
+
+ICL1 - ICL1 - ICL1
+
+{% elif data.nombre_app == 'ICL2' %}
+
+ICL2 <br> ICL1 <br> ICL1
+
+{% endif %}
+
+<div style="margin-top: 10px; color: red; text-align: center;">
+{% if data.menor_pago == 1%}
+Originalmente el pago calculado era negativo o menor al mínimo <i>(<toMoney>{{ data.pago_calculo }}</toMoney>)</i> reajustándose al valor de <toMoney>{{ data.pago_total }}</toMoney> .
+{% endif %}
+</div>
+
+<br><br>
+
+<div class="div_btnNext">
+    {% next_button %}
+</div>
+
+{% endblock %}

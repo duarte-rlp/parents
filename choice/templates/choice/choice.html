@@ -11,44 +11,29 @@
         $(document).ready(function () {
             $('.radios').click(
                 function (event) {
-
-                    var clickedRadio = this;
-                    var afterClickedRadio = false;
-
-                    var radios = $('.radios');
-                    var i_clicked = -1;
-
-                    for (i = 0; i < radios.length; ++i) {
-                        var radio = radios[i];
-
-                        if (!afterClickedRadio && clickedRadio.value === '0' && radio.value === '0') {
-                            radio.checked = true;
-                        }
-
-                        if (!afterClickedRadio && clickedRadio.value === '1' && radio.value === '1') {
-                            radio.checked = true;
-                        }
-
-                        if (afterClickedRadio && clickedRadio.value === '0' && radio.value === '1') {
-                            radio.checked = true;
-                        }
-
-                        if (afterClickedRadio && clickedRadio.value === '1' && radio.value === '0') {
-                            radio.checked = true;
-                        }
-
-                        if (radio === clickedRadio) {
-                            if(i%2 == 0) {
-                                i++;
-                            }
-                            afterClickedRadio = true;
-                        }
+                    let elements = document.querySelectorAll('.radios');
+                    console.log(elements);
+                    let n_checked = 0;
+                    for(let i=0; i<elements.length; i++) {
+                        n_checked += elements[i].checked;
                     }
-                    let next_button = document.getElementsByClassName('otree-btn-next');
-                    next_button[0].style.cssText += 'display: block !important; margin: 0 auto;';
+                    console.log(n_checked);
+                    if(n_checked == 6) {
+                        let next_button = document.getElementsByClassName('otree-btn-next');
+                        next_button[0].style.cssText += 'display: block !important; margin: 0 auto;';
+                    }
                 }
             );
         });
+
+        window.onload = function(){
+            // Usar para agregar punto de miles
+            let elements = document.getElementsByTagName("toMoney");
+            for(let j=0; j<elements.length; j++) {
+                let num = Number(elements[j].innerHTML);
+                elements[j].innerHTML = "$" + num.toLocaleString('es-CO').toString();
+            }
+        };
 
     </script>
 {% endblock %}
@@ -86,7 +71,7 @@
     </tr>
     <tr class="row_option">
         <td class="cell_option">
-            Si la moneda cae en <b>cara</b> usted <b>pierde $2</b>, si la moneda cae en <b>cruz</b> usted <b>gana $6</b>.
+            Si la moneda cae en <b>cara</b> usted <b>pierde <toMoney>2000</toMoney></b>, si la moneda cae en <b>cruz</b> usted <b>gana <toMoney>6000</toMoney></b>.
         </td>
         <td class="cell_radio">
             <input type="radio" class="radios" name="row_1" value="0">
@@ -97,7 +82,7 @@
     </tr>
     <tr class="row_option">
         <td class="cell_option">
-            Si la moneda cae en <b>cara</b> usted <b>pierde $3</b>, si la moneda cae en <b>cruz</b> usted <b>gana $6</b>.
+            Si la moneda cae en <b>cara</b> usted <b>pierde <toMoney>3000</toMoney></b>, si la moneda cae en <b>cruz</b> usted <b>gana <toMoney>6000</toMoney></b>.
         </td>
         <td class="cell_radio">
             <input type="radio" class="radios" name="row_2" value="0">
@@ -108,7 +93,7 @@
     </tr>
     <tr class="row_option">
         <td class="cell_option">
-            Si la moneda cae en <b>cara</b> usted <b>pierde $4</b>, si la moneda cae en <b>cruz</b> usted <b>gana $6</b>.
+            Si la moneda cae en <b>cara</b> usted <b>pierde <toMoney>4000</toMoney></b>, si la moneda cae en <b>cruz</b> usted <b>gana <toMoney>6000</toMoney></b>.
         </td>
         <td class="cell_radio">
             <input type="radio" class="radios" name="row_3" value="0">
@@ -119,7 +104,7 @@
     </tr>
     <tr class="row_option">
         <td class="cell_option">
-            Si la moneda cae en <b>cara</b> usted <b>pierde $5</b>, si la moneda cae en <b>cruz</b> usted <b>gana $6</b>.
+            Si la moneda cae en <b>cara</b> usted <b>pierde <toMoney>5000</toMoney></b>, si la moneda cae en <b>cruz</b> usted <b>gana <toMoney>6000</toMoney></b>.
         </td>
         <td class="cell_radio">
             <input type="radio" class="radios" name="row_4" value="0">
@@ -130,7 +115,7 @@
     </tr>
     <tr class="row_option">
         <td class="cell_option">
-            Si la moneda cae en <b>cara</b> usted <b>pierde $6</b>, si la moneda cae en <b>cruz</b> usted <b>gana $6</b>.
+            Si la moneda cae en <b>cara</b> usted <b>pierde <toMoney>6000</toMoney></b>, si la moneda cae en <b>cruz</b> usted <b>gana <toMoney>6000</toMoney></b>.
         </td>
         <td class="cell_radio">
             <input type="radio" class="radios" name="row_5" value="0">
@@ -141,7 +126,7 @@
     </tr>
     <tr class="row_option">
         <td class="cell_option">
-            Si la moneda cae en <b>cara</b> usted <b>pierde $7</b>, si la moneda cae en <b>cruz</b> usted <b>gana $6</b>.
+            Si la moneda cae en <b>cara</b> usted <b>pierde <toMoney>7000</toMoney></b>, si la moneda cae en <b>cruz</b> usted <b>gana <toMoney>6000</toMoney></b>.
         </td>
         <td class="cell_radio">
             <input type="radio" class="radios" name="row_6" value="0">

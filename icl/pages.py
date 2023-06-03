@@ -69,7 +69,9 @@ class Decision(Page):
 # ******************************************************************************************************************** #
 # *** PAGE SEQUENCE *** #
 # ******************************************************************************************************************** #
-page_sequence = [Decision]
+page_sequence = [Instructions, Decision]
 
-if Constants.instructions:
-    page_sequence.insert(0, Instructions)
+#if Constants.instructions:
+#    page_sequence.insert(0, Instructions)
+
+#page_sequence.append(checker);

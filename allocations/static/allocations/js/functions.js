@@ -29,7 +29,12 @@
                     dinero_pb.innerHTML = "$ "+numberWithPoints(slider_max-slider_value);
                     check_sli.value = 1;
 
-                    var next_button = document.getElementsByClassName('otree-btn-next');
+                    let val_inv_a = document.getElementById("inv_a");
+                    let val_inv_b = document.getElementById("inv_b");
+                    val_inv_a.innerHTML = "$"+numberWithPoints(slider_value);
+                    val_inv_b.innerHTML = "$"+numberWithPoints(slider_max-slider_value);
+
+                    var next_button = document.getElementsByClassName('btnNext');
                     next_button[0].style.cssText += 'display: block !important; margin: 0 auto;';
                 }
             );
@@ -41,6 +46,8 @@
                     var slider_id = event.target.id;
                     var slider_value = event.target.value;
                     var parent_slider = document.getElementById(slider_id).parentElement.parentElement.parentElement;
+                    console.log('slider id', slider_id);
+                    console.log('parent', parent_slider);
                     var child = parent_slider.children[0].children[0].firstElementChild;
                     child.innerHTML = slider_value + "%";
                     var check_sli = parent_slider.children[1].lastElementChild.lastElementChild;

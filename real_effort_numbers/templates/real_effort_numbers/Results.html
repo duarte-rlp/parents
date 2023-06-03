@@ -1,6 +1,10 @@
 {% extends "global/Page.html" %}
 {% load otree static %}
 
+{% block scripts %}
+    <link href="{% static 'real_effort_numbers/css/styles.css' %}" rel="stylesheet">
+{% endblock %}
+
 {% block title %}
     Resultados
 {% endblock %}
@@ -10,7 +14,10 @@
         Usted completó correctamente las 10 operaciones matemáticas.
     </p>
     </p>
+<div class="div_btnNext">
     {% next_button %}
+</div>
+    
 {% endblock %}
 
 

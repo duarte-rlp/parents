@@ -32,3 +32,12 @@
         function numberWithPoints(x) {
             return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
         }
+
+$(document).ready(function () {
+    // Usar para agregar punto de miles
+    let elements = document.getElementsByTagName("toMoney");
+    for(let j=0; j<elements.length; j++) {
+        let num = Number(elements[j].innerHTML);
+        elements[j].innerHTML = "$" + num.toLocaleString('es-CO').toString();
+    }
+});

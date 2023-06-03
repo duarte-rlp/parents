@@ -3,8 +3,9 @@
 
 {% block scripts %}
     
-    <script src="{% static 'js/highcharts.js' %}"></script>
-    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+    <link href="{% static 'training/css/styles.css' %}" rel="stylesheet">
+    <script src="{% static 'training/js/highcharts.js' %}"></script>
+    <script src="{% static 'training/js/functions.js' %}"></script>
     
 {% endblock %}
 
@@ -14,7 +15,7 @@
 
 {% block content %}
 
-Recuerde que en esta parte decidir cuánto de los $100.000 invertir en dos opciones de inversión.
+Recuerde que en esta parte decidir cuánto de los <toMoney>100000</toMoney> invertir en dos opciones de inversión.
 <br> <br>
 Su ganancia dependerá de: 
 <br> <br>

@@ -3,8 +3,9 @@
 
 {% block scripts %}
     
-    <script src="{% static 'js/highcharts.js' %}"></script>
-    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+    <link href="{% static 'training/css/styles.css' %}" rel="stylesheet">
+    <script src="{% static 'training/js/highcharts.js' %}"></script>
+    <script src="{% static 'training/js/functions.js' %}"></script>
     
     <script>
 
@@ -65,11 +66,11 @@
     <tr>
         <td class="cell_question" style="width: 100% !important;">    
             <div id="text01">
-                En la carta esta escrito el número {{ data }}. Eso quiere decir que <i>“Por cada $100 que usted asigne a la Inversión A puede 
+                En la carta esta escrito el número {{ data }}. Eso quiere decir que <i>“Por cada <toMoney>100</toMoney> que usted asigne a la Inversión A puede 
                 {% if data < 0 %}
-                    perder ${% widthratio data 1 -1 %}"
+                    perder <toMoney>{% widthratio data 1 -1 %}</toMoney>"
                 {% else %}
-                    ganar ${{ data }}"
+                    ganar <toMoney>{{ data }}</toMoney>"
                 {% endif %}</i>.
             </div>
         </td>

@@ -2,9 +2,10 @@
 {% load otree static %}
 
 {% block scripts %}
-    
-    <script src="{% static 'js/highcharts.js' %}"></script>
-    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+
+    <link href="{% static 'training/css/styles.css' %}" rel="stylesheet">
+    <script src="{% static 'training/js/highcharts.js' %}"></script>
+    <script src="{% static 'training/js/functions.js' %}"></script>
     
     <script>
 
@@ -54,7 +55,7 @@
     <tr>
         <td class="cell_question" style="width: 100% !important;">    
             <div id="text01">
-                En cada carta está escrito un número. Ese número es el retorno por cada $100 que usted asigne a la <i>Inversión A</i>.
+                En cada carta está escrito un número. Ese número es el retorno por cada <toMoney>100</toMoney> que usted asigne a la <i>Inversión A</i>.
             </div>
         </td>
     </tr>

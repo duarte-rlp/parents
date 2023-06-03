@@ -3,8 +3,9 @@
 
 {% block scripts %}
     
-    <script src="{% static 'js/highcharts.js' %}"></script>
-    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+    <link href="{% static 'training/css/styles.css' %}" rel="stylesheet">
+    <script src="{% static 'training/js/highcharts.js' %}"></script>
+    <script src="{% static 'training/js/functions.js' %}"></script>
     
     <script>
 
@@ -76,24 +77,24 @@
                 <b>Correcto</b> 
                  usted 
                     {% if data < 0 %}
-                        perderá ${% widthratio data 1 -10 %}.
+                        perderá <toMoney>{% widthratio data 1 -10 %}</toMoney>.
                     {% else %}
-                        ganará ${% widthratio data 1 10 %}.
+                        ganará <toMoney>{% widthratio data 1 10 %}</toMoney>.
                     {% endif %} 
                 {% else %}
                 <b>Incorrecto</b>
                 usted 
                     {% if data < 0 %}
-                        perderá ${% widthratio data 1 -10 %}.
+                        perderá <toMoney>{% widthratio data 1 -10 %}</toMoney>.
                     {% else %}
-                        ganará ${% widthratio data 1 10 %}.
+                        ganará <toMoney>{% widthratio data 1 10 %}</toMoney>.
                     {% endif %} 
                     <br>
-                    Recuerde que por cada $100 que usted asigne a la <i>Inversión A</i> puede 
+                    Recuerde que por cada <toMoney>100</toMoney> que usted asigne a la <i>Inversión A</i> puede 
                     {% if data < 0 %}
-                        perder ${% widthratio data 1 -1 %} (10 x ${% widthratio data 1 -1 %} = ${% widthratio data 1 -10 %}).
+                        perder <toMoney>{% widthratio data 1 -1 %}</toMoney> (10 x <toMoney>{% widthratio data 1 -1 %}</toMoney> = <toMoney>{% widthratio data 1 -10 %}</toMoney>).
                     {% else %}
-                        ganar ${{ data }} (10 x ${% widthratio data 1 1 %} = ${% widthratio data 1 10 %}).
+                        ganar <toMoney>{{ data }}</toMoney> (10 x <toMoney>{% widthratio data 1 1 %}</toMoney> = <toMoney>{% widthratio data 1 10 %}</toMoney>).
                     {% endif %} 
                 {% endif %}
             </div>

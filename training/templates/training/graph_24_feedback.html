@@ -3,8 +3,9 @@
 
 {% block scripts %}
     
-    <script src="{% static 'js/highcharts.js' %}"></script>
-    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+    <link href="{% static 'training/css/styles.css' %}" rel="stylesheet">
+    <script src="{% static 'training/js/highcharts.js' %}"></script>
+    <script src="{% static 'training/js/functions.js' %}"></script>
     
     <script>
 
@@ -193,7 +194,7 @@
                 ganaría
 {% endif %}
                 {{ val_b }}
-                en la <i>Inversión B</i>.
+                en la <i>Inversión B</i> por cada <toMoney>100</toMoney>.
                 <br>
                 Recuerde que el computador seleccionará al azar dos cartas que están en la misma posición frente <i>Inversión A</i> e <i>Inversión B</i>.
             </div>

@@ -3,7 +3,7 @@ from os import environ
 SESSION_CONFIGS = [
     {
         'name': 'test',
-        'display_name': 'test',
+        'display_name': 'Test',
         'num_demo_participants': 1, 
         'app_sequence': ['home','real_effort_numbers', 'icl', 'training', 'allocations', 'choice', 'real', 'survey'],
     },
@@ -39,9 +39,9 @@ SESSION_CONFIGS = [
     },
     {
         'name': 'icl',
-        'display_name': 'icl',
+        'display_name': 'ICL 1',
         'num_demo_participants': 1, 
-        'app_sequence': ['home','icl'],
+        'app_sequence': ['home','icl', 'checker1'],
     },
 ]
 

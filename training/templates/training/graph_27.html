@@ -3,9 +3,9 @@
 
 {% block scripts %}
     
-    <script src="{% static 'js/highcharts.js' %}"></script>
-    <script src="{% static 'js/functions.js' %}"></script>
-    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+    <link href="{% static 'training/css/styles.css' %}" rel="stylesheet">
+    <script src="{% static 'training/js/highcharts.js' %}"></script>
+    <script src="{% static 'training/js/functions.js' %}"></script>
     
     <script>
 
@@ -157,9 +157,10 @@
                     arr_b[i].style.fontWeight = "normal";
                 }
             }
-            if(document.getElementById("id_next").style.display == "none") {
-                document.getElementById("id_next").style.display = "block";
-            }
+            document.getElementById("cc").setAttribute("disabled", true);
+            document.getElementById("cc").style.display = "none";
+            document.getElementById("id_next").removeAttribute("disabled");
+            document.getElementById("id_next").style.display = "block";
         }
 
     </script>
@@ -175,7 +176,7 @@
     <tr>
         <td class="cell_question" style="width: 100% !important;">    
             <div id="text01">
-                Usted seleccionó ${{ inv_a }} para la <i>Inversión A</i> y ${{ inv_b }} para la <i>Inversión B</i>. Ahora elija una carta que desee y presione en "Siguiente".
+                Usted seleccionó <toMoney>{{ inv_a }}</toMoney> para la <i>Inversión A</i> y <toMoney>{{ inv_b }}</toMoney> para la <i>Inversión B</i>. Ahora elija una carta que desee y presione en "Siguiente".
                 <input type="number" style="display: none;" id="in_cardChoice" name="test_07_cardIndex">
             </div>
         </td>
@@ -263,7 +264,7 @@
     <table style="width: 100%;">
         <tr>
             <td style="width: 50%; text-align: end; padding-right: 20px;">
-                <input type="button" value="Elegir carta" class="btnNext" onclick="cardChoice()">
+                <input type="button" value="Elegir carta" class="btnNext" onclick="cardChoice()" id="cc">
             </td>
             <td style="width: 50%; text-align: initial; padding-left: 20px;">
                 <button class="otree-btn-next btn btn-primary" id="id_next" style="display: none;">Siguiente</button>

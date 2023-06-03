@@ -133,14 +133,29 @@
 
         function nextCard() {
             let btn = document.getElementById("id_next");
+            btn.removeAttribute("disabled");
             btn.click();
+        }
+
+        function confirm() {
+            let modal = document.querySelector(".modal");
+            let overlay = document.querySelector(".overlay");
+            modal.classList.remove("hidden");
+            overlay.classList.remove("hidden");
+        }
+
+        function closeModal() {
+            let modal = document.querySelector(".modal");
+            let overlay = document.querySelector(".overlay");
+            modal.classList.add("hidden");
+            overlay.classList.add("hidden");
         }
 
     </script>
 {% endblock %}
 
 {% block title %}
-    Decisión problema # 1
+    Problema 1
 {% endblock %}
 
 {% block content %}
@@ -235,6 +250,11 @@
 <div class="card_table" id="h-slider-div" style="text-align: center;">
     <table class="table_question">
         <tr>
+            <td colspan="4">
+                <h4 style="margin-top: 0.5rem; margin-bottom: 0rem;">Decisión</h4>
+            </td>
+        </tr>
+        <tr>
             <td class="text_slider"> - </td>
             <td class="td_slider" rowspan="2">
                 <input type="range" name="problem_01_inv_a_slider" value="" min="0" max="{{ max_inv }}" step="1000" id="sliderDinero" class="slider_dinero" required>
@@ -256,7 +276,32 @@
 <br>
 
 <div class="div_btnNext">
-    <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next">Enviar</button>
+    <input type="button" value="Enviar" class="btnNext" style="display: none;" onclick="confirm()">
+    <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next" disabled>Enviar</button>
 </div>
+
+<section class="modal hidden">
+    <div>
+        <h3>Confirmación</h3>
+        <p>
+            Por favor confirme los valores de inversión de <span id="inv_a"></span> para la <i>Inversión A</i> y de <span id="inv_b"></span> para la <i>Inversión B</i>.
+        </p>
+        <p>
+            Si es correcto presione el botón "Enviar" de lo contrario presione el botón "Cambiar valores".
+        </p>
+    </div>
+    <table style="width: 100%;" class="table_modal">
+        <tr>
+            <td>
+                <input type="button" value="Cambiar valores" class="btnNext" onclick="closeModal()">
+            </td>
+            <td>
+                <input type="button" value="Enviar" class="btnNext" onclick="nextCard()">
+            </td>
+        </tr>
+    </table>
+</section>
+
+<div class="overlay hidden"></div>
 
 {% endblock %}

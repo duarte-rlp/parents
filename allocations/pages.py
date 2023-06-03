@@ -80,6 +80,11 @@ class instruc_01(Page):
         self.player.name_order_problems = self.player.participant.vars['name_order_problems']
         self.player.participant.vars['problems'] = problems
 
+    def vars_for_template(self):
+        return {
+            'graphType': self.player.participant.vars['graphType']
+        }
+
 class instruc_02(Page):
     def vars_for_template(self):
         return {
@@ -163,6 +168,13 @@ class questions_problem_01(Page):
                 'assetA_order': self.player.problem_01_order_a,
                 'assetB_order': self.player.problem_01_order_b,
                 'assetA': self.player.problem_01_inv_a,
+                'data_a': list(self.player.participant.vars['problems'][0]['AssetA']),
+                'data_b': list(self.player.participant.vars['problems'][0]['AssetB']),
+                'labels': Constants.inv_labels,
+                'graphType': self.player.participant.vars['graphType'],
+                'max_inv': Constants.max_inv,
+                'max_y': max(list(self.player.participant.vars['problems'][0]['AssetA']) + list(self.player.participant.vars['problems'][0]['AssetB'])),
+                'min_y': min(list(self.player.participant.vars['problems'][0]['AssetA']) + list(self.player.participant.vars['problems'][0]['AssetB']))
                 }
 
 class graph_02(Page):
@@ -230,6 +242,13 @@ class questions_problem_02(Page):
                 'assetA_order': self.player.problem_02_order_a,
                 'assetB_order': self.player.problem_02_order_b,
                 'assetA': self.player.problem_02_inv_a,
+                'data_a': list(self.player.participant.vars['problems'][1]['AssetA']),
+                'data_b': list(self.player.participant.vars['problems'][1]['AssetB']),
+                'labels': Constants.inv_labels,
+                'graphType': self.player.participant.vars['graphType'],
+                'max_inv': Constants.max_inv,
+                'max_y': max(list(self.player.participant.vars['problems'][1]['AssetA']) + list(self.player.participant.vars['problems'][1]['AssetB'])),
+                'min_y': min(list(self.player.participant.vars['problems'][1]['AssetA']) + list(self.player.participant.vars['problems'][1]['AssetB']))
                 }
 
 class graph_03(Page):
@@ -297,6 +316,13 @@ class questions_problem_03(Page):
                 'assetA_order': self.player.problem_03_order_a,
                 'assetB_order': self.player.problem_03_order_b,
                 'assetA': self.player.problem_03_inv_a,
+                'data_a': list(self.player.participant.vars['problems'][2]['AssetA']),
+                'data_b': list(self.player.participant.vars['problems'][2]['AssetB']),
+                'labels': Constants.inv_labels,
+                'graphType': self.player.participant.vars['graphType'],
+                'max_inv': Constants.max_inv,
+                'max_y': max(list(self.player.participant.vars['problems'][2]['AssetA']) + list(self.player.participant.vars['problems'][2]['AssetB'])),
+                'min_y': min(list(self.player.participant.vars['problems'][2]['AssetA']) + list(self.player.participant.vars['problems'][2]['AssetB']))
                 }
 
 

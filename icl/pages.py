@@ -74,5 +74,4 @@ page_sequence = [Instructions, Decision]
 #if Constants.instructions:
 #    page_sequence.insert(0, Instructions)
 
-print(page_sequence)
 #page_sequence.append(checker);

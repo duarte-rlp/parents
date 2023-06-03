@@ -12,7 +12,7 @@
                 let btn = document.getElementById("id_next");
                 btn.removeAttribute("disabled");
                 btn.click();
-                btn.setAttribute("disabled");
+                btn.setAttribute("disabled", true);
             } else {
                 if(in_answ == 'TURQUESA') {
                     let btn = document.getElementById("id_next");
@@ -34,6 +34,21 @@
                 in_answ.style.boxShadow = "none";
             }
         }
+
+        window.onload = function(){
+            // Agregar el enter para los inputs de números
+            let in_elements = document.getElementsByClassName("inText");
+            if(in_elements.length > 0) {
+                for(let i=0; i<in_elements.length; i++) {
+                    in_elements[i].addEventListener("keypress", function(event) {
+                        if (event.key === "Enter") {
+                            event.preventDefault();
+                            validateColor();
+                        }
+                    }
+                )}
+            }
+        };
     </script>
 {% endblock %}
 

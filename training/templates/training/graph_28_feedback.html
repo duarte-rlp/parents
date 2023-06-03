@@ -3,9 +3,9 @@
 
 {% block scripts %}
     
-    <script src="{% static 'js/highcharts.js' %}"></script>
-    <script src="{% static 'js/functions.js' %}"></script>
-    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+    <link href="{% static 'training/css/styles.css' %}" rel="stylesheet">
+    <script src="{% static 'training/js/highcharts.js' %}"></script>
+    <script src="{% static 'training/js/functions.js' %}"></script>
     
     <script>
 
@@ -176,22 +176,22 @@
 {% endif %}
                 usted
 {% if val_a < 0 %} 
-                perdería ${% widthratio pay_a 1 -1 %}
+                perdería <toMoney>{% widthratio pay_a 1 -1 %}</toMoney>
 {% else %}
-                ganaría ${% widthratio pay_a 1 1 %}
+                ganaría <toMoney>{% widthratio pay_a 1 1 %}</toMoney>
 {% endif %}
                 en la <i>Inversión A</i> y
 {% if val_b < 0 %} 
-                perdería ${% widthratio pay_b 1 -1 %}
+                perdería <toMoney>{% widthratio pay_b 1 -1 %}</toMoney>
 {% else %}
-                ganaría ${% widthratio pay_b 1 1 %}
+                ganaría <toMoney>{% widthratio pay_b 1 1 %}</toMoney>
 {% endif %}
                 en la <i>Inversión B</i> para un total de pago en 
 {% if payment < 0 %}
-<b>pérdida</b> de ${% widthratio payment 1 -1 %}.
+<b>pérdida</b> de <toMoney>{% widthratio payment 1 -1 %}</toMoney>.
 {% else %}
 <b>ganancia</b>
-{% endif %} de ${% widthratio payment 1 1 %}.
+{% endif %} de <toMoney>{% widthratio payment 1 1 %}</toMoney>.
                 
                 <br>
                 Recuerde que el computador seleccionará al azar dos cartas que estén en la misma posición frente <i>Inversión A</i> e <i>Inversión B</i>.

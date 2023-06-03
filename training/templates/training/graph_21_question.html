@@ -3,8 +3,9 @@
 
 {% block scripts %}
     
-    <script src="{% static 'js/highcharts.js' %}"></script>
-    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+    <link href="{% static 'training/css/styles.css' %}" rel="stylesheet">
+    <script src="{% static 'training/js/highcharts.js' %}"></script>
+    <script src="{% static 'training/js/functions.js' %}"></script>
     
     <script>
 
@@ -132,24 +133,47 @@
 
         function nextCard() {
             let btn = document.getElementById("id_next");
+            btn.removeAttribute("disabled");
             btn.click();
         }
 
         function verify() {
             let input_A = document.getElementById("in_A").value;
             let input_B = document.getElementById("in_B").value;
-            if (input_A == {{ data_a }}.filter(function(x){return x>0}).length) {
-                document.getElementById("A_answer").value = 1
+            if(((input_A == "") || (input_A == null) || (input_A.length == 0)) && ((input_B == "") || (input_B == null) || (input_B.length == 0))){
+                let btn = document.getElementById("id_next");
+                btn.removeAttribute("disabled");
+                btn.click();
+                btn.setAttribute("disabled", true);
             } else {
-                document.getElementById("A_answer").value = 0
+                if (input_A == {{ data_a }}.filter(function(x){return x>0}).length) {
+                    document.getElementById("A_answer").value = 1
+                } else {
+                    document.getElementById("A_answer").value = 0
+                }
+                if (input_B == {{ data_b }}.filter(function(x){return x>0}).length) {
+                    document.getElementById("B_answer").value = 1
+                } else {
+                    document.getElementById("B_answer").value = 0
+                }
+                nextCard();
             }
-            if (input_B == {{ data_b }}.filter(function(x){return x>0}).length) {
-                document.getElementById("B_answer").value = 1
-            } else {
-                document.getElementById("B_answer").value = 0
-            }
-            nextCard();
         }
+
+        window.onload = function(){
+            // Agregar el enter para los inputs de números
+            let in_elements = document.getElementsByClassName("inNumber");
+            if(in_elements.length > 0) {
+                for(let i=0; i<in_elements.length; i++) {
+                    in_elements[i].addEventListener("keypress", function(event) {
+                        if (event.key === "Enter") {
+                            event.preventDefault();
+                            verify();
+                        }
+                    }
+                )}
+            }
+        };
 
     </script>
 {% endblock %}
@@ -270,7 +294,7 @@
 
 <div class="div_btnNext">
     <input type="button" value="Revisar" class="btnNext" onclick="verify()">
-    <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next">Revisar</button>
+    <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next" disabled>Revisar</button>
 </div>
 
 {% endblock %}

@@ -1,0 +1,64 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block scripts %}
+    <link href="{% static 'checker1/css/styles.css' %}" rel="stylesheet">
+    <script src="{% static 'checker1/js/functions.js' %}"></script>
+
+    <script>
+        function validateColor() {
+            let in_answ = document.getElementById("in_color").value.trim().toUpperCase();
+            if((in_answ == "") || (in_answ == null)) {
+                let btn = document.getElementById("id_next");
+                btn.removeAttribute("disabled");
+                btn.click();
+                btn.setAttribute("disabled");
+            } else {
+                if(in_answ == 'TURQUESA') {
+                    let btn = document.getElementById("id_next");
+                    btn.removeAttribute("disabled");
+                    btn.click();
+                } else {
+                    let div_error = document.getElementById("div_error");
+                    div_error.style.display = "block";
+                    input_answer.style.boxShadow = "0px 0px 3px 1px rgba(255, 0, 0, 0.65)";
+                }
+            }
+        }
+
+        function restore_error(id_div) {
+            let div_error = document.getElementById("div_error");
+            if(div_error.style.display == "block") {
+                let in_answ = document.getElementById(id_div);
+                div_error.style.display = "none";
+                in_answ.style.boxShadow = "none";
+            }
+        }
+    </script>
+{% endblock %}
+
+{% block title %}
+    Parte 1 - Chequeo de Atención
+{% endblock %}
+
+{% block content %}
+
+La siguiente pregunta se refiere al siguiente problema. En cuestionarios como el nuestro, a veces hay participantes que no leen atentamente las preguntas y se limitan a hacer clic rápidamente en la encuesta. Esto significa que hay muchas respuestas aleatorias que comprometen los resultados de los estudios de investigación. Para demostrar que ha leído atentamente nuestras preguntas, responda a la siguiente pregunta con la palabra 'turquesa'. ¿Cuál es su color favorito?
+
+<br><br>
+
+<div class="div_operation">
+    <input type="text" id="in_color" class="inText" id="id_text" oninput="restore_error('id_text')" required>
+    <div class="error_msg" id="div_error">
+        Por favor lea atentamente la pregunta y responda de nuevo
+    </div>
+
+</div>
+
+<br>
+
+<div class="div_btnNext">
+    <input type="button" value="Siguiente" class="btnNext" onclick="validateColor()">
+    <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next" disabled>Siguiente</button>
+</div>
+{% endblock %}

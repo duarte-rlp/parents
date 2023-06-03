@@ -1,7 +1,3 @@
-token: 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
-
-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
---
 
 1. Generar apps por sección: organizar el software
 - Home

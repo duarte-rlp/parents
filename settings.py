@@ -15,7 +15,7 @@ SESSION_CONFIGS = [
     },
     {
         'name': 'graphs',
-        'display_name': 'Parte 2: Training graphs',
+        'display_name': 'Instrucciones de Decisión: Training graphs',
         'num_demo_participants': 1, 
         'app_sequence': ['home', 'training'],
     },

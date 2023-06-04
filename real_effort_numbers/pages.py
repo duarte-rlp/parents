@@ -197,4 +197,4 @@ random.shuffle(questions)
 for p in questions:
     page_sequence.append(p)
 
-page_sequence.append(Results)
+#page_sequence.append(Results)

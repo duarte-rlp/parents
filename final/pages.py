@@ -105,12 +105,12 @@ class final_01(Page):
         self.player.menor_pago = 0
         if selected_app.get('name_app') == 'choice':
             data_html['nombre_app'] = 'Choice'
-            data_html['nombre_formal'] = ''
+            data_html['nombre_formal'] = 'Loterias'
             data_html['dado'] = random.randint(1, 6)
             data_html['moneda'] = random.randint(0, 1) # 0 -> cara | 1 -> cruz
             data_html['eleccion'] = selected_app.get('row_'+str(data_html['dado']))
             if data_html['eleccion'] == 0:
-                self.player.pago_total = 30000 # colocar aquí el pago que si decide no tirar moneda
+                self.player.pago_total = 0 # colocar aquí el pago que si decide no tirar moneda -> Bogliacino, F., & Montealegre, F. (2020). Do negative economic shocks affect cognitive function, adherence to social norms and loss aversion?. 
                 self.player.pago_calculo = self.player.pago_total
                 data_html['pago_calculo'] = self.player.pago_total
             else:
@@ -128,7 +128,7 @@ class final_01(Page):
 
         elif selected_app.get('name_app') == 'allocations':
             data_html['nombre_app'] = 'Allocations'
-            data_html['nombre_formal'] = ''
+            data_html['nombre_formal'] = 'Inversiones'
             data_html['n_problema'] = random.randint(1, 3)
             data_html['tipo_problema'] = selected_app.get('problem_0'+str(data_html['n_problema'])+'_type')
             data_html['n_escenario'] = random.randint(1, 8)
@@ -183,14 +183,28 @@ class final_01(Page):
                 self.player.menor_pago = 1
             data_html['pago_total'] = self.player.pago_total
         elif selected_app.get('name_app') == 'icl':
-            data_html['nombre_app'] = 'ICL1'
+            data_html['nombre_app'] = 'Fija o Variable 1'
+            data_html['pago_total'] = self.participant.vars["icl_pago"]*100
+            data_html['pago_calculo'] = self.player.pago_total
+            self.player.pago_calculo = self.player.pago_total
+            if self.player.pago_total < 20000:
+                self.player.pago_total = 20000
+                data_html['menor_pago'] = 1
+                self.player.menor_pago = 1
+            data_html['pago_total'] = self.player.pago_total
         elif selected_app.get('name_app') == 'icl2':
-            data_html['nombre_app'] = 'ICL2'
+            data_html['nombre_app'] = 'Fija o Variable 2'
+            data_html['pago_total'] = self.participant.vars["icl_pago2"]*100
+            data_html['pago_calculo'] = self.player.pago_total
+            self.player.pago_calculo = self.player.pago_total
+            if self.player.pago_total < 20000:
+                self.player.pago_total = 20000
+                data_html['menor_pago'] = 1
+                self.player.menor_pago = 1
+            data_html['pago_total'] = self.player.pago_total
         return {
             'data': data_html
         }
-
-
 
 class ResultsWaitPage(WaitPage):
     pass

@@ -11,9 +11,9 @@ class graph_01(Page):
             'graphType': self.player.participant.vars['graphType'],
             'labels': Constants.anhos,
             'banano': Constants.banano,
-            'title_1': 'Banano',
+            'title_1': 'Cultivo 1', #Banano
             'canha': Constants.canha,
-            'title_2': 'Caña de azúcar'
+            'title_2': 'Cultivo 2'#Caña de azucar
         }
 
 

@@ -2,7 +2,7 @@ from otree.api import (
     models, widgets, BaseConstants, BaseSubsession, BaseGroup, BasePlayer,
     Currency as c, currency_range
 )
-from icl.config import *
+from icl2.config import *
 import random
 
 
@@ -138,9 +138,4 @@ class Player(BasePlayer):
             print("id", self.id_in_subsession)
             print("constante", Constants.ganador1)
             choice_to_pay = self.participant.vars['icl_choice_to_pay']
-
-            if self.id_in_subsession == Constants.ganador1 or self.id_in_subsession == Constants.ganador2:
-                self.pago = int(self.in_round(choice_to_pay).payoff)
-            else:
-                self.pago = 0
-            self.participant.vars['icl_pago'] = self.pago
+            self.participant.vars['icl_pago2'] = int(self.in_round(choice_to_pay).payoff)

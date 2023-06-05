@@ -138,9 +138,9 @@ class Player(BasePlayer):
             print("id", self.id_in_subsession)
             print("constante", Constants.ganador1)
             choice_to_pay = self.participant.vars['icl_choice_to_pay']
+            self.participant.vars['icl_pago'] = int(self.in_round(choice_to_pay).payoff)
 
-            if self.id_in_subsession == Constants.ganador1 or self.id_in_subsession == Constants.ganador2:
-                self.pago = int(self.in_round(choice_to_pay).payoff)
-            else:
-                self.pago = 0
-            self.participant.vars['icl_pago'] = self.pago
+
+
+
+            

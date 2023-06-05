@@ -14,7 +14,7 @@
 
 {% block content %}
 
-De las aplicaciones posibles para pago la seleccionada fue <b>{{ data.nombre_app }}</b> usando los siguientes parámetros y cálculos:
+De las aplicaciones posibles para pago la seleccionada fue <b>{{ data.nombre_formal }}</b> usando los siguientes parámetros y cálculos:
 
 <br><br>
 
@@ -60,11 +60,11 @@ Dando un total de pago calculado <toMoney>{{ data.pago_calculo }}</toMoney>.
 
 {% elif data.nombre_app == 'ICL1' %}
 
-ICL1 - ICL1 - ICL1
+<p> En la actividad de <b>Fija o Variable 1</b> usted ganó <toMoney>{{ data.pago_total }}</toMoney>. </p>
 
 {% elif data.nombre_app == 'ICL2' %}
 
-ICL2 <br> ICL1 <br> ICL1
+<p> En la actividad de <b>Fija o Variable 2</b> usted ganó <toMoney>{{ data.pago_total }}</toMoney>. </p>
 
 {% endif %}
 

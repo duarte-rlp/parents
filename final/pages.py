@@ -189,7 +189,7 @@ class final_01(Page):
             data_html['pago_total'] = int(str(self.participant.vars["icl_pago"]*100).split(",")[0])
             data_html['pago_calculo'] = self.player.pago_total
             self.player.pago_calculo = self.player.pago_total
-            if self.player.pago_total < 20000
+            if self.player.pago_total < 20000:
                 self.player.pago_total = 20000
                 data_html['menor_pago'] = 1
                 self.player.menor_pago = 1

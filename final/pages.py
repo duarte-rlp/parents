@@ -94,9 +94,9 @@ class final_01(Page):
             elif name_app == 'allocations':
                 apps_in_game['allocations'] = p.__dict__
                 names_in_game.append('allocations')
-            elif name_app == 'choice':
-                apps_in_game['choice'] = p.__dict__
-                names_in_game.append('choice')
+#            elif name_app == 'choice':
+#                apps_in_game['choice'] = p.__dict__
+#                names_in_game.append('choice')
         random.shuffle(names_in_game)
         n_app = random.randint(0, len(names_in_game)-1)
         selected_app = apps_in_game.get(names_in_game[n_app])

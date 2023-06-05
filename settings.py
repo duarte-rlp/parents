@@ -78,7 +78,7 @@ LANGUAGE_CODE = 'es'
 REAL_WORLD_CURRENCY_CODE = 'COP'
 USE_POINTS = False
 
-ADMIN_USERNAME = 'admin'
+ADMIN_USERNAME = 'rafael'
 # for security, best to set admin password in an environment variable
 ADMIN_PASSWORD = environ.get('OTREE_ADMIN_PASSWORD')
 

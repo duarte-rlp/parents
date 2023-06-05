@@ -5,7 +5,7 @@ SESSION_CONFIGS = [
         'name': 'test',
         'display_name': 'Test',
         'num_demo_participants': 1, 
-        'app_sequence': ['home','real_effort_numbers', 'icl', 'training', 'allocations','icl2','choice', 'real', 'survey'],
+        'app_sequence': ['home','real_effort_numbers', 'icl','training', 'allocations','icl2','choice', 'real', 'survey', 'final'],
     },
     {
         'name': 'math_operations',
@@ -15,7 +15,7 @@ SESSION_CONFIGS = [
     },
     {
         'name': 'graphs',
-        'display_name': 'Instrucciones de Decisión: Training graphs',
+        'display_name': 'Instrucciones de Inversión: Training graphs',
         'num_demo_participants': 1, 
         'app_sequence': ['home', 'training'],
     },

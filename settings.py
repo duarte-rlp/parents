@@ -91,4 +91,5 @@ INSTALLED_APPS = ['otree']
 
 PARTICIPANT_FIELDS = ['graphType']
 
-DEBUG=True
+DEBUG=False
+

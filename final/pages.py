@@ -183,8 +183,10 @@ class final_01(Page):
                 self.player.menor_pago = 1
             data_html['pago_total'] = self.player.pago_total
         elif selected_app.get('name_app') == 'icl':
+            data_html['nombre_app'] = 'ICL1'
+            data_html['nombre_formal'] = 'Inversiones'
             data_html['nombre_app'] = 'Fija o Variable 1'
-            data_html['pago_total'] = self.participant.vars["icl_pago"]*100
+            data_html['pago_total'] = int(str(self.participant.vars["icl_pago"]*100).split(",")[0])
             data_html['pago_calculo'] = self.player.pago_total
             self.player.pago_calculo = self.player.pago_total
             if self.player.pago_total < 20000:
@@ -193,8 +195,9 @@ class final_01(Page):
                 self.player.menor_pago = 1
             data_html['pago_total'] = self.player.pago_total
         elif selected_app.get('name_app') == 'icl2':
-            data_html['nombre_app'] = 'Fija o Variable 2'
-            data_html['pago_total'] = self.participant.vars["icl_pago2"]*100
+            data_html['nombre_app'] = 'ICL2'
+            data_html['nombre_formal'] = 'Fija o Variable 2'
+            data_html['pago_total'] = int(str(self.participant.vars["icl_pago2"]*100).split(",")[0])
             data_html['pago_calculo'] = self.player.pago_total
             self.player.pago_calculo = self.player.pago_total
             if self.player.pago_total < 20000:

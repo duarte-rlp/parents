@@ -38,6 +38,12 @@ $(document).ready(function () {
     let elements = document.getElementsByTagName("toMoney");
     for(let j=0; j<elements.length; j++) {
         let num = Number(elements[j].innerHTML);
-        elements[j].innerHTML = "$" + num.toLocaleString('es-CO').toString();
+        console.log('num', num);
+        if (num < 0) {
+            num = num * -1;
+            elements[j].innerHTML = "-$" + num.toLocaleString('es-CO').toString();
+        }else {
+            elements[j].innerHTML = "$" + num.toLocaleString('es-CO').toString();
+        }
     }
 });

@@ -512,6 +512,6 @@ page_sequence = [
     instruc_02,
     graph_26,
     graph_27,
-    graph_28_question,
-    graph_28_feedback
+#    graph_28_question,
+#    graph_28_feedback
     ]

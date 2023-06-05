@@ -209,12 +209,16 @@ class final_01(Page):
             'data': data_html
         }
 
-class ResultsWaitPage(WaitPage):
-    pass
+class results(Page):
+    def is_displayed(self):
+        return self.subsession.round_number == 1
+       
+    def vars_for_template(self): 
+        return {
+            "identificador" : self.participant.vars['identificador'],
+            "pago_total" : self.player.pago_total
+        }
 
 
-class Results(Page):
-    pass
 
-
-page_sequence = [final_01]
+page_sequence = [final_01, results]

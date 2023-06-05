@@ -2,12 +2,25 @@
 {% load otree static %}
 
 {% block title %}
-    Page title
+    Muchas gracias por participar.
 {% endblock %}
 
 {% block content %}
 
-    {% next_button %}
+<p><b>Por favor lea cuidadosamente la información en esta página 
+    y siga correctamente las instrucciones al final de la misma.</b></p>
+
+<p>Usted ganó en total {{pago_total}} </p>
+
+<p><b>Instrucciones de pago</b></p>
+<p> <b>1.</b> Levante la mano y cuando la instructora se acerque informele que ya terminó:</p>
+
+
+<p><b>2.</b> Escriba en un papel su código de participante, el número de su equipo y su ganancia total.  </p>
+<h3 class="text-center text-danger mx-auto d-block w-25 border border-4">{{ identificador }}</h3><br>
+
+<p>Gracias</p>
+
 {% endblock %}
 
 

@@ -85,13 +85,13 @@ class final_01(Page):
         names_in_game = []
         for p in players:
             name_app = p.__dict__.get('name_app')
-            if name_app == 'icl':
-                apps_in_game['icl'] = p.__dict__
-                names_in_game.append('icl')
-            elif name_app == 'icl2':
-                apps_in_game['icl2'] = p.__dict__
-                names_in_game.append('icl2')
-            elif name_app == 'allocations':
+#            if name_app == 'icl':
+#                apps_in_game['icl'] = p.__dict__
+#                names_in_game.append('icl')
+#            elif name_app == 'icl2':
+#                apps_in_game['icl2'] = p.__dict__
+#                names_in_game.append('icl2')
+            if name_app == 'allocations':
                 apps_in_game['allocations'] = p.__dict__
                 names_in_game.append('allocations')
 #            elif name_app == 'choice':
@@ -105,7 +105,7 @@ class final_01(Page):
         self.player.menor_pago = 0
         if selected_app.get('name_app') == 'choice':
             data_html['nombre_app'] = 'Choice'
-            data_html['nombre_formal'] = 'Loterias'
+            data_html['nombre_formal'] = 'Actividad 4'
             data_html['dado'] = random.randint(1, 6)
             data_html['moneda'] = random.randint(0, 1) # 0 -> cara | 1 -> cruz
             data_html['eleccion'] = selected_app.get('row_'+str(data_html['dado']))
@@ -128,7 +128,7 @@ class final_01(Page):
 
         elif selected_app.get('name_app') == 'allocations':
             data_html['nombre_app'] = 'Allocations'
-            data_html['nombre_formal'] = 'Inversiones'
+            data_html['nombre_formal'] = 'Actividad 2'
             data_html['n_problema'] = random.randint(1, 3)
             data_html['tipo_problema'] = selected_app.get('problem_0'+str(data_html['n_problema'])+'_type')
             data_html['n_escenario'] = random.randint(1, 8)
@@ -184,8 +184,7 @@ class final_01(Page):
             data_html['pago_total'] = self.player.pago_total
         elif selected_app.get('name_app') == 'icl':
             data_html['nombre_app'] = 'ICL1'
-            data_html['nombre_formal'] = 'Inversiones'
-            data_html['nombre_app'] = 'Fija o Variable 1'
+            data_html['nombre_formal'] = 'Actividad 1'
             data_html['pago_total'] = int(str(self.participant.vars["icl_pago"]*100).split(",")[0])
             data_html['pago_calculo'] = self.player.pago_total
             self.player.pago_calculo = self.player.pago_total
@@ -196,7 +195,7 @@ class final_01(Page):
             data_html['pago_total'] = self.player.pago_total
         elif selected_app.get('name_app') == 'icl2':
             data_html['nombre_app'] = 'ICL2'
-            data_html['nombre_formal'] = 'Fija o Variable 2'
+            data_html['nombre_formal'] = 'Actividad 3'
             data_html['pago_total'] = int(str(self.participant.vars["icl_pago2"]*100).split(",")[0])
             data_html['pago_calculo'] = self.player.pago_total
             self.player.pago_calculo = self.player.pago_total

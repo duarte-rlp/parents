@@ -6,6 +6,9 @@ import otree
 import random
 import pandas as pd
 
+data_html = {}
+data_html['pago_total'] = -1000
+
 # Problema de -50%
 problem_01 = pd.DataFrame({
         'Col_A': [
@@ -85,22 +88,21 @@ class final_01(Page):
         names_in_game = []
         for p in players:
             name_app = p.__dict__.get('name_app')
-#            if name_app == 'icl':
-#                apps_in_game['icl'] = p.__dict__
-#                names_in_game.append('icl')
-#            elif name_app == 'icl2':
-#                apps_in_game['icl2'] = p.__dict__
-#                names_in_game.append('icl2')
+            if name_app == 'icl':
+                apps_in_game['icl'] = p.__dict__
+                names_in_game.append('icl')
+            elif name_app == 'icl2':
+                apps_in_game['icl2'] = p.__dict__
+                names_in_game.append('icl2')
             if name_app == 'allocations':
                 apps_in_game['allocations'] = p.__dict__
                 names_in_game.append('allocations')
-#            elif name_app == 'choice':
-#                apps_in_game['choice'] = p.__dict__
-#                names_in_game.append('choice')
+            elif name_app == 'choice':
+                apps_in_game['choice'] = p.__dict__
+                names_in_game.append('choice')
         random.shuffle(names_in_game)
         n_app = random.randint(0, len(names_in_game)-1)
         selected_app = apps_in_game.get(names_in_game[n_app])
-        data_html = {}
         data_html['menor_pago'] = 0
         self.player.menor_pago = 0
         if selected_app.get('name_app') == 'choice':
@@ -124,8 +126,6 @@ class final_01(Page):
                     self.player.pago_total = 20000
                     data_html['menor_pago'] = 1
                     self.player.menor_pago = 1
-            data_html['pago_total'] = self.player.pago_total
-
         elif selected_app.get('name_app') == 'allocations':
             data_html['nombre_app'] = 'Allocations'
             data_html['nombre_formal'] = 'Actividad 2'
@@ -196,14 +196,7 @@ class final_01(Page):
         elif selected_app.get('name_app') == 'icl2':
             data_html['nombre_app'] = 'ICL2'
             data_html['nombre_formal'] = 'Actividad 3'
-            data_html['pago_total'] = int(str(self.participant.vars["icl_pago2"]*100).split(",")[0])
-            data_html['pago_calculo'] = self.player.pago_total
-            self.player.pago_calculo = self.player.pago_total
-            if self.player.pago_total < 20000:
-                self.player.pago_total = 20000
-                data_html['menor_pago'] = 1
-                self.player.menor_pago = 1
-            data_html['pago_total'] = self.player.pago_total
+            data_html['pago_total'] = selected_app.get('pago')
         return {
             'data': data_html
         }
@@ -215,7 +208,7 @@ class results(Page):
     def vars_for_template(self): 
         return {
             "identificador" : self.participant.vars['identificador'],
-            "pago_total" : self.player.pago_total
+            "pago_total" : data_html.get('pago_total')
         }
 
 

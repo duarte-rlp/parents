@@ -256,14 +256,30 @@
 <br>
 
 <ol>
-<li style="margin-top: 10px;"> Si una de las inversiones tiene una rentabilidad del 20% ¿Cuál es la rentabilidad más probable de la otra inversión?</li>
+<li style="margin-top: 10px;"> Si la inversión
+{% if assetA == 'Col_A' %}
+A
+{% else %}
+B
+{% endif %}
+ tiene una rentabilidad del 20% ¿Cuál es la rentabilidad más probable de la inversión
+{% if assetA == 'Col_A' %}
+B
+{% else %}
+A
+{% endif %}?</li>
 <div class="card_table" id="h-slider-div" style="text-align: center; margin-top: 10px;">
     <table class="table_question">
         <tr>
             <td style="width: 25%;"></td>
             <td class="cell_question" style="width: 25%;">
                 <div id="text01">
-                    Retorno Inversión B:
+                    Retorno Inversión 
+{% if assetA == 'Col_A' %}
+B:
+{% else %}
+A:
+{% endif %}
                 </div>
             </td>
             <td class="cell_input" style="width: 25%;">
@@ -276,7 +292,13 @@
     </table>
 </div>
 
-<li style="margin-top: 10px;"> Si en una de las inversiones, la rentabilidad 
+<li style="margin-top: 10px;"> Si en la inversión
+{% if assetA == 'Col_A' %}
+B
+{% else %}
+A
+{% endif %}
+ la rentabilidad 
 {% if assetA_order == 'Decreasing' %}
     disminuye
 {% else %}
@@ -296,15 +318,20 @@ al
         19%
     {% endif %}
 {% endif %}
-¿Qué es más probable que suceda con la rentabilidad de la otra inversión?
+¿Qué es más probable que suceda con la rentabilidad de la inversión
+{% if assetA == 'Col_A' %}
+A
+{% else %}
+B
+{% endif %}?
 </li>
 <div class="card_table" id="h-slider-div" style="text-align: left; margin-top: 10px;">
     <input type="radio" id="q2_o1" name="problem_03_expect_return_b" value="1" class="items01">
     <label for="q2_o1" id="l_q2_o1" class="items01"> Disminuya a 
 {% if assetA == 'Col_A' %}
-    -9%
-{% else %}
     -10%
+{% else %}
+    -9%
 {% endif %}</label>
     <br>
     <input type="radio" id="q2_o2" name="problem_03_expect_return_b" value="2" class="items01">
@@ -313,9 +340,9 @@ al
     <input type="radio" id="q2_o3" name="problem_03_expect_return_b" value="3" class="items01">
     <label for="q2_o3" id="l_q2_o3" class="items01">Aumente a
 {% if assetA == 'Col_A' %}
-    20%
-{% else %}
     19%
+{% else %}
+    20%
 {% endif %}</label>
     <input type="hidden" name="check_radio_01" value="0" id="check_radio_01"/>
 </div>

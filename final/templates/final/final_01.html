@@ -14,67 +14,60 @@
 
 {% block content %}
 
-De las aplicaciones posibles para pago la seleccionada fue <b>{{ data.nombre_formal }}</b> usando los siguientes parámetros y cálculos:
-
-<br><br>
+De las aplicaciones posibles para pago, la seleccionada fue la <b>{{ data.nombre_formal }}</b>.
 
 {% if data.nombre_app == 'Choice' %}
 
-Se lanza el dado y se obtiene el número <b>{{ data.dado }}</b> correspondiente a la fila de igual número.
+Se seleccionó al azar la fila <b>{{ data.dado }}</b>. 
 
 <br><br>
 
 En esta fila usted seleccionó
     {% if data.eleccion == 0 %}
-        no tirar la moneda, por lo cual su pago calculado es <b><toMoney>{{ data.pago_calculo }}</toMoney></b>.
+        "No tirar la moneda", por lo cual su pago es <b><toMoney>{{ data.pago_calculo }}</toMoney></b>.
     {% else %}
-        tirar la moneda, la cual sale en
+        "Tirar la moneda", la cual sale en
             {% if data.moneda == 0 %}
-                <b>cara</b>, por lo cual su pago calculado es <b><toMoney>{{ data.pago_calculo }}</toMoney></b>.
+                <b>cara</b>, por lo cual su pago es <b><toMoney>{{ data.pago_calculo }}</toMoney></b>.
             {% else %}
-                <b>cruz</b>, por lo cual su pago calculado es <b><toMoney>{{ data.pago_calculo }}</toMoney></b>.
+                <b>cruz</b>, por lo cual su pago es <b><toMoney>{{ data.pago_calculo }}</toMoney></b>.
             {% endif %}
     {% endif %}
 
 {% elif data.nombre_app == 'Allocations' %}
 
-En donde de los 3 problemas posibles se ha seleccionado el problema del tipo <b>{{ data.tipo_problema }}</b>.
-
+En esta actividad se seleccionó al azar el <b>Problema {{ data.n_problema }}</b> y la carta en la posición <b>{{ data.n_escenario }}</b>.
 <br><br>
+Entonces, los retornos fueron los siguientes: 
+<ul>
+<li><i>Inversión A</i>: <b>{{ data.retorno_a }}</b></li>
+<li><i>Inversión B</i>: <b>{{ data.retorno_b }}</b></li>
+</ul>
 
-De los datos graficados se selecciona aleatoriamente el escenario <b>{{ data.n_escenario }}</b> en donde la <i>Inversión A</i> obtiene un retorno del <b>{{ data.retorno_a }}</b> mientras la <i>Inversión B</i> obtiene un retorno del <b>{{ data.retorno_b }}</b>.
+De los <toMoney>100000</toMoney> usted asignó a la <i>Inversión A</i> <b><toMoney>{{ data.inversion_a }}</toMoney></b> y la <i>Inversión B</i> <b><toMoney>{{ data.inversion_b }}</toMoney></b>. Entonces su pago total sería <b><toMoney>{{ data.pago_calculo }}</toMoney></b>.
 
-<br><br>
-
-Teniendo en cuenta que usted seleccionó que de los <toMoney>100000</toMoney> colocar <b><toMoney>{{ data.inversion_a }}</toMoney></b> en la <i>Inversión A</i> y <b><toMoney>{{ data.inversion_b }}</toMoney></b> en la <i>Inversión B</i>, haciendo los cálculos:
-
-<br><br>
-
-<toMoney>{{ data.inversion_a }}</toMoney> x {{ data.retorno_a }} = <toMoney>{{ data.calc1 }}</toMoney>
-<br>
-<toMoney>{{ data.inversion_b }}</toMoney> x {{ data.retorno_b }} = <toMoney>{{ data.calc2 }}</toMoney>
-
-<br><br>
-
-Dando un total de pago calculado <toMoney>{{ data.pago_calculo }}</toMoney>.
+<ul>
+    <li><i>Inversión A</i>: <toMoney>{{ data.inversion_a }}</toMoney> x {{ data.retorno_a }} = <b><toMoney>{{ data.calc1 }}</toMoney></li></b>
+    <li><i>Inversión B</i>: <toMoney>{{ data.inversion_b }}</toMoney> x {{ data.retorno_b }} = <b><toMoney>{{ data.calc2 }}</toMoney></li></b>
+</ul>
 
 {% elif data.nombre_app == 'ICL1' %}
-
-<p> En la actividad de <b>Fija o Variable 1</b> usted ganó <toMoney>{{ data.pago_total }}</toMoney>. </p>
+<br><br>
+<p> En la <b>{{ data.nombre_formal }}</b> usted ganó <toMoney>{{ data.pago_total }}</toMoney>. </p>
 
 {% elif data.nombre_app == 'ICL2' %}
-
-<p> En la actividad de <b>Fija o Variable 2</b> usted ganó <toMoney>{{ data.pago_total }}</toMoney>. </p>
+<br><br>
+<p> En la <b>{{ data.nombre_formal }}</b> usted ganó <toMoney>{{ data.pago_total }}</toMoney>. </p>
 
 {% endif %}
 
-<div style="margin-top: 10px; color: red; text-align: center;">
+<div style="margin-top: 10px; text-align: left;">
 {% if data.menor_pago == 1%}
-Originalmente el pago calculado era negativo o menor al mínimo <i>(<toMoney>{{ data.pago_calculo }}</toMoney>)</i> reajustándose al valor de <toMoney>{{ data.pago_total }}</toMoney> .
+Dado que su pago total es menor que el mínimo usted recibirá <b><toMoney>{{ data.pago_total }}</toMoney></b>
 {% endif %}
 </div>
 
-<br><br>
+<br>
 
 <div class="div_btnNext">
     {% next_button %}

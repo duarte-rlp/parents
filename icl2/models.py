@@ -47,6 +47,7 @@ class Player(BasePlayer):
     choice = models.StringField()
     switching_row = models.IntegerField()
     pago = models.IntegerField()
+    choice_to_pay = models.IntegerField()
 
     name_app = models.StringField(default = 'icl2')
 
@@ -139,3 +140,4 @@ class Player(BasePlayer):
             print("constante", Constants.ganador1)
             choice_to_pay = self.participant.vars['icl_choice_to_pay2']
             self.participant.vars['icl_pago2'] = int(self.in_round(choice_to_pay).payoff)
+            self.pago = int(self.in_round(choice_to_pay).payoff)*100

@@ -12,12 +12,10 @@
             $('.radios').click(
                 function (event) {
                     let elements = document.querySelectorAll('.radios');
-                    console.log(elements);
                     let n_checked = 0;
                     for(let i=0; i<elements.length; i++) {
                         n_checked += elements[i].checked;
                     }
-                    console.log(n_checked);
                     if(n_checked == 6) {
                         let next_button = document.getElementsByClassName('otree-btn-next');
                         next_button[0].style.cssText += 'display: block !important; margin: 0 auto;';
@@ -31,7 +29,6 @@
             let elements = document.getElementsByTagName("toMoney");
             for(let j=0; j<elements.length; j++) {
                 let num = Number(elements[j].innerHTML);
-                console.log('num', num);
                 if (num < 0) {
                     num = num * -1;
                     elements[j].innerHTML = "-$" + num.toLocaleString('es-CO').toString();

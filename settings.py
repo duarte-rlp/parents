@@ -47,7 +47,7 @@ SESSION_CONFIGS = [
         'name': 'final',
         'display_name': 'Test Payoffs',
         'num_demo_participants': 1, 
-        'app_sequence': ['home', 'choice', 'final'],
+        'app_sequence': ['home', 'icl', 'icl2', 'choice', 'final'],
     },
 ]
 
@@ -91,4 +91,4 @@ INSTALLED_APPS = ['otree']
 
 PARTICIPANT_FIELDS = ['graphType']
 
-DEBUG=False
+DEBUG=True

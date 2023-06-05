@@ -23,8 +23,8 @@ class Subsession(BaseSubsession):
     def creating_session(self):
         if self.round_number == 1:
             for p in self.get_players():
-                p.participant.vars['icl_sure_payoffs'] = [c(Constants.sure_payoff)]
-                p.participant.vars['icl_switching_row'] = 2 ** Constants.num_choices
+                p.participant.vars['icl_sure_payoffs2'] = [c(Constants.sure_payoff)]
+                p.participant.vars['icl_switching_row2'] = 2 ** Constants.num_choices
 
 
 # ******************************************************************************************************************** #
@@ -57,20 +57,20 @@ class Player(BasePlayer):
 
         # add current round's sure payoff to model field
         # ------------------------------------------------------------------------------------------------------------
-        self.sure_payoff = self.participant.vars['icl_sure_payoffs'][self.round_number - 1]
+        self.sure_payoff = self.participant.vars['icl_sure_payoffs2'][self.round_number - 1]
 
         # determine sure payoff for next choice and append list of sure payoffs
         # ------------------------------------------------------------------------------------------------------------
         if not self.round_number == Constants.num_choices:
 
             if self.choice == 'A':
-                self.participant.vars['icl_sure_payoffs'].append(
-                    c(self.participant.vars['icl_sure_payoffs'][self.round_number - 1]
+                self.participant.vars['icl_sure_payoffs2'].append(
+                    c(self.participant.vars['icl_sure_payoffs2'][self.round_number - 1]
                     + Constants.delta / 2 ** (self.round_number - 1))
                 )
             elif self.choice == 'B':
-                self.participant.vars['icl_sure_payoffs'].append(
-                    c(self.participant.vars['icl_sure_payoffs'][self.round_number - 1]
+                self.participant.vars['icl_sure_payoffs2'].append(
+                    c(self.participant.vars['icl_sure_payoffs2'][self.round_number - 1]
                     - Constants.delta / 2 ** (self.round_number - 1))
                 )
             else:
@@ -81,10 +81,10 @@ class Player(BasePlayer):
     def update_switching_row(self):
 
         if self.choice == 'B':
-            self.participant.vars['icl_switching_row'] -= 2 ** (Constants.num_choices - self.round_number)
+            self.participant.vars['icl_switching_row2'] -= 2 ** (Constants.num_choices - self.round_number)
 
         elif self.choice == 'I':
-            self.participant.vars['icl_switching_row'] /= 2
+            self.participant.vars['icl_switching_row2'] /= 2
 
     # set payoffs
     # ----------------------------------------------------------------------------------------------------------------
@@ -99,9 +99,9 @@ class Player(BasePlayer):
 
             # randomly determine which choice to pay
             # --------------------------------------------------------------------------------------------------------
-            completed_choices = len(self.participant.vars['icl_sure_payoffs'])
-            self.participant.vars['icl_choice_to_pay'] = random.randint(1, completed_choices)
-            choice_to_pay = self.participant.vars['icl_choice_to_pay']
+            completed_choices = len(self.participant.vars['icl_sure_payoffs2'])
+            self.participant.vars['icl_choice_to_pay2'] = random.randint(1, completed_choices)
+            choice_to_pay = self.participant.vars['icl_choice_to_pay2']
 
             # random draw to determine whether to pay the "high" or "low" lottery outcome
             # --------------------------------------------------------------------------------------------------------
@@ -120,15 +120,15 @@ class Player(BasePlayer):
                     if self.in_round(choice_to_pay).random_draw <= Constants.probability \
                     else Constants.lottery_lo
             elif self.in_round(choice_to_pay).payoff_relevant == 'B':
-                self.in_round(choice_to_pay).payoff = self.participant.vars['icl_sure_payoffs'][choice_to_pay - 1]
+                self.in_round(choice_to_pay).payoff = self.participant.vars['icl_sure_payoffs2'][choice_to_pay - 1]
 
             # set payoff as global variable
             # --------------------------------------------------------------------------------------------------------
-            self.participant.vars['icl_payoff'] = self.in_round(choice_to_pay).payoff
+            self.participant.vars['icl_payoff2'] = self.in_round(choice_to_pay).payoff
 
             # implied switching row
             # --------------------------------------------------------------------------------------------------------
-            self.in_round(choice_to_pay).switching_row = self.participant.vars['icl_switching_row']
+            self.in_round(choice_to_pay).switching_row = self.participant.vars['icl_switching_row2']
 
     def set_ganador_pago(self):
         current_round = self.subsession.round_number
@@ -137,5 +137,5 @@ class Player(BasePlayer):
         if current_round == Constants.num_rounds or current_choice == 'I':
             print("id", self.id_in_subsession)
             print("constante", Constants.ganador1)
-            choice_to_pay = self.participant.vars['icl_choice_to_pay']
+            choice_to_pay = self.participant.vars['icl_choice_to_pay2']
             self.participant.vars['icl_pago2'] = int(self.in_round(choice_to_pay).payoff)

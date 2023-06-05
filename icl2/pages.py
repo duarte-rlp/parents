@@ -55,7 +55,7 @@ class Decision(Page):
             'page':        page,
             'total':       total,
             'progress':    progress,
-            'sure_payoff': "$"+format(int(str((self.participant.vars['icl_sure_payoffs'][page - 1])*100).split(",")[0]), ',d')
+            'sure_payoff': "$"+format(int(str((self.participant.vars['icl_sure_payoffs2'][page - 1])*100).split(",")[0]), ',d')
         }
 
     # set sure payoffs for next choice, payoffs, and switching row

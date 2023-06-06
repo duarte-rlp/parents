@@ -86,7 +86,7 @@ class Player(BasePlayer):
 
     p_children = models.IntegerField(min=0, max=20, label="7. Número de hijos (Puede escribir '0' si no tiene hijos)")
 
-    occupation = models.IntegerField(
+    ocu_father = models.IntegerField(
     choices=[
         [1,'Empleado con cargo como director o gerente general'],
         [2,'Empleado de nivel auxiliar o administrativo'],
@@ -103,7 +103,7 @@ class Player(BasePlayer):
         [13,'Otra actividad u ocupación'],
     ], label="8. ¿Cuál es su ocupación u oficio?")
 
-    p_risk = models.IntegerField(min=0, max=10, label="9. En una escala del 0 al 10, donde: 0 - significa que no esta dispuesto(a) a tomar riesgos en lo absoluto 10 - significa que esta muy dispuesto(a) a tomar riesgos  Por favor, díga, en general ¿Qué tan dispuesto (a) está o no está usted a tomar riesgos en decisiones financieras?")
+#    p_risk = models.IntegerField(min=0, max=10, label="9. En una escala del 0 al 10, donde: 0 - significa que no esta dispuesto(a) a tomar riesgos en lo absoluto 10 - significa que esta muy dispuesto(a) a tomar riesgos  Por favor, díga, en general ¿Qué tan dispuesto (a) está o no está usted a tomar riesgos en decisiones financieras?")
 
 
 

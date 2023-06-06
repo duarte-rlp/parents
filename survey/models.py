@@ -65,12 +65,12 @@ class Player(BasePlayer):
 
     p_inc = models.IntegerField(
     choices=[
-        [1,'Menos de $ 1.000.000'],
-        [2,'Entre $ 1.000.000 - $ 1.500.000'],
-        [3,'Entre $ 1.500.000 - $ 2.000.000'],
-        [4,'Entre $ 2.000.000 - $ 4.000.000'],
-        [5,'Entre $ 4.000.000 - $ 8.000.000'],
-        [6,'Mayor a $ 8.000.000'],
+        [1,'Menos de $ 300.000'],
+        [2,'Entre $ 300.000 - $ 600.000'],
+        [3,'Entre $ 600.000 - $ 900.000'],
+        [4,'Entre $ 900.000 - $ 1.200.000'],
+        [5,'Entre $ 1.200.000 - $ 1.500.000'],
+        [6,'Mayor a $ 1.500.000'],
     ], label="5.1 ¿Cuál es el rango de su ingreso mensual?")
 
     p_inc1 = models.CurrencyField(min=c(0), max=c(100000000), label="5.2. ¿Cuánto es su ingreso mensual?")
@@ -86,7 +86,7 @@ class Player(BasePlayer):
 
     p_children = models.IntegerField(min=0, max=20, label="7. Número de hijos (Puede escribir '0' si no tiene hijos)")
 
-    ocu_father = models.IntegerField(
+    occupation = models.IntegerField(
     choices=[
         [1,'Empleado con cargo como director o gerente general'],
         [2,'Empleado de nivel auxiliar o administrativo'],
@@ -101,7 +101,10 @@ class Player(BasePlayer):
         [11,'Pensionado'],
         [12,'Desempleado'],
         [13,'Otra actividad u ocupación'],
-    ], label="8. Ocupación u oficio del padre")
+    ], label="8. ¿Cuál es su ocupación u oficio?")
+
+    p_risk = models.IntegerField(min=0, max=10, label="9. En una escala del 0 al 10, donde: 0 - significa que no esta dispuesto(a) a tomar riesgos en lo absoluto 10 - significa que esta muy dispuesto(a) a tomar riesgos  Por favor, díga, en general ¿Qué tan dispuesto (a) está o no está usted a tomar riesgos en decisiones financieras?")
+
 
 
 

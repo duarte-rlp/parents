@@ -32,6 +32,7 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    pago_total = models.IntegerField()
+    activity_pay = models.StringField()
     menor_pago = models.IntegerField()
     pago_calculo = models.IntegerField()
+    pago_real = models.IntegerField()

@@ -73,4 +73,9 @@ Dado que su pago total es menor que el mínimo usted recibirá <b><toMoney>{{ da
     {% next_button %}
 </div>
 
+<input type="hidden" name="activity_pay" id="activity_pay" value="{{ data.nombre_app }}">
+<input type="hidden" name="menor_pago" id="menor_pago" value="{{ data.menor_pago }}">
+<input type="hidden" name="pago_calculo" id="pago_calculo" value="{{ data.pago_calculo }}">
+<input type="hidden" name="pago_real" id="pago_real" value="{{ data.pago_total }}">
+
 {% endblock %}

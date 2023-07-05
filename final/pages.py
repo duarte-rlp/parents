@@ -82,6 +82,8 @@ problem_03 = pd.DataFrame({
         }, index = [1, 2, 3, 4, 5, 6, 7, 8])
 
 class final_01(Page):
+    form_model = 'player'
+    form_fields = ['activity_pay', 'menor_pago', 'pago_calculo', 'pago_real']
     def vars_for_template(self):
         players = self.player.participant.get_players()
         apps_in_game = {}

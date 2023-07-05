@@ -21,6 +21,7 @@ class Constants(BaseConstants):
     name_in_url = 'checker1'
     players_per_group = None
     num_rounds = 1
+    colors_checker = ['color_1', 'color_2', 'color_3', 'turquesa']
 
 
 class Subsession(BaseSubsession):
@@ -32,4 +33,7 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    pass
+    cnt_mistakes = models.IntegerField()
+    mistakes_checker = models.StringField()
+    time_checker = models.StringField()
+    response_checker = models.StringField()

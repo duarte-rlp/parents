@@ -6,10 +6,20 @@
     <script src="{% static 'real_effort_numbers/js/functions.js' %}"></script>
 
     <script>
+        var start;
+        var cnt_errors = 0;
+
         function validate() {
             let in_answ = document.getElementById("id_p3");
-            validateAnswer(in_answ, Number({{ answer }}));
+            let ele_cnt = document.getElementById("p3_cnt_mistakes");
+            let ele_mis = document.getElementById("p3_mistakes");
+            let ele_tim = document.getElementById("p3_time");
+            validateAnswer(in_answ, Number({{ answer }}), ele_cnt, ele_mis, ele_tim);
         }
+
+        window.onload = function(){
+            start = Date.now();
+        };
     </script>
 {% endblock %}
 
@@ -32,6 +42,10 @@
     </div>
 
 </div>
+
+<input type="hidden" name="p3_cnt_mistakes" value="" id="p3_cnt_mistakes">
+<input type="hidden" name="p3_mistakes" value="{ " id="p3_mistakes">
+<input type="hidden" name="p3_time" value="" id="p3_time">
 
 <div class="div_btnNext">
     <input type="button" value="Siguiente" class="btnNext" onclick="validate()">

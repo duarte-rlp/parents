@@ -277,3 +277,6 @@ tr.row_option:hover {
     margin-top: 0.25rem;
 }
 
+.radios {
+    margin: 0.5rem 0.4rem !important;
+}

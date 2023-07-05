@@ -1,5 +1,5 @@
 
-function validateAnswer(input_answer, answerTrue) {
+function validateAnswer(input_answer, answerTrue, ele_cnt, ele_mis, ele_tim) {
 	if((input_answer.value == "") || (input_answer.value == null)) {
 		let btn = document.getElementById("id_next");
 		btn.removeAttribute("disabled");
@@ -7,10 +7,17 @@ function validateAnswer(input_answer, answerTrue) {
 		btn.setAttribute("disabled", true);
 	} else {
 		if(input_answer.value == answerTrue) {
+			ele_cnt.value = cnt_errors;
+			ele_mis.value += "}";
+			ele_tim.value = Date.now() - start;
 			let btn = document.getElementById("id_next");
 			btn.removeAttribute("disabled");
 			btn.click();
 		} else {
+			cnt_errors += 1;
+			let time = Date.now() - start;
+			let add = cnt_errors.toString() + ": {\'answer\': " + input_answer.value + ", \'time\': " + time + "}, ";
+			ele_mis.value += add;
 			let div_error = document.getElementById("div_error");
 			div_error.style.display = "block";
 			input_answer.style.boxShadow = "0px 0px 3px 1px rgba(255, 0, 0, 0.65)";

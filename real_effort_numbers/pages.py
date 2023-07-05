@@ -16,7 +16,7 @@ class intro_math(Page):
 
 class p1(Page):
     form_model = "player"
-    form_fields = ["p1"]
+    form_fields = ["p1", "p1_cnt_mistakes", "p1_mistakes", "p1_time"]
 
     def vars_for_template(self):
         return {
@@ -31,7 +31,7 @@ class p1(Page):
 
 class p2(Page):
     form_model = "player"
-    form_fields = ["p2"]
+    form_fields = ["p2", "p2_cnt_mistakes", "p2_mistakes", "p2_time"]
 
     def vars_for_template(self):
         return {
@@ -46,7 +46,7 @@ class p2(Page):
 
 class p3(Page):
     form_model = "player"
-    form_fields = ["p3"]
+    form_fields = ["p3", "p3_cnt_mistakes", "p3_mistakes", "p3_time"]
 
     def vars_for_template(self):
         return {
@@ -61,7 +61,7 @@ class p3(Page):
 
 class p4(Page):
     form_model = "player"
-    form_fields = ["p4"]
+    form_fields = ["p4", "p4_cnt_mistakes", "p4_mistakes", "p4_time"]
 
     def vars_for_template(self):
         return {
@@ -76,7 +76,7 @@ class p4(Page):
 
 class p5(Page):
     form_model = "player"
-    form_fields = ["p5"]
+    form_fields = ["p5", "p5_cnt_mistakes", "p5_mistakes", "p5_time"]
 
     def vars_for_template(self):
         return {
@@ -91,7 +91,7 @@ class p5(Page):
 
 class p6(Page):
     form_model = "player"
-    form_fields = ["p6"]
+    form_fields = ["p6", "p6_cnt_mistakes", "p6_mistakes", "p6_time"]
 
     def vars_for_template(self):
         return {
@@ -106,7 +106,7 @@ class p6(Page):
 
 class p7(Page):
     form_model = "player"
-    form_fields = ["p7"]
+    form_fields = ["p7", "p7_cnt_mistakes", "p7_mistakes", "p7_time"]
 
     def vars_for_template(self):
         return {
@@ -121,7 +121,7 @@ class p7(Page):
 
 class p8(Page):
     form_model = "player"
-    form_fields = ["p8"]
+    form_fields = ["p8", "p8_cnt_mistakes", "p8_mistakes", "p8_time"]
 
     def vars_for_template(self):
         return {
@@ -136,7 +136,7 @@ class p8(Page):
 
 class p9(Page):
     form_model = "player"
-    form_fields = ["p9"]
+    form_fields = ["p9", "p9_cnt_mistakes", "p9_mistakes", "p9_time"]
 
     def vars_for_template(self):
         return {
@@ -151,7 +151,7 @@ class p9(Page):
 
 class p10(Page):
     form_model = "player"
-    form_fields = ["p10"]
+    form_fields = ["p10", "p10_cnt_mistakes", "p10_mistakes", "p10_time"]
 
     def vars_for_template(self):
         return {

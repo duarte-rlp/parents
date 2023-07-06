@@ -9,8 +9,10 @@
     
     <script>
 
+        var data = {{ data }};
+
         // Gráfica
-        Highcharts.chart('graph01', {
+        var graph = Highcharts.chart('graph01', {
             title: {
                 text: ''
             },
@@ -28,25 +30,46 @@
                 max: {{ max_y }} + 1
             },
             series: [{
-                type: "scatter",
-                animation: false,
-                data: [{
-                    x: 0,
-                    y: {{ data }},
-                    name: 'Carta 1'
-                    }],
+                animation: true,
+                data: [],
                 lineWidth: 1,
                 enableMouseTracking: true,
                 marker:{
                     enabled: true
                 },
                 color: 'blue',
-                name: 'Inversión A'
+                name: 'Inversión A',
+                dashStyle: 'Dash'
             }],
             legend: {
                 enabled: true
             }
         });
+
+        function add_point_graph() {
+            var cell = document.getElementById("a_1");
+            cell.innerHTML = data[0];
+            graph.series[0].addPoint({
+            x: 0,
+            y: data[0],
+            dataLabels: {
+                enabled: true,
+                format: '?',
+                rotation: -30,
+                y: -15,
+                style: {
+                    fontSize: '1rem',
+                    }
+                }
+            });
+            setTimeout(display_next_btn, 2000);
+        }
+
+        function display_next_btn() {
+            document.getElementById("div_btnNext").style.display = 'block';
+        }
+
+        setTimeout(add_point_graph, 0);
 
         function verify(val) {
             let input_test = document.getElementById("in_test01").value;
@@ -102,12 +125,12 @@
         <td class="cell_question">
             <div id="text01">
                 <b>Pregunta:</b> ¿Cuánto 
-                {% if data < 0 %}
+                {% if data.0 < 0 %}
                     perderá
                 {% else %}
                     ganará
                 {% endif %} 
-                si asigna <toMoney>1000</toMoney> a la <i>Inversión A</i> y sale una carta con el número {{ data }}?
+                si asigna <toMoney>1000</toMoney> a la <i>Inversión A</i> y sale una carta con el número {{ data.0 }}?
             </div>
         </td>
         <td class="cell_input">
@@ -126,14 +149,14 @@
         <table class="tabGraph">
             <tr>
                 <td class="cell_graphInv">Inversión A</td>
-                <td class="cell_graph">{{ data }}</td>
-                <td class="cell_graph"></td>
-                <td class="cell_graph"></td>
-                <td class="cell_graph"></td>
-                <td class="cell_graph"></td>
-                <td class="cell_graph"></td>
-                <td class="cell_graph"></td>
-                <td class="cell_graph"></td>
+                <td class="cell_graph" id="a_1"></td>
+                <td class="cell_graph" id="a_2"></td>
+                <td class="cell_graph" id="a_3"></td>
+                <td class="cell_graph" id="a_4"></td>
+                <td class="cell_graph" id="a_5"></td>
+                <td class="cell_graph" id="a_6"></td>
+                <td class="cell_graph" id="a_7"></td>
+                <td class="cell_graph" id="a_8"></td>
             </tr>
         </table>
     </div>
@@ -141,8 +164,8 @@
 
 <br>
 
-<div class="div_btnNext">
-    <input type="button" value="Revisar" class="btnNext" onclick="verify({{ data }})">
+<div class="div_btnNext" id="div_btnNext" style="display: none;">
+    <input type="button" value="Revisar" class="btnNext" onclick="verify({{ data.0 }})">
     <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next" disabled>Revisar</button>
 </div>
 

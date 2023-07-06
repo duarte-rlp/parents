@@ -8,9 +8,13 @@
     <script src="{% static 'training/js/functions.js' %}"></script>
     
     <script>
+        var cnt_cards = 1;
+        var data = {{ data }};
+        var cash_return;
+        var color_lbl;
 
         // Gráfica
-        Highcharts.chart('graph01', {
+        var graph = Highcharts.chart('graph01', {
             title: {
                 text: ''
             },
@@ -29,7 +33,7 @@
             },
             series: [{
                 animation: false,
-                data: {{ data }},
+                data: [],
                 lineWidth: 1,
                 enableMouseTracking: true,
                 marker:{
@@ -44,10 +48,72 @@
             }
         });
 
+        function add_point_graph(n_data) {
+            var cell = document.getElementById("a_"+(n_data+1));
+            cell.innerHTML = data[n_data];
+            cash_return = (data[n_data] * 1000) / 100;
+            if(data[n_data] < 0) {
+            color_lbl = '#ff0000';
+            } else {
+                color_lbl = '#00ff00';
+            }
+            graph.series[0].addPoint({
+            x: n_data,
+            y: data[n_data],
+            dataLabels: {
+                enabled: true,
+                format: cash_return.toLocaleString('es-CO'),
+                rotation: -30,
+                y: -15,
+                style: {
+                    color: color_lbl,
+                    fontSize: '1rem',
+                    }
+                }
+            });
+        }
+
         function nextCard() {
+            if(cnt_cards < 8) {
+                add_point_graph(cnt_cards);
+            } else {
+                document.getElementById("div_btnNext").style.display = 'block';
+                clearInterval(intervalID);
+            }
+            cnt_cards += 1;
+        }
+
+        function first_point() {
+            cash_return = (data[0] * 1000) / 100;
+            if(data[0] < 0) {
+                color_lbl = '#ff0000';
+            } else {
+                color_lbl = '#00ff00';
+            }
+            graph.series[0].addPoint({
+                x: 0,
+                y: data[0],
+                dataLabels: {
+                    enabled: true,
+                    format: cash_return.toLocaleString('es-CO'),
+                    rotation: -30,
+                    y: -15,
+                    style: {
+                        color: color_lbl,
+                        fontSize: '1rem',
+                        }
+                    }
+                });
+        }
+
+        function nextView() {
             let btn = document.getElementById("id_next");
+            btn.removeAttribute("disabled");
             btn.click();
         }
+
+        var intervalID = setInterval(nextCard, 2000);
+        setTimeout(first_point, 0);
 
     </script>
 {% endblock %}
@@ -62,12 +128,11 @@
     <tr>
         <td class="cell_question" style="width: 100% !important;">    
             <div id="text01">
-                Haga clic en <i>“Mostrar carta”</i> para destapar la siguiente carta que está frente a la <i>Inversión A</i>.
+                Los siguientes son los valores de las cartas y el monto de retorno para cada una si se le asigna <toMoney>1000</toMoney> a la inversión.
             </div>
         </td>
     </tr>
 </table>
-
 <br>  
 <div>
     <div id="graph01" class="div_graph"></div>
@@ -75,14 +140,14 @@
         <table class="tabGraph">
             <tr>
                 <td class="cell_graphInv">Inversión A</td>
-                <td class="cell_graph">{{ data.0 }}</td>
-                <td class="cell_graph">{{ data.1 }}</td>
-                <td class="cell_graph"></td>
-                <td class="cell_graph"></td>
-                <td class="cell_graph"></td>
-                <td class="cell_graph"></td>
-                <td class="cell_graph"></td>
-                <td class="cell_graph"></td>
+                <td class="cell_graph" id="a_1">{{ data.0 }}</td>
+                <td class="cell_graph" id="a_2"></td>
+                <td class="cell_graph" id="a_3"></td>
+                <td class="cell_graph" id="a_4"></td>
+                <td class="cell_graph" id="a_5"></td>
+                <td class="cell_graph" id="a_6"></td>
+                <td class="cell_graph" id="a_7"></td>
+                <td class="cell_graph" id="a_8"></td>
             </tr>
         </table>
     </div>
@@ -90,9 +155,9 @@
 
 <br>
 
-<div class="div_btnNext">
-    <input type="button" value="Mostrar carta" class="btnNext" onclick="nextCard()">
-    <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next">Mostrar carta</button>
+<div class="div_btnNext" id="div_btnNext" style="display: none;">
+    <input type="button" value="Siguiente" class="btnNext" onclick="nextView()">
+    <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next">Siguiente</button>
 </div>
 
 {% endblock %}

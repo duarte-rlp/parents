@@ -58,13 +58,53 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
     p1 = models.IntegerField()
+    p1_cnt_mistakes = models.IntegerField()
+    p1_mistakes = models.StringField()
+    p1_time = models.StringField()
+
     p2 = models.IntegerField()
+    p2_cnt_mistakes = models.IntegerField()
+    p2_mistakes = models.StringField()
+    p2_time = models.StringField()
+
     p3 = models.IntegerField()
+    p3_cnt_mistakes = models.IntegerField()
+    p3_mistakes = models.StringField()
+    p3_time = models.StringField()
+
     p4 = models.IntegerField()
+    p4_cnt_mistakes = models.IntegerField()
+    p4_mistakes = models.StringField()
+    p4_time = models.StringField()
+
     p5 = models.IntegerField()
+    p5_cnt_mistakes = models.IntegerField()
+    p5_mistakes = models.StringField()
+    p5_time = models.StringField()
+
     p6 = models.IntegerField()
+    p6_cnt_mistakes = models.IntegerField()
+    p6_mistakes = models.StringField()
+    p6_time = models.StringField()
+
     p7 = models.IntegerField()
+    p7_cnt_mistakes = models.IntegerField()
+    p7_mistakes = models.StringField()
+    p7_time = models.StringField()
+
     p8 = models.IntegerField()
+    p8_cnt_mistakes = models.IntegerField()
+    p8_mistakes = models.StringField()
+    p8_time = models.StringField()
+
     p9 = models.IntegerField()
+    p9_cnt_mistakes = models.IntegerField()
+    p9_mistakes = models.StringField()
+    p9_time = models.StringField()
+
     p10 = models.IntegerField()
+    p10_cnt_mistakes = models.IntegerField()
+    p10_mistakes = models.StringField()
+    p10_time = models.StringField()
+    
     cnt_question = models.IntegerField(initial = 1)

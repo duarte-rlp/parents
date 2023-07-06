@@ -9,8 +9,10 @@
     
     <script>
 
+        var data = {{ data }};
+
         // Gráfica
-        Highcharts.chart('graph01', {
+        var graph = Highcharts.chart('graph01', {
             title: {
                 text: ''
             },
@@ -28,20 +30,16 @@
                 max: {{ max_y }} + 1
             },
             series: [{
-                type: "scatter",
-                animation: false,
-                data: [{
-                    x: 0,
-                    y: {{ data }},
-                    name: 'Carta 1'
-                    }],
+                animation: true,
+                data: [],
                 lineWidth: 1,
                 enableMouseTracking: true,
                 marker:{
                     enabled: true
                 },
                 color: 'blue',
-                name: 'Inversión A'
+                name: 'Inversión A',
+                dashStyle: 'Dash'
             }],
             legend: {
                 enabled: true
@@ -52,6 +50,32 @@
             let btn = document.getElementById("id_next");
             btn.click();
         }
+
+        function add_point_graph() {
+            var cell = document.getElementById("a_1");
+            cell.innerHTML = data[0];
+            graph.series[0].addPoint({
+            x: 0,
+            y: data[0],
+            dataLabels: {
+                enabled: true,
+                format: '10'.toLocaleString('es-CO'),
+                rotation: -30,
+                y: -15,
+                style: {
+                    color: '#00ff00',
+                    fontSize: '0.8rem',
+                    }
+                }
+            });
+            setTimeout(display_next_btn, 2000);
+        }
+
+        function display_next_btn() {
+            document.getElementById("div_btnNext").style.display = 'block';
+        }
+
+        setTimeout(add_point_graph, 2000);
 
     </script>
 {% endblock %}
@@ -66,11 +90,11 @@
     <tr>
         <td class="cell_question" style="width: 100% !important;">    
             <div id="text01">
-                En la carta esta escrito el número {{ data }}. Eso quiere decir que <i>“Por cada <toMoney>100</toMoney> que usted asigne a la Inversión A puede 
-                {% if data < 0 %}
-                    perder <toMoney>{% widthratio data 1 -1 %}</toMoney>"
+                En la carta está escrito el número {{ data.0 }}. Eso quiere decir que <i>“Por cada <toMoney>100</toMoney> que usted asigne a la Inversión A puede 
+                {% if data.0 < 0 %}
+                    perder <toMoney>{% widthratio data.0 1 -1 %}</toMoney>"
                 {% else %}
-                    ganar <toMoney>{{ data }}</toMoney>"
+                    ganar <toMoney>{{ data.0 }}</toMoney>"
                 {% endif %}</i>.
             </div>
         </td>
@@ -84,14 +108,14 @@
         <table class="tabGraph">
             <tr>
                 <td class="cell_graphInv">Inversión A</td>
-                <td class="cell_graph">{{ data }}</td>
-                <td class="cell_graph"></td>
-                <td class="cell_graph"></td>
-                <td class="cell_graph"></td>
-                <td class="cell_graph"></td>
-                <td class="cell_graph"></td>
-                <td class="cell_graph"></td>
-                <td class="cell_graph"></td>
+                <td class="cell_graph" id="a_1"></td>
+                <td class="cell_graph" id="a_2"></td>
+                <td class="cell_graph" id="a_3"></td>
+                <td class="cell_graph" id="a_4"></td>
+                <td class="cell_graph" id="a_5"></td>
+                <td class="cell_graph" id="a_6"></td>
+                <td class="cell_graph" id="a_7"></td>
+                <td class="cell_graph" id="a_8"></td>
             </tr>
         </table>
     </div>
@@ -99,7 +123,7 @@
 
 <br>
 
-<div class="div_btnNext">
+<div class="div_btnNext" id="div_btnNext" style="display: none;">
     {% next_button %}
 </div>
 

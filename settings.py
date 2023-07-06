@@ -5,7 +5,7 @@ SESSION_CONFIGS = [
         'name': 'test',
         'display_name': 'Test',
         'num_demo_participants': 1, 
-        'app_sequence': ['home','real_effort_numbers', 'icl','training', 'allocations','icl2','choice', 'real', 'survey', 'final'],
+        'app_sequence': ['home', 'real_effort_numbers', 'checker1', 'icl', 'training', 'allocations', 'icl2','choice', 'real', 'survey', 'final'],
     },
     {
         'name': 'math_operations',
@@ -49,6 +49,12 @@ SESSION_CONFIGS = [
         'num_demo_participants': 1, 
         'app_sequence': ['home', 'icl', 'icl2', 'choice', 'final'],
     },
+    {
+        'name': 'checker1',
+        'display_name': 'Test Checker',
+        'num_demo_participants': 1, 
+        'app_sequence': ['checker1'],
+    },
 ]
 
 ROOMS = [
@@ -91,5 +97,5 @@ INSTALLED_APPS = ['otree']
 
 PARTICIPANT_FIELDS = ['graphType']
 
-DEBUG=False
+DEBUG=True
 

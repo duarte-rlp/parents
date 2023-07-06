@@ -54,7 +54,7 @@ class graph_04(Page):
     def vars_for_template(self):
         return {
                 'labels': Constants.inv_labels,
-                'data': Constants.inv_example[0],
+                'data': Constants.inv_example,
                 'max_y': max(Constants.inv_example),
                 'min_y': min(Constants.inv_example)
                 }
@@ -66,7 +66,7 @@ class graph_04_question(Page):
     def vars_for_template(self):
         return {
                 'labels': Constants.inv_labels,
-                'data': Constants.inv_example[0],
+                'data': Constants.inv_example,
                 'max_y': max(Constants.inv_example),
                 'min_y': min(Constants.inv_example)
                 }
@@ -76,7 +76,7 @@ class graph_04_feedback(Page):
     def vars_for_template(self):
         return {
                 'labels': Constants.inv_labels,
-                'data': Constants.inv_example[0],
+                'data': Constants.inv_example,
                 'max_y': max(Constants.inv_example),
                 'min_y': min(Constants.inv_example),
                 'feedback': self.player.test_01_answer
@@ -86,7 +86,7 @@ class graph_05(Page):
     def vars_for_template(self):
         return {
                 'labels': Constants.inv_labels,
-                'data': Constants.inv_example[:2],
+                'data': Constants.inv_example,
                 'max_y': max(Constants.inv_example),
                 'min_y': min(Constants.inv_example)
                 }
@@ -192,8 +192,8 @@ class graph_14(Page):
     def vars_for_template(self):
         return {
                 'labels': Constants.inv_labels,
-                'data_a': Constants.inv_a[0],
-                'data_b': Constants.inv_b[0],
+                'data_a': Constants.inv_a,
+                'data_b': Constants.inv_b,
                 'max_y': max(Constants.inv_a + Constants.inv_b),
                 'min_y': min(Constants.inv_a + Constants.inv_b),
                 'graphType': self.player.participant.vars['graphType']
@@ -480,25 +480,9 @@ page_sequence = [
     graph_04, 
     graph_04_question, 
     graph_04_feedback, 
-    graph_05, 
-    graph_06, 
-    graph_07, 
-    graph_08, 
-    graph_09, 
-    graph_10, 
-    graph_11, 
-    graph_11_question, 
-    graph_11_feedback, 
-    graph_12, 
+    graph_05,
     graph_13, 
-    graph_14, 
-    graph_15, 
-    graph_16, 
-    graph_17, 
-    graph_18, 
-    graph_19, 
-    graph_20, 
-    graph_21, 
+    graph_14,
     graph_21_question, 
     graph_21_feedback, 
     graph_22_question, 

@@ -134,11 +134,15 @@ class Player(BasePlayer):
     problem_01_inv_a = models.StringField()
     problem_01_order_a = models.StringField()
     problem_01_order_b = models.StringField()
-    problem_01_inv_a_slider = models.IntegerField()
     problem_01_return_b = models.IntegerField()
     problem_01_expect_return_b = models.IntegerField()
     problem_01_probability_b = models.IntegerField()
     problem_01_var = models.IntegerField()
+    problem_01_inv_a_slider = models.IntegerField()
+    problem_01_arraySelected = models.StringField()
+    problem_01_time = models.StringField()
+    problem_01_inv_a = models.IntegerField()
+    problem_01_inv_b = models.IntegerField()
 
     problem_02_type = models.StringField()
     problem_02_inv_a = models.StringField()
@@ -149,6 +153,8 @@ class Player(BasePlayer):
     problem_02_expect_return_b = models.IntegerField()
     problem_02_probability_b = models.IntegerField()
     problem_02_var = models.IntegerField()
+    problem_02_arraySelected = models.StringField()
+    problem_02_time = models.StringField()
 
     problem_03_type = models.StringField()
     problem_03_inv_a = models.StringField()
@@ -159,6 +165,8 @@ class Player(BasePlayer):
     problem_03_expect_return_b = models.IntegerField()
     problem_03_probability_b = models.IntegerField()
     problem_03_var = models.IntegerField()
+    problem_03_arraySelected = models.StringField()
+    problem_03_time = models.StringField()
 
     name_app = models.StringField(default = 'allocations')
 

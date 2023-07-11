@@ -57,17 +57,25 @@
             } else {
                 color_lbl = '#00ff00';
             }
+            let y_pos;
+            if(data[n_data] > 0) {
+                y_pos = -5;
+            } else {
+                y_pos = 25;
+            }
             graph.series[0].addPoint({
             x: n_data,
             y: data[n_data],
             dataLabels: {
                 enabled: true,
                 format: cash_return.toLocaleString('es-CO'),
-                rotation: -30,
-                y: -15,
+                rotation: 0,
+                y: y_pos,
                 style: {
                     color: color_lbl,
-                    fontSize: '1rem',
+                    fontSize: '0.8rem',
+                    fontWeight: 'normal',
+                    textOutline: 'none'
                     }
                 }
             });
@@ -90,17 +98,25 @@
             } else {
                 color_lbl = '#00ff00';
             }
+            let y_pos;
+            if(data[0] > 0) {
+                y_pos = -5;
+            } else {
+                y_pos = 25;
+            }
             graph.series[0].addPoint({
                 x: 0,
                 y: data[0],
                 dataLabels: {
                     enabled: true,
                     format: cash_return.toLocaleString('es-CO'),
-                    rotation: -30,
-                    y: -15,
+                    rotation: 0,
+                    y: -5,
                     style: {
                         color: color_lbl,
-                        fontSize: '1rem',
+                        fontSize: '0.8rem',
+                        fontWeight: 'normal',
+                        textOutline: 'none'
                         }
                     }
                 });

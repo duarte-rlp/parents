@@ -21,7 +21,7 @@ class Constants(BaseConstants):
     name_in_url = 'checker1'
     players_per_group = None
     num_rounds = 1
-    colors_checker = ['color_1', 'color_2', 'color_3', 'turquesa']
+    colors_checker = ['color_1', 'color_2', 'rojo', 'turquesa']
 
 
 class Subsession(BaseSubsession):

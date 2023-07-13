@@ -49,17 +49,17 @@
 }
 
 .div_tabGraph {
-	width: 45%;
-	min-width: 250px;
-	max-width: 450px;
+	width: 50%;
+	min-width: 300px;
+	max-width: 500px;
 	margin: 0 auto;
 	text-align: center;
 }
 
 .div_tabGraphType2 {
-	width: 90%;
-	min-width: 250px;
-	max-width: 450px;
+	width: 100%;
+	min-width: 300px;
+	max-width: 500px;
 	margin: 0 auto;
 	text-align: center;
 }
@@ -72,14 +72,14 @@
 }
 
 .cell_graphInv {
-	padding: 3px 5px;
+	padding: 5px 5px;
 	border: black 1px solid;
 }
 
 .cell_graph {
 	width: 10%;
 	border: black 1px solid;
-	padding: 3px 5px;
+	padding: 5px 5px;
 }
 
 .inNumber {

@@ -9,10 +9,16 @@
     
     <script>
 
+        var cnt_cards = 0;
+        var data_a = {{ data_a }};
+        var data_b = {{ data_b }};
+        var start;
+        var cnt_selected = 0;
+
 {% if graphType == 1 %}
 
         // Gráfica para inversión A e inversión B
-        Highcharts.chart('graph01', {
+        var graph = Highcharts.chart('graph01', {
             title: {
                 text: ''
             },
@@ -30,8 +36,8 @@
                 max: {{ max_y }} + 1
             },
             series: [{
-                animation: false,
-                data: {{ data_a }},
+                animation: true,
+                data: [],
                 lineWidth: 1,
                 enableMouseTracking: true,
                 marker:{
@@ -41,8 +47,8 @@
                 name: 'Inversión A',
                 dashStyle: 'Dash'
             }, {
-                animation: false,
-                data: {{ data_b }},
+                animation: true,
+                data: [],
                 lineWidth: 1,
                 enableMouseTracking: true,
                 marker:{
@@ -53,14 +59,14 @@
                 dashStyle: 'Dash'
             }],
             legend: {
-                enabled: false
+                enabled: true
             }
         });
 
 {% else %}
 
         // Gráfica inversión A
-        Highcharts.chart('graph01', {
+        var graph_a = Highcharts.chart('graph01', {
             title: {
                 text: ''
             },
@@ -78,8 +84,8 @@
                 max: {{ max_y }} + 1
             },
             series: [{
-                animation: false,
-                data: {{ data_a }},
+                animation: true,
+                data: [],
                 lineWidth: 1,
                 enableMouseTracking: true,
                 marker:{
@@ -95,7 +101,7 @@
         });
 
         // Gráfica inversión B
-        Highcharts.chart('graph02', {
+        var graph_b = Highcharts.chart('graph02', {
             title: {
                 text: ''
             },
@@ -113,8 +119,8 @@
                 max: {{ max_y }} + 1
             },
             series: [{
-                animation: false,
-                data: {{ data_b }},
+                animation: true,
+                data: [],
                 lineWidth: 1,
                 enableMouseTracking: true,
                 marker:{
@@ -131,10 +137,50 @@
 
 {% endif %}
 
-        function nextCard() {
+        function add_point_graph(n_data) {
+            var cell_a = document.getElementById("a_"+(n_data+1));
+            var cell_b = document.getElementById("b_"+(n_data+1));
+            cell_a.innerHTML = data_a[n_data];
+            cell_b.innerHTML = data_b[n_data];
+
+            {% if graphType == 1 %}
+            graph.series[0].addPoint({
+            x: n_data,
+            y: data_a[n_data]
+            });
+            graph.series[1].addPoint({
+            x: n_data,
+            y: data_b[n_data]
+            });
+            {% else %}
+            graph_a.series[0].addPoint({
+            x: n_data,
+            y: data_a[n_data]
+            });
+            graph_b.series[0].addPoint({
+            x: n_data,
+            y: data_b[n_data]
+            });
+            {% endif %}
+        }
+
+        function nextView() {
+            document.getElementById("problem_02_arraySelected").value += "}";
+            document.getElementById("problem_02_time").value = Date.now() - start;
             let btn = document.getElementById("id_next");
             btn.removeAttribute("disabled");
             btn.click();
+        }
+
+        function nextCard() {
+            if(cnt_cards < 8) {
+                add_point_graph(cnt_cards);
+            } else {
+                start = Date.now();
+                document.getElementById("h-slider-div").style.display = "block";
+                clearInterval(intervalID);
+            }
+            cnt_cards += 1;
         }
 
         function confirm() {
@@ -150,6 +196,18 @@
             modal.classList.add("hidden");
             overlay.classList.add("hidden");
         }
+
+        $('.slider_dinero').change(
+            function (event) {
+                let val_slider = document.getElementById(event.target.id).value;
+                cnt_selected += 1;
+                let time = Date.now() - start;
+                let add = cnt_selected.toString() + ": {\'value_selected\': " + val_slider + ", \'time\': " + time + "}, ";
+                document.getElementById("problem_02_arraySelected").value += add;
+
+            });
+
+        var intervalID = setInterval(nextCard, 2000);
 
     </script>
 {% endblock %}
@@ -179,25 +237,25 @@
         <table class="tabGraph">
             <tr>
                 <td class="cell_graphInv">Inversión A</td>
-                <td class="cell_graph" id="a_1">{{ data_a.0 }}</td>
-                <td class="cell_graph" id="a_2">{{ data_a.1 }}</td>
-                <td class="cell_graph" id="a_3">{{ data_a.2 }}</td>
-                <td class="cell_graph" id="a_4">{{ data_a.3 }}</td>
-                <td class="cell_graph" id="a_5">{{ data_a.4 }}</td>
-                <td class="cell_graph" id="a_6">{{ data_a.5 }}</td>
-                <td class="cell_graph" id="a_7">{{ data_a.6 }}</td>
-                <td class="cell_graph" id="a_8">{{ data_a.7 }}</td>
+                <td class="cell_graph" id="a_1"></td>
+                <td class="cell_graph" id="a_2"></td>
+                <td class="cell_graph" id="a_3"></td>
+                <td class="cell_graph" id="a_4"></td>
+                <td class="cell_graph" id="a_5"></td>
+                <td class="cell_graph" id="a_6"></td>
+                <td class="cell_graph" id="a_7"></td>
+                <td class="cell_graph" id="a_8"></td>
             </tr>
             <tr>
                 <td class="cell_graphInv">Inversión B</td>
-                <td class="cell_graph" id="b_1">{{ data_b.0 }}</td>
-                <td class="cell_graph" id="b_2">{{ data_b.1 }}</td>
-                <td class="cell_graph" id="b_3">{{ data_b.2 }}</td>
-                <td class="cell_graph" id="b_4">{{ data_b.3 }}</td>
-                <td class="cell_graph" id="b_5">{{ data_b.4 }}</td>
-                <td class="cell_graph" id="b_6">{{ data_b.5 }}</td>
-                <td class="cell_graph" id="b_7">{{ data_b.6 }}</td>
-                <td class="cell_graph" id="b_8">{{ data_b.7 }}</td>
+                <td class="cell_graph" id="b_1"></td>
+                <td class="cell_graph" id="b_2"></td>
+                <td class="cell_graph" id="b_3"></td>
+                <td class="cell_graph" id="b_4"></td>
+                <td class="cell_graph" id="b_5"></td>
+                <td class="cell_graph" id="b_6"></td>
+                <td class="cell_graph" id="b_7"></td>
+                <td class="cell_graph" id="b_8"></td>
             </tr>
         </table>
     </div>
@@ -212,14 +270,14 @@
                     <table class="tabGraph">
                         <tr>
                             <td class="cell_graphInv">Inversión A</td>
-                            <td class="cell_graph" id="a_1">{{ data_a.0 }}</td>
-                            <td class="cell_graph" id="a_2">{{ data_a.1 }}</td>
-                            <td class="cell_graph" id="a_3">{{ data_a.2 }}</td>
-                            <td class="cell_graph" id="a_4">{{ data_a.3 }}</td>
-                            <td class="cell_graph" id="a_5">{{ data_a.4 }}</td>
-                            <td class="cell_graph" id="a_6">{{ data_a.5 }}</td>
-                            <td class="cell_graph" id="a_7">{{ data_a.6 }}</td>
-                            <td class="cell_graph" id="a_8">{{ data_a.7 }}</td>
+                            <td class="cell_graph" id="a_1"></td>
+                            <td class="cell_graph" id="a_2"></td>
+                            <td class="cell_graph" id="a_3"></td>
+                            <td class="cell_graph" id="a_4"></td>
+                            <td class="cell_graph" id="a_5"></td>
+                            <td class="cell_graph" id="a_6"></td>
+                            <td class="cell_graph" id="a_7"></td>
+                            <td class="cell_graph" id="a_8"></td>
                         </tr>
                     </table>
                 </div>
@@ -230,14 +288,14 @@
                     <table class="tabGraph">
                         <tr>
                             <td class="cell_graphInv">Inversión B</td>
-                            <td class="cell_graph" id="b_1">{{ data_b.0 }}</td>
-                            <td class="cell_graph" id="b_2">{{ data_b.1 }}</td>
-                            <td class="cell_graph" id="b_3">{{ data_b.2 }}</td>
-                            <td class="cell_graph" id="b_4">{{ data_b.3 }}</td>
-                            <td class="cell_graph" id="b_5">{{ data_b.4 }}</td>
-                            <td class="cell_graph" id="b_6">{{ data_b.5 }}</td>
-                            <td class="cell_graph" id="b_7">{{ data_b.6 }}</td>
-                            <td class="cell_graph" id="b_8">{{ data_b.7 }}</td>
+                            <td class="cell_graph" id="b_1"></td>
+                            <td class="cell_graph" id="b_2"></td>
+                            <td class="cell_graph" id="b_3"></td>
+                            <td class="cell_graph" id="b_4"></td>
+                            <td class="cell_graph" id="b_5"></td>
+                            <td class="cell_graph" id="b_6"></td>
+                            <td class="cell_graph" id="b_7"></td>
+                            <td class="cell_graph" id="b_8"></td>
                         </tr>
                     </table>
                 </div>
@@ -272,6 +330,9 @@
         </tr>
     </table>
 </div>
+
+<input type="hidden" name="problem_02_arraySelected" value="{ " id="problem_02_arraySelected">
+<input type="hidden" name="problem_02_time" value="" id="problem_02_time">
 
 <br>
 

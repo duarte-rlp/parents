@@ -20,16 +20,6 @@
 
         window.onload  = function() {
             start = Date.now();
-            {% if graphType == 1 %}
-            for(var i=0; i<8; i++) {
-                add_point_graph(i);
-            }
-            {% else %}
-            for(var i=0; i<8; i++) {
-                //add_point_a(i);
-                //add_point_b(i);
-            }
-            {% endif %}
         }
 
         // Gráfica para inversión A e inversión B
@@ -229,17 +219,20 @@
             document.getElementById("btn_a").disabled = true;
             document.getElementById("btn_b").style.backgroundColor = "#007bff";
             document.getElementById("btn_b").disabled = false;
-            if(interval_a == 0) {
-                nextCard_a();
-                intervalID = setInterval(nextCard_a, 0);
-                interval_a = 1;
-                if(interval_b == 1) {
-                    graph.series[1].setVisible(false);
-                }
-            } else {
-                graph.series[0].setVisible(true);
-                graph.series[1].setVisible(false);
+            let fa = document.getElementById("fila_a");
+            let fb = document.getElementById("fila_b");
+            fa.style.visibility = "visible";
+            fb.style.visibility = "hidden";
+            for(var i=0; i<fb.childElementCount; i++) {
+                fb.children[i].style.border = "#ffffff 1px solid";
             }
+            for(var i=0; i<fa.childElementCount; i++) {
+                fa.children[i].style.border = "#000000 1px solid";
+                fb.children[i].style.borderTop = "#000000 1px solid";
+            }
+            nextCard_a();
+            intervalID = setInterval(nextCard_a, 0);
+            graph.series[1].setData([]);
         }
 
         function visibleB() {
@@ -247,16 +240,36 @@
             document.getElementById("btn_b").disabled = true;
             document.getElementById("btn_a").style.backgroundColor = "#007bff";
             document.getElementById("btn_a").disabled = false;
-            if(interval_b == 0) {
-                nextCard_b();
-                intervalID = setInterval(nextCard_b, 0);
-                interval_b = 1;
-                if(interval_a == 1) {
-                    graph.series[0].setVisible(false);
-                }
-            } else {
-                graph.series[0].setVisible(false);
-                graph.series[1].setVisible(true);
+            let fa = document.getElementById("fila_a");
+            let fb = document.getElementById("fila_b");
+            fa.style.visibility = "hidden";
+            fb.style.visibility = "visible";
+            for(var i=0; i<fa.childElementCount; i++) {
+                fa.children[i].style.border = "#ffffff 1px solid";
+            }
+            for(var i=0; i<fb.childElementCount; i++) {
+                fb.children[i].style.border = "#000000 1px solid";
+                fa.children[i].style.borderBottom = "#000000 1px solid";
+            }
+            nextCard_b();
+            intervalID = setInterval(nextCard_b, 0);
+            graph.series[0].setData([]);
+        }
+
+        function visibleAB() {
+            let fa = document.getElementById("fila_a");
+            let fb = document.getElementById("fila_b");
+            fa.style.visibility = "visible";
+            fb.style.visibility = "visible";
+            for(var i=0; i<fa.childElementCount; i++) {
+                fa.children[i].style.border = "#000000 1px solid";
+            }
+            for(var i=0; i<fb.childElementCount; i++) {
+                fb.children[i].style.border = "#000000 1px solid";
+            }
+            if(interval_a == 0) {
+                nextCard();
+                intervalID = setInterval(nextCard, 0);
             }
         }
 
@@ -340,7 +353,7 @@
     <table style="text-align: center; width: 90%; margin: 0 auto;">
         <tr>
             {% if graphType == 1 %}
-            <td><input type="button" value="Mostrar Inversión A y B" onclick="visibleAB()" disabled></td>
+            <td><input type="button" value="Mostrar Inversión A y B" onclick="visibleAB()"></td>
             {% else %}
             <td><input type="button" value="Mostrar Inversión A" onclick="visibleA()" id="btn_a"></td>
             <td><input type="button" value="Mostrar Inversión B" onclick="visibleB()" id="btn_b"></td>
@@ -350,38 +363,40 @@
     <div id="graph01" class="div_graph"></div>
     <div class="div_tabGraph" id="div_tabGraph">
         <table class="tabGraph">
-            <tr>
-                <td class="cell_graphInv">Retorno A</td>
-                <td class="cell_graph" id="a_1" style = ></td>
-                <td class="cell_graph" id="a_2"></td>
-                <td class="cell_graph" id="a_3"></td>
-                <td class="cell_graph" id="a_4"></td>
-                <td class="cell_graph" id="a_5"></td>
-                <td class="cell_graph" id="a_6"></td>
-                <td class="cell_graph" id="a_7"></td>
-                <td class="cell_graph" id="a_8"></td>
+            <tr id="fila_a" style="visibility: hidden; border: #ffffff 1px solid;">
+                <td class="cell_graphInv" style="border: #ffffff 1px solid;">Retorno A</td>
+                <td class="cell_graph" id="a_1" style="border: #ffffff 1px solid;">$ -</td>
+                <td class="cell_graph" id="a_2" style="border: #ffffff 1px solid;">$ -</td>
+                <td class="cell_graph" id="a_3" style="border: #ffffff 1px solid;">$ -</td>
+                <td class="cell_graph" id="a_4" style="border: #ffffff 1px solid;">$ -</td>
+                <td class="cell_graph" id="a_5" style="border: #ffffff 1px solid;">$ -</td>
+                <td class="cell_graph" id="a_6" style="border: #ffffff 1px solid;">$ -</td>
+                <td class="cell_graph" id="a_7" style="border: #ffffff 1px solid;">$ -</td>
+                <td class="cell_graph" id="a_8" style="border: #ffffff 1px solid;">$ -</td>
             </tr>
-            <tr>
-                <td class="cell_graphInv">Retorno B</td>
-                <td class="cell_graph" id="b_1"></td>
-                <td class="cell_graph" id="b_2"></td>
-                <td class="cell_graph" id="b_3"></td>
-                <td class="cell_graph" id="b_4"></td>
-                <td class="cell_graph" id="b_5"></td>
-                <td class="cell_graph" id="b_6"></td>
-                <td class="cell_graph" id="b_7"></td>
-                <td class="cell_graph" id="b_8"></td>
+            <tr id="fila_b" style="visibility: hidden;">
+                <td class="cell_graphInv" style="border: #ffffff 1px solid;">Retorno B</td>
+                <td class="cell_graph" id="b_1" style="border: #ffffff 1px solid;">$ -</td>
+                <td class="cell_graph" id="b_2" style="border: #ffffff 1px solid;">$ -</td>
+                <td class="cell_graph" id="b_3" style="border: #ffffff 1px solid;">$ -</td>
+                <td class="cell_graph" id="b_4" style="border: #ffffff 1px solid;">$ -</td>
+                <td class="cell_graph" id="b_5" style="border: #ffffff 1px solid;">$ -</td>
+                <td class="cell_graph" id="b_6" style="border: #ffffff 1px solid;">$ -</td>
+                <td class="cell_graph" id="b_7" style="border: #ffffff 1px solid;">$ -</td>
+                <td class="cell_graph" id="b_8" style="border: #ffffff 1px solid;">$ -</td>
             </tr>
+        </table>
+        <table class="tabGraph" style="margin-top: 15px;">
             <tr>
                 <td class="cell_graphInv" style="font-weight: bold;">Total</td>
-                <td class="cell_graph" style="font-weight: bold;" id="t_1"></td>
-                <td class="cell_graph" style="font-weight: bold;" id="t_2"></td>
-                <td class="cell_graph" style="font-weight: bold;" id="t_3"></td>
-                <td class="cell_graph" style="font-weight: bold;" id="t_4"></td>
-                <td class="cell_graph" style="font-weight: bold;" id="t_5"></td>
-                <td class="cell_graph" style="font-weight: bold;" id="t_6"></td>
-                <td class="cell_graph" style="font-weight: bold;" id="t_7"></td>
-                <td class="cell_graph" style="font-weight: bold;" id="t_8"></td>
+                <td class="cell_graph" style="font-weight: bold;" id="t_1">$ -</td>
+                <td class="cell_graph" style="font-weight: bold;" id="t_2">$ -</td>
+                <td class="cell_graph" style="font-weight: bold;" id="t_3">$ -</td>
+                <td class="cell_graph" style="font-weight: bold;" id="t_4">$ -</td>
+                <td class="cell_graph" style="font-weight: bold;" id="t_5">$ -</td>
+                <td class="cell_graph" style="font-weight: bold;" id="t_6">$ -</td>
+                <td class="cell_graph" style="font-weight: bold;" id="t_7">$ -</td>
+                <td class="cell_graph" style="font-weight: bold;" id="t_8">$ -</td>
             </tr>
         </table>
     </div>

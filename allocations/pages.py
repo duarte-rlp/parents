@@ -133,7 +133,7 @@ class graph_01_b(Page):
 
 class graph_01_c(Page):
     form_model = "player"
-    form_fields = ["problem_01_invMistakes", "problem_01_invTime", "problem_01_invVal_a", "problem_01_invVal_b"]
+    form_fields = ["problem_01_invCntMistakers", "problem_01_invMistakes", "problem_01_invTime", "problem_01_invVal_a", "problem_01_invVal_b"]
     def vars_for_template(self):
         return {
                 'data_a': list(self.player.participant.vars['problems'][0]['AssetA']),
@@ -235,7 +235,7 @@ class graph_02_b(Page):
 
 class graph_02_c(Page):
     form_model = "player"
-    form_fields = ["problem_02_invMistakes", "problem_02_invTime", "problem_02_invVal_a", "problem_02_invVal_b"]
+    form_fields = ["problem_02_invCntMistakers", "problem_02_invMistakes", "problem_02_invTime", "problem_02_invVal_a", "problem_02_invVal_b"]
     def vars_for_template(self):
         return {
                 'data_a': list(self.player.participant.vars['problems'][1]['AssetA']),
@@ -337,7 +337,7 @@ class graph_03_b(Page):
 
 class graph_03_c(Page):
     form_model = "player"
-    form_fields = ["problem_03_invMistakes", "problem_03_invTime", "problem_03_invVal_a", "problem_03_invVal_b"]
+    form_fields = ["problem_03_invCntMistakers", "problem_03_invMistakes", "problem_03_invTime", "problem_03_invVal_a", "problem_03_invVal_b"]
     def vars_for_template(self):
         return {
                 'data_a': list(self.player.participant.vars['problems'][2]['AssetA']),

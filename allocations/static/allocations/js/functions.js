@@ -84,3 +84,27 @@
         function numberWithPoints(x) {
             return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
         }
+
+$(document).ready(function () {
+    // Usar para agregar punto de miles
+    let elements = document.getElementsByTagName("toMoney");
+    for(let j=0; j<elements.length; j++) {
+        let num = Number(elements[j].innerHTML);
+        if (num < 0) {
+            num = num * -1;
+            elements[j].innerHTML = "- $" + num.toLocaleString('es-CO').toString();
+        }else {
+            elements[j].innerHTML = "$" + num.toLocaleString('es-CO').toString();
+        }
+    }
+});
+
+function restore_error(id_div) {
+    let div_error = document.getElementById("div_error");
+    if(div_error.style.display == "block") {
+        let in_answ = document.getElementById(id_div);
+        div_error.style.display = "none";
+        in_answ.style.boxShadow = "none";
+    }
+}
+

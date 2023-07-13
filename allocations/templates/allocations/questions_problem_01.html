@@ -9,7 +9,9 @@
     
     <script>
 
-{% if graphType == 1 %}
+        var intervalID;
+        var interval_a = 0;
+        var interval_b = 0;
 
         // Gráfica para inversión A e inversión B
         Highcharts.chart('graph01', {
@@ -53,83 +55,9 @@
                 dashStyle: 'Dash'
             }],
             legend: {
-                enabled: false
+                enabled: true
             }
         });
-
-{% else %}
-
-        // Gráfica inversión A
-        Highcharts.chart('graph01', {
-            title: {
-                text: ''
-            },
-            xAxis: {
-                min: 0,
-                max: 7,
-                categories: {{ labels }},
-                align: 'center'
-            },
-            yAxis: {
-                title: {
-                    text: 'Retorno por cada $100'
-                },
-                min: {{ min_y }} - 1,
-                max: {{ max_y }} + 1
-            },
-            series: [{
-                animation: false,
-                data: {{ data_a }},
-                lineWidth: 1,
-                enableMouseTracking: true,
-                marker:{
-                    enabled: true
-                },
-                color: 'blue',
-                name: 'Inversión A',
-                dashStyle: 'Dash'
-            }],
-            legend: {
-                enabled: false
-            }
-        });
-
-        // Gráfica inversión B
-        Highcharts.chart('graph02', {
-            title: {
-                text: ''
-            },
-            xAxis: {
-                min: 0,
-                max: 7,
-                categories: {{ labels }},
-                align: 'center'
-            },
-            yAxis: {
-                title: {
-                    text: 'Retorno por cada $100'
-                },
-                min: {{ min_y }} - 1,
-                max: {{ max_y }} + 1
-            },
-            series: [{
-                animation: false,
-                data: {{ data_b }},
-                lineWidth: 1,
-                enableMouseTracking: true,
-                marker:{
-                    enabled: true
-                },
-                color: 'green',
-                name: 'Inversión B',
-                dashStyle: 'Dash'
-            }],
-            legend: {
-                enabled: false
-            }
-        });
-
-{% endif %}
 
         function nextCard() {
             let btn = document.getElementById("id_next");
@@ -180,6 +108,16 @@
 
 {% if graphType == 1 %}
 <div>
+    <table style="text-align: center; width: 90%; margin: 0 auto;">
+        <tr>
+            {% if graphType == 1 %}
+            <td><input type="button" value="Mostrar Inversión A y B" onclick="visibleAB()" disabled></td>
+            {% else %}
+            <td><input type="button" value="Mostrar Inversión A" onclick="visibleA()" id="btn_a"></td>
+            <td><input type="button" value="Mostrar Inversión B" onclick="visibleB()" id="btn_b"></td>
+            {% endif %}
+        </tr>
+    </table>
     <div id="graph01" class="div_graph"></div>
     <div class="div_tabGraph">
         <table class="tabGraph">

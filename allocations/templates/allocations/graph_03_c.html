@@ -20,6 +20,16 @@
 
         window.onload  = function() {
             start = Date.now();
+            {% if graphType == 1 %}
+            for(var i=0; i<8; i++) {
+                add_point_graph(i);
+            }
+            {% else %}
+            for(var i=0; i<8; i++) {
+                //add_point_a(i);
+                //add_point_b(i);
+            }
+            {% endif %}
         }
 
         // Gráfica para inversión A e inversión B
@@ -176,8 +186,8 @@
         }
 
         function nextView() {
-            document.getElementById("problem_01_btnSelected").value += "}";
-            document.getElementById("problem_01_btnTime").value = Date.now() - start;
+            document.getElementById("problem_03_invMistakes").value += "}";
+            document.getElementById("problem_03_invTime").value = Date.now() - start;
             let btn = document.getElementById("id_next");
             btn.removeAttribute("disabled");
             btn.click();
@@ -188,8 +198,8 @@
                 add_point_graph(cnt_cards);
             } else {
                 clearInterval(intervalID);
-                var next_button = document.getElementsByClassName('btnNext');
-                next_button[0].style.cssText += 'display: block !important; margin: 0 auto;';
+                document.getElementById("h-slider-div").style.display = "block";
+                document.getElementById("div_tabGraph").style.display = "block";
             }
             cnt_cards += 1;
         }
@@ -199,15 +209,6 @@
                 add_point_a(cnt_cards);
             } else {
                 clearInterval(intervalID);
-                interval_a = 1;
-                if((interval_a == 1) && (interval_b == 1)) {
-                    var next_button = document.getElementsByClassName('btnNext');
-                    next_button[0].style.cssText += 'display: block !important; margin: 0 auto;';
-                    document.getElementById("btn_a").style.backgroundColor = "#007bff";
-                    document.getElementById("btn_a").disabled = false;
-                    document.getElementById("btn_b").style.backgroundColor = "#007bff";
-                    document.getElementById("btn_b").disabled = false;
-                }
                 cnt_cards = -1;
             }
             cnt_cards += 1;
@@ -218,32 +219,20 @@
                 add_point_b(cnt_cards);
             } else {
                 clearInterval(intervalID);
-                interval_b = 1;
-                if((interval_a == 1) && (interval_b == 1)) {
-                    var next_button = document.getElementsByClassName('btnNext');
-                    next_button[0].style.cssText += 'display: block !important; margin: 0 auto;';
-                    document.getElementById("btn_a").style.backgroundColor = "#007bff";
-                    document.getElementById("btn_a").disabled = false;
-                    document.getElementById("btn_b").style.backgroundColor = "#007bff";
-                    document.getElementById("btn_b").disabled = false;
-                }
                 cnt_cards = -1;
             }
             cnt_cards += 1;
         }
 
         function visibleA() {
-            cnt_selected += 1;
-            let time = Date.now() - start;
-            let add = cnt_selected.toString() + ": {\'btn\': 'A', \'time\': " + time + "}, ";
-            document.getElementById("problem_01_btnSelected").value += add;
             document.getElementById("btn_a").style.backgroundColor = "#989898";
             document.getElementById("btn_a").disabled = true;
             document.getElementById("btn_b").style.backgroundColor = "#007bff";
             document.getElementById("btn_b").disabled = false;
             if(interval_a == 0) {
                 nextCard_a();
-                intervalID = setInterval(nextCard_a, 500);
+                intervalID = setInterval(nextCard_a, 0);
+                interval_a = 1;
                 if(interval_b == 1) {
                     graph.series[1].setVisible(false);
                 }
@@ -254,17 +243,14 @@
         }
 
         function visibleB() {
-            cnt_selected += 1;
-            let time = Date.now() - start;
-            let add = cnt_selected.toString() + ": {\'btn\': 'B', \'time\': " + time + "}, ";
-            document.getElementById("problem_01_btnSelected").value += add;
             document.getElementById("btn_b").style.backgroundColor = "#989898";
             document.getElementById("btn_b").disabled = true;
             document.getElementById("btn_a").style.backgroundColor = "#007bff";
             document.getElementById("btn_a").disabled = false;
             if(interval_b == 0) {
                 nextCard_b();
-                intervalID = setInterval(nextCard_b, 500);
+                intervalID = setInterval(nextCard_b, 0);
+                interval_b = 1;
                 if(interval_a == 1) {
                     graph.series[0].setVisible(false);
                 }
@@ -274,22 +260,14 @@
             }
         }
 
-        function visibleAB() {
-            cnt_selected += 1;
-            let time = Date.now() - start;
-            let add = cnt_selected.toString() + ": {\'btn\': 'AB', \'time\': " + time + "}, ";
-            document.getElementById("problem_01_btnSelected").value += add;
-            if(interval_a == 0) {
-                nextCard();
-                intervalID = setInterval(nextCard, 500);
-            }
-        }
-
         function confirm() {
             let modal = document.querySelector(".modal");
             let overlay = document.querySelector(".overlay");
             modal.classList.remove("hidden");
             overlay.classList.remove("hidden");
+            document.getElementById("inv_a").innerHTML = "<toMoney>" + document.getElementById("problem_03_invVal_a").value + "</toMoney>";
+            document.getElementById("inv_b").innerHTML = "<toMoney>" + document.getElementById("problem_03_invVal_b").value + "</toMoney>";
+            conv_money();
         }
 
         function closeModal() {
@@ -299,11 +277,42 @@
             overlay.classList.add("hidden");
         }
 
+        function validateInv() {
+            let inv_a = Number(document.getElementById("problem_03_invVal_a").value);
+            let inv_b = Number(document.getElementById("problem_03_invVal_b").value);
+            console.log(inv_a + inv_b);
+            if((inv_a + inv_b) == 100000) {
+                nextView();
+            } else {
+                cnt_selected += 1;
+                let time = Date.now() - start;
+                let add = cnt_selected.toString() + ": {\'inversion_a\': " + inv_a.toString() + ", \'inversion_b\': " + inv_b.toString() + ", \'time\': " + time + "}, ";
+                document.getElementById("problem_03_invMistakes").value += add;
+                closeModal();
+                document.getElementById("div_error").style.display = "block";
+                document.getElementById("problem_03_invVal_a").style.boxShadow = "0px 0px 3px 1px rgba(255, 0, 0, 0.65)";
+                document.getElementById("problem_03_invVal_b").style.boxShadow = "0px 0px 3px 1px rgba(255, 0, 0, 0.65)";
+            }
+        }
+
+        function conv_money() {
+            let elements = document.getElementsByTagName("toMoney");
+            for(let j=0; j<elements.length; j++) {
+                let num = Number(elements[j].innerHTML);
+                if (num < 0) {
+                    num = num * -1;
+                    elements[j].innerHTML = "- $" + num.toLocaleString('es-CO').toString();
+                }else {
+                    elements[j].innerHTML = "$" + num.toLocaleString('es-CO').toString();
+                }
+            }
+        }
+
     </script>
 {% endblock %}
 
 {% block title %}
-    Problema 1
+    Problema 3
 {% endblock %}
 
 {% block content %}
@@ -312,7 +321,7 @@
     <tr>
         <td class="cell_question" style="width: 100% !important;">    
             <div id="text01">
-                Instrucciones gráficas parte 1: reconocimiento de las gráficas.
+                Instrucciones gráficas parte 3: decisión.
             </div>
         </td>
     </tr>
@@ -324,7 +333,7 @@
     <table style="text-align: center; width: 90%; margin: 0 auto;">
         <tr>
             {% if graphType == 1 %}
-            <td><input type="button" value="Mostrar Inversión A y B" onclick="visibleAB()"></td>
+            <td><input type="button" value="Mostrar Inversión A y B" onclick="visibleAB()" disabled></td>
             {% else %}
             <td><input type="button" value="Mostrar Inversión A" onclick="visibleA()" id="btn_a"></td>
             <td><input type="button" value="Mostrar Inversión B" onclick="visibleB()" id="btn_b"></td>
@@ -332,75 +341,56 @@
         </tr>
     </table>
     <div id="graph01" class="div_graph"></div>
-    <div class="div_tabGraph" id="div_tabGraph" style="display: none;">
-        <table class="tabGraph">
+    <div>
+        <table style="width: 100%;">
             <tr>
-                <td class="cell_graphInv">Retorno A</td>
-                <td class="cell_graph" id="a_1" style = ></td>
-                <td class="cell_graph" id="a_2"></td>
-                <td class="cell_graph" id="a_3"></td>
-                <td class="cell_graph" id="a_4"></td>
-                <td class="cell_graph" id="a_5"></td>
-                <td class="cell_graph" id="a_6"></td>
-                <td class="cell_graph" id="a_7"></td>
-                <td class="cell_graph" id="a_8"></td>
-            </tr>
-            <tr>
-                <td class="cell_graphInv">Retorno B</td>
-                <td class="cell_graph" id="b_1"></td>
-                <td class="cell_graph" id="b_2"></td>
-                <td class="cell_graph" id="b_3"></td>
-                <td class="cell_graph" id="b_4"></td>
-                <td class="cell_graph" id="b_5"></td>
-                <td class="cell_graph" id="b_6"></td>
-                <td class="cell_graph" id="b_7"></td>
-                <td class="cell_graph" id="b_8"></td>
-            </tr>
-            <tr>
-                <td class="cell_graphInv" style="font-weight: bold;">Total</td>
-                <td class="cell_graph" style="font-weight: bold;" id="t_1"></td>
-                <td class="cell_graph" style="font-weight: bold;" id="t_2"></td>
-                <td class="cell_graph" style="font-weight: bold;" id="t_3"></td>
-                <td class="cell_graph" style="font-weight: bold;" id="t_4"></td>
-                <td class="cell_graph" style="font-weight: bold;" id="t_5"></td>
-                <td class="cell_graph" style="font-weight: bold;" id="t_6"></td>
-                <td class="cell_graph" style="font-weight: bold;" id="t_7"></td>
-                <td class="cell_graph" style="font-weight: bold;" id="t_8"></td>
+                <td style="width: 50%; text-align: center;">Inversión A: <input type="number" name="problem_03_invVal_a" id="problem_03_invVal_a" class="inNumber_a" oninput="restore_error('problem_03_invVal_a')"></td>
+                <td style="width: 50%; text-align: center;">Inversión B: <input type="number" name="problem_03_invVal_b" id="problem_03_invVal_b" class="inNumber_a" oninput="restore_error('problem_03_invVal_b')"></td>
             </tr>
         </table>
     </div>
 </div>
 
+<div class="error_msg" id="div_error">
+    La suma de las inversiones no es $100.000.
+</div>
+
 <br>
-<div class="card_table" id="h-slider-div" style="text-align: center; display: none;">
-    <table class="table_question">
+
+<input type="hidden" name="problem_03_invMistakes" value="{ " id="problem_03_invMistakes">
+<input type="hidden" name="problem_03_invTime" value="" id="problem_03_invTime">
+
+<br>
+
+<div class="div_btnNext">
+    <input type="button" value="Siguiente" class="btnNext" onclick="confirm()">
+    <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next" disabled>Siguiente</button>
+</div>
+
+<section class="modal hidden">
+    <div>
+        <h3>Confirmación</h3>
+        <p>
+            Por favor confirme los valores asignados: <br>
+              <i>Inversión A:</i> <span id="inv_a"><toMoney></toMoney></span><br> 
+              <i>Inversión B:</i> <span id="inv_b"><toMoney></toMoney></span>
+        </p>
+        <p>
+            Si es correcto presione el botón "Enviar" de lo contrario presione el botón "Cambiar valores".
+        </p>
+    </div>
+    <table style="width: 100%;" class="table_modal">
         <tr>
-            <td class="text_slider"> - </td>
-            <td class="td_slider" rowspan="2">
-                <input type="range" name="problem_01_inv_a_slider" value="" min="0" max="{{ max_inv }}" step="1000" id="sliderDinero" class="slider_dinero" required>
-                <input type="hidden" name="check_slider_example" value="" id="id_check_slider_example"/>
+            <td>
+                <input type="button" value="Cambiar valores" class="btnNext" onclick="closeModal()">
             </td>
-            <td class="text_slider"> - </td>
-        </tr>
-        <tr>
-            <td style="text-align: center;">
-                <b>Inversión A</b>
-            </td>
-            <td style="text-align: center;">
-                <b>Inversión B</b>
+            <td>
+                <input type="button" value="Enviar" class="btnNext" onclick="validateInv()">
             </td>
         </tr>
     </table>
-</div>
+</section>
 
-<input type="hidden" name="problem_01_btnSelected" value="{ " id="problem_01_btnSelected">
-<input type="hidden" name="problem_01_btnTime" value="" id="problem_01_btnTime">
-
-<br>
-
-<div class="div_btnNext" style="margin-top: -20px;">
-    <input type="button" value="Siguiente" class="btnNext" style="display: none;" onclick="nextView()">
-    <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next" disabled>Siguiente</button>
-</div>
+<div class="overlay hidden"></div>
 
 {% endblock %}

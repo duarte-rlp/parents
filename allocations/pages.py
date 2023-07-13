@@ -103,9 +103,9 @@ class instruc_02(Page):
                 'n_problems': list(range(len(self.player.participant.vars['problems'])))
                 }
 
-class graph_01(Page):
+class graph_01_a(Page):
     form_model = "player"
-    form_fields = ["problem_01_inv_a_slider", "problem_01_arraySelected", "problem_01_time"]
+    form_fields = ["problem_01_btnSelected", "problem_01_btnTime"]
     def vars_for_template(self):
         return {
                 'data_a': list(self.player.participant.vars['problems'][0]['AssetA']),
@@ -117,8 +117,23 @@ class graph_01(Page):
                 'min_y': min(list(self.player.participant.vars['problems'][0]['AssetA']) + list(self.player.participant.vars['problems'][0]['AssetB']))
                 }
 
-class graph_01_a(Page):
+class graph_01_b(Page):
     form_model = "player"
+    form_fields = ["problem_01_sliderSelected", "problem_01_sliderTime", "problem_01_sliderInv_a"]
+    def vars_for_template(self):
+        return {
+                'data_a': list(self.player.participant.vars['problems'][0]['AssetA']),
+                'data_b': list(self.player.participant.vars['problems'][0]['AssetB']),
+                'labels': Constants.inv_labels,
+                'graphType': self.player.participant.vars['graphType'],
+                'max_inv': Constants.max_inv,
+                'max_y': max(list(self.player.participant.vars['problems'][0]['AssetA']) + list(self.player.participant.vars['problems'][0]['AssetB'])),
+                'min_y': min(list(self.player.participant.vars['problems'][0]['AssetA']) + list(self.player.participant.vars['problems'][0]['AssetB']))
+                }
+
+class graph_01_c(Page):
+    form_model = "player"
+    form_fields = ["problem_01_invMistakes", "problem_01_invTime", "problem_01_invVal_a", "problem_01_invVal_b"]
     def vars_for_template(self):
         return {
                 'data_a': list(self.player.participant.vars['problems'][0]['AssetA']),
@@ -190,9 +205,37 @@ class questions_problem_01(Page):
                 'min_y': min(list(self.player.participant.vars['problems'][0]['AssetA']) + list(self.player.participant.vars['problems'][0]['AssetB']))
                 }
 
-class graph_02(Page):
+class graph_02_a(Page):
     form_model = "player"
-    form_fields = ["problem_02_inv_a_slider", "problem_02_arraySelected", "problem_02_time"]
+    form_fields = ["problem_02_btnSelected", "problem_02_btnTime"]
+    def vars_for_template(self):
+        return {
+                'data_a': list(self.player.participant.vars['problems'][1]['AssetA']),
+                'data_b': list(self.player.participant.vars['problems'][1]['AssetB']),
+                'labels': Constants.inv_labels,
+                'graphType': self.player.participant.vars['graphType'],
+                'max_inv': Constants.max_inv,
+                'max_y': max(list(self.player.participant.vars['problems'][1]['AssetA']) + list(self.player.participant.vars['problems'][1]['AssetB'])),
+                'min_y': min(list(self.player.participant.vars['problems'][1]['AssetA']) + list(self.player.participant.vars['problems'][1]['AssetB']))
+                }
+
+class graph_02_b(Page):
+    form_model = "player"
+    form_fields = ["problem_02_sliderSelected", "problem_02_sliderTime", "problem_02_sliderInv_a"]
+    def vars_for_template(self):
+        return {
+                'data_a': list(self.player.participant.vars['problems'][1]['AssetA']),
+                'data_b': list(self.player.participant.vars['problems'][1]['AssetB']),
+                'labels': Constants.inv_labels,
+                'graphType': self.player.participant.vars['graphType'],
+                'max_inv': Constants.max_inv,
+                'max_y': max(list(self.player.participant.vars['problems'][1]['AssetA']) + list(self.player.participant.vars['problems'][1]['AssetB'])),
+                'min_y': min(list(self.player.participant.vars['problems'][1]['AssetA']) + list(self.player.participant.vars['problems'][1]['AssetB']))
+                }
+
+class graph_02_c(Page):
+    form_model = "player"
+    form_fields = ["problem_02_invMistakes", "problem_02_invTime", "problem_02_invVal_a", "problem_02_invVal_b"]
     def vars_for_template(self):
         return {
                 'data_a': list(self.player.participant.vars['problems'][1]['AssetA']),
@@ -264,9 +307,37 @@ class questions_problem_02(Page):
                 'min_y': min(list(self.player.participant.vars['problems'][1]['AssetA']) + list(self.player.participant.vars['problems'][1]['AssetB']))
                 }
 
-class graph_03(Page):
+class graph_03_a(Page):
     form_model = "player"
-    form_fields = ["problem_03_inv_a_slider", "problem_03_arraySelected", "problem_03_time"]
+    form_fields = ["problem_03_btnSelected", "problem_03_btnTime"]
+    def vars_for_template(self):
+        return {
+                'data_a': list(self.player.participant.vars['problems'][2]['AssetA']),
+                'data_b': list(self.player.participant.vars['problems'][2]['AssetB']),
+                'labels': Constants.inv_labels,
+                'graphType': self.player.participant.vars['graphType'],
+                'max_inv': Constants.max_inv,
+                'max_y': max(list(self.player.participant.vars['problems'][2]['AssetA']) + list(self.player.participant.vars['problems'][2]['AssetB'])),
+                'min_y': min(list(self.player.participant.vars['problems'][2]['AssetA']) + list(self.player.participant.vars['problems'][2]['AssetB']))
+                }
+
+class graph_03_b(Page):
+    form_model = "player"
+    form_fields = ["problem_03_sliderSelected", "problem_03_sliderTime", "problem_03_sliderInv_a"]
+    def vars_for_template(self):
+        return {
+                'data_a': list(self.player.participant.vars['problems'][2]['AssetA']),
+                'data_b': list(self.player.participant.vars['problems'][2]['AssetB']),
+                'labels': Constants.inv_labels,
+                'graphType': self.player.participant.vars['graphType'],
+                'max_inv': Constants.max_inv,
+                'max_y': max(list(self.player.participant.vars['problems'][2]['AssetA']) + list(self.player.participant.vars['problems'][2]['AssetB'])),
+                'min_y': min(list(self.player.participant.vars['problems'][2]['AssetA']) + list(self.player.participant.vars['problems'][2]['AssetB']))
+                }
+
+class graph_03_c(Page):
+    form_model = "player"
+    form_fields = ["problem_03_invMistakes", "problem_03_invTime", "problem_03_invVal_a", "problem_03_invVal_b"]
     def vars_for_template(self):
         return {
                 'data_a': list(self.player.participant.vars['problems'][2]['AssetA']),
@@ -342,11 +413,16 @@ class questions_problem_03(Page):
 page_sequence = [
                 instruc_01, 
                 #instruc_02, # retro de cómo quedan los datos ordenados
-                graph_01, # gráfica del primer problema que varía $$ en la gráfica
                 graph_01_a, # gráfica que varía el $$ en la tabla
+                graph_01_b,
+                graph_01_c,
                 questions_problem_01,
-                graph_02,
+                graph_02_a,
+                graph_02_b,
+                graph_02_c,
                 questions_problem_02,
-                graph_03,
+                graph_03_a,
+                graph_03_b,
+                graph_03_c,
                 questions_problem_03
                 ]

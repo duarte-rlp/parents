@@ -20,6 +20,16 @@
 
         window.onload  = function() {
             start = Date.now();
+            {% if graphType == 1 %}
+            for(var i=0; i<8; i++) {
+                add_point_graph(i);
+            }
+            {% else %}
+            for(var i=0; i<8; i++) {
+                //add_point_a(i);
+                //add_point_b(i);
+            }
+            {% endif %}
         }
 
         // Gráfica para inversión A e inversión B
@@ -176,8 +186,8 @@
         }
 
         function nextView() {
-            document.getElementById("problem_01_btnSelected").value += "}";
-            document.getElementById("problem_01_btnTime").value = Date.now() - start;
+            document.getElementById("problem_03_sliderSelected").value += "}";
+            document.getElementById("problem_03_sliderTime").value = Date.now() - start;
             let btn = document.getElementById("id_next");
             btn.removeAttribute("disabled");
             btn.click();
@@ -188,8 +198,8 @@
                 add_point_graph(cnt_cards);
             } else {
                 clearInterval(intervalID);
-                var next_button = document.getElementsByClassName('btnNext');
-                next_button[0].style.cssText += 'display: block !important; margin: 0 auto;';
+                document.getElementById("h-slider-div").style.display = "block";
+                document.getElementById("div_tabGraph").style.display = "block";
             }
             cnt_cards += 1;
         }
@@ -199,15 +209,6 @@
                 add_point_a(cnt_cards);
             } else {
                 clearInterval(intervalID);
-                interval_a = 1;
-                if((interval_a == 1) && (interval_b == 1)) {
-                    var next_button = document.getElementsByClassName('btnNext');
-                    next_button[0].style.cssText += 'display: block !important; margin: 0 auto;';
-                    document.getElementById("btn_a").style.backgroundColor = "#007bff";
-                    document.getElementById("btn_a").disabled = false;
-                    document.getElementById("btn_b").style.backgroundColor = "#007bff";
-                    document.getElementById("btn_b").disabled = false;
-                }
                 cnt_cards = -1;
             }
             cnt_cards += 1;
@@ -218,32 +219,20 @@
                 add_point_b(cnt_cards);
             } else {
                 clearInterval(intervalID);
-                interval_b = 1;
-                if((interval_a == 1) && (interval_b == 1)) {
-                    var next_button = document.getElementsByClassName('btnNext');
-                    next_button[0].style.cssText += 'display: block !important; margin: 0 auto;';
-                    document.getElementById("btn_a").style.backgroundColor = "#007bff";
-                    document.getElementById("btn_a").disabled = false;
-                    document.getElementById("btn_b").style.backgroundColor = "#007bff";
-                    document.getElementById("btn_b").disabled = false;
-                }
                 cnt_cards = -1;
             }
             cnt_cards += 1;
         }
 
         function visibleA() {
-            cnt_selected += 1;
-            let time = Date.now() - start;
-            let add = cnt_selected.toString() + ": {\'btn\': 'A', \'time\': " + time + "}, ";
-            document.getElementById("problem_01_btnSelected").value += add;
             document.getElementById("btn_a").style.backgroundColor = "#989898";
             document.getElementById("btn_a").disabled = true;
             document.getElementById("btn_b").style.backgroundColor = "#007bff";
             document.getElementById("btn_b").disabled = false;
             if(interval_a == 0) {
                 nextCard_a();
-                intervalID = setInterval(nextCard_a, 500);
+                intervalID = setInterval(nextCard_a, 0);
+                interval_a = 1;
                 if(interval_b == 1) {
                     graph.series[1].setVisible(false);
                 }
@@ -254,34 +243,20 @@
         }
 
         function visibleB() {
-            cnt_selected += 1;
-            let time = Date.now() - start;
-            let add = cnt_selected.toString() + ": {\'btn\': 'B', \'time\': " + time + "}, ";
-            document.getElementById("problem_01_btnSelected").value += add;
             document.getElementById("btn_b").style.backgroundColor = "#989898";
             document.getElementById("btn_b").disabled = true;
             document.getElementById("btn_a").style.backgroundColor = "#007bff";
             document.getElementById("btn_a").disabled = false;
             if(interval_b == 0) {
                 nextCard_b();
-                intervalID = setInterval(nextCard_b, 500);
+                intervalID = setInterval(nextCard_b, 0);
+                interval_b = 1;
                 if(interval_a == 1) {
                     graph.series[0].setVisible(false);
                 }
             } else {
                 graph.series[0].setVisible(false);
                 graph.series[1].setVisible(true);
-            }
-        }
-
-        function visibleAB() {
-            cnt_selected += 1;
-            let time = Date.now() - start;
-            let add = cnt_selected.toString() + ": {\'btn\': 'AB', \'time\': " + time + "}, ";
-            document.getElementById("problem_01_btnSelected").value += add;
-            if(interval_a == 0) {
-                nextCard();
-                intervalID = setInterval(nextCard, 500);
             }
         }
 
@@ -299,11 +274,53 @@
             overlay.classList.add("hidden");
         }
 
+        $('.slider_dinero').change(
+            function (event) {
+                let val_slider = document.getElementById(event.target.id).value;
+                cnt_selected += 1;
+                let time = Date.now() - start;
+                let add = cnt_selected.toString() + ": {\'value_selected\': " + val_slider + ", \'time\': " + time + "}, ";
+                document.getElementById("problem_03_sliderSelected").value += add;
+                
+                for(var i=0; i<8; i++) {
+                    let cell_a = document.getElementById("a_"+(i+1));
+                    let cell_b = document.getElementById("b_"+(i+1));
+                    let cell_t = document.getElementById("t_"+(i+1));
+                    let mon_a = (val_slider * data_a[i]) / 100;
+                    let mon_b = ((100000 - val_slider) * data_b[i]) / 100;
+                    let mon_t = mon_a + mon_b;
+                    if(mon_a < 0) {
+                        mon_a = "- $" + (mon_a * -1).toLocaleString('es-CO');
+                    } else if(mon_a > 0) {
+                        mon_a = "$ " + mon_a.toLocaleString('es-CO');
+                    } else {
+                        mon_a = "$ 0";
+                    }
+                    if(mon_b < 0) {
+                        mon_b = "- $" + (mon_b * -1).toLocaleString('es-CO');
+                    } else if(mon_b > 0) {
+                        mon_b = "$ " + mon_b.toLocaleString('es-CO');
+                    } else {
+                        mon_b = "$ 0";
+                    }
+                    if(mon_t < 0) {
+                        mon_t = "- $" + (mon_t * -1).toLocaleString('es-CO');
+                    } else if(mon_t > 0) {
+                        mon_t = "$ " + mon_t.toLocaleString('es-CO');
+                    } else {
+                        mon_t = "$ 0";
+                    }
+                    cell_a.innerHTML = mon_a;
+                    cell_b.innerHTML = mon_b;
+                    cell_t.innerHTML = mon_t;
+                }
+            });
+
     </script>
 {% endblock %}
 
 {% block title %}
-    Problema 1
+    Problema 3
 {% endblock %}
 
 {% block content %}
@@ -312,8 +329,7 @@
     <tr>
         <td class="cell_question" style="width: 100% !important;">    
             <div id="text01">
-                Instrucciones gráficas parte 1: reconocimiento de las gráficas.
-            </div>
+                Instrucciones gráficas parte 2: slider.
         </td>
     </tr>
 </table>
@@ -324,7 +340,7 @@
     <table style="text-align: center; width: 90%; margin: 0 auto;">
         <tr>
             {% if graphType == 1 %}
-            <td><input type="button" value="Mostrar Inversión A y B" onclick="visibleAB()"></td>
+            <td><input type="button" value="Mostrar Inversión A y B" onclick="visibleAB()" disabled></td>
             {% else %}
             <td><input type="button" value="Mostrar Inversión A" onclick="visibleA()" id="btn_a"></td>
             <td><input type="button" value="Mostrar Inversión B" onclick="visibleB()" id="btn_b"></td>
@@ -332,7 +348,7 @@
         </tr>
     </table>
     <div id="graph01" class="div_graph"></div>
-    <div class="div_tabGraph" id="div_tabGraph" style="display: none;">
+    <div class="div_tabGraph" id="div_tabGraph">
         <table class="tabGraph">
             <tr>
                 <td class="cell_graphInv">Retorno A</td>
@@ -372,12 +388,12 @@
 </div>
 
 <br>
-<div class="card_table" id="h-slider-div" style="text-align: center; display: none;">
+<div class="card_table" id="h-slider-div" style="text-align: center;">
     <table class="table_question">
         <tr>
             <td class="text_slider"> - </td>
             <td class="td_slider" rowspan="2">
-                <input type="range" name="problem_01_inv_a_slider" value="" min="0" max="{{ max_inv }}" step="1000" id="sliderDinero" class="slider_dinero" required>
+                <input type="range" name="problem_03_sliderInv_a" value="" min="0" max="{{ max_inv }}" step="1000" id="sliderDinero" class="slider_dinero" required>
                 <input type="hidden" name="check_slider_example" value="" id="id_check_slider_example"/>
             </td>
             <td class="text_slider"> - </td>
@@ -393,14 +409,40 @@
     </table>
 </div>
 
-<input type="hidden" name="problem_01_btnSelected" value="{ " id="problem_01_btnSelected">
-<input type="hidden" name="problem_01_btnTime" value="" id="problem_01_btnTime">
+<input type="hidden" name="problem_03_sliderSelected" value="{ " id="problem_03_sliderSelected">
+<input type="hidden" name="problem_03_sliderTime" value="" id="problem_03_sliderTime">
 
 <br>
 
-<div class="div_btnNext" style="margin-top: -20px;">
+<div class="div_btnNext">
     <input type="button" value="Siguiente" class="btnNext" style="display: none;" onclick="nextView()">
     <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next" disabled>Siguiente</button>
 </div>
+
+<section class="modal hidden">
+    <div>
+        <h3>Confirmación</h3>
+        <p>
+            Por favor confirme los valores asignados: <br>
+              <i>Inversión A:</i> <span id="inv_a"></span><br> 
+              <i>Inversión B:</i> <span id="inv_b"></span>.
+        </p>
+        <p>
+            Si es correcto presione el botón "Enviar" de lo contrario presione el botón "Cambiar valores".
+        </p>
+    </div>
+    <table style="width: 100%;" class="table_modal">
+        <tr>
+            <td>
+                <input type="button" value="Cambiar valores" class="btnNext" onclick="closeModal()">
+            </td>
+            <td>
+                <input type="button" value="Enviar" class="btnNext" onclick="nextView()">
+            </td>
+        </tr>
+    </table>
+</section>
+
+<div class="overlay hidden"></div>
 
 {% endblock %}

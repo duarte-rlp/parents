@@ -25,11 +25,7 @@ class Constants(BaseConstants):
     num_rounds = 1
     # Datos de inversiones
     inv_labels = [1, 2, 3, 4, 5, 6, 7, 8]
-    inv_example = [10, 10, 10, 10, -5, -5, -5, -5]
-    inv_a = [15, 15, 15, 15, -8, -8, -8, -8]
-    #random.shuffle(inv_a) # si se desea que el orden sea aleatorio
-    inv_b = [-9, -9, -9, -9, 14, 14, 14, 14]
-    #random.shuffle(inv_b) # si se desea que el orden sea aleatorio
+    inv_example = [15, -8, 15, 15, -8, -8, -8, 15] # array exampl for training app
 
 
 class Subsession(BaseSubsession):

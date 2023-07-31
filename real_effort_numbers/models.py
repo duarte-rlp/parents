@@ -26,28 +26,16 @@ class Constants(BaseConstants):
     num_rounds = 1
     marks_per_correct_answer = 1
     questions = [
-                '2 x 10',
-                '3 x 20',
                 '6 x 19',
-                '20 - 9',
+                '9% de 200',
                 '60 - 19',
-                '18 - 20',
-                '10% de 100',
-                '10% de 800',
-                '20% de 200',
-                '9% de 200'    
+                '18 - 20'  
                 ]
     answers =   [
-                20,
-                60,
                 114,
-                11,
+                18,
                 41,
-                -2,
-                10,
-                80,
-                40,
-                18
+                -2
                 ]
 
 class Subsession(BaseSubsession):
@@ -76,35 +64,5 @@ class Player(BasePlayer):
     p4_cnt_mistakes = models.IntegerField()
     p4_mistakes = models.StringField()
     p4_time = models.StringField()
-
-    p5 = models.IntegerField()
-    p5_cnt_mistakes = models.IntegerField()
-    p5_mistakes = models.StringField()
-    p5_time = models.StringField()
-
-    p6 = models.IntegerField()
-    p6_cnt_mistakes = models.IntegerField()
-    p6_mistakes = models.StringField()
-    p6_time = models.StringField()
-
-    p7 = models.IntegerField()
-    p7_cnt_mistakes = models.IntegerField()
-    p7_mistakes = models.StringField()
-    p7_time = models.StringField()
-
-    p8 = models.IntegerField()
-    p8_cnt_mistakes = models.IntegerField()
-    p8_mistakes = models.StringField()
-    p8_time = models.StringField()
-
-    p9 = models.IntegerField()
-    p9_cnt_mistakes = models.IntegerField()
-    p9_mistakes = models.StringField()
-    p9_time = models.StringField()
-
-    p10 = models.IntegerField()
-    p10_cnt_mistakes = models.IntegerField()
-    p10_mistakes = models.StringField()
-    p10_time = models.StringField()
-    
+        
     cnt_question = models.IntegerField(initial = 1)

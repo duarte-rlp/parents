@@ -12,6 +12,11 @@ class intro_math(Page):
         # Need to show only to effort group participants
         # (and to add IntroLuckGroup IntroMixedGroup page) up here and in page sequence
         return self.round_number == 1
+    def vars_for_template(self):
+        return {
+            'n_questions_letters': Constants.n_questions[0],
+            'n_questions_numbers': Constants.n_questions[1],
+        }
 
 
 class p1(Page):
@@ -187,12 +192,10 @@ questions = [
     p5,
     p6,
     p7,
-    p8,
-    p9,
-    p10
+    p8
 ]
 
-random.shuffle(questions)
+#random.shuffle(questions)
 
 for p in questions:
     page_sequence.append(p)

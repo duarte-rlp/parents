@@ -41,7 +41,7 @@
                 max: {{ max_y }} + 1
             },
             series: [{
-                animation: true,
+                animation: false,
                 data: [],
                 lineWidth: 1,
                 enableMouseTracking: true,
@@ -52,7 +52,7 @@
                 name: 'Inversión A',
                 dashStyle: 'Dash',
             }, {
-                animation: true,
+                animation: false,
                 data: [],
                 lineWidth: 1,
                 enableMouseTracking: true,
@@ -305,23 +305,23 @@
                     if(mon_a < 0) {
                         mon_a = "- $" + (mon_a * -1).toLocaleString('es-CO');
                     } else if(mon_a > 0) {
-                        mon_a = "$ " + mon_a.toLocaleString('es-CO');
+                        mon_a = "" + mon_a.toLocaleString('es-CO');
                     } else {
-                        mon_a = "$ 0";
+                        mon_a = "0";
                     }
                     if(mon_b < 0) {
                         mon_b = "- $" + (mon_b * -1).toLocaleString('es-CO');
                     } else if(mon_b > 0) {
-                        mon_b = "$ " + mon_b.toLocaleString('es-CO');
+                        mon_b = "" + mon_b.toLocaleString('es-CO');
                     } else {
-                        mon_b = "$ 0";
+                        mon_b = "0";
                     }
                     if(mon_t < 0) {
                         mon_t = "- $" + (mon_t * -1).toLocaleString('es-CO');
                     } else if(mon_t > 0) {
-                        mon_t = "$ " + mon_t.toLocaleString('es-CO');
+                        mon_t = "" + mon_t.toLocaleString('es-CO');
                     } else {
-                        mon_t = "$ 0";
+                        mon_t = "0";
                     }
                     cell_a.innerHTML = mon_a;
                     cell_b.innerHTML = mon_b;
@@ -365,38 +365,38 @@
         <table class="tabGraph">
             <tr id="fila_a" style="visibility: hidden; border: #ffffff 1px solid;">
                 <td class="cell_graphInv" style="border: #ffffff 1px solid;">Retorno A</td>
-                <td class="cell_graph" id="a_1" style="border: #ffffff 1px solid;">$ -</td>
-                <td class="cell_graph" id="a_2" style="border: #ffffff 1px solid;">$ -</td>
-                <td class="cell_graph" id="a_3" style="border: #ffffff 1px solid;">$ -</td>
-                <td class="cell_graph" id="a_4" style="border: #ffffff 1px solid;">$ -</td>
-                <td class="cell_graph" id="a_5" style="border: #ffffff 1px solid;">$ -</td>
-                <td class="cell_graph" id="a_6" style="border: #ffffff 1px solid;">$ -</td>
-                <td class="cell_graph" id="a_7" style="border: #ffffff 1px solid;">$ -</td>
-                <td class="cell_graph" id="a_8" style="border: #ffffff 1px solid;">$ -</td>
+                <td class="cell_graph" id="a_1" style="border: #ffffff 1px solid;"></td>
+                <td class="cell_graph" id="a_2" style="border: #ffffff 1px solid;"></td>
+                <td class="cell_graph" id="a_3" style="border: #ffffff 1px solid;"></td>
+                <td class="cell_graph" id="a_4" style="border: #ffffff 1px solid;"></td>
+                <td class="cell_graph" id="a_5" style="border: #ffffff 1px solid;"></td>
+                <td class="cell_graph" id="a_6" style="border: #ffffff 1px solid;"></td>
+                <td class="cell_graph" id="a_7" style="border: #ffffff 1px solid;"></td>
+                <td class="cell_graph" id="a_8" style="border: #ffffff 1px solid;"></td>
             </tr>
             <tr id="fila_b" style="visibility: hidden;">
                 <td class="cell_graphInv" style="border: #ffffff 1px solid;">Retorno B</td>
-                <td class="cell_graph" id="b_1" style="border: #ffffff 1px solid;">$ -</td>
-                <td class="cell_graph" id="b_2" style="border: #ffffff 1px solid;">$ -</td>
-                <td class="cell_graph" id="b_3" style="border: #ffffff 1px solid;">$ -</td>
-                <td class="cell_graph" id="b_4" style="border: #ffffff 1px solid;">$ -</td>
-                <td class="cell_graph" id="b_5" style="border: #ffffff 1px solid;">$ -</td>
-                <td class="cell_graph" id="b_6" style="border: #ffffff 1px solid;">$ -</td>
-                <td class="cell_graph" id="b_7" style="border: #ffffff 1px solid;">$ -</td>
-                <td class="cell_graph" id="b_8" style="border: #ffffff 1px solid;">$ -</td>
+                <td class="cell_graph" id="b_1" style="border: #ffffff 1px solid;"></td>
+                <td class="cell_graph" id="b_2" style="border: #ffffff 1px solid;"></td>
+                <td class="cell_graph" id="b_3" style="border: #ffffff 1px solid;"></td>
+                <td class="cell_graph" id="b_4" style="border: #ffffff 1px solid;"></td>
+                <td class="cell_graph" id="b_5" style="border: #ffffff 1px solid;"></td>
+                <td class="cell_graph" id="b_6" style="border: #ffffff 1px solid;"></td>
+                <td class="cell_graph" id="b_7" style="border: #ffffff 1px solid;"></td>
+                <td class="cell_graph" id="b_8" style="border: #ffffff 1px solid;"></td>
             </tr>
         </table>
         <table class="tabGraph" style="margin-top: 15px;">
-            <tr>
-                <td class="cell_graphInv" style="font-weight: bold;">Total</td>
-                <td class="cell_graph" style="font-weight: bold;" id="t_1">$ -</td>
-                <td class="cell_graph" style="font-weight: bold;" id="t_2">$ -</td>
-                <td class="cell_graph" style="font-weight: bold;" id="t_3">$ -</td>
-                <td class="cell_graph" style="font-weight: bold;" id="t_4">$ -</td>
-                <td class="cell_graph" style="font-weight: bold;" id="t_5">$ -</td>
-                <td class="cell_graph" style="font-weight: bold;" id="t_6">$ -</td>
-                <td class="cell_graph" style="font-weight: bold;" id="t_7">$ -</td>
-                <td class="cell_graph" style="font-weight: bold;" id="t_8">$ -</td>
+            <tr id="fila_total" style="visibility: hidden; border: #ffffff 1px solid;">
+                <td class="cell_graphInv" style="font-weight: bold; border: #ffffff 1px solid;">Total</td>
+                <td class="cell_graph" style="font-weight: bold; border: #ffffff 1px solid;" id="t_1"></td>
+                <td class="cell_graph" style="font-weight: bold; border: #ffffff 1px solid;" id="t_2"></td>
+                <td class="cell_graph" style="font-weight: bold; border: #ffffff 1px solid;" id="t_3"></td>
+                <td class="cell_graph" style="font-weight: bold; border: #ffffff 1px solid;" id="t_4"></td>
+                <td class="cell_graph" style="font-weight: bold; border: #ffffff 1px solid;" id="t_5"></td>
+                <td class="cell_graph" style="font-weight: bold; border: #ffffff 1px solid;" id="t_6"></td>
+                <td class="cell_graph" style="font-weight: bold; border: #ffffff 1px solid;" id="t_7"></td>
+                <td class="cell_graph" style="font-weight: bold; border: #ffffff 1px solid;" id="t_8"></td>
             </tr>
         </table>
     </div>

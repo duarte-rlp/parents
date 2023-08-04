@@ -72,3 +72,49 @@ input:focus {
 	margin: 0 auto;
 }
 
+input[type="radio"][disabled]{
+    border: 1px solid #757575;
+    border-radius: 10px;
+    box-shadow: 0px 0px 2px 0px #757575;
+}
+
+input[type="radio"]:checked::before{
+    transform: scale(1);
+}
+
+input[type="radio"]:checked{
+    border: 1px solid #007cff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 2px 0px #007cff;
+}
+
+input[type="radio"]::before{
+    content: "";
+    display: block;
+    height: 13.5px;
+    width: 13.5px;
+    border-radius: 6px;
+    z-index: 1;
+    top: 2px;
+    left: 2px;
+    background-color: #007cff;
+    transition: 100ms transform ease-in-out;
+    transform: scale(0);
+    position: absolute;
+}
+
+input[type="radio"]{
+    -webkit-appearance: none;
+    appearance: none;
+    border: 1px solid #757575;
+    border-radius: 10px;
+    box-shadow: 0px 0px 2px 0px #757575;
+    background-color: #ffffff;
+    height: 20px;
+    width: 20px;
+    place-content: center;
+    position: relative;
+    margin: auto 0.5rem;
+    vertical-align: middle;
+}
+

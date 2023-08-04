@@ -24,6 +24,7 @@ class intro_home(Page):
         self.player.participant.vars['graphType'] = random.randint(1, 2)
         self.player.graphType = self.player.participant.vars['graphType']
 
+# Para al finalizar visualizar los datos almacenados por la app
 class retro(Page):
     def vars_for_template(self):
         return {

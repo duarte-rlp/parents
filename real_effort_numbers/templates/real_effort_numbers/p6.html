@@ -14,7 +14,7 @@
             let ele_cnt = document.getElementById("p6_cnt_mistakes");
             let ele_mis = document.getElementById("p6_mistakes");
             let ele_tim = document.getElementById("p6_time");
-            validateAnswer(in_answ, Number({{ answer }}), ele_cnt, ele_mis, ele_tim);
+            validateAnswer(in_answ, "{% autoescape off %}{{ answer }}{% endautoescape %}", ele_cnt, ele_mis, ele_tim);
         }
 
         window.onload = function(){
@@ -24,23 +24,30 @@
 {% endblock %}
 
 {% block title %}
-    Pregunta {{ n_question }}
+    Preguntas iniciales {{ n_question }}
 {% endblock %}
 
 {% block content %}
-¿Cuál es la solución al siguiente problema de restas?
+
+{{ n_question }}. {{ question }}
+<br>
+<br>
+<input type="radio" name="p6" value="{% autoescape off %}{{ answer }}{% endautoescape %}" id="radio_1" oninput="restore_error_radios()">
+<label for="radio_1">Más de $ 100.000</label>
+<br>
+<input type="radio" name="p6" value="= 100.000" id="radio_2" oninput="restore_error_radios()">
+<label for="radio_2">Exactamente $ 100.000</label>
+<br>
+<input type="radio" name="p6" value="< 100.000" id="radio_3" oninput="restore_error_radios()">
+<label for="radio_3">Menos de $ 100.000</label>
+<br>
+<input type="radio" name="p6" value="NS/NI" id="radio_4" oninput="restore_error_radios()">
+<label for="radio_4">No sabe, no informa</label>
 
 <div class="div_operation">
-    <table class="tab_operation">
-        <tr>
-            <td class="cell_question">{{ question }} = </td>
-            <td><input type="number" class="inNumber" name="p6" id="id_p6" oninput="restore_error('id_p6')" required></td>
-        </tr>
-    </table>
     <div class="error_msg" id="div_error">
         La respuesta no es correcta, intente de nuevo
     </div>
-
 </div>
 
 <input type="hidden" name="p6_cnt_mistakes" value="" id="p6_cnt_mistakes">

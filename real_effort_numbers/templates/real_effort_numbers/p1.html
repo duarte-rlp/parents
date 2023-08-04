@@ -24,16 +24,15 @@
 {% endblock %}
 
 {% block title %}
-    Pregunta {{ n_question }}
+    Preguntas iniciales
 {% endblock %}
 
 {% block content %}
-¿Cuál es la solución al siguiente problema de multiplicación?
 
 <div class="div_operation">
-    <table class="tab_operation">
+    <table>
         <tr>
-            <td class="cell_question">{{ question }} = </td>
+            <td class="cell_question">{{ n_question }}. {{ question }} = </td>
             <td><input type="number" class="inNumber" name="p1" id="id_p1" oninput="restore_error('id_p1')" required></td>
         </tr>
     </table>

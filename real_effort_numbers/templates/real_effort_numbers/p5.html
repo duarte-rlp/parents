@@ -10,11 +10,11 @@
         var cnt_errors = 0;
 
         function validate() {
-            let in_answ = document.getElementById("id_p5");
+            let in_answ = document.querySelector('input[name="p5"]:checked');
             var ele_cnt = document.getElementById("p5_cnt_mistakes");
             var ele_mis = document.getElementById("p5_mistakes");
             var ele_tim = document.getElementById("p5_time");
-            validateAnswer(in_answ, Number({{ answer }}), ele_cnt, ele_mis, ele_tim);
+            validateAnswer(in_answ, "{% autoescape off %}{{ answer }}{% endautoescape %}", ele_cnt, ele_mis, ele_tim);
         }
 
         window.onload = function(){
@@ -24,23 +24,30 @@
 {% endblock %}
 
 {% block title %}
-    Pregunta {{ n_question }}
+    Preguntas iniciales 
 {% endblock %}
 
 {% block content %}
-¿Cuál es la solución al siguiente problema de restas?
+
+{{ n_question }}. {{ question }}
+<br>
+<br>
+<input type="radio" name="p5" value="{% autoescape off %}{{ answer }}{% endautoescape %}" id="radio_1" oninput="restore_error_radios()">
+<label for="radio_1">Más de $ 102.000</label>
+<br>
+<input type="radio" name="p5" value="= 102.000" id="radio_2" oninput="restore_error_radios()">
+<label for="radio_2">Exactamente $ 102.000</label>
+<br>
+<input type="radio" name="p5" value="< 102.000" id="radio_3" oninput="restore_error_radios()">
+<label for="radio_3">Menos de $ 102.000</label>
+<br>
+<input type="radio" name="p5" value="NS/NI" id="radio_4" oninput="restore_error_radios()">
+<label for="radio_4">No sabe, no informa</label>
 
 <div class="div_operation">
-    <table class="tab_operation">
-        <tr>
-            <td class="cell_question">{{ question }} = </td>
-            <td><input type="number" class="inNumber" name="p5" id="id_p5" oninput="restore_error('id_p5')" required></td>
-        </tr>
-    </table>
     <div class="error_msg" id="div_error">
         La respuesta no es correcta, intente de nuevo
     </div>
-
 </div>
 
 <input type="hidden" name="p5_cnt_mistakes" value="" id="p5_cnt_mistakes">

@@ -12,7 +12,7 @@
 
         function validateColor() {
             var rad_col = document.getElementsByName("response_checker");
-            if(Array.from(rad_col).find(radio => radio.checked).value == "turquesa") {
+            if(Array.from(rad_col).find(radio => radio.checked).value == "{{ correct_color }}") {
                 end = Date.now();
                 let time_check = document.getElementById("time_checker");
                 // guardamos el tiempo que demoró en dar la respuesta correcta en milisegundos
@@ -70,8 +70,7 @@ La siguiente pregunta se refiere al siguiente problema. En cuestionarios como el
 <input type="hidden" name="mistakes_checker" value="{ " id="mistakes_checker">
 <input type="hidden" name="time_checker" value="" id="time_checker">
 
-
-<br><br>
+<br>
 
 <div class="error_msg" id="div_error">
     Por favor lea atentamente la pregunta y responda de nuevo

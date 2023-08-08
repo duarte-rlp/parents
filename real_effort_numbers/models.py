@@ -12,7 +12,7 @@ from otree.api import (
 )
 
 
-author = 'Eugene and Charlie'
+author = '@hopkeinst'
 
 doc = """
 A mental arithmetic task

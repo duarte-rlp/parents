@@ -5,7 +5,7 @@ SESSION_CONFIGS = [
         'name': 'test',
         'display_name': 'Test General',
         'num_demo_participants': 1, 
-        'app_sequence': ['home', 'real_effort_numbers', 'icl', 'checker1', 'training', 'allocations', 'icl2','choice', 'real', 'survey', 'final'],
+        'app_sequence': ['home', 'real_effort_numbers', 'icl', 'choice_2', 'checker1', 'training', 'allocations', 'icl2','choice', 'real', 'survey', 'final'],
     },
     {
         'name': 'home',
@@ -24,6 +24,18 @@ SESSION_CONFIGS = [
         'display_name': 'Actividad 1: Rentabilidad fija o variable - ICL 1',
         'num_demo_participants': 1, 
         'app_sequence': ['icl'],
+    },
+    {
+        'name': 'choice_2',
+        'display_name': 'Actividad 2: Rentabilidad variable - choice_2',
+        'num_demo_participants': 1, 
+        'app_sequence': ['choice_2'],
+    },
+    {
+        'name': 'checker1',
+        'display_name': 'Pregunta: checker1',
+        'num_demo_participants': 1, 
+        'app_sequence': ['checker1'],
     },
     {
         'name': 'graphs',
@@ -60,12 +72,6 @@ SESSION_CONFIGS = [
         'display_name': 'Test Payoffs: ICL1, ICL2, Choice',
         'num_demo_participants': 1, 
         'app_sequence': ['home', 'icl', 'icl2', 'choice', 'final'],
-    },
-    {
-        'name': 'checker1',
-        'display_name': 'Test Checker - checker1',
-        'num_demo_participants': 1, 
-        'app_sequence': ['checker1'],
     },
 ]
 

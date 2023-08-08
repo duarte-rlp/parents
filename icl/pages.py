@@ -10,8 +10,8 @@ def vars_for_all_templates(self):
     return {
         'p_hi': "{0:.0f}".format(Constants.probability) + "%",
         'p_lo': "{0:.0f}".format(100 - Constants.probability) + "%",
-        'hi':"$"+format(int(str(Constants.lottery_hi*100).split(",")[0]), ',d'),
-        'lo': "$"+format(int(str(Constants.lottery_lo*100).split(",")[0]), ',d')
+        'hi':Constants.lottery_hi,
+        'lo': Constants.lottery_lo
     }
 
 
@@ -55,7 +55,7 @@ class Decision(Page):
             'page':        page,
             'total':       total,
             'progress':    progress,
-            'sure_payoff': "$"+format(int(str((self.participant.vars['icl_sure_payoffs'][page - 1])*100).split(",")[0]), ',d')
+            'sure_payoff': int(self.participant.vars['icl_sure_payoffs'][page - 1])
         }
 
     # set sure payoffs for next choice, payoffs, and switching row
@@ -64,7 +64,6 @@ class Decision(Page):
         self.player.set_sure_payoffs()
         self.player.update_switching_row()
         self.player.set_payoffs()
-        self.player.set_ganador_pago()
 
 # ******************************************************************************************************************** #
 # *** PAGE SEQUENCE *** #

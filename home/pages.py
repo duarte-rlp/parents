@@ -22,6 +22,10 @@ class intro_home(Page):
     def before_next_page(self):
         self.subsession.set_id_players()
         self.player.participant.vars['graphType'] = random.randint(1, 2)
+        if (self.player.participant.vars['graphType'] == 1):
+            self.player.graphType_str = 'together'
+        else:
+            self.player.graphType_str = 'separated'
         self.player.graphType = self.player.participant.vars['graphType']
 
 # Para al finalizar visualizar los datos almacenados por la app

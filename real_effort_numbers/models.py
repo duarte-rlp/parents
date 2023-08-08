@@ -93,15 +93,5 @@ class Player(BasePlayer):
     p8_cnt_mistakes = models.IntegerField()
     p8_mistakes = models.StringField()
     p8_time = models.StringField()
-
-    p9 = models.StringField()
-    p9_cnt_mistakes = models.IntegerField()
-    p9_mistakes = models.StringField()
-    p9_time = models.StringField()
-
-    p10 = models.StringField()
-    p10_cnt_mistakes = models.IntegerField()
-    p10_mistakes = models.StringField()
-    p10_time = models.StringField()
     
     cnt_question = models.IntegerField(initial = 1)

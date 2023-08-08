@@ -10,7 +10,7 @@
         var cnt_errors = 0;
 
         function validate() {
-            let in_answ = document.getElementById("id_p6");
+            let in_answ = document.querySelector('input[name="p6"]:checked');
             let ele_cnt = document.getElementById("p6_cnt_mistakes");
             let ele_mis = document.getElementById("p6_mistakes");
             let ele_tim = document.getElementById("p6_time");
@@ -24,7 +24,7 @@
 {% endblock %}
 
 {% block title %}
-    Preguntas iniciales {{ n_question }}
+    Preguntas iniciales
 {% endblock %}
 
 {% block content %}
@@ -32,13 +32,13 @@
 {{ n_question }}. {{ question }}
 <br>
 <br>
-<input type="radio" name="p6" value="{% autoescape off %}{{ answer }}{% endautoescape %}" id="radio_1" oninput="restore_error_radios()">
+<input type="radio" name="p6" value="> 100.000" id="radio_1" oninput="restore_error_radios()">
 <label for="radio_1">Más de $ 100.000</label>
 <br>
 <input type="radio" name="p6" value="= 100.000" id="radio_2" oninput="restore_error_radios()">
 <label for="radio_2">Exactamente $ 100.000</label>
 <br>
-<input type="radio" name="p6" value="< 100.000" id="radio_3" oninput="restore_error_radios()">
+<input type="radio" name="p6" value="{% autoescape off %}{{ answer }}{% endautoescape %}" id="radio_3" oninput="restore_error_radios()">
 <label for="radio_3">Menos de $ 100.000</label>
 <br>
 <input type="radio" name="p6" value="NS/NI" id="radio_4" oninput="restore_error_radios()">

@@ -10,11 +10,11 @@
         var cnt_errors = 0;
 
         function validate() {
-            let in_answ = document.getElementById("id_p7");
+            let in_answ = document.querySelector('input[name="p7"]:checked');
             let ele_cnt = document.getElementById("p7_cnt_mistakes");
             let ele_mis = document.getElementById("p7_mistakes");
             let ele_tim = document.getElementById("p7_time");
-            validateAnswer(in_answ, Number({{ answer }}), ele_cnt, ele_mis, ele_tim);
+            validateAnswer(in_answ, "{% autoescape off %}{{ answer }}{% endautoescape %}", ele_cnt, ele_mis, ele_tim);
         }
 
         window.onload = function(){
@@ -24,23 +24,29 @@
 {% endblock %}
 
 {% block title %}
-    Pregunta {{ n_question }}
+    Preguntas iniciales
 {% endblock %}
 
 {% block content %}
-¿Cuál es la solución al siguiente problema de porcentajes?
+{{ n_question }}. {{ question }}
+<br>
+<br>
+<input type="radio" name="p7" value="{% autoescape off %}{{ answer }}{% endautoescape %}" id="radio_1" oninput="restore_error_radios()">
+<label for="radio_1">Verdadero</label>
+<br>
+<input type="radio" name="p7" value="false" id="radio_2" oninput="restore_error_radios()">
+<label for="radio_2">Falso</label>
+<br>
+<input type="radio" name="p7" value="not know" id="radio_3" oninput="restore_error_radios()">
+<label for="radio_3">No sabe</label>
+<br>
+<input type="radio" name="p7" value="NS/NI" id="radio_4" oninput="restore_error_radios()">
+<label for="radio_4">Prefiero no responder</label>
 
 <div class="div_operation">
-    <table class="tab_operation">
-        <tr>
-            <td class="cell_question">{{ question }} = </td>
-            <td><input type="number" class="inNumber" name="p7" id="id_p7" oninput="restore_error('id_p7')" required></td>
-        </tr>
-    </table>
     <div class="error_msg" id="div_error">
         La respuesta no es correcta, intente de nuevo
     </div>
-
 </div>
 
 <input type="hidden" name="p7_cnt_mistakes" value="" id="p7_cnt_mistakes">

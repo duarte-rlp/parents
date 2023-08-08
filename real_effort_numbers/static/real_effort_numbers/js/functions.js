@@ -1,5 +1,6 @@
 
 function validateAnswer(input_answer, answerTrue, ele_cnt, ele_mis, ele_tim) {
+	console.log("input_answer", input_answer.value);
 	if((input_answer.value == "") || (input_answer.value == null)) {
 		let btn = document.getElementById("id_next");
 		btn.removeAttribute("disabled");
@@ -72,9 +73,9 @@ window.onload = function(){
         let num = Number(mon_elements[j].innerHTML);
         if (num < 0) {
             num = num * -1;
-            mon_elements[j].innerHTML = "- $" + num.toLocaleString('es-CO').toString();
+            mon_elements[j].innerHTML = "- $ " + num.toLocaleString('es-CO').toString();
         }else {
-            mon_elements[j].innerHTML = "$" + num.toLocaleString('es-CO').toString();
+            mon_elements[j].innerHTML = "$ " + num.toLocaleString('es-CO').toString();
         }
     }
 };

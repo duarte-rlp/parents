@@ -5,13 +5,25 @@ SESSION_CONFIGS = [
         'name': 'test',
         'display_name': 'Test General',
         'num_demo_participants': 1, 
-        'app_sequence': ['home', 'real_effort_numbers', 'checker1', 'icl', 'training', 'allocations', 'icl2','choice', 'real', 'survey', 'final'],
+        'app_sequence': ['home', 'real_effort_numbers', 'icl', 'checker1', 'training', 'allocations', 'icl2','choice', 'real', 'survey', 'final'],
+    },
+    {
+        'name': 'home',
+        'display_name': 'Home: instrucciones',
+        'num_demo_participants': 1, 
+        'app_sequence': ['home'],
     },
     {
         'name': 'math_operations',
-        'display_name': 'Parte 1: Math - real_effort_numbers',
+        'display_name': 'Preguntas iniciales: real_effort_numbers',
         'num_demo_participants': 1, 
-        'app_sequence': ['home', 'real_effort_numbers'],
+        'app_sequence': ['real_effort_numbers'],
+    },
+    {
+        'name': 'icl',
+        'display_name': 'Actividad 1: Rentabilidad fija o variable - ICL 1',
+        'num_demo_participants': 1, 
+        'app_sequence': ['icl'],
     },
     {
         'name': 'graphs',
@@ -36,12 +48,6 @@ SESSION_CONFIGS = [
         'display_name': 'Parte 5: Real assets - real',
         'num_demo_participants': 1, 
         'app_sequence': ['home', 'real'],
-    },
-    {
-        'name': 'icl',
-        'display_name': 'ICL 1',
-        'num_demo_participants': 1, 
-        'app_sequence': ['home', 'icl'],
     },
     {
         'name': 'icl2',

@@ -1,5 +1,6 @@
 {% extends "global/Page.html" %}
 {% load staticfiles otree %}
+{% load otree static %}
 {% load i18n %}
 
 
@@ -8,6 +9,7 @@
 {# ****************************************************************************************************************** #}
 {% block styles %}
     <link href="{% static 'icl/css/custom.css' %}" rel="stylesheet"/>
+    <script src="{% static 'icl/js/functions.js' %}"></script>
 {% endblock %}
 
 
@@ -15,7 +17,7 @@
 {# *** TITLE *** #}
 {# ****************************************************************************************************************** #}
 {% block title %}
-    {% trans "Actividad 1" %}
+Actividad 1: Rentabilidad fija o variable
 {% endblock %}
 
 
@@ -24,16 +26,26 @@
 {# ****************************************************************************************************************** #}
 {% block content %}
 
-<p>En esta parte debe tomar cinco (5) decisiones de inversión. En cada decisión decidir cuánto invertir en cada una de las siguiente opciones: </p>
-<p><b>Si tienes 100 puntos cuanto invertirías en</b></p>
+Comencemos con la primera parte. En esta parte debe tomar cinco (5) decisiones de inversión. En cada decisión debe elegir entre dos opciones: 
+<br>
+<br>
 <ul>
-  <li> <b>Opción A: </b>Inversión con una rentabilidad fija, es decir, la rentabilidad no depende de nada.</li>
-  <li> <b>Opción B: </b>Inversión con una rentabilidad variable, es decir, la rentabilidad depende de un lanzamiento de moneda, si cae cara usted ganará $60.000 y si cae sello usted no ganará nada ($0).</li>
+    <li><b>Inversión con una rentabilidad variable:</b> La rentabilidad depende del lanzamiento de una moneda, si cae CARA usted ganará <toMoney>30000</toMoney> y si cae SELLO usted no ganará nada (<toMoney>0</toMoney>). </li>
+    <li><b>Inversión con rentabilidad fija:</b> La rentabilidad no depende de nada.</li>
 </ul>
-
-<p>Las posibles ganancias de la inversión con <i>rentabilidad variable</i> serán las mismas en TODAS las decisiones, pero la posible ganancia de la inversión con <i>rentabilidad fija</i> irá cambiando. </p> 
-<p>Recuerde que, UNA de las decisiones de esta parte podrá ser elegida por el computador al azar para determinar su ganancia total. Si en la decisión de inversión elegida usted escogió la inversión con <i>rentabilidad variable</i>, el computador hará un lanzamiento de moneda para determinar su ganancia, de lo contrario, recibirá la <i>rentabilidad fija. </i> </p> 
-<p>Por favor elija de acuerdo con lo que usted prefiere, no hay respuestas correctas o incorrectas. </p>
-
+Las posibles ganancias de la inversión con <i>rentabilidad variable</i> serán las mismas en TODAS las decisiones, pero la posible ganancia de la inversión con <i>rentabilidad fija</i> irá cambiando. 
+<br>
+<br>
+<b>¿Qué pasa si el computador selecciona esta actividad para calcular su pago total?</b>
+<br>
+<br>
+Una de las cinco decisiones de esta actividad será elegida al azar por el computador para determinar su pago total. Si en la decisión de inversión elegida usted escogió la inversión con <i>rentabilidad variable</i>, el computador hará un lanzamiento de moneda para determinar su pago, de lo contrario, recibirá la <i>rentabilidad fija</i>.
+<br>
+<br>
+Por favor elija de acuerdo con lo que usted prefiere, no hay respuestas correctas o incorrectas.
+<br>
+<br>
+<div class="div_btnNext">
     {% next_button %}
+</div>
 {% endblock %}

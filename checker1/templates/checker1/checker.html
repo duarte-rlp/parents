@@ -49,14 +49,21 @@
 {% endblock %}
 
 {% block title %}
-    Parte 1 - Chequeo de Atención
+    Pregunta
 {% endblock %}
 
 {% block content %}
 
-La siguiente pregunta se refiere al siguiente problema. En cuestionarios como el nuestro, a veces hay participantes que no leen atentamente las preguntas y se limitan a hacer clic rápidamente en la encuesta. Esto significa que hay muchas respuestas aleatorias que comprometen los resultados de los estudios de investigación. Para demostrar que ha leído atentamente nuestras preguntas, responda a la siguiente pregunta con la palabra 'turquesa'. ¿Cuál es su color favorito?
+Gracias por completar la segunda actividad. Antes de continuar, nos gustaría hacerle una pregunta rápida.
+<br>
+<br> 
+En estas actividades, hay participantes que no leen atentamente las preguntas y se limitan a hacer clic rápidamente. Esto significa que hay respuestas no pensadas que comprometen los resultados de la investigación. Para demostrar que ha leído atentamente, responda turquesa a la siguiente pregunta: 
+<br>
+<br>
+¿Cuál es su color favorito?
+<br>
+<br>
 
-<br><br>
 <input type="radio" class="radios" name="response_checker" onchange="restore_error('div_error')" value="{{ colors.0 }}">{{ colors.0 }}
 <br>
 <input type="radio" class="radios" name="response_checker" onchange="restore_error('div_error')" value="{{ colors.1 }}">{{ colors.1 }}

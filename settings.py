@@ -50,22 +50,16 @@ SESSION_CONFIGS = [
         'app_sequence': ['home', 'allocations'],
     },
     {
-        'name': 'choice',
-        'display_name': 'Parte 4: Loss averssion - choice',
-        'num_demo_participants': 1, 
-        'app_sequence': ['choice'],
-    },
-    {
         'name': 'real',
         'display_name': 'Parte 5: Real assets - real',
         'num_demo_participants': 1, 
         'app_sequence': ['home', 'real'],
     },
     {
-        'name': 'icl2',
-        'display_name': 'ICL 2',
+        'name': 'choice',
+        'display_name': 'Actividad 6: Invertir o no invertir - choice',
         'num_demo_participants': 1, 
-        'app_sequence': ['home', 'icl2'],
+        'app_sequence': ['choice'],
     },
     {
         'name': 'final',
@@ -73,6 +67,12 @@ SESSION_CONFIGS = [
         'num_demo_participants': 1, 
         'app_sequence': ['home', 'icl', 'icl2', 'choice', 'final'],
     },
+    # {
+    #     'name': 'icl2',
+    #     'display_name': 'ICL 2',
+    #     'num_demo_participants': 1, 
+    #     'app_sequence': ['home', 'icl2'],
+    # },
 ]
 
 ROOMS = [

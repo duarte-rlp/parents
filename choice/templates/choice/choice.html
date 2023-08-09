@@ -8,6 +8,8 @@
     
     <script>
 
+        var start;
+
         $(document).ready(function () {
             $('.radios').click(
                 function (event) {
@@ -17,145 +19,110 @@
                         n_checked += elements[i].checked;
                     }
                     if(n_checked == 6) {
-                        let next_button = document.getElementsByClassName('otree-btn-next');
-                        next_button[0].style.cssText += 'display: block !important; margin: 0 auto;';
+                        let btn_next = document.getElementById("btnNext");
+                        btn_next.style.display = "block";
+                        btn_next.style.margin = "0 auto";
                     }
                 }
             );
         });
 
         window.onload = function(){
+            start = Date.now();
             // Usar para agregar punto de miles
             let elements = document.getElementsByTagName("toMoney");
             for(let j=0; j<elements.length; j++) {
                 let num = Number(elements[j].innerHTML);
                 if (num < 0) {
                     num = num * -1;
-                    elements[j].innerHTML = "-$" + num.toLocaleString('es-CO').toString();
+                    elements[j].innerHTML = "-$ " + num.toLocaleString('es-CO').toString();
                 }else {
-                    elements[j].innerHTML = "$" + num.toLocaleString('es-CO').toString();
+                    elements[j].innerHTML = "$ " + num.toLocaleString('es-CO').toString();
                 }
             }
         };
+
+        function validate() {
+            let in_time = document.getElementById("time_choice");
+            in_time.value = Date.now() - start;
+            let btn = document.getElementById("id_next");
+            btn.removeAttribute("disabled");
+            btn.click();
+        }
 
     </script>
 {% endblock %}
 
 {% block title %}
-    Actividad 4
+    Actividad 6: Invertir o no invertir
 {% endblock %}
 
 {% block content %}
 
-<table class="table_question">
-    <tr>
-        <td class="cell_question" style="width: 100% !important;">    
-            <div id="text01">
-                ¡Gracias por completar los problemas de decisión! Casi hemos terminado con el cuestionario. Ahora nos gustaría hacerle algunas preguntas adicionales.
-                Esta actividad no afectará sus pagos. Sin embargo, le pedimos que piense cuidadosamente sus decisiones.
-                <br>
-                Su tarea es indicar si desea lanzar la moneda o no en seis decisiones. 
-                Si usted decide lanzar la moneda, con la misma probabilidad recibirá $60.000 <b>(sello)</b> pesos 
-                o perderá un valor que irá cambiando en cada decisión <b>(cara)</b>. 
-                Si usted decide no lanzar la moneda, no recibirá ningún pago extra.  
-                <br>
-            </div>
-        </td>
-    </tr>
-</table>
+Escoja la opción en cada renglón para decidir si quiere “INVERTIR” o “NO INVERTIR”. No hay respuestas correctas o incorrectas. Las opciones de inversión y su rentabilidad cuando decide INVERTIR  son las siguientes: 
 
-<br>  
+<br>
+<br>
 
 <table style="margin: 0 auto;">
     <tr>
-        <td style="width: 5%;"></td>
-        <td style="width: 370px;">
-        </td>
-        <td style="width: 140px; text-align: center; border: 1px solid #aaaaaaaa;" class="cell_radio">
-            No tirar la moneda
-        </td>
-        <td style="width: 140px;text-align: center; border: 1px solid #aaaaaaaa;" class="cell_radio">
-            Tirar la moneda
-        </td>
+        <td class="cell_radios_head">Opciones de<br>inversión</td>
+        <td class="cell_radios_head">PÉRDIDA<br>si sale CARA</td>
+        <td class="cell_radios_head">GANANCIA<br>si sale SELLO</td>
+        <td class="cell_radios_head">INVERTIR</td>
+        <td class="cell_radios_head">NO INVERTIR</td>
     </tr>
     <tr class="row_option">
-        <td class="cell_option" style="text-align: center;">1.</td>
-        <td class="cell_option">
-            Si la moneda cae en <b>cara</b> usted <b>pierde <toMoney>20000</toMoney></b>,<br>Si la moneda cae en <b>sello</b> usted <b>gana <toMoney>60000</toMoney></b>.
-        </td>
-        <td class="cell_radio">
-            <input type="radio" class="radios" name="row_1" value="0">
-        </td>
-        <td class="cell_radio">
-            <input type="radio" class="radios" name="row_1" value="1">
-        </td>
+        <td class="cell_radios">Inversión 1</td>
+        <td class="cell_radios"><toMoney>{{ loss.0 }}</toMoney></td>
+        <td class="cell_radios"><toMoney>{{ earnings.0 }}</toMoney></td>
+        <td class="cell_radios"><input type="radio" class="radios" value="1" name="row_1"></td>
+        <td class="cell_radios"><input type="radio" class="radios" value="0" name="row_1"></td>
     </tr>
     <tr class="row_option">
-        <td class="cell_option" style="text-align: center;">2.</td>
-        <td class="cell_option">
-            Si la moneda cae en <b>cara</b> usted <b>pierde <toMoney>30000</toMoney></b>,<br>Si la moneda cae en <b>sello</b> usted <b>gana <toMoney>60000</toMoney></b>.
-        </td>
-        <td class="cell_radio">
-            <input type="radio" class="radios" name="row_2" value="0">
-        </td>
-        <td class="cell_radio">
-            <input type="radio" class="radios" name="row_2" value="1">
-        </td>
+        <td class="cell_radios">Inversión 2</td>
+        <td class="cell_radios"><toMoney>{{ loss.1 }}</toMoney></td>
+        <td class="cell_radios"><toMoney>{{ earnings.1 }}</toMoney></td>
+        <td class="cell_radios"><input type="radio" class="radios" value="1" name="row_2"></td>
+        <td class="cell_radios"><input type="radio" class="radios" value="0" name="row_2"></td>
     </tr>
     <tr class="row_option">
-        <td class="cell_option" style="text-align: center;">3.</td>
-        <td class="cell_option">
-            Si la moneda cae en <b>cara</b> usted <b>pierde <toMoney>40000</toMoney></b>,<br>Si la moneda cae en <b>sello</b> usted <b>gana <toMoney>60000</toMoney></b>.
-        </td>
-        <td class="cell_radio">
-            <input type="radio" class="radios" name="row_3" value="0">
-        </td>
-        <td class="cell_radio">
-            <input type="radio" class="radios" name="row_3" value="1">
-        </td>
+        <td class="cell_radios">Inversión 3</td>
+        <td class="cell_radios"><toMoney>{{ loss.2 }}</toMoney></td>
+        <td class="cell_radios"><toMoney>{{ earnings.2 }}</toMoney></td>
+        <td class="cell_radios"><input type="radio" class="radios" value="1" name="row_3"></td>
+        <td class="cell_radios"><input type="radio" class="radios" value="0" name="row_3"></td>
     </tr>
     <tr class="row_option">
-        <td class="cell_option" style="text-align: center;">4.</td>
-        <td class="cell_option">
-            Si la moneda cae en <b>cara</b> usted <b>pierde <toMoney>50000</toMoney></b>,<br>Si la moneda cae en <b>sello</b> usted <b>gana <toMoney>60000</toMoney></b>.
-        </td>
-        <td class="cell_radio">
-            <input type="radio" class="radios" name="row_4" value="0">
-        </td>
-        <td class="cell_radio">
-            <input type="radio" class="radios" name="row_4" value="1">
-        </td>
+        <td class="cell_radios">Inversión 4</td>
+        <td class="cell_radios"><toMoney>{{ loss.3 }}</toMoney></td>
+        <td class="cell_radios"><toMoney>{{ earnings.3 }}</toMoney></td>
+        <td class="cell_radios"><input type="radio" class="radios" value="1" name="row_4"></td>
+        <td class="cell_radios"><input type="radio" class="radios" value="0" name="row_4"></td>
     </tr>
     <tr class="row_option">
-        <td class="cell_option" style="text-align: center;">5.</td>
-        <td class="cell_option">
-            Si la moneda cae en <b>cara</b> usted <b>pierde <toMoney>60000</toMoney></b>,<br>Si la moneda cae en <b>sello</b> usted <b>gana <toMoney>60000</toMoney></b>.
-        </td>
-        <td class="cell_radio">
-            <input type="radio" class="radios" name="row_5" value="0">
-        </td>
-        <td class="cell_radio">
-            <input type="radio" class="radios" name="row_5" value="1">
-        </td>
+        <td class="cell_radios">Inversión 5</td>
+        <td class="cell_radios"><toMoney>{{ loss.4 }}</toMoney></td>
+        <td class="cell_radios"><toMoney>{{ earnings.4 }}</toMoney></td>
+        <td class="cell_radios"><input type="radio" class="radios" value="1" name="row_5"></td>
+        <td class="cell_radios"><input type="radio" class="radios" value="0" name="row_5"></td>
     </tr>
     <tr class="row_option">
-        <td class="cell_option" style="text-align: center;">6.</td>
-        <td class="cell_option">
-            Si la moneda cae en <b>cara</b> usted <b>pierde <toMoney>70000</toMoney></b>,<br>Si la moneda cae en <b>sello</b> usted <b>gana <toMoney>60000</toMoney></b>.
-        </td>
-        <td class="cell_radio">
-            <input type="radio" class="radios" name="row_6" value="0">
-        </td>
-        <td class="cell_radio">
-            <input type="radio" class="radios" name="row_6" value="1">
-        </td>
+        <td class="cell_radios">Inversión 6</td>
+        <td class="cell_radios"><toMoney>{{ loss.5 }}</toMoney></td>
+        <td class="cell_radios"><toMoney>{{ earnings.5 }}</toMoney></td>
+        <td class="cell_radios"><input type="radio" class="radios" value="1" name="row_6"></td>
+        <td class="cell_radios"><input type="radio" class="radios" value="0" name="row_6"></td>
     </tr>
 </table>
+
+<input type="hidden" name="time_choice" value="" id="time_choice">
 
 <br>
 
 <div class="div_btnNext">
-    <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next">Enviar</button>
+    <input type="button" value="Siguiente" class="btnNext" onclick="validate()" style="display: none;" id="btnNext">
+    <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next" disabled>Siguiente</button>
 </div>
 
 {% endblock %}

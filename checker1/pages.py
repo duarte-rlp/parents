@@ -22,7 +22,8 @@ class checker(Page):
         colors = Constants.colors_checker.copy()
         random.shuffle(colors)
         return {
-                'colors': colors
+                'colors': colors,
+                'correct_color': Constants.correct_color
                 }
 
 

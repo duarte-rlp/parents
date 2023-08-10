@@ -248,4 +248,17 @@ tr.row_option:hover {
     background-color: #007cff22;
 }
 
+.cell_radios {
+    padding: 10px 20px;
+    vertical-align: middle;
+    text-align: center;
+    border: 1px solid #aaaaaaaa;
+}
+
+.cell_radios_head {
+    padding: 10px 20px;
+    font-weight: bold;
+    text-align: center;
+    border: 1px solid #aaaaaaaa;
+}
 

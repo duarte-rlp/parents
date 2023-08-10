@@ -41,16 +41,14 @@ class Player(BasePlayer):
 
     # add model fields to class player
     # ----------------------------------------------------------------------------------------------------------------
-    random_draw = models.IntegerField()
-    payoff_relevant = models.StringField()
-    sure_payoff = models.CurrencyField()
+    sure_payoff = models.IntegerField()
     choice = models.StringField()
     switching_row = models.IntegerField()
-    pago = models.IntegerField()
-    choice_to_pay = models.IntegerField()
 
-    name_app = models.StringField(default = 'icl')
-
+    # Payoff variables 
+    selected_round = models.IntegerField() # La ronda que se selecciona
+    coin_toss = models.StringField() # Resultado al lanzar la moneda
+    payoff_amount_app = models.IntegerField() # Total que se paga por esta app
 
     # set sure payoff for next choice
     # ----------------------------------------------------------------------------------------------------------------
@@ -58,7 +56,7 @@ class Player(BasePlayer):
 
         # add current round's sure payoff to model field
         # ------------------------------------------------------------------------------------------------------------
-        self.sure_payoff = self.participant.vars['icl_sure_payoffs'][self.round_number - 1]
+        self.sure_payoff = int(self.participant.vars['icl_sure_payoffs'][self.round_number - 1])
 
         # determine sure payoff for next choice and append list of sure payoffs
         # ------------------------------------------------------------------------------------------------------------
@@ -92,56 +90,28 @@ class Player(BasePlayer):
     def set_payoffs(self):
 
         current_round = self.subsession.round_number
-        current_choice = self.in_round(current_round).choice
 
         # set payoff if all choices have been completed or if "indifferent" was chosen
         # ------------------------------------------------------------------------------------------------------------
-        if current_round == Constants.num_rounds or current_choice == 'I':
+        if current_round == Constants.num_rounds:
 
-            # randomly determine which choice to pay
-            # --------------------------------------------------------------------------------------------------------
-            completed_choices = len(self.participant.vars['icl_sure_payoffs'])
-            self.participant.vars['icl_choice_to_pay'] = random.randint(1, completed_choices)
-            choice_to_pay = self.participant.vars['icl_choice_to_pay']
+            self.selected_round = random.randint(1, 5)
 
-            # random draw to determine whether to pay the "high" or "low" lottery outcome
-            # --------------------------------------------------------------------------------------------------------
-            self.in_round(choice_to_pay).random_draw = random.randint(1, 100)
+            print('ronda escogida:', self.selected_round)
+            print('choice', self.in_round(self.selected_round).choice)
 
-            # determine whether the lottery or sure payoff is relevant for payment
-            # --------------------------------------------------------------------------------------------------------
-            self.in_round(choice_to_pay).payoff_relevant = random.choice(['A','B']) \
-                if self.in_round(choice_to_pay).choice == 'I' \
-                else self.in_round(choice_to_pay).choice
-
-            # set player's payoff
-            # --------------------------------------------------------------------------------------------------------
-            if self.in_round(choice_to_pay).payoff_relevant == 'A':
-                self.in_round(choice_to_pay).payoff = Constants.lottery_hi \
-                    if self.in_round(choice_to_pay).random_draw <= Constants.probability \
-                    else Constants.lottery_lo
-            elif self.in_round(choice_to_pay).payoff_relevant == 'B':
-                self.in_round(choice_to_pay).payoff = self.participant.vars['icl_sure_payoffs'][choice_to_pay - 1]
-
-            # set payoff as global variable
-            # --------------------------------------------------------------------------------------------------------
-            self.participant.vars['icl_payoff'] = self.in_round(choice_to_pay).payoff
-
-            # implied switching row
-            # --------------------------------------------------------------------------------------------------------
-            self.in_round(choice_to_pay).switching_row = self.participant.vars['icl_switching_row']
-
-    def set_ganador_pago(self):
-        current_round = self.subsession.round_number
-        current_choice = self.in_round(current_round).choice
-
-        if current_round == Constants.num_rounds or current_choice == 'I':
-            #print("id", self.id_in_subsession)
-            #print("constante", Constants.ganador1)
-            choice_to_pay = self.participant.vars['icl_choice_to_pay']
-            self.participant.vars['icl_pago'] = int(self.in_round(choice_to_pay).payoff)
-            self.pago = int(self.in_round(choice_to_pay).payoff)*100
-
-
-
+            if self.in_round(self.selected_round).choice == 'A':
+                print('Rentabilidad fija: lanzar moneda')
+                self.coin_toss = random.choice(['heads', 'tails'])
+                if self.coin_toss == 'heads':
+                    self.payoff_amount_app = 30000
+                else:
+                    self.payoff_amount_app = 0
+            else:
+                print('Rentabilidad variable, toma el pago seguro')
+                self.coin_toss = '-'
+                self.payoff_amount_app = self.in_round(ronda_escogida).sure_payoff
+            
+            print('moneda:', self.coin_toss)
+            print('total a pagar:', self.payoff_amount_app)
             

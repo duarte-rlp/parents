@@ -1,26 +1,10 @@
 /* ****************************************************************************************************************** */
 /* *** General *** */
 /* ****************************************************************************************************************** */
-
-h2 {
-    text-align: center !important;
-}
-
-.page-header {
-    margin: 40px 0 40px;
-    padding: 0px;
-    border-bottom: none;
-}
-
-.otree-btn-next {
-    margin: 40px auto;
-    display: inherit;
-}
-
-.wrapper, .alert {
-    min-width: 500px;
-    max-width: 600px;
-    margin: 0 auto 20px;
+.div_btnNext {
+    width: 100%;
+    align-content: center;
+    text-align: center;
 }
 
 

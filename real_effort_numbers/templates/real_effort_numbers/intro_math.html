@@ -7,14 +7,15 @@
 {% endblock %}
 
 {% block title %}
-    Preguntas iniciales
+    Preguntas iniciales 
 {% endblock %}
 
 {% block content %}
 
-<p>Le haremos 8 preguntas, una por una.</p>
+<p>Le haremos {{ n_questions_letters }} ({{ n_questions_numbers }}) preguntas, una por una.</p>
 
-<p>Si la respuesta es incorrecta, el computador le pedirá que la corrija. Si la respuesta es correcta, aparecerá la siguiente pregunta.</p>
+<p>Si la respuesta es incorrecta, el computador le pedirá que la corrija. 
+    Si la respuesta es correcta, aparecerá la siguiente pregunta.</p>
 
 <div class="div_btnNext">
     {% next_button %}

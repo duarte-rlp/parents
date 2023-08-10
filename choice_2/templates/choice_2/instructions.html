@@ -1,0 +1,34 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block scripts %}
+    
+    <script src="{% static 'choice/js/functions.js' %}"></script>
+    <link href="{% static 'choice/css/styles.css' %}" rel="stylesheet">
+
+{% endblock %}
+
+{% block title %}
+    Actividad 2: Rentabilidad variable
+{% endblock %}
+
+{% block content %}
+
+Ahora vamos a empezar con la segunda actividad. En esta actividad hay 8 inversiones con rentabilidad variable. La rentabilidad de las inversiones depende del lanzamiento de una moneda. 
+<br>
+<br>
+La posibilidad de que salga CARA o SELLO es la misma para todas las inversiones. La diferencia entre las inversiones es lo que se puede ganar al lanzar la moneda. Usted debe seleccionar solo UNA inversión.
+<br>
+<br>
+<b>¿Qué pasa si el computador selecciona esta actividad para calcular su pago total?</b>
+<br>
+<br>
+El computador hará un lanzamiento de moneda para determinar su ganancia total. Recuerde que su ganancia dependerá de la inversión que elija y de si sale CARA o SELLO.
+<br>
+<br>
+
+<div class="div_btnNext">
+    <button class="otree-btn-next btn btn-primary" id="id_next">Siguiente</button>
+</div>
+
+{% endblock %}

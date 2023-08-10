@@ -1,0 +1,53 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block scripts %}
+    
+    <script src="{% static 'choice/js/functions.js' %}"></script>
+    <link href="{% static 'choice/css/styles.css' %}" rel="stylesheet">
+    
+    <script>
+
+        window.onload = function(){
+            // Usar para agregar punto de miles
+            let elements = document.getElementsByTagName("toMoney");
+            for(let j=0; j<elements.length; j++) {
+                let num = Number(elements[j].innerHTML);
+                if (num < 0) {
+                    num = num * -1;
+                    elements[j].innerHTML = "-$ " + num.toLocaleString('es-CO').toString();
+                }else {
+                    elements[j].innerHTML = "$ " + num.toLocaleString('es-CO').toString();
+                }
+            }
+        };
+
+    </script>
+{% endblock %}
+
+{% block title %}
+    Actividad 6: Invertir o no invertir
+{% endblock %}
+
+{% block content %}
+
+Esta es la sexta actividad. En esta actividad hay 6 <i>inversiones con rentabilidad variable</i>. La rentabilidad de las inversiones depende del lanzamiento de una moneda y cada inversión pueden tener <i>ganancias o pérdidas</i>.
+<br>
+<br>
+La posibilidad de que salga CARA o SELLO es la misma para todas las inversiones. La diferencia entre las inversiones es lo que puede ganar o perder al lanzar la moneda. En esta actividad usted debe seleccionar si “Invertir” o “NO invertir” en cada una de las 6 opciones de inversión.
+<br>
+<br>
+Si usted decide Invertir y al lanzar la moneda sale SELLO ganará <toMoney>30000</toMoney> pesos, pero si sale CARA, perderá una cantidad de dinero que depende de cada opción de inversión. Si usted decide no invertir no tendrá <i>pérdidas</i>, pero tampoco <i>ganancias</i>. 
+<br>
+<br>
+<b>¿Qué pasa si el computador selecciona esta actividad para calcular su pago total?</b>
+<br>
+<br>
+El computador seleccionará al azar una de las inversiones. Si usted decidió “NO invertir” no recibirá ningún pago adicional, pero si decidió “Invertir” el computador hará un lanzamiento de moneda y su ganancia dependerá si sale CARA o SELLO.  
+<br>
+<br>
+<div class="div_btnNext">
+    <button class="otree-btn-next btn btn-primary" id="id_next">Siguiente</button>
+</div>
+
+{% endblock %}

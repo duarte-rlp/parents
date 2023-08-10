@@ -1,0 +1,55 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block scripts %}
+    
+    <script src="{% static 'couple/js/functions.js' %}"></script>
+    <link href="{% static 'couple/css/styles.css' %}" rel="stylesheet">
+    
+    <script>
+
+        window.onload = function(){
+            // Usar para agregar punto de miles
+            let elements = document.getElementsByTagName("toMoney");
+            for(let j=0; j<elements.length; j++) {
+                let num = Number(elements[j].innerHTML);
+                if (num < 0) {
+                    num = num * -1;
+                    elements[j].innerHTML = "-$ " + num.toLocaleString('es-CO').toString();
+                }else {
+                    elements[j].innerHTML = "$ " + num.toLocaleString('es-CO').toString();
+                }
+            }
+        };
+
+    </script>
+{% endblock %}
+
+{% block title %}
+    ¿Continua solo o en parejas?
+{% endblock %}
+
+{% block content %}
+
+Como se explicó al inicio, su PAGO INICIAL es de <toMoney>20000</toMoney> pesos y esta cantidad de dinero puede aumentar o disminuir dependiendo de sus respuestas en las actividades anteriores.
+<br>
+<br>
+Teniendo en cuenta que en tres (3) de las seis (6) actividades previas usted puede tener pérdidas, antes de que se le muestre la actividad que el computador eligió para calcular su pago, usted debe decidir si continúa SOLO o paga para ser EMPAREJADO.
+<br>
+<br>
+Si usted continúa SOLO su pago dependerá únicamente de la actividad que el computador seleccione al azar para calcular su pago total. Es decir, a los <toMoney>20000</toMoney> pesos de su PAGO INICIAL se sumarán las ganancias y se restarán las pérdidas. 
+<br>
+<br>
+Por otro lado, usted también puede pagar para ser EMPAREJADO con:
+<ul>
+<li>un participante al que se le pagará una actividad IGUAL a la que el computador seleccionó para usted, o</li>
+<li>un participante al que se le pagará una actividad DISTINTA a la que el computador seleccionó para usted.</li>
+</ul>
+Si eliges ser emparejado, se le descontarán <toMoney>5000</toMoney> pesos de su PAGO INICIAL, y a los <toMoney>15000</toMoney> restantes se le sumará el promedio de los pagos de cada miembro de la pareja. Recuerde que las actividades seleccionadas por el computador para cada participante puede hacer que ambos tengan ganancias, que ambos tengan pérdidas o que uno tenga ganancias y el otro perdidas. 
+<br>
+<br>
+<div class="div_btnNext">
+    <button class="otree-btn-next btn btn-primary" id="id_next">Siguiente</button>
+</div>
+
+{% endblock %}

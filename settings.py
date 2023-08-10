@@ -62,8 +62,14 @@ SESSION_CONFIGS = [
         'app_sequence': ['choice'],
     },
     {
+        'name': 'couple',
+        'display_name': '¿Continua solo o en parejas?',
+        'num_demo_participants': 1, 
+        'app_sequence': ['couple'],
+    },
+    {
         'name': 'final',
-        'display_name': 'Test Payoffs: ICL1, ICL2, Choice',
+        'display_name': 'Test Payoffs: Choice_2, ICL1, Choice',
         'num_demo_participants': 1, 
         'app_sequence': ['home', 'icl', 'icl2', 'choice', 'final'],
     },

@@ -81,6 +81,7 @@ class Constants(BaseConstants):
     # ---------------------------------------------------------------------------------------------------------------- #
 
     name_in_url = 'icl'
+    description = 'Actividad 1: Rentabilidad fija o variable'
     players_per_group = None
     num_rounds = num_choices
     ganador1 = random.randint(1, 10)

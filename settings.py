@@ -20,14 +20,8 @@ SESSION_CONFIGS = [
         'app_sequence': ['real_effort_numbers'],
     },
     {
-        'name': 'icl',
-        'display_name': 'Actividad 1: Rentabilidad fija o variable - ICL 1',
-        'num_demo_participants': 1, 
-        'app_sequence': ['icl'],
-    },
-    {
         'name': 'choice_2',
-        'display_name': 'Actividad 2: Rentabilidad variable - choice_2',
+        'display_name': 'Actividad 1: Rentabilidad variable - choice_2',
         'num_demo_participants': 1, 
         'app_sequence': ['choice_2'],
     },
@@ -37,6 +31,14 @@ SESSION_CONFIGS = [
         'num_demo_participants': 1, 
         'app_sequence': ['checker1'],
     },
+    {
+        'name': 'choice',
+        'display_name': 'Actividad 4: Invertir o no invertir - choice',
+        'num_demo_participants': 1, 
+        'app_sequence': ['choice'],
+    },
+
+
     {
         'name': 'graphs',
         'display_name': 'Instrucciones de Inversión: Training graphs - training',
@@ -56,12 +58,6 @@ SESSION_CONFIGS = [
         'app_sequence': ['home', 'real'],
     },
     {
-        'name': 'choice',
-        'display_name': 'Actividad 6: Invertir o no invertir - choice',
-        'num_demo_participants': 1, 
-        'app_sequence': ['choice'],
-    },
-    {
         'name': 'couple',
         'display_name': '¿Continua solo o en parejas?',
         'num_demo_participants': 1, 
@@ -72,6 +68,12 @@ SESSION_CONFIGS = [
         'display_name': 'Test Payoffs: Choice_2, ICL1, Choice',
         'num_demo_participants': 1, 
         'app_sequence': ['home', 'icl', 'icl2', 'choice', 'final'],
+    },
+    {
+        'name': 'icl',
+        'display_name': 'Sale actividad: Rentabilidad fija o variable - ICL 1',
+        'num_demo_participants': 1, 
+        'app_sequence': ['icl'],
     },
     # {
     #     'name': 'icl2',

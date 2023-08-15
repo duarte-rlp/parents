@@ -43,14 +43,14 @@ SESSION_CONFIGS = [
         'num_demo_participants': 1, 
         'app_sequence': ['payoff_choice'],
     },
-
-
     {
         'name': 'graphs',
-        'display_name': 'Instrucciones de Inversión: Training graphs - training',
+        'display_name': 'Actividad 2: Gráficas - training',
         'num_demo_participants': 1, 
         'app_sequence': ['home', 'training'],
     },
+
+
     {
         'name': 'problems',
         'display_name': 'Parte 3: Allocation problems - allocations',

@@ -16,7 +16,10 @@ class Results(Page):
     pass
 
 class intro_01(Page):
-    pass
+    def vars_for_template(self):
+        return {
+            'graphType': self.player.participant.vars['graphType'],
+        }
 
 class intro_02(Page):
     pass
@@ -26,9 +29,9 @@ class graph_01(Page):
     def vars_for_template(self):
         return {
                 'labels': Constants.inv_labels,
-                'data': Constants.inv_example,
-                'max_y': max(Constants.inv_example),
-                'min_y': min(Constants.inv_example)
+                'data_a': Constants.inv_a,
+                'max_y': max(Constants.inv_a),
+                'min_y': min(Constants.inv_a),
                 }
 
 class graph_02(Page):

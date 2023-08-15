@@ -9,6 +9,10 @@
     
     <script>
 
+        var intervalID;
+        var data_a = {{ data_a }};
+        var cnt_cards = 0;
+
         // Gráfica
         var graph = Highcharts.chart('graph01', {
             title: {
@@ -24,67 +28,105 @@
                 title: {
                     text: 'Retorno por cada $100'
                 },
-                min: {{ min_y }} - 1,
-                max: {{ max_y }} + 1
+                min: {{ min_y }} - 5,
+                max: {{ max_y }} + 5
             },
             series: [{
-                animation: false,
-                data: {{ data }},
-                lineWidth: 0.0,
-                enableMouseTracking: false,
+                animation: true,
+                data: [],
+                lineWidth: 1,
+                enableMouseTracking: true,
                 marker:{
-                    enabled:false
+                    enabled: true
                 },
                 color: 'blue',
-                name: 'Inversión A'
+                name: 'Inversión A',
+                dashStyle: 'Dash'
             }],
             legend: {
                 enabled: true
             }
         });
+
+        function start_points() {
+            nextCard();
+            intervalID = setInterval(nextCard, 500);
+        }
+
+        function nextCard() {
+            if(cnt_cards < 8) {
+                add_point_graph(cnt_cards);
+            } else {
+                document.getElementById("btnNext").style.display = 'block';
+                clearInterval(intervalID);
+
+            }
+            cnt_cards += 1;
+        }
+
+        function add_point_graph(n_data) {
+            let y_pos_a;
+            let color_lbl_a;
+            if(data_a[n_data] > 0){
+                y_pos_a = -3;
+                color_lbl_a = '#008000';
+            } else {
+                y_pos_a = 25;
+                color_lbl_a = '#e60d1a';
+            }
+            graph.series[0].addPoint({
+                x: n_data,
+                y: data_a[n_data],
+                dataLabels: {
+                    enabled: true,
+                    format: data_a[n_data].toLocaleString('es-CO'),
+                    y: y_pos_a,
+                    style: {
+                        color: color_lbl_a,
+                        fontSize: '0.8rem',
+                        fontWeight: 'bold',
+                        textOutline: 'none'
+                    }
+
+                }
+            });
+        }
+
+        function nextView() {
+            let btn = document.getElementById("id_next");
+            btn.removeAttribute("disabled");
+            btn.click();
+        }
+
     </script>
 {% endblock %}
 
 {% block title %}
-    Instrucciones de Inversión
+    Actividad 2: Gráficas
 {% endblock %}
 
 {% block content %}
 
-<table class="table_question">
-    <tr>
-        <td class="cell_question">    
-            <div id="text01">
-                Frente a cada opción de inversión hay ocho (8) cartas.
-            </div>
-        </td>
-    </tr>
-</table>
+Ahora le mostraremos el porcentaje de rentabilidad de UNA INVERSIÓN en 8 ESCENARIOS posibles (8 POSICIONES en la gráfica).
+<br>
+<br>
+El porcentaje de rentabilidad de cada inversión puede ser distinto en cada ESCENARIO.  Haga <i>clic</i> en el botón "Mostrar Inversión" para ver los RETORNOS POR CADA $100 que una inversión puede generar.
+<br>
+<br>
+<div style="text-align: center;">
+    <input type="button" value="Mostrar Inversión" class="btnNext" onclick="start_points()">
+</div>
 
 <br>  
 <div>
     <div id="graph01" class="div_graph"></div>
-    <div class="div_tabGraph">
-        <table class="tabGraph">
-            <tr>
-                <td class="cell_graphInv">Inversión A</td>
-                <td class="cell_graph"></td>
-                <td class="cell_graph"></td>
-                <td class="cell_graph"></td>
-                <td class="cell_graph"></td>
-                <td class="cell_graph"></td>
-                <td class="cell_graph"></td>
-                <td class="cell_graph"></td>
-                <td class="cell_graph"></td>
-            </tr>
-        </table>
-    </div>
 </div>
 
 <br>
 
 <div class="div_btnNext">
-    {% next_button %}
+    <input type="button" value="Siguiente" class="btnNext" style="display: none;" onclick="nextView()" id="btnNext">
+    <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next" disabled>Siguiente</button>
 </div>
 
 {% endblock %}

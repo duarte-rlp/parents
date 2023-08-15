@@ -1,0 +1,50 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block scripts %}
+    
+    <script src="{% static 'payoff_choice/js/functions.js' %}"></script>
+    <link href="{% static 'payoff_choice/css/styles.css' %}" rel="stylesheet">
+    
+    <script>
+
+        window.onload = function(){
+            // Usar para agregar punto de miles
+            let elements = document.getElementsByTagName("toMoney");
+            for(let j=0; j<elements.length; j++) {
+                let num = Number(elements[j].innerHTML);
+                if (num < 0) {
+                    num = num * -1;
+                    elements[j].innerHTML = "-$ " + num.toLocaleString('es-CO').toString();
+                }else {
+                    elements[j].innerHTML = "$ " + num.toLocaleString('es-CO').toString();
+                }
+            }
+        };
+
+    </script>
+{% endblock %}
+
+{% block title %}
+    Votación grupal
+{% endblock %}
+
+{% block content %}
+
+Muchas gracias por completar las CUATRO actividades. Dado que en dos (2) de las cuatro (4) actividades previas usted puede tener pérdidas ahora participará en una votación para elegir cómo el COMPUTADOR seleccionar las actividad para cada miembro del grupo. Hay dos reglas posibles de elección:
+<br>
+<br>
+<b>Regla A:</b> El COMPUTADOR seleccionará al azar la MISMA actividad para todos los miembros del grupo.
+<br>
+<br>
+<b>Regla B:</b> El COMPUTADOR seleccionará al azar la DIFERENTES actividades para cada los miembros del grupo.
+<br>
+<br>
+Recuerde que los retornos de sus inversiones se sumarán con los de los otros miembros del grupo y se repartirán en partes iguales. Las <i>ganancias</i> o <i>pérdidas</i> del grupo se sumarán o restarán a su PAGO INICIAL de <toMoney>20000</toMoney> pesos. 
+<br>
+<br>
+<div class="div_btnNext">
+    <button class="otree-btn-next btn btn-primary" id="id_next">Siguiente</button>
+</div>
+
+{% endblock %}

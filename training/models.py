@@ -26,6 +26,8 @@ class Constants(BaseConstants):
     # Datos de inversiones
     inv_labels = [1, 2, 3, 4, 5, 6, 7, 8]
     inv_example = [15, -8, 15, 15, -8, -8, -8, 15] # array exampl for training app
+    inv_a = [15, -8, 15, 15, -8, -8, -8, 15]
+    inv_b = [-9, -9, 14, -9, 14, 14, -9, 14]
 
 
 class Subsession(BaseSubsession):

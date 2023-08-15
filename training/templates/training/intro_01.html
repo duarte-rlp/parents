@@ -10,19 +10,23 @@
 {% endblock %}
 
 {% block title %}
-    Instrucciones de Inversión
+    Actividad 2: Gráficas
 {% endblock %}
 
 {% block content %}
 
-En esta parte, le indicaremos cómo tomar las decisiones de inversión y le mostraremos un ejemplo.
-<br> <br>
-Supongamos que te damos 100.000 pesos y te pedimos que repartas este dinero entre dos opciones de inversión. Las opciones A y B. Puedes invertir toda tu dotación en A o en B, pero también puedes repartirla.  Al final tienes que invertir todos los 100.000 pesos.
-<br> <br>
-Cada decisión de inversión puede tener rendimientos positivos o negativos. Si la opción de inversión tiene rendimientos positivos, usted obtendrá una rentabilidad basada en cuánto invirtió en esa opción. Si, por el contrario, la inversión tiene rendimientos negativos, perderá parte del dinero que invirtió en esa opción.
-<br> <br>
-Si invierte en ambas opciones al mismo tiempo, puede ocurrir que ambas tengan una rentabilidad positiva, que ambas tengan una rentabilidad negativa o que una tenga una rentabilidad alta y la otra una rentabilidad baja.
-<br> <br>
+En esta actividad usted deberá asignar dinero entre dos opciones de inversión. Para tomar las decisiones de inversión, le mostraremos 
+{% if graphType == 1 %}
+una sola gráfica y una sola tabla con todas las inversiones juntas.
+{% else %}
+varias gráficas y varias tablas con todas las inversiones separadas.
+{% endif %}
+ Estos elementos contienen información sobre los retornos de cada opción de inversión. 
+<br>
+<br>
+<b>Ahora le explicaremos cómo enteder las gráficas.</b>
+<br>
+<br>
 <div class="div_btnNext">
     {% next_button %}
 </div>

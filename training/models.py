@@ -44,32 +44,29 @@ class Player(BasePlayer):
 
     # Para almacenar el número ingresado la primera pregunta del training de las gráficas
     test_01_number = models.IntegerField()
-    test_01_answer = models.StringField() # 0 -> respuesta incorrecta | 1 -> respuesta correcta
+    test_01_answer = models.StringField() # 
     test_01_time = models.StringField() # tiempo que demora en presionar continuar
 
-    # Para almacenar el número ingresado la segunda pregunta del retorno de la última carta, así como si fue correcto o no
+    # Con dos series de datos al tiempo
     test_02_number = models.IntegerField()
-    test_02_answer = models.StringField() # 0 -> respuesta incorrecta | 1 -> respuesta correcta
+    test_02_answer = models.StringField() # 
+    test_02_time = models.StringField() # tiempo que demora en presionar continuar
 
-    # Para almacenar las respuestas de la cantidad de cartas positivas
-    test_03_A_number = models.IntegerField()
-    test_03_A_answer = models.StringField() # 0 -> respuesta incorrecta | 1 -> respuesta correcta
-    test_03_B_number = models.IntegerField()
-    test_03_B_answer = models.StringField() # 0 -> respuesta incorrecta | 1 -> respuesta correcta
+    test_03_number = models.IntegerField()
+    test_03_answer = models.StringField() # 
+    test_03_time = models.StringField() # tiempo que demora en presionar continuar
 
-    # Para almacenar las respuestas de la cantidad de cartas negativas
-    test_04_A_number = models.IntegerField()
-    test_04_A_answer = models.StringField() # 0 -> respuesta incorrecta | 1 -> respuesta correcta
-    test_04_B_number = models.IntegerField()
-    test_04_B_answer = models.StringField() # 0 -> respuesta incorrecta | 1 -> respuesta correcta
+    test_04_number = models.IntegerField()
+    test_04_answer = models.StringField() # 
+    test_04_time = models.StringField() # tiempo que demora en presionar continuar
 
-    # Almacenar lo relacionado a la posición de la carta
-    test_05_cardIndex = models.IntegerField()
-    # Y los valores que se consultan después relacionado a estos
-    test_05_A_number = models.IntegerField()
-    test_05_A_answer = models.IntegerField()
-    test_05_B_number = models.IntegerField()
-    test_05_B_answer = models.IntegerField()
+    test_05_number_a = models.IntegerField()
+    test_05_answer_a = models.StringField()
+    test_05_number_b = models.IntegerField()
+    test_05_answer_b = models.StringField()
+    test_05_time = models.StringField() # tiempo que demora en presionar continuar
+
+
 
     # Almacenar lo relacionado a la posición de la carta
     test_06_cardIndex = models.IntegerField()

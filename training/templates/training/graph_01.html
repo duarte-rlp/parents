@@ -13,7 +13,7 @@
         var data_a = {{ data_a }};
         var cnt_cards = 0;
         var step_view = 1;
-        var time;
+        var start;
 
         // Gráfica
         var graph = Highcharts.chart('graph01', {
@@ -116,17 +116,17 @@
             case 3:
                 document.getElementById('step_3').style.display = 'none';
                 document.getElementById('step_4').style.display = 'block';
-                time = Date.now();
+                start = Date.now();
                 step_view += 1;
                 break;
             case 4:
-                let in_test01 = document.getElementById("in_test01");
+                let in_test01 = document.getElementById("test_01_number");
                 if(in_test01.value.length == 0) {
                     let btn = document.getElementById("id_next");
                     btn.removeAttribute("disabled");
                     btn.click();
                 } else {
-                    document.getElementById('test_01_time').value = Date.now() - time;
+                    document.getElementById('test_01_time').value = Date.now() - start;
                     if(Number(in_test01.value) == 8) {
                         document.getElementById('text_result').innerHTML = 'Correcto';
                         document.getElementById('test_01_answer').value = 'Correct';
@@ -134,7 +134,6 @@
                         document.getElementById('text_result').innerHTML = 'Incorrecto';
                         document.getElementById('test_01_answer').value = 'Incorrect';
                     }
-                    
                     document.getElementById('step_4').style.display = 'none';
                     document.getElementById('step_5').style.display = 'block';
                     step_view += 1;
@@ -144,8 +143,8 @@
                 let btn = document.getElementById("id_next");
                 btn.removeAttribute("disabled");
                 btn.click();
+                break;
             }
-            
         }
 
     </script>
@@ -156,32 +155,33 @@
 {% endblock %}
 
 {% block content %}
-<div id="step_1">
+<div id="step_1" style="height: 115px;">
 Ahora le mostraremos el porcentaje de rentabilidad de UNA INVERSIÓN en 8 ESCENARIOS posibles (8 POSICIONES en la gráfica).
 <br>
 <br>
 El porcentaje de rentabilidad de cada inversión puede ser distinto en cada ESCENARIO. Haga <i>clic</i> en el botón "Mostrar Inversión" para ver los RETORNOS POR CADA $100 que una inversión puede generar.
 </div>
 
-<div id="step_2" style="display: none;">
+<div id="step_2" style="display: none; height: 115px;">
 El primer porcentaje de rentabilidad es {{ data_a.0 }}%. Eso quiere decir que por cada <toMoney>100</toMoney> pesos que se asigne a la <i>Inversión A</i> puede ganar <toMoney>15</toMoney> pesos.
 </div>
 
-<div id="step_3" style="display: none;">
+<div id="step_3" style="display: none; height: 115px;">
 Como puede ver, <b>el porcentaje de rentabilidad de la inversión puede ser positivo o negativo</b>. Cuando sale un número positivo significa que la inversión generó <i>ganancias</i>, pero cuando sale un número negativo significa que la inversión generó <i>pérdidas</i>. 
 </div>
 
-<div id="step_4" style="display: none;">
+<div id="step_4" style="display: none; height: 115px;">
 <table class="table_question">
     <tr>
+        <td style="width: 10%;"><b>Pregunta:</b></td>
         <td class="cell_question">
             <div id="text01">
-                <b>Pregunta:</b> ¿Cuánto perderá si asigna <toMoney>100</toMoney> a la <i>Inversión A</i> y el porcentaje de rentabilidad es -8% ?
+                ¿Cuánto perderá si asigna <toMoney>100</toMoney> a la <i>Inversión A</i> y el porcentaje de rentabilidad es -8% ?
             </div>
         </td>
         <td class="cell_input">
             <div class="answer_test">
-                <input type="number" class="inNumber" name="test_01_number" id="in_test01" required>
+                <input type="number" name="test_01_number" id="test_01_number" class="inNumber" required>
                 <input type="hidden" name="test_01_answer" id="test_01_answer">
                 <input type="hidden" name="test_01_time" id="test_01_time">
             </div>
@@ -190,8 +190,8 @@ Como puede ver, <b>el porcentaje de rentabilidad de la inversión puede ser posi
 </table>
 </div>
 
-<div id="step_5" style="display: none;">
-<text id="text_result"></text> perderá <toMoney>8</toMoney>.
+<div id="step_5" style="display: none; height: 115px;">
+<b><text id="text_result"></text></b>, perderá <toMoney>8</toMoney>.
 <br>
 <br>
 Recuerde que por cada <toMoney>100</toMoney> que usted asigne a la <i>Inversión A</i> puede perder <toMoney>8</toMoney>.

@@ -4,25 +4,11 @@ from .models import Constants
 
 import random
 
-class MyPage(Page):
-    pass
-
-
-class ResultsWaitPage(WaitPage):
-    pass
-
-
-class Results(Page):
-    pass
-
 class intro_01(Page):
     def vars_for_template(self):
         return {
             'graphType': self.player.participant.vars['graphType'],
         }
-
-class intro_02(Page):
-    pass
 
 # intro
 class graph_01(Page):
@@ -39,13 +25,32 @@ class graph_01(Page):
                 }
 
 class graph_02(Page):
+    form_model = "player"
+    form_fields = [ "test_02_number", "test_02_answer", "test_02_time", 
+                    "test_03_number", "test_03_answer", "test_03_time", 
+                    "test_04_number", "test_04_answer", "test_04_time",
+                    "test_05_number_a", "test_05_answer_a", 
+                    "test_05_number_b", "test_05_answer_b", 
+                    "test_05_time"]
     def vars_for_template(self):
         return {
                 'labels': Constants.inv_labels,
-                'data': Constants.inv_example,
-                'max_y': max(Constants.inv_example),
-                'min_y': min(Constants.inv_example)
+                'data_a': Constants.inv_a,
+                'data_b': Constants.inv_b,
+                'max_y': max(Constants.inv_a + Constants.inv_b),
+                'min_y': min(Constants.inv_a + Constants.inv_b),
+                'time_steps': Constants.time_steps,
+                'money_example': Constants.money_example,
+                'graphType': self.player.participant.vars['graphType']
                 }
+
+class instruc_01(Page):
+    pass
+
+
+class intro_02(Page):
+    pass
+
 
 class graph_03(Page):
     def vars_for_template(self):
@@ -407,9 +412,6 @@ class graph_25(Page):
                 'graphType': self.player.participant.vars['graphType']
                 }
 
-class instruc_01(Page):
-    pass
-
 class instruc_02(Page):
     pass
 
@@ -483,26 +485,5 @@ page_sequence = [
     intro_01, 
     graph_01, 
     graph_02, 
-    graph_03, 
-    graph_04, 
-    graph_04_question, 
-    graph_04_feedback, 
-    graph_05,
-    graph_13, 
-    graph_14,
-    graph_21_question, 
-    graph_21_feedback, 
-    graph_22_question, 
-    graph_22_feedback,
-    graph_23,
-    graph_24,
-    graph_24_question,
-    graph_24_feedback,
-    graph_25,
     instruc_01,
-    instruc_02,
-    graph_26,
-    graph_27,
-#    graph_28_question,
-#    graph_28_feedback
     ]

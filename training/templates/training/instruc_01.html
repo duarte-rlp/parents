@@ -6,28 +6,44 @@
     <link href="{% static 'training/css/styles.css' %}" rel="stylesheet">
     <script src="{% static 'training/js/highcharts.js' %}"></script>
     <script src="{% static 'training/js/functions.js' %}"></script>
+
+    <script>
+
+        function nextView() {
+            let btn = document.getElementById("id_next");
+            btn.removeAttribute("disabled");
+            btn.click();
+        }
+
+    </script>
     
 {% endblock %}
 
 {% block title %}
-    Instrucciones de Inversión
+    Actividad 2: Resumen gráficas
 {% endblock %}
 
 {% block content %}
-Ahora, te vamos a contar cómo distribuir una cantidad de dinero entre opciones de inversión.
-En los problemas de decisión de inversión, se le pedirá que invierta <toMoney>100000</toMoney> entre las dos opciones.
-<br> <br>
-Su ganancia dependerá de: 
-<br> <br>
 <ol>
-<li>La cantidad de dinero que asigne a cada opción de inversión.</li>
-<li>El par de cartas que seleccione el computador al azar para determinar los rendimientos de las inversiones.</li>
+    <li>En las gráficas se presentan el porcentaje de rentabilidad de las inversiones en 8 ESCENARIOS posibles.</li>
+    <br>
+    <li>El porcentaje de rentabilidad de cada inversión puede ser distinto en cada ESCENARIO y puede ser positivo o negativo.</li>
+    <br>
+    <li>El computador seleccionará al azar los porcentajes de rentabilidad de la <i>Inversión A</i> e <i>Inversión B</i> que estén en el MISMO ESCENARIO (misma POSICIÓN en la gráfica) para determinar la rentabilidad del dinero que usted invierta.</li>
+    <br>
+    <li>Cuando sale un número negativo significa que generó <i>ganancias</i>, pero cuando sale un número negativo significa que la inversión generó <i>pérdidas</i>.
 </ol>
+La cantidad que usted gane o pierda dependerá de la cantidad de dinero que usted asigne a cada opción de inversión. Para facilitar los cálculos, debajo de la GRÁFICA aparecerá una TABLA.
+<br>
+<br>
+<b>Ahora explicaremos cómo enteder las tablas.</b>
 
+<br>
 <br>
 
 <div class="div_btnNext">
-    {% next_button %}
+    <input type="button" value="Siguiente" class="btnNext" onclick="nextView()" id="btnNext">
+    <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next" disabled>Siguiente</button>
 </div>
 
 {% endblock %}

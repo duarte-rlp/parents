@@ -9,12 +9,24 @@
     
     <script>
 
+        var intervalID;
+        var data_a = {{ data_a }};
+        var data_b = {{ data_b }}
+        var cnt_cards = 0;
+        var step_view = 1;
+        var start;
+        var cnt = 0;
+        var cnt_scenario = 0;
+
         // Gráfica
         var graph = Highcharts.chart('graph01', {
             title: {
                 text: ''
             },
             xAxis: {
+                title: {
+                    text: 'Escenarios'
+                },
                 min: 0,
                 max: 7,
                 categories: {{ labels }},
@@ -24,67 +36,562 @@
                 title: {
                     text: 'Retorno por cada $100'
                 },
-                min: {{ min_y }} - 1,
-                max: {{ max_y }} + 1
+                min: {{ min_y }} - 5,
+                max: {{ max_y }} + 5
             },
             series: [{
-                animation: false,
-                data: {{ data }},
-                lineWidth: 0.0,
-                enableMouseTracking: false,
+                animation: true,
+                data: [],
+                lineWidth: 1,
+                enableMouseTracking: true,
                 marker:{
-                    enabled:false
+                    enabled: true
                 },
                 color: 'blue',
-                name: 'Inversión A'
+                name: 'Inversión A',
+                dashStyle: 'Dash'
+            }, {
+                animation: true,
+                data: [],
+                lineWidth: 1,
+                enableMouseTracking: true,
+                marker:{
+                    enabled: true
+                },
+                color: 'green',
+                name: 'Inversión B',
+                dashStyle: 'Dash'
             }],
             legend: {
                 enabled: true
             }
         });
+
+        function add_point_graph(n_data) {
+            let y_pos_a;
+            let y_pos_b;
+            if(((data_a[n_data] > 0) && (data_b[n_data] > 0)) || ((data_a[n_data] < 0) && (data_b[n_data] < 0))){
+                if(data_a[n_data] > data_b[n_data]){
+                    y_pos_a = -5;
+                    y_pos_b = 25;
+                } else {
+                    y_pos_a = 25;
+                    y_pos_b = -5;
+                }
+            } else {
+                if(data_a[n_data] > 0) {
+                    y_pos_a = -5;
+                } else {
+                    y_pos_a = 25;
+                }
+                if(data_b[n_data] > 0) {
+                    y_pos_b = -5;
+                } else {
+                    y_pos_b = 25;
+                }
+            }
+            graph.series[0].addPoint({
+                x: n_data,
+                y: data_a[n_data],
+                dataLabels: {
+                    enabled: true,
+                    format: data_a[n_data].toLocaleString('es-CO'),
+                    y: y_pos_a,
+                    style: {
+                        color: 'blue',
+                        fontSize: '0.8rem',
+                        fontWeight: 'normal',
+                        textOutline: 'none'
+                    }
+
+                }
+            });
+            graph.series[1].addPoint({
+                x: n_data,
+                y: data_b[n_data],
+                dataLabels: {
+                    enabled: true,
+                    format: data_b[n_data].toLocaleString('es-CO'),
+                    y: y_pos_b,
+                    style: {
+                        color: 'green',
+                        fontSize: '0.8rem',
+                        fontWeight: 'normal',
+                        textOutline: 'none'
+                    }
+
+                }
+            });
+        }
+
+        function add_point_a(n_data) {
+            let y_pos;
+            if(data_a[n_data] > 0) {
+                y_pos = -5;
+            } else {
+                y_pos = 25;
+            }
+            graph.series[0].addPoint({
+                x: n_data,
+                y: data_a[n_data],
+                dataLabels: {
+                    enabled: true,
+                    format: data_a[n_data].toLocaleString('es-CO'),
+                    y: y_pos,
+                    style: {
+                        color: 'blue',
+                        fontSize: '0.8rem',
+                        fontWeight: 'normal',
+                        textOutline: 'none'
+                    }
+
+                }
+            });
+        }
+
+        function add_point_b(n_data) {
+            let y_pos;
+            if(data_b[n_data] > 0) {
+                y_pos = -5;
+            } else {
+                y_pos = 25;
+            }
+            graph.series[1].addPoint({
+                x: n_data,
+                y: data_b[n_data],
+                dataLabels: {
+                    enabled: true,
+                    format: data_b[n_data].toLocaleString('es-CO'),
+                    y: y_pos,
+                    style: {
+                        color: 'green',
+                        fontSize: '0.8rem',
+                        fontWeight: 'normal',
+                        textOutline: 'none'
+                    }
+
+                }
+            });
+        }
+
+        function nextCard() {
+            if(cnt_cards < 7) {
+                add_point_graph(cnt_cards);
+            } else {
+                add_point_graph(cnt_cards);
+                document.getElementById('btnNext').style.display = 'block';
+                document.getElementById('btnNext').style.margin = '0 auto';
+                clearInterval(intervalID);
+            }
+            cnt_cards += 1;
+        }
+
+        function nextCard_a() {
+            if(cnt_cards < 7) {
+                add_point_a(cnt_cards);
+            } else {
+                add_point_a(cnt_cards);
+                clearInterval(intervalID);
+                cnt_cards = -1;
+                cnt += 1;
+                if (cnt == 2) {
+                    document.getElementById('btnNext').style.display = 'block';
+                    document.getElementById('btnNext').style.margin = '0 auto';
+                }
+            }
+            cnt_cards += 1;
+        }
+
+        function nextCard_b() {
+            if(cnt_cards < 7) {
+                add_point_b(cnt_cards);
+            } else {
+                add_point_b(cnt_cards);
+                clearInterval(intervalID);
+                cnt_cards = -1;
+                cnt += 1;
+                if (cnt == 2) {
+                    document.getElementById('btnNext').style.display = 'block';
+                    document.getElementById('btnNext').style.margin = '0 auto';
+                }
+            }
+            cnt_cards += 1;
+        }
+
+        function visibleA() {
+            document.getElementById("btn_a").style.backgroundColor = "#989898";
+            document.getElementById("btn_a").disabled = true;
+            document.getElementById("btn_b").style.backgroundColor = "#007bff";
+            document.getElementById("btn_b").disabled = false;
+            nextCard_a();
+            intervalID = setInterval(nextCard_a, 0);
+            graph.series[1].setData([]);
+        }
+
+        function visibleB() {
+            document.getElementById("btn_b").style.backgroundColor = "#989898";
+            document.getElementById("btn_b").disabled = true;
+            document.getElementById("btn_a").style.backgroundColor = "#007bff";
+            document.getElementById("btn_a").disabled = false;
+            nextCard_b();
+            intervalID = setInterval(nextCard_b, 0);
+            graph.series[0].setData([]);
+        }
+
+        function visibleAB() {
+            document.getElementById("btn_ab").style.backgroundColor = "#989898";
+            document.getElementById("btn_ab").disabled = true;
+            nextCard();
+            intervalID = setInterval(nextCard, 0);
+        }
+
+        function nextView() {
+            switch(step_view) {
+            case 1:
+                document.getElementById('step_1').style.display = 'none';
+                document.getElementById('step_2').style.display = 'block';
+                start = Date.now();
+                step_view += 1;
+                break;
+            case 2:
+                let in_test02 = document.getElementById("test_02_number");
+                if(in_test02.value.length == 0) {
+                    let btn = document.getElementById("id_next");
+                    btn.removeAttribute("disabled");
+                    btn.click();
+                } else {
+                    document.getElementById('test_02_time').value = Date.now() - start;
+                    if(Number(in_test02.value) == 2) {
+                        document.getElementById('text_result_01').innerHTML = 'Correcto';
+                        document.getElementById('test_02_answer').value = 'Correct';
+                    } else {
+                        document.getElementById('text_result_01').innerHTML = 'Incorrecto';
+                        document.getElementById('test_02_answer').value = 'Incorrect';
+                    }
+                    
+                    document.getElementById('step_2').style.display = 'none';
+                    document.getElementById('step_3').style.display = 'block';
+                    step_view += 1;
+                }
+                break;
+            case 3:
+                document.getElementById('step_3').style.display = 'none';
+                document.getElementById('step_4').style.display = 'block';
+                start = Date.now();
+                step_view += 1;
+                break;
+            case 4:
+                let in_test03 = document.getElementById("test_03_number");
+                if(in_test03.value.length == 0) {
+                    let btn = document.getElementById("id_next");
+                    btn.removeAttribute("disabled");
+                    btn.click();
+                } else {
+                    document.getElementById('test_03_time').value = Date.now() - start;
+                    if(Number(in_test03.value) == 2) {
+                        document.getElementById('text_result_02').innerHTML = 'Correcto';
+                        document.getElementById('test_03_answer').value = 'Correct';
+                    } else {
+                        document.getElementById('text_result_02').innerHTML = 'Incorrecto';
+                        document.getElementById('test_03_answer').value = 'Incorrect';
+                    }
+                    document.getElementById('step_4').style.display = 'none';
+                    document.getElementById('step_5').style.display = 'block';
+                    step_view += 1;
+                }
+                break;
+            case 5:
+                document.getElementById('step_5').style.display = 'none';
+                document.getElementById('step_6').style.display = 'block';
+                start = Date.now();
+                step_view += 1;
+                break;
+            case 6:
+                let in_test04 = document.getElementById("test_04_number");
+                if(in_test04.value.length == 0) {
+                    let btn = document.getElementById("id_next");
+                    btn.removeAttribute("disabled");
+                    btn.click();
+                } else {
+                    document.getElementById('test_04_time').value = Date.now() - start;
+                    if(Number(in_test04.value) == 4) {
+                        document.getElementById('text_result_03').innerHTML = 'Correcto';
+                        document.getElementById('test_04_answer').value = 'Correct';
+                    } else {
+                        document.getElementById('text_result_03').innerHTML = 'Incorrecto';
+                        document.getElementById('test_04_answer').value = 'Incorrect';
+                    }
+                    document.getElementById('step_6').style.display = 'none';
+                    document.getElementById('step_7').style.display = 'block';
+                    step_view += 1;
+                }
+                break;
+            case 7:
+                document.getElementById('step_7').style.display = 'none';
+                document.getElementById('step_8').style.display = 'block';
+                step_view += 1;
+                break;
+            case 8:
+                document.getElementById('step_8').style.display = 'none';
+                document.getElementById('step_9').style.display = 'block';
+                graph.renderer.rect(
+                    graph.xAxis[0].toPixels(2.5), 0, graph.xAxis[0].toPixels(2) - graph.xAxis[0].toPixels(1), 250, 5)
+                        .attr({
+                            'stroke-width': 2,
+                            stroke: 'rgba(250, 255, 10, 1',
+                            fill: 'rgba(250, 255, 10, 0.3)',
+                            zIndex: 0
+                        }).addClass('rect')
+                    .add();
+                step_view += 1;
+                break;
+            case 9:
+                console.log('step', step_view);
+                document.getElementById('step_9').style.display = 'none';
+                document.getElementById('step_10').style.display = 'block';
+                step_view += 1;
+                break;
+            case 10:
+                console.log('step', step_view);
+                let in_test05_a = document.getElementById("test_05_number_a");
+                let in_test05_b = document.getElementById("test_05_number_b");
+                if ((in_test05_a.value.length == 0) || (in_test05_b.value.length == 0)) {
+                    let btn = document.getElementById("id_next");
+                    btn.removeAttribute("disabled");
+                    btn.click();
+                } else {
+                    document.getElementById('test_05_time').value = Date.now() - start;
+                    if (Number(in_test05_a.value) == 15) {
+                        document.getElementById('test_05_answer_a').value = 'Correct';
+                        if (Number(in_test05_b.value) == -9) {
+                            document.getElementById('text_result_04').innerHTML = 'Correcto';
+                            document.getElementById('test_05_answer_b').value = 'Correct';
+                        } else {
+                            document.getElementById('text_result_04').innerHTML = 'Incorrecto';
+                            document.getElementById('test_05_answer_b').value = 'Incorrect';
+                        }
+                    } else {
+                        document.getElementById('test_05_answer_a').value = 'Incorrect';
+                        document.getElementById('text_result_04').innerHTML = 'Incorrecto';
+                        if (Number(in_test05_b.value) == -9) {
+                            document.getElementById('test_05_answer_b').value = 'Correct';
+                        } else {
+                            document.getElementById('test_05_answer_b').value = 'Incorrect';
+                        }
+                    }
+                    document.getElementById('step_10').style.display = 'none';
+                    document.getElementById('step_11').style.display = 'block';
+                    step_view += 1;
+                }
+                break;
+            case 11:
+                console.log('step', step_view);
+                document.getElementById('step_11').style.display = 'none';
+                document.getElementById('step_12').style.display = 'block';
+                document.getElementById('btnNext').style.display = 'none';
+                document.getElementById('btnScenario').style.display = 'block';
+                document.getElementById('btnScenario').style.margin = '0 auto';
+                step_view += 1;
+                break;
+            case 12:
+                console.log('step', step_view);
+                let btn = document.getElementById("id_next");
+                btn.removeAttribute("disabled");
+                btn.click();
+            }
+        }
+
+        function nextScenario() {
+            if (cnt_scenario < 2) {
+                cnt_scenario += 1;
+                $('.rect').remove();
+                let escenario = ((Math.floor(Math.random() * 8)) + 0.5) - 1;
+                graph.renderer.rect(
+                    graph.xAxis[0].toPixels(escenario), 0, graph.xAxis[0].toPixels(2) - graph.xAxis[0].toPixels(1), 250, 5)
+                        .attr({
+                            'stroke-width': 2,
+                            stroke: 'rgba(250, 255, 10, 1',
+                            fill: 'rgba(250, 255, 10, 0.3)',
+                            zIndex: 0
+                        }).addClass('rect')
+                    .add();
+            } else {
+                $('.rect').remove();
+                document.getElementById('btnNext').style.display = 'block';
+                document.getElementById('btnNext').style.margin = '0 auto';
+                document.getElementById('btnScenario').style.display = 'none';
+            }
+        }
+
     </script>
 {% endblock %}
 
 {% block title %}
-    Instrucciones de Inversión
+    Actividad 2: Gráficas
 {% endblock %}
 
 {% block content %}
 
-<table class="table_question">
+<div id="step_1" style="height: 110px;">
+    Ahora le presentamos los porcentajes de rentabilidad de DOS INVERSIONES al mismo tiempo.
+    <br>
+    <br>
+    Haga <i>clic</i> en
+    {% if graphType == 1 %}
+    "Mostrar Inversión A y B" para ver los porcentajes de rentabilidad de la Inversión A y la Inversión B.
+    {% else %}
+    "Mostrar Inversión A" para ver los porcentajes de rentabilidad de la Inversión A y luego haga <i>clic</i> en "Mostrar Inversión B" para ver los porcentajes de rentabilidad de la Inversión B.
+    {% endif %}
+</div>
+
+<div id="step_2" style="display: none; height: 110px;">
+    <table class="table_question">
     <tr>
-        <td class="cell_question" style="width: 100% !important;">    
+        <td style="width: 10%;"><b>Pregunta:</b></td>
+        <td class="cell_question">
             <div id="text01">
-                En cada carta está escrito un número. Ese número es el retorno por cada <toMoney>100</toMoney> que usted asigne a la <i>Inversión A</i>.
+                ¿En cuántos escenarios, los rendimientos de la <i>Inversión A</i> como de la <i>Inversión B</i> son <b>positivos</b> al mismo tiempo?
+            </div>
+        </td>
+        <td class="cell_input">
+            <div class="answer_test">
+                <input type="number" name="test_02_number" id="test_02_number" class="inNumber" required>
+                <input type="hidden" name="test_02_answer" id="test_02_answer">
+                <input type="hidden" name="test_02_time" id="test_02_time">
             </div>
         </td>
     </tr>
 </table>
+</div>
+
+<div id="step_3" style="display: none; height: 110px;">
+    <b><text id="text_result_01"></text></b>, en 2 escenarios los rendimientos tanto de la <i>Inversión A</i> como de la <i>Inversión B</i> son <b>positivos</b> al mismo tiempo (Escenario 3 y escenario 8).
+</div>
+
+<div id="step_4" style="display: none; height: 110px;">
+    <table class="table_question">
+    <tr>
+        <td style="width: 10%;"><b>Pregunta:</b></td>
+        <td class="cell_question">
+            <div id="text01">
+                ¿En cuántos escenarios, los rendimientos de la <i>Inversión A</i> como de la <i>Inversión B</i> son <b>negativos</b> al mismo tiempo?
+            </div>
+        </td>
+        <td class="cell_input">
+            <div class="answer_test">
+                <input type="number" name="test_03_number" id="test_03_number" class="inNumber" required>
+                <input type="hidden" name="test_03_answer" id="test_03_answer">
+                <input type="hidden" name="test_03_time" id="test_03_time">
+            </div>
+        </td>
+    </tr>
+</table>
+</div>
+
+<div id="step_5" style="display: none; height: 110px;">
+    <b><text id="text_result_02"></text></b>, en 2 escenarios los rendimientos tanto de la <i>Inversión A</i> como de la <i>Inversión B</i> son <b>negativos</b> al mismo tiempo (Escenario 2 y escenario 7).
+</div>
+
+<div id="step_6" style="display: none; height: 110px;">
+<table class="table_question">
+    <tr>
+        <td style="width: 10%;"><b>Pregunta:</b></td>
+        <td class="cell_question">
+            <div id="text01">
+                ¿En cuántos escenarios, los rendimientos de la <i>Inversión A</i> como de la <i>Inversión B</i> tienen <b>signos diferentes</b> al mismo tiempo?
+            </div>
+        </td>
+        <td class="cell_input">
+            <div class="answer_test">
+                <input type="number" name="test_04_number" id="test_04_number" class="inNumber" required>
+                <input type="hidden" name="test_04_answer" id="test_04_answer">
+                <input type="hidden" name="test_04_time" id="test_04_time">
+            </div>
+        </td>
+    </tr>
+</table>
+</div>
+
+<div id="step_7" style="display: none; height: 110px;">
+    <b><text id="text_result_03"></text></b>, en 4 escenarios los rendimientos tanto de la <i>Inversión A</i> como de la <i>Inversión B</i> son <b>negativos</b> al mismo tiempo (Escenario 1, escenario 4, escenario 5 y escenario 6).
+</div>
+
+<div id="step_8" style="display: none; height: 110px;">
+    El computador seleccionará al azar los porcentajes de rentabilidad de la <i>Inversión A</i> e <i>Inversión B</i> que estén en el MISMO ESCENARIO (misma POSICIÓN en la gráfica) para determinar la rentabilidad del dinero que usted invierta.  
+</div>
+
+<div id="step_9" style="display: none; height: 110px;">
+    Por ejemplo, el computador puede seleccionar al azar los porcentajes de rentabilidad de la <i>Inversión A</i> e <i>Inversión B</i> (en amarillo) que están en el ESCENARIO 4 para determinar los rendimientos del dinero invertido.  
+</div>
+
+<div id="step_10" style="display: none; height: 110px;">
+<table class="table_question">
+    <tr>
+        <td style="width: 10%;"><b>Pregunta:</b></td>
+        <td class="cell_question" style="width: 90% !important;">
+            <div id="text01">
+                ¿Cuál será la rentabilidad por cada <toMoney>100</toMoney> pesos que invierta en A y en B si el computador elige al azar los porcentajes de rentabilidad que están en el ESCENARIO 4?
+            </div>
+        </td>
+    </tr>
+</table>
+<table class="table_question">
+    <tr>
+        <td class="cell_question" style="width: 15% !important; text-align: right; padding-right: 10px;">
+            Inversión A:
+        </td>
+        <td>
+            <div class="answer_test">
+                <input type="number" name="test_05_number_a" id="test_05_number_a" class="inNumber" required>
+                <input type="hidden" name="test_05_answer_a" id="test_05_answer_a">
+            </div>
+        </td>
+        <td class="cell_question" style="width: 15% !important; text-align: right; padding-right: 10px;">
+            Inversión B:
+        </td>
+        <td>
+            <div class="answer_test">
+                <input type="number" name="test_05_number_b" id="test_05_number_b" class="inNumber" required>
+                <input type="hidden" name="test_05_answer_b" id="test_05_answer_b">
+            </div>
+        </td>
+    </tr>
+</table>
+<input type="hidden" name="test_05_time" id="test_05_time">
+</div>
+
+<div id="step_11" style="display: none; height: 110px;">
+    <b><text id="text_result_04"></text></b>, ganará 15 en la <i>Inversión A</i> y perderá 9 en la <i>Inversión B</i> si el ESCENARIO 4 es elegido al azar para determinar los rendimientos del dinero invertido.
+</div>
+
+<div id="step_12" style="display: none; height: 110px;">
+    Como la selección de los porcentajes de rentabilidad es al azar, todas los ESCENARIOS tienen el mismo chance de ser seleccionados. Haga clic en “Seleccionar ESCENARIOS” para ver tres ejemplos de selección. Luego haga clic en “Siguiente” para continuar. 
+</div>
+
+
 
 <br>  
 <div>
+    <table style="text-align: center; width: 90%; margin: 0 auto;">
+        <tr>
+            {% if graphType == 1 %}
+            <td><input type="button" value="Mostrar Inversión A y B" onclick="visibleAB()" id="btn_ab"></td>
+            {% else %}
+            <td><input type="button" value="Mostrar Inversión A" onclick="visibleA()" id="btn_a"></td>
+            <td><input type="button" value="Mostrar Inversión B" onclick="visibleB()" id="btn_b"></td>
+            {% endif %}
+        </tr>
+    </table>
+    <br>
     <div id="graph01" class="div_graph"></div>
-    <div class="div_tabGraph">
-        <table class="tabGraph">
-            <tr>
-                <td class="cell_graphInv">Inversión A</td>
-                <td class="cell_graph"></td>
-                <td class="cell_graph"></td>
-                <td class="cell_graph"></td>
-                <td class="cell_graph"></td>
-                <td class="cell_graph"></td>
-                <td class="cell_graph"></td>
-                <td class="cell_graph"></td>
-                <td class="cell_graph"></td>
-            </tr>
-        </table>
-    </div>
 </div>
 
 <br>
 
 <div class="div_btnNext">
-    {% next_button %}
+    <input type="button" value="Siguiente Escenario" class="btnNext" style="display: none;" onclick="nextScenario()" id="btnScenario">
+    <input type="button" value="Siguiente" class="btnNext" style="display: none;" onclick="nextView()" id="btnNext">
+    <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next" disabled>Siguiente</button>
 </div>
 
 {% endblock %}

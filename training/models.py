@@ -28,6 +28,8 @@ class Constants(BaseConstants):
     inv_example = [15, -8, 15, 15, -8, -8, -8, 15] # array exampl for training app
     inv_a = [15, -8, 15, 15, -8, -8, -8, 15]
     inv_b = [-9, -9, 14, -9, 14, 14, -9, 14]
+    time_steps = 200 # en milisegundos = 2 segundos
+    money_example = 100 # dinero usado para ejemplos
 
 
 class Subsession(BaseSubsession):
@@ -40,25 +42,26 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
 
-    # Para almacenar el número ingresado la primera pregunta del retorno de la primera carta, así como si fue correcto o no
+    # Para almacenar el número ingresado la primera pregunta del training de las gráficas
     test_01_number = models.IntegerField()
-    test_01_answer = models.IntegerField() # 0 -> respuesta incorrecta | 1 -> respuesta correcta
+    test_01_answer = models.StringField() # 0 -> respuesta incorrecta | 1 -> respuesta correcta
+    test_01_time = models.StringField() # tiempo que demora en presionar continuar
 
     # Para almacenar el número ingresado la segunda pregunta del retorno de la última carta, así como si fue correcto o no
     test_02_number = models.IntegerField()
-    test_02_answer = models.IntegerField() # 0 -> respuesta incorrecta | 1 -> respuesta correcta
+    test_02_answer = models.StringField() # 0 -> respuesta incorrecta | 1 -> respuesta correcta
 
     # Para almacenar las respuestas de la cantidad de cartas positivas
     test_03_A_number = models.IntegerField()
-    test_03_A_answer = models.IntegerField() # 0 -> respuesta incorrecta | 1 -> respuesta correcta
+    test_03_A_answer = models.StringField() # 0 -> respuesta incorrecta | 1 -> respuesta correcta
     test_03_B_number = models.IntegerField()
-    test_03_B_answer = models.IntegerField() # 0 -> respuesta incorrecta | 1 -> respuesta correcta
+    test_03_B_answer = models.StringField() # 0 -> respuesta incorrecta | 1 -> respuesta correcta
 
     # Para almacenar las respuestas de la cantidad de cartas negativas
     test_04_A_number = models.IntegerField()
-    test_04_A_answer = models.IntegerField() # 0 -> respuesta incorrecta | 1 -> respuesta correcta
+    test_04_A_answer = models.StringField() # 0 -> respuesta incorrecta | 1 -> respuesta correcta
     test_04_B_number = models.IntegerField()
-    test_04_B_answer = models.IntegerField() # 0 -> respuesta incorrecta | 1 -> respuesta correcta
+    test_04_B_answer = models.StringField() # 0 -> respuesta incorrecta | 1 -> respuesta correcta
 
     # Almacenar lo relacionado a la posición de la carta
     test_05_cardIndex = models.IntegerField()

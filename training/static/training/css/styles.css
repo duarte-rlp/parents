@@ -116,7 +116,7 @@ input:focus {
 }
 
 .cell_question {
-	width: 75%;
+	width: 80%;
 	min-height: 35px;
 	height: 35px;
 	max-height: 100px;
@@ -124,7 +124,7 @@ input:focus {
 }
 
 .cell_input {
-	width: 25%;
+	width: 20%;
 	min-height: 35px;
 	vertical-align: middle;
 }

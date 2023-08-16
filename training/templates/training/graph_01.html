@@ -12,6 +12,8 @@
         var intervalID;
         var data_a = {{ data_a }};
         var cnt_cards = 0;
+        var step_view = 1;
+        var time;
 
         // Gráfica
         var graph = Highcharts.chart('graph01', {
@@ -19,6 +21,9 @@
                 text: ''
             },
             xAxis: {
+                title: {
+                    text: 'Escenarios'
+                },
                 min: 0,
                 max: 7,
                 categories: {{ labels }},
@@ -50,14 +55,18 @@
 
         function start_points() {
             nextCard();
-            intervalID = setInterval(nextCard, 500);
+            intervalID = setInterval(nextCard, {{ time_steps }});
+            document.getElementById("btn_start_points").style.backgroundColor = "#989898";
+            document.getElementById("btn_start_points").disabled = true;
         }
 
         function nextCard() {
-            if(cnt_cards < 8) {
+            if(cnt_cards < 7) {
                 add_point_graph(cnt_cards);
             } else {
+                add_point_graph(cnt_cards);
                 document.getElementById("btnNext").style.display = 'block';
+                document.getElementById("btnNext").style.margin = '0 auto';
                 clearInterval(intervalID);
 
             }
@@ -93,9 +102,50 @@
         }
 
         function nextView() {
-            let btn = document.getElementById("id_next");
-            btn.removeAttribute("disabled");
-            btn.click();
+            switch(step_view) {
+            case 1:
+                document.getElementById('step_1').style.display = 'none';
+                document.getElementById('step_2').style.display = 'block';
+                step_view += 1;
+                break;
+            case 2:
+                document.getElementById('step_2').style.display = 'none';
+                document.getElementById('step_3').style.display = 'block';
+                step_view += 1;
+                break;
+            case 3:
+                document.getElementById('step_3').style.display = 'none';
+                document.getElementById('step_4').style.display = 'block';
+                time = Date.now();
+                step_view += 1;
+                break;
+            case 4:
+                let in_test01 = document.getElementById("in_test01");
+                if(in_test01.value.length == 0) {
+                    let btn = document.getElementById("id_next");
+                    btn.removeAttribute("disabled");
+                    btn.click();
+                } else {
+                    document.getElementById('test_01_time').value = Date.now() - time;
+                    if(Number(in_test01.value) == 8) {
+                        document.getElementById('text_result').innerHTML = 'Correcto';
+                        document.getElementById('test_01_answer').value = 'Correct';
+                    } else {
+                        document.getElementById('text_result').innerHTML = 'Incorrecto';
+                        document.getElementById('test_01_answer').value = 'Incorrect';
+                    }
+                    
+                    document.getElementById('step_4').style.display = 'none';
+                    document.getElementById('step_5').style.display = 'block';
+                    step_view += 1;
+                }
+                break;
+            case 5:
+                let btn = document.getElementById("id_next");
+                btn.removeAttribute("disabled");
+                btn.click();
+            }
+            
         }
 
     </script>
@@ -106,15 +156,51 @@
 {% endblock %}
 
 {% block content %}
-
+<div id="step_1">
 Ahora le mostraremos el porcentaje de rentabilidad de UNA INVERSIÓN en 8 ESCENARIOS posibles (8 POSICIONES en la gráfica).
 <br>
 <br>
-El porcentaje de rentabilidad de cada inversión puede ser distinto en cada ESCENARIO.  Haga <i>clic</i> en el botón "Mostrar Inversión" para ver los RETORNOS POR CADA $100 que una inversión puede generar.
+El porcentaje de rentabilidad de cada inversión puede ser distinto en cada ESCENARIO. Haga <i>clic</i> en el botón "Mostrar Inversión" para ver los RETORNOS POR CADA $100 que una inversión puede generar.
+</div>
+
+<div id="step_2" style="display: none;">
+El primer porcentaje de rentabilidad es {{ data_a.0 }}%. Eso quiere decir que por cada <toMoney>100</toMoney> pesos que se asigne a la <i>Inversión A</i> puede ganar <toMoney>15</toMoney> pesos.
+</div>
+
+<div id="step_3" style="display: none;">
+Como puede ver, <b>el porcentaje de rentabilidad de la inversión puede ser positivo o negativo</b>. Cuando sale un número positivo significa que la inversión generó <i>ganancias</i>, pero cuando sale un número negativo significa que la inversión generó <i>pérdidas</i>. 
+</div>
+
+<div id="step_4" style="display: none;">
+<table class="table_question">
+    <tr>
+        <td class="cell_question">
+            <div id="text01">
+                <b>Pregunta:</b> ¿Cuánto perderá si asigna <toMoney>100</toMoney> a la <i>Inversión A</i> y el porcentaje de rentabilidad es -8% ?
+            </div>
+        </td>
+        <td class="cell_input">
+            <div class="answer_test">
+                <input type="number" class="inNumber" name="test_01_number" id="in_test01" required>
+                <input type="hidden" name="test_01_answer" id="test_01_answer">
+                <input type="hidden" name="test_01_time" id="test_01_time">
+            </div>
+        </td>
+    </tr>
+</table>
+</div>
+
+<div id="step_5" style="display: none;">
+<text id="text_result"></text> perderá <toMoney>8</toMoney>.
 <br>
 <br>
+Recuerde que por cada <toMoney>100</toMoney> que usted asigne a la <i>Inversión A</i> puede perder <toMoney>8</toMoney>.
+</div>
+
+<br>
+
 <div style="text-align: center;">
-    <input type="button" value="Mostrar Inversión" class="btnNext" onclick="start_points()">
+    <input type="button" value="Mostrar Inversión" class="btnNext" onclick="start_points()" id="btn_start_points">
 </div>
 
 <br>  

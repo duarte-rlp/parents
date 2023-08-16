@@ -26,12 +26,16 @@ class intro_02(Page):
 
 # intro
 class graph_01(Page):
+    form_model = "player"
+    form_fields = ["test_01_number", "test_01_answer", "test_01_time"]
     def vars_for_template(self):
         return {
                 'labels': Constants.inv_labels,
                 'data_a': Constants.inv_a,
                 'max_y': max(Constants.inv_a),
                 'min_y': min(Constants.inv_a),
+                'time_steps': Constants.time_steps,
+                'money_example': Constants.money_example
                 }
 
 class graph_02(Page):

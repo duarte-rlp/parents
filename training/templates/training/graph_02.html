@@ -346,13 +346,11 @@
                 step_view += 1;
                 break;
             case 9:
-                console.log('step', step_view);
                 document.getElementById('step_9').style.display = 'none';
                 document.getElementById('step_10').style.display = 'block';
                 step_view += 1;
                 break;
             case 10:
-                console.log('step', step_view);
                 let in_test05_a = document.getElementById("test_05_number_a");
                 let in_test05_b = document.getElementById("test_05_number_b");
                 if ((in_test05_a.value.length == 0) || (in_test05_b.value.length == 0)) {
@@ -385,7 +383,6 @@
                 }
                 break;
             case 11:
-                console.log('step', step_view);
                 document.getElementById('step_11').style.display = 'none';
                 document.getElementById('step_12').style.display = 'block';
                 document.getElementById('btnNext').style.display = 'none';
@@ -394,7 +391,6 @@
                 step_view += 1;
                 break;
             case 12:
-                console.log('step', step_view);
                 let btn = document.getElementById("id_next");
                 btn.removeAttribute("disabled");
                 btn.click();
@@ -402,7 +398,7 @@
         }
 
         function nextScenario() {
-            if (cnt_scenario < 2) {
+            if (cnt_scenario < 3) {
                 cnt_scenario += 1;
                 $('.rect').remove();
                 let escenario = ((Math.floor(Math.random() * 8)) + 0.5) - 1;
@@ -415,6 +411,11 @@
                             zIndex: 0
                         }).addClass('rect')
                     .add();
+                if(cnt_scenario == 3) {
+                    document.getElementById('btnNext').style.display = 'block';
+                    document.getElementById('btnNext').style.margin = '0 auto';
+                    document.getElementById('btnScenario').style.display = 'none';
+                }
             } else {
                 $('.rect').remove();
                 document.getElementById('btnNext').style.display = 'block';

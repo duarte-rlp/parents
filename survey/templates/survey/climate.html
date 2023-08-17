@@ -2,7 +2,7 @@
 {% load otree static %}
 
 {% block title %}
-Encuesta
+Ambiente
 {% endblock %}
 
 {% block scripts %}
@@ -11,12 +11,11 @@ Encuesta
 {% endblock %}
 
 {% block content %}
-<h4>Preguntas sobre su disposición a actuar de una determinada manera.</h4>
-<br/><span> En una escala del 1 al 5, donde <b>1</b> significa que "no está nada dispuesto(a) " y <b>5</b> significa que "está muy dispuesto(a)", por favor diganos: </span>
+<br/><span> En una escala del 1 al 5, donde <b>1</b> significa "completamente en desacuerdo" y <b>5</b> significa "completamente de acuerdo", por favor evalua las siguientes afirmaciones: </span>
     <br/>
 <table class="table">
    <tr>
-     <td class="td_q">¿Qué tan dispuesto (a) está o no está usted a tomar riesgos?</td>
+     <td class="td_q">1. Nos estamos acercando al límite de la cantidad de personas que la Tierra puede sostener</td>
      <td class="d-flex">
          <div class="form-check">
              <input class="form-check-input" type="radio" name="p_risk" id="op1" value="1"><br>
@@ -41,7 +40,7 @@ Encuesta
      </td>
    </tr>
    <tr>
-     <td class="td_q">¿Qué tan dispuesto está a renunciar a algo que es beneficioso para usted en este momento a fin de obtener mayores beneficios en el futuro?</td>
+     <td class="td_q">2. Los seres humanos tienen el derecho de modificar el medio ambiente natural para satisfacer sus necesidades.</td>
      <td class="d-flex">
          <div class="form-check">
              <input class="form-check-input" type="radio" name="p_time" id="op1" value="1"><br>
@@ -66,7 +65,7 @@ Encuesta
      </td>
    </tr>
    <tr>
-     <td class="td_q">¿Qué tan dispuesto está a castigar a alguien que lo(a) trata injustamente, incluso cuando existen riesgos de sufrir consecuencias?</td>
+     <td class="td_q">3. Cuando los seres humanos interfieren con la naturaleza, a menudo producen consecuencias desastrosas.</td>
      <td class="d-flex">
          <div class="form-check">
              <input class="form-check-input" type="radio" name="p_you" id="op1" value="1"><br>
@@ -91,7 +90,7 @@ Encuesta
      </td>
    </tr>
    <tr>
-    <td class="td_q">¿Qué tan dispuesto(a) está a castigar a alguien que trata a los demás injustamente, incluso cuando exista el riesgo de sufrir consecuencias?</td>
+    <td class="td_q">4. El ingenio humano asegurará que no hagamos la Tierra inhabitable.</td>
     <td class="d-flex">
         <div class="form-check">
             <input class="form-check-input" type="radio" name="p_others" id="op1" value="1"><br>
@@ -116,173 +115,282 @@ Encuesta
     </td>
   </tr>
   <tr>
-    <td class="td_q">¿Qué tan dispuesto(a) está a hacer donaciones a causas benéficas sin esperar nada a cambio?</td>
+    <td class="td_q">5. Los seres humanos están abusando gravemente de la Tierra.</td>
     <td class="d-flex">
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="p_altruism" id="op1" value="1"><br>
+            <input class="form-check-input" type="radio" name="p_others" id="op1" value="1"><br>
             <label class="form-check-label" for="op1">1</label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="p_altruism" id="op2" value="2"><br>
+            <input class="form-check-input" type="radio" name="p_others" id="op2" value="2"><br>
             <label class="form-check-label" for="op2">2</label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="p_altruism" id="op3" value="3"><br>
+            <input class="form-check-input" type="radio" name="p_others" id="op3" value="3"><br>
             <label class="form-check-label" for="op3">3</label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="p_altruism" id="op4" value="4"><br>
+            <input class="form-check-input" type="radio" name="p_others" id="op4" value="4"><br>
             <label class="form-check-label" for="op4">4</label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="p_altruism" id="op5" value="5"><br>
-            <label class="form-check-label" for="op5">5</label>
-        </div>
-    </td>
-  </tr>
- </table>
- <h4>¿Qué tan bien lo(a) describe a usted como persona cada una de las siguientes expresiones?</h4>
-<br/><span> En una escala del 1 al 5, donde <b>1</b> significa que la expresión "no lo(a) describe en absoluto" y <b>5</b> significa que " lo(a) describe perfectamente", por favor diganos:</span>
-    <br/>
-<table class="table">
-   <tr>
-     <td class="td_q">Cuando alguien me hace un favor, estoy dispuesto a devolverlo.</td>
-     <td class="d-flex">
-         <div class="form-check">
-             <input class="form-check-input" type="radio" name="p_reciprocity" id="op1" value="1"><br>
-             <label class="form-check-label" for="op1">1</label>
-         </div>
-         <div class="form-check">
-             <input class="form-check-input" type="radio" name="p_reciprocity" id="op2" value="2"><br>
-             <label class="form-check-label" for="op2">2</label>
-         </div>
-         <div class="form-check">
-             <input class="form-check-input" type="radio" name="p_reciprocity" id="op3" value="3"><br>
-             <label class="form-check-label" for="op3">3</label>
-         </div>
-         <div class="form-check">
-             <input class="form-check-input" type="radio" name="p_reciprocity" id="op4" value="4"><br>
-             <label class="form-check-label" for="op4">4</label>
-         </div>
-         <div class="form-check">
-             <input class="form-check-input" type="radio" name="p_reciprocity" id="op5" value="5"><br>
-             <label class="form-check-label" for="op5">5</label>
-         </div>
-     </td>
-   </tr>
-   <tr>
-     <td class="td_q">Si me tratan muy injustamente, tomaré revancha en la primera ocasión, incluso cuando deba pagar un costo por ello.</td>
-     <td class="d-flex">
-         <div class="form-check">
-             <input class="form-check-input" type="radio" name="p_inequality" id="op1" value="1"><br>
-             <label class="form-check-label" for="op1">1</label>
-         </div>
-         <div class="form-check">
-             <input class="form-check-input" type="radio" name="p_inequality" id="op2" value="2"><br>
-             <label class="form-check-label" for="op2">2</label>
-         </div>
-         <div class="form-check">
-             <input class="form-check-input" type="radio" name="p_inequality" id="op3" value="3"><br>
-             <label class="form-check-label" for="op3">3</label>
-         </div>
-         <div class="form-check">
-             <input class="form-check-input" type="radio" name="p_inequality" id="op4" value="4"><br>
-             <label class="form-check-label" for="op4">4</label>
-         </div>
-         <div class="form-check">
-             <input class="form-check-input" type="radio" name="p_inequality" id="op5" value="5"><br>
-             <label class="form-check-label" for="op5">5</label>
-         </div>
-     </td>
-   </tr>
-   <tr>
-     <td class="td_q">Supongo que la gente tiene sólo las mejores intenciones.</td>
-     <td class="d-flex">
-         <div class="form-check">
-             <input class="form-check-input" type="radio" name="p_beliefs" id="op1" value="1"><br>
-             <label class="form-check-label" for="op1">1</label>
-         </div>
-         <div class="form-check">
-             <input class="form-check-input" type="radio" name="p_beliefs" id="op2" value="2"><br>
-             <label class="form-check-label" for="op2">2</label>
-         </div>
-         <div class="form-check">
-             <input class="form-check-input" type="radio" name="p_beliefs" id="op3" value="3"><br>
-             <label class="form-check-label" for="op3">3</label>
-         </div>
-         <div class="form-check">
-             <input class="form-check-input" type="radio" name="p_beliefs" id="op4" value="4"><br>
-             <label class="form-check-label" for="op4">4</label>
-         </div>
-         <div class="form-check">
-             <input class="form-check-input" type="radio" name="p_beliefs" id="op5" value="5"><br>
-             <label class="form-check-label" for="op5">5</label>
-         </div>
-     </td>
-   </tr>
-   <tr>
-    <td class="td_q">Soy bueno(a) en matemáticas.</td>
-    <td class="d-flex">
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="p_math" id="op1" value="1"><br>
-            <label class="form-check-label" for="op1">1</label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="p_math" id="op2" value="2"><br>
-            <label class="form-check-label" for="op2">2</label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="p_math" id="op3" value="3"><br>
-            <label class="form-check-label" for="op3">3</label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="p_math" id="op4" value="4"><br>
-            <label class="form-check-label" for="op4">4</label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="p_math" id="op5" value="5"><br>
+            <input class="form-check-input" type="radio" name="p_others" id="op5" value="5"><br>
             <label class="form-check-label" for="op5">5</label>
         </div>
     </td>
   </tr>
   <tr>
-    <td class="td_q">Tiendo a posponer las tareas, incluso cuando sé que sería mejor hacerlas de inmediato.</td>
+    <td class="td_q">6. La Tierra tiene abundantes recursos naturales si simplemente aprendemos cómo usarlos.</td>
     <td class="d-flex">
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="p_time2" id="op1" value="1"><br>
+            <input class="form-check-input" type="radio" name="p_others" id="op1" value="1"><br>
             <label class="form-check-label" for="op1">1</label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="p_time2" id="op2" value="2"><br>
+            <input class="form-check-input" type="radio" name="p_others" id="op2" value="2"><br>
             <label class="form-check-label" for="op2">2</label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="p_time2" id="op3" value="3"><br>
+            <input class="form-check-input" type="radio" name="p_others" id="op3" value="3"><br>
             <label class="form-check-label" for="op3">3</label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="p_time2" id="op4" value="4"><br>
+            <input class="form-check-input" type="radio" name="p_others" id="op4" value="4"><br>
             <label class="form-check-label" for="op4">4</label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="p_time2" id="op5" value="5"><br>
+            <input class="form-check-input" type="radio" name="p_others" id="op5" value="5"><br>
+            <label class="form-check-label" for="op5">5</label>
+        </div>
+    </td>
+  </tr>
+  <tr>
+    <td class="td_q">7. Las plantas y los animales tienen tanto derecho a existir como los humanos.</td>
+    <td class="d-flex">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_others" id="op1" value="1"><br>
+            <label class="form-check-label" for="op1">1</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_others" id="op2" value="2"><br>
+            <label class="form-check-label" for="op2">2</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_others" id="op3" value="3"><br>
+            <label class="form-check-label" for="op3">3</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_others" id="op4" value="4"><br>
+            <label class="form-check-label" for="op4">4</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_others" id="op5" value="5"><br>
+            <label class="form-check-label" for="op5">5</label>
+        </div>
+    </td>
+  </tr>
+  <tr>
+    <td class="td_q">8. El equilibrio de la naturaleza es lo suficientemente fuerte para hacer frente a los impactos de los países industrializados modernos.</td>
+    <td class="d-flex">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_others" id="op1" value="1"><br>
+            <label class="form-check-label" for="op1">1</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_others" id="op2" value="2"><br>
+            <label class="form-check-label" for="op2">2</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_others" id="op3" value="3"><br>
+            <label class="form-check-label" for="op3">3</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_others" id="op4" value="4"><br>
+            <label class="form-check-label" for="op4">4</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_others" id="op5" value="5"><br>
+            <label class="form-check-label" for="op5">5</label>
+        </div>
+    </td>
+  </tr>
+  <tr>
+    <td class="td_q">9. A pesar de nuestras habilidades especiales, los seres humanos todavía estamos sujetos a las leyes de la naturaleza.</td>
+    <td class="d-flex">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_others" id="op1" value="1"><br>
+            <label class="form-check-label" for="op1">1</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_others" id="op2" value="2"><br>
+            <label class="form-check-label" for="op2">2</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_others" id="op3" value="3"><br>
+            <label class="form-check-label" for="op3">3</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_others" id="op4" value="4"><br>
+            <label class="form-check-label" for="op4">4</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_others" id="op5" value="5"><br>
+            <label class="form-check-label" for="op5">5</label>
+        </div>
+    </td>
+  </tr>
+  <tr>
+    <td class="td_q">10. La llamada "crisis ecológica" que enfrenta la humanidad ha sido ampliamente exagerada.</td>
+    <td class="d-flex">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_others" id="op1" value="1"><br>
+            <label class="form-check-label" for="op1">1</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_others" id="op2" value="2"><br>
+            <label class="form-check-label" for="op2">2</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_others" id="op3" value="3"><br>
+            <label class="form-check-label" for="op3">3</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_others" id="op4" value="4"><br>
+            <label class="form-check-label" for="op4">4</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_others" id="op5" value="5"><br>
+            <label class="form-check-label" for="op5">5</label>
+        </div>
+    </td>
+  </tr>
+  <tr>
+    <td class="td_q">11. La Tierra es como una nave espacial con un espacio y recursos muy limitados.</td>
+    <td class="d-flex">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_others" id="op1" value="1"><br>
+            <label class="form-check-label" for="op1">1</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_others" id="op2" value="2"><br>
+            <label class="form-check-label" for="op2">2</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_others" id="op3" value="3"><br>
+            <label class="form-check-label" for="op3">3</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_others" id="op4" value="4"><br>
+            <label class="form-check-label" for="op4">4</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_others" id="op5" value="5"><br>
+            <label class="form-check-label" for="op5">5</label>
+        </div>
+    </td>
+  </tr>
+  <tr>
+    <td class="td_q">12. Los seres humanos estaban destinados a gobernar sobre el resto de la naturaleza.</td>
+    <td class="d-flex">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_others" id="op1" value="1"><br>
+            <label class="form-check-label" for="op1">1</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_others" id="op2" value="2"><br>
+            <label class="form-check-label" for="op2">2</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_others" id="op3" value="3"><br>
+            <label class="form-check-label" for="op3">3</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_others" id="op4" value="4"><br>
+            <label class="form-check-label" for="op4">4</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_others" id="op5" value="5"><br>
+            <label class="form-check-label" for="op5">5</label>
+        </div>
+    </td>
+  </tr>
+  <tr>
+    <td class="td_q">13. El equilibrio de la naturaleza es muy delicado y fácilmente perturbable.</td>
+    <td class="d-flex">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_others" id="op1" value="1"><br>
+            <label class="form-check-label" for="op1">1</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_others" id="op2" value="2"><br>
+            <label class="form-check-label" for="op2">2</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_others" id="op3" value="3"><br>
+            <label class="form-check-label" for="op3">3</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_others" id="op4" value="4"><br>
+            <label class="form-check-label" for="op4">4</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_others" id="op5" value="5"><br>
+            <label class="form-check-label" for="op5">5</label>
+        </div>
+    </td>
+  </tr>
+  <tr>
+    <td class="td_q">14. Los seres humanos eventualmente aprenderán lo suficiente sobre cómo funciona la naturaleza para poder controlarla.</td>
+    <td class="d-flex">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_others" id="op1" value="1"><br>
+            <label class="form-check-label" for="op1">1</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_others" id="op2" value="2"><br>
+            <label class="form-check-label" for="op2">2</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_others" id="op3" value="3"><br>
+            <label class="form-check-label" for="op3">3</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_others" id="op4" value="4"><br>
+            <label class="form-check-label" for="op4">4</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_others" id="op5" value="5"><br>
+            <label class="form-check-label" for="op5">5</label>
+        </div>
+    </td>
+  </tr>
+  <tr>
+    <td class="td_q">15. Si las cosas siguen su curso actual, pronto experimentaremos una enorme catástrofe ambiental.</td>
+    <td class="d-flex">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_others" id="op1" value="1"><br>
+            <label class="form-check-label" for="op1">1</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_others" id="op2" value="2"><br>
+            <label class="form-check-label" for="op2">2</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_others" id="op3" value="3"><br>
+            <label class="form-check-label" for="op3">3</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_others" id="op4" value="4"><br>
+            <label class="form-check-label" for="op4">4</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_others" id="op5" value="5"><br>
             <label class="form-check-label" for="op5">5</label>
         </div>
     </td>
   </tr>
  </table>
- <br/><span>¿Qué están haciendo <b>Usted</b> para mantenerse económicamente en la vejez?</span>
- <select class="form-select" aria-label="selectPension" name="p_pension">
-     <option selected>Seleccione</option>
-     <option value="1">Aportando en un fondo de pensiones obligatorias</option>
-     <option value="2">Aportando en un fondo de pensiones voluntarias (por ejemplo, BEPS)</option>
-     <option value="3">Ahorrando</option>
-     <option value="4">Haciendo inversiones</option>
-     <option value="5">Pagando un seguro por su cuenta</option>
-     <option value="6">Preparando a sus hijos para que puedan ayudarlo en su vejez</option>
-     <option value="7">Nada</option>
- </select>
- <p></p>
+ 
 
 {% next_button %}
 

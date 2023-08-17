@@ -143,7 +143,7 @@ class Player(BasePlayer):
         [6, 'Preparando a sus hijos para que puedan ayudarlo en su vejez'],
         [7, 'Nada'],
         [8, 'No sabe / No responde'],
-    ], label="16. ¿Qué está haciendo USTED para mantenerse económicamente en la vejez? (Puede marcar varias opciones)")
+    ], label="16. ¿Qué está haciendo USTED para mantenerse económicamente en la vejez?")
 
     p_events = models.IntegerField(
     choices=[
@@ -156,7 +156,7 @@ class Player(BasePlayer):
         [7,'Otros desastres naturales'],
         [8,'Ningún problema'],
         [9,'No sabe / No responde'],
-    ], label="17. Durante los últimos 12 meses, ¿en esta zona o vecindario se presentaron algunos de los siguientes problemas? (Puede marcar varias opciones)")
+    ], label="17. Durante los últimos 12 meses, ¿en esta zona o vecindario se presentaron algunos de los siguientes problemas?")
 
     p_climate = models.IntegerField(
     choices=[
@@ -164,13 +164,13 @@ class Player(BasePlayer):
         [2,'Endeudamiento'],
         [3,'Inversión'],
         [4,'No tiene en cuenta los cambios de clima'],
-    ], label="18. ¿Para cuál de las siguientes decisiones tiene en cuenta el cambio del clima? (Puede marcar varias opciones)")
+    ], label="18. ¿Para cuál de las siguientes decisiones tiene en cuenta el cambio del clima?")
 
     p_season = models.IntegerField(
     choices=[
         [1,'Invierno'],
         [2,'Verano'],
-    ], label="19. ¿Qué estación del año prefiere? (Puede marcar varias opciones)")
+    ], label="19. ¿Qué estación del año prefiere?")
 
     p_precautions = models.StringField(label="20. ¿Qué medidas preventivas toma para que los cambios de climas no afecten sus ingresos?")
 

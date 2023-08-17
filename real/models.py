@@ -69,3 +69,9 @@ class Player(BasePlayer):
     has_cultivo_2 = models.IntegerField() # cantidad de hectáreas para el cultivo 2
     time_cultivos = models.StringField() # tiempo que demoró llenando correctamente las respuestas
     cnt_mistakes = models.IntegerField() # cantidad de errores al llenar los recuadros
+
+    question_1_cultivos = models.StringField()
+    question_2_cultivos = models.StringField()
+    question_3_cultivos = models.StringField()
+    question_4_cultivos = models.StringField()
+

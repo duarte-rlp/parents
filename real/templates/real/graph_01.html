@@ -16,9 +16,11 @@
         var step_view = 1;
         var start;
         var cnt = 0;
+        var cnt_2 = 0;
         var cnt_scenario = 0;
         var slider_act = 0;
         var cnt_mistakes = 0;
+        var cnt_questions = [0, 0, 0, 0];
 
         // Gráfica
         var graph = Highcharts.chart('graph01', {
@@ -255,7 +257,7 @@
                 document.getElementById('div_tabGraph').style.display = 'block';
                 document.getElementById('h-slider-div').style.display = 'block';
                 document.getElementById('btnNext').style.display = 'none';
-                if (cnt == 0) {
+                if (cnt_2 == 0) {
                     let fa = document.getElementById('fila_a');
                     let fb = document.getElementById('fila_b');
                     let ft = document.getElementById('fila_total');
@@ -272,7 +274,7 @@
                         ft.children[i].style.border = "#000000 1px solid";
                     }
                 }
-                cnt = 1;
+                cnt_2 = 1;
                 step_view += 1;
                 break;
             case 2:
@@ -297,9 +299,14 @@
                 let mon_b = Number(document.getElementById("has_cultivo_2").value);
                 console.log((mon_a + mon_b));
                 if ((mon_a + mon_b) == 100) {
-                    document.getElementById('time_cultivos').value = Date.now - start;
+                    document.getElementById('time_cultivos').value = Date.now() - start;
                     document.getElementById('cnt_mistakes').value = cnt_mistakes;
                     step_view += 1;
+                    document.getElementById('step_3').style.display = 'none';
+                    document.getElementById('step_4').style.display = 'block';
+                    document.getElementById('questions_box').style.display = 'none';
+                    document.getElementById('questions').style.display = 'block';
+                    document.getElementById('btnNext').style.display = 'none';
                 } else {
                     document.getElementById('div_error').style.display = 'block';
                     document.getElementById('div_error').style.margin = '0 auto';
@@ -307,6 +314,11 @@
                     document.getElementById('has_cultivo_2').style.boxShadow = '0px 0px 3px 1px rgba(255, 0, 0, 0.65)';
                     cnt_mistakes += 1;
                 }
+                break;
+            case 4:
+                let btn = document.getElementById("id_next");
+                btn.removeAttribute("disabled");
+                btn.click();
                 break;
             }
         }
@@ -374,6 +386,61 @@
                 }
             );
         });
+
+        $(document).ready(function () {
+            $('.slider_porcentaje').change(
+                function (event) {
+                    var slider_id = event.target.id;
+                    var slider_value = event.target.value;
+                    var parent_slider = document.getElementById(slider_id).parentElement.parentElement.parentElement;
+                    var child = parent_slider.children[0].children[0].firstElementChild;
+                    child.innerHTML = slider_value + "%";
+                    var check_sli = parent_slider.children[1].lastElementChild.lastElementChild;
+                }
+            );
+        });
+
+        function review_q1() {
+            cnt_questions[0] = 1;
+            let suma = cnt_questions.reduce((acumulador, numero) => acumulador + numero, 0);
+            if (suma == 4) {
+                document.getElementById('btnNext').style.display = 'block';
+                document.getElementById('btnNext').style.margin = '0 auto';
+            }
+        }
+
+        function review_q2() {
+            cnt_questions[1] = 1;
+            let suma = cnt_questions.reduce((acumulador, numero) => acumulador + numero, 0);
+            if (suma == 4) {
+                document.getElementById('btnNext').style.display = 'block';
+                document.getElementById('btnNext').style.margin = '0 auto';
+            }
+        }
+
+        function review_q3() {
+            document.getElementById('div_error_q3').style.display = 'none';
+            let val_q3 = Number(document.getElementById('question_3_cultivos').value);
+            if ((val_q3 < 0) || (val_q3 > 100)) {
+                document.getElementById('div_error_q3').style.display = 'block';
+                document.getElementById('btnNext').style.margin = '0 auto';
+            }
+            cnt_questions[2] = 1;
+            let suma = cnt_questions.reduce((acumulador, numero) => acumulador + numero, 0);
+            if (suma == 4) {
+                document.getElementById('btnNext').style.display = 'block';
+                document.getElementById('btnNext').style.margin = '0 auto';
+            }
+        }
+
+        function review_q4() {
+            cnt_questions[3] = 1;
+            let suma = cnt_questions.reduce((acumulador, numero) => acumulador + numero, 0);
+            if (suma == 4) {
+                document.getElementById('btnNext').style.display = 'block';
+                document.getElementById('btnNext').style.margin = '0 auto';
+            }
+        }
 
     </script>
 {% endblock %}
@@ -503,7 +570,85 @@ A continuación, le hacemos algunas preguntas sobre las dos opciones de inversi�
     <input type="hidden" name="time_cultivos" id="time_cultivos">
     <input type="hidden" name="cnt_mistakes" id="cnt_mistakes">
 </div>
-    
+
+<div id="questions" style="display: none;">
+    <div class="card_table" style="text-align: center;">
+    <table class="table_question" style="margin: 0 auto; width: 70% !important;">
+        <tr>
+            <td>
+                Si la rentabilidad del Cultivo 1 disminuye ¿Qué es más probable que suceda con los retornos del Cultivo 2 en tu opinión?
+            </td>
+        </tr>
+        <tr>
+            <td class="td_slider" style="text-align: left;">
+                <input type="radio" name="question_1_cultivos" value="increases" class="radios" required oninput="review_q1()">Aumenta<br>
+                <input type="radio" name="question_1_cultivos" value="equal" class="radios" required oninput="review_q1()">Se mantiene<br>
+                <input type="radio" name="question_1_cultivos" value="decreases" class="radios" required oninput="review_q1()">Disminuye<br>
+            </td>
+        </tr>
+    </table>
+    </div>
+    <br>
+    <br>
+    <div class="card_table" style="text-align: center;">
+    <table class="table_question" style="margin: 0 auto; width: 70% !important;">
+        <tr>
+            <td>
+                ¿Cuál es la probabilidad que el rendimiento del Cultivo 2 disminuya? <span>- %</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="td_slider">
+                <input type="range" name="question_2_cultivos" value="" min="0" max="100" step="1" id="slider_porcentaje_01" class="slider_porcentaje" required oninput="review_q2()">
+                <input type="range" value="" min="0" max="100" step="1" class="slider_porcentaje" style="display: none;">
+            </td>
+        </tr>
+    </table>
+    </div>
+    <br>
+    <br>
+    <div class="card_table" style="text-align: center;">
+    <table class="table_question" style="margin: 0 auto; width: 70% !important;">
+        <tr>
+            <td>
+                Suponga que se selecciona un ESCENARIO al azar, ¿cuál es la probabilidad de que los rendimientos del Cultivo 2 estén disminuyendo?
+            </td>
+        </tr>
+        <tr>
+            <td class="td_slider">
+                <input type="number" name="question_3_cultivos" id="question_3_cultivos" class="inNumber_a" oninput="review_q3()">
+            </td>
+        </tr>
+    </table>
+    <div class="error_msg" id="div_error_q3">
+        Por favor ingrese un porcentaje entre 0 y 100
+    </div>
+    </div>
+    <br>
+    <br>
+    <div class="card_table" style="text-align: center;">
+    <table class="table_question" style="margin: 0 auto; width: 70% !important;">
+        <tr>
+            <td>
+                De acuerdo con las gráficas ¿En cuál cultivo la dispersión de las rentabilidades es mayor?
+            </td>
+        </tr>
+        <tr>
+            <td class="td_slider" style="text-align: left;">
+                <input type="radio" name="question_4_cultivos" value="cultivo_1" class="radios" required oninput="review_q4()">Cultivo 1<br>
+                <input type="radio" name="question_4_cultivos" value="cultivo_2" class="radios" required oninput="review_q4()">Cultivo 2<br>
+            </td>
+        </tr>
+    </table>
+    </div>
+
+
+
+
+
+
+
+</div>
 
 <br>
 
@@ -520,33 +665,6 @@ A continuación, le hacemos algunas preguntas sobre las dos opciones de inversi�
 
 
 <!--  -->
-
-<br>
-<table class="table_question">
-    <tr>
-        <td class="cell_question" style="width: 100% !important;">    
-            <div id="text01">
-                Con base en esta información, responda la siguiente pregunta. Si en el siguiente periodo el rendimiento del Cultivo 1 disminuye, 
-            </div>
-        </td>
-    </tr>
-</table>
-<br>
-<div class="card_table" id="h-slider-div" style="text-align: center;">
-    <table class="table_question" style="margin: 0 auto; width: 70% !important;">
-        <tr>
-            <td>
-                ¿Cuál es la probabilidad que el rendimiento del Cultivo 2  disminuya? <span>- %</span>
-            </td>
-        </tr>
-        <tr>
-            <td class="td_slider">
-                <input type="range" name="return_banano" value="" min="0" max="100" step="1" id="slider_porcentaje_01" class="slider_porcentaje" required>
-                <input type="hidden" name="check_slider" value="0" id="check_slider"/>
-            </td>
-        </tr>
-    </table>
-</div>
 
 
 {% endblock %}

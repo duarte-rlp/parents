@@ -67,24 +67,6 @@ SESSION_CONFIGS = [
         'num_demo_participants': 1, 
         'app_sequence': ['survey'],
     },
-    #{
-    #    'name': 'icl',
-    #    'display_name': 'Sale actividad: Rentabilidad fija o variable - ICL 1',
-    #    'num_demo_participants': 1, 
-    #    'app_sequence': ['icl'],
-    #},
-    #{
-    #    'name': 'couple',
-    #    'display_name': 'Sale actividad: ¿Solo o en pareja?',
-    #    'num_demo_participants': 1, 
-    #    'app_sequence': ['couple'],
-    #},
-    # {
-    #     'name': 'icl2',
-    #     'display_name': 'ICL 2',
-    #     'num_demo_participants': 1, 
-    #     'app_sequence': ['home', 'icl2'],
-    # },
 ]
 
 ROOMS = [
@@ -127,4 +109,4 @@ INSTALLED_APPS = ['otree']
 
 PARTICIPANT_FIELDS = ['graphType']
 
-DEBUG=False
+DEBUG=True

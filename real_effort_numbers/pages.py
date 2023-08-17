@@ -139,34 +139,6 @@ class p8(Page):
     def before_next_page(self):
         self.player.cnt_question += 1
 
-class p9(Page):
-    form_model = "player"
-    form_fields = ["p9", "p9_cnt_mistakes", "p9_mistakes", "p9_time"]
-
-    def vars_for_template(self):
-        return {
-            "pregunta":self.round_number,
-            'question': Constants.questions[8],
-            'answer': Constants.answers[8],
-            'n_question': self.player.cnt_question,
-        }
-
-    def before_next_page(self):
-        self.player.cnt_question += 1
-
-class p10(Page):
-    form_model = "player"
-    form_fields = ["p10", "p10_cnt_mistakes", "p10_mistakes", "p10_time"]
-
-    def vars_for_template(self):
-        return {
-            "pregunta":self.round_number,
-            'question': Constants.questions[9],
-            'answer': Constants.answers[9],
-            'n_question': self.player.cnt_question,
-        }
-
-
 class Results(Page):
     """
     Show the results of the effort task after the player has finished

@@ -9,11 +9,11 @@ class climate(Page):
     def is_displayed(self):
         return self.round_number == 1
     
-class questions1(Page):
+class questions(Page):
     form_model = 'player'
-    form_fields = ['p_sex', 'p_age', 'p_educ', 'p_job', 'p_inc', 'p_inc1', 'p_married', 'p_children', 'ocu_father']
+    form_fields = ['p_age', 'p_sex', 'p_married', 'p_family', 'p_children', 'p_workers', 'p_educ', 'p_job', 'p_inc', 'p_inc1', 'p_expenses', 'p_dexpenses', 'p_group', 'p_insurance', 'p_savings', 'p_pension', 'p_events', 'p_climate', 'p_season', 'p_precautions' ]
     def is_displayed(self):
         return self.round_number == 1
 
 
-page_sequence = [climate, questions1]
+page_sequence = [climate, questions]

@@ -4,4 +4,3 @@ psycopg2>=2.8,<2.9
 numpy>=1.19
 django_user_agents >= 0.4.0
 pandas
-django-mathfilters

@@ -22,3 +22,4 @@ class instructions(Page):
     pass
 
 page_sequence = [instructions, graph_01]
+

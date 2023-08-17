@@ -2,6 +2,12 @@ from os import environ
 
 SESSION_CONFIGS = [
     {
+        'name': 'test',
+        'display_name': 'Test General',
+        'num_demo_participants': 1, 
+        'app_sequence': ['home', 'real_effort_numbers','choice_2', 'checker1', 'training', 'allocations', 'real', 'payoff_choice', 'final'],
+    },
+    {
         'name': 'home',
         'display_name': 'Instrucciones Generales',
         'num_demo_participants': 1, 
@@ -12,6 +18,12 @@ SESSION_CONFIGS = [
         'display_name': 'Preguntas iniciales',
         'num_demo_participants': 1, 
         'app_sequence': ['real_effort_numbers'],
+    },
+    {
+        'name': 'choice_2',
+        'display_name': 'Actividad 1: Rentabilidad variable',
+        'num_demo_participants': 1, 
+        'app_sequence': ['choice_2'],
     },
     {
         'name': 'checker1',
@@ -42,6 +54,12 @@ SESSION_CONFIGS = [
         'display_name': 'Actividad 4: Invertir o No invertir',
         'num_demo_participants': 1, 
         'app_sequence': ['choice'],
+    },
+    {
+        'name': 'payoff_choice',
+        'display_name': 'Votación Grupal',
+        'num_demo_participants': 1, 
+        'app_sequence': ['payoff_choice'],
     },
     {
         'name': 'survey',
@@ -91,4 +109,4 @@ INSTALLED_APPS = ['otree']
 
 PARTICIPANT_FIELDS = ['graphType']
 
-DEBUG=True
+DEBUG=False

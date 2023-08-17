@@ -317,8 +317,8 @@
                     var slider_value = childs[1].firstElementChild.value;
                     var dinero_pb = childs[2];
 
-                    dinero_pa.innerHTML = "$ "+numberWithPoints(slider_max-slider_value);
-                    dinero_pb.innerHTML = "$ "+numberWithPoints(slider_value);
+                    dinero_pa.innerHTML = "$ "+numberWithPoints(slider_value);
+                    dinero_pb.innerHTML = "$ "+numberWithPoints(slider_max-slider_value);
 
                     if (slider_act == 0) {
                         document.getElementById('btnNext').style.display = 'block';
@@ -330,8 +330,8 @@
                         let cell_a = document.getElementById("a_"+(i+1));
                         let cell_b = document.getElementById("b_"+(i+1));
                         let cell_t = document.getElementById("t_"+(i+1));
-                        let mon_a = ((slider_max-slider_value) * data_a[i]) / 100;
-                        let mon_b = (slider_value * data_b[i]) / 100;
+                        let mon_a = (slider_value * data_a[i]) / 100;
+                        let mon_b = ((slider_max-slider_value) * data_b[i]) / 100;
                         let mon_t = mon_a + mon_b;
                         if(mon_a < 0) {
                             mon_a = "- $" + (mon_a * -1).toLocaleString('es-CO');

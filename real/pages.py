@@ -5,16 +5,18 @@ from .models import Constants
 
 class graph_01(Page):
     form_model = 'player'
-    form_fields = ['return_banano']
+    form_fields = ['has_cultivo_1', 'has_cultivo_2', 'time_cultivos', 'cnt_mistakes']
     def vars_for_template(self):
         return {
-            'graphType': self.player.participant.vars['graphType'],
-            'labels': Constants.anhos,
-            'banano': Constants.banano,
-            'title_1': 'Cultivo 1', #Banano
-            'canha': Constants.canha,
-            'title_2': 'Cultivo 2'#Caña de azucar
-        }
+                'labels': Constants.anhos,
+                'data_a': Constants.cultivo_1,
+                'data_b': Constants.cultivo_2,
+                'max_y': max(Constants.cultivo_1 + Constants.cultivo_2),
+                'min_y': min(Constants.cultivo_1 + Constants.cultivo_2),
+                'time_steps': Constants.time_steps,
+                'investment_max': Constants.investment_max,
+                'graphType': self.player.participant.vars['graphType']
+                }
 
 class instructions(Page):
     pass

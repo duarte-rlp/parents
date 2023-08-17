@@ -28,7 +28,7 @@ class Constants(BaseConstants):
     inv_example = [15, -8, 15, 15, -8, -8, -8, 15] # array exampl for training app
     inv_a = [15, -8, 15, 15, -8, -8, -8, 15]
     inv_b = [-9, -9, 14, -9, 14, 14, -9, 14]
-    time_steps = 200 # en milisegundos = 2 segundos
+    time_steps = 2000 # en milisegundos = 2 segundos
     money_example = 100 # dinero usado para ejemplos
     investment_max = 100000 # máxima inversión
 

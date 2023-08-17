@@ -52,6 +52,8 @@ class Constants(BaseConstants):
             1768,
             1642
             ]
+    time_steps = 500 # tiempo en aparecer cada punto
+    investment_max = 100
 
 
 class Subsession(BaseSubsession):
@@ -63,4 +65,7 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    return_banano = models.IntegerField()
+    has_cultivo_1 = models.IntegerField() # cantidad de hectáreas para el cultivo 1
+    has_cultivo_2 = models.IntegerField() # cantidad de hectáreas para el cultivo 2
+    time_cultivos = models.StringField() # tiempo que demoró llenando correctamente las respuestas
+    cnt_mistakes = models.IntegerField() # cantidad de errores al llenar los recuadros

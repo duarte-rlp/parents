@@ -1,0 +1,289 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+Encuesta
+{% endblock %}
+
+{% block scripts %}
+    <!-- custom style sheet-->
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<h4>Preguntas sobre su disposición a actuar de una determinada manera.</h4>
+<br/><span> En una escala del 1 al 5, donde <b>1</b> significa que "no está nada dispuesto(a) " y <b>5</b> significa que "está muy dispuesto(a)", por favor diganos: </span>
+    <br/>
+<table class="table">
+   <tr>
+     <td class="td_q">¿Qué tan dispuesto (a) está o no está usted a tomar riesgos?</td>
+     <td class="d-flex">
+         <div class="form-check">
+             <input class="form-check-input" type="radio" name="p_risk" id="op1" value="1"><br>
+             <label class="form-check-label" for="op1">1</label>
+         </div>
+         <div class="form-check">
+             <input class="form-check-input" type="radio" name="p_risk" id="op2" value="2"><br>
+             <label class="form-check-label" for="op2">2</label>
+         </div>
+         <div class="form-check">
+             <input class="form-check-input" type="radio" name="p_risk" id="op3" value="3"><br>
+             <label class="form-check-label" for="op3">3</label>
+         </div>
+         <div class="form-check">
+             <input class="form-check-input" type="radio" name="p_risk" id="op4" value="4"><br>
+             <label class="form-check-label" for="op4">4</label>
+         </div>
+         <div class="form-check">
+             <input class="form-check-input" type="radio" name="p_risk" id="op5" value="5"><br>
+             <label class="form-check-label" for="op5">5</label>
+         </div>
+     </td>
+   </tr>
+   <tr>
+     <td class="td_q">¿Qué tan dispuesto está a renunciar a algo que es beneficioso para usted en este momento a fin de obtener mayores beneficios en el futuro?</td>
+     <td class="d-flex">
+         <div class="form-check">
+             <input class="form-check-input" type="radio" name="p_time" id="op1" value="1"><br>
+             <label class="form-check-label" for="op1">1</label>
+         </div>
+         <div class="form-check">
+             <input class="form-check-input" type="radio" name="p_time" id="op2" value="2"><br>
+             <label class="form-check-label" for="op2">2</label>
+         </div>
+         <div class="form-check">
+             <input class="form-check-input" type="radio" name="p_time" id="op3" value="3"><br>
+             <label class="form-check-label" for="op3">3</label>
+         </div>
+         <div class="form-check">
+             <input class="form-check-input" type="radio" name="p_time" id="op4" value="4"><br>
+             <label class="form-check-label" for="op4">4</label>
+         </div>
+         <div class="form-check">
+             <input class="form-check-input" type="radio" name="p_time" id="op5" value="5"><br>
+             <label class="form-check-label" for="op5">5</label>
+         </div>
+     </td>
+   </tr>
+   <tr>
+     <td class="td_q">¿Qué tan dispuesto está a castigar a alguien que lo(a) trata injustamente, incluso cuando existen riesgos de sufrir consecuencias?</td>
+     <td class="d-flex">
+         <div class="form-check">
+             <input class="form-check-input" type="radio" name="p_you" id="op1" value="1"><br>
+             <label class="form-check-label" for="op1">1</label>
+         </div>
+         <div class="form-check">
+             <input class="form-check-input" type="radio" name="p_you" id="op2" value="2"><br>
+             <label class="form-check-label" for="op2">2</label>
+         </div>
+         <div class="form-check">
+             <input class="form-check-input" type="radio" name="p_you" id="op3" value="3"><br>
+             <label class="form-check-label" for="op3">3</label>
+         </div>
+         <div class="form-check">
+             <input class="form-check-input" type="radio" name="p_you" id="op4" value="4"><br>
+             <label class="form-check-label" for="op4">4</label>
+         </div>
+         <div class="form-check">
+             <input class="form-check-input" type="radio" name="p_you" id="op5" value="5"><br>
+             <label class="form-check-label" for="op5">5</label>
+         </div>
+     </td>
+   </tr>
+   <tr>
+    <td class="td_q">¿Qué tan dispuesto(a) está a castigar a alguien que trata a los demás injustamente, incluso cuando exista el riesgo de sufrir consecuencias?</td>
+    <td class="d-flex">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_others" id="op1" value="1"><br>
+            <label class="form-check-label" for="op1">1</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_others" id="op2" value="2"><br>
+            <label class="form-check-label" for="op2">2</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_others" id="op3" value="3"><br>
+            <label class="form-check-label" for="op3">3</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_others" id="op4" value="4"><br>
+            <label class="form-check-label" for="op4">4</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_others" id="op5" value="5"><br>
+            <label class="form-check-label" for="op5">5</label>
+        </div>
+    </td>
+  </tr>
+  <tr>
+    <td class="td_q">¿Qué tan dispuesto(a) está a hacer donaciones a causas benéficas sin esperar nada a cambio?</td>
+    <td class="d-flex">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_altruism" id="op1" value="1"><br>
+            <label class="form-check-label" for="op1">1</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_altruism" id="op2" value="2"><br>
+            <label class="form-check-label" for="op2">2</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_altruism" id="op3" value="3"><br>
+            <label class="form-check-label" for="op3">3</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_altruism" id="op4" value="4"><br>
+            <label class="form-check-label" for="op4">4</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_altruism" id="op5" value="5"><br>
+            <label class="form-check-label" for="op5">5</label>
+        </div>
+    </td>
+  </tr>
+ </table>
+ <h4>¿Qué tan bien lo(a) describe a usted como persona cada una de las siguientes expresiones?</h4>
+<br/><span> En una escala del 1 al 5, donde <b>1</b> significa que la expresión "no lo(a) describe en absoluto" y <b>5</b> significa que " lo(a) describe perfectamente", por favor diganos:</span>
+    <br/>
+<table class="table">
+   <tr>
+     <td class="td_q">Cuando alguien me hace un favor, estoy dispuesto a devolverlo.</td>
+     <td class="d-flex">
+         <div class="form-check">
+             <input class="form-check-input" type="radio" name="p_reciprocity" id="op1" value="1"><br>
+             <label class="form-check-label" for="op1">1</label>
+         </div>
+         <div class="form-check">
+             <input class="form-check-input" type="radio" name="p_reciprocity" id="op2" value="2"><br>
+             <label class="form-check-label" for="op2">2</label>
+         </div>
+         <div class="form-check">
+             <input class="form-check-input" type="radio" name="p_reciprocity" id="op3" value="3"><br>
+             <label class="form-check-label" for="op3">3</label>
+         </div>
+         <div class="form-check">
+             <input class="form-check-input" type="radio" name="p_reciprocity" id="op4" value="4"><br>
+             <label class="form-check-label" for="op4">4</label>
+         </div>
+         <div class="form-check">
+             <input class="form-check-input" type="radio" name="p_reciprocity" id="op5" value="5"><br>
+             <label class="form-check-label" for="op5">5</label>
+         </div>
+     </td>
+   </tr>
+   <tr>
+     <td class="td_q">Si me tratan muy injustamente, tomaré revancha en la primera ocasión, incluso cuando deba pagar un costo por ello.</td>
+     <td class="d-flex">
+         <div class="form-check">
+             <input class="form-check-input" type="radio" name="p_inequality" id="op1" value="1"><br>
+             <label class="form-check-label" for="op1">1</label>
+         </div>
+         <div class="form-check">
+             <input class="form-check-input" type="radio" name="p_inequality" id="op2" value="2"><br>
+             <label class="form-check-label" for="op2">2</label>
+         </div>
+         <div class="form-check">
+             <input class="form-check-input" type="radio" name="p_inequality" id="op3" value="3"><br>
+             <label class="form-check-label" for="op3">3</label>
+         </div>
+         <div class="form-check">
+             <input class="form-check-input" type="radio" name="p_inequality" id="op4" value="4"><br>
+             <label class="form-check-label" for="op4">4</label>
+         </div>
+         <div class="form-check">
+             <input class="form-check-input" type="radio" name="p_inequality" id="op5" value="5"><br>
+             <label class="form-check-label" for="op5">5</label>
+         </div>
+     </td>
+   </tr>
+   <tr>
+     <td class="td_q">Supongo que la gente tiene sólo las mejores intenciones.</td>
+     <td class="d-flex">
+         <div class="form-check">
+             <input class="form-check-input" type="radio" name="p_beliefs" id="op1" value="1"><br>
+             <label class="form-check-label" for="op1">1</label>
+         </div>
+         <div class="form-check">
+             <input class="form-check-input" type="radio" name="p_beliefs" id="op2" value="2"><br>
+             <label class="form-check-label" for="op2">2</label>
+         </div>
+         <div class="form-check">
+             <input class="form-check-input" type="radio" name="p_beliefs" id="op3" value="3"><br>
+             <label class="form-check-label" for="op3">3</label>
+         </div>
+         <div class="form-check">
+             <input class="form-check-input" type="radio" name="p_beliefs" id="op4" value="4"><br>
+             <label class="form-check-label" for="op4">4</label>
+         </div>
+         <div class="form-check">
+             <input class="form-check-input" type="radio" name="p_beliefs" id="op5" value="5"><br>
+             <label class="form-check-label" for="op5">5</label>
+         </div>
+     </td>
+   </tr>
+   <tr>
+    <td class="td_q">Soy bueno(a) en matemáticas.</td>
+    <td class="d-flex">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_math" id="op1" value="1"><br>
+            <label class="form-check-label" for="op1">1</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_math" id="op2" value="2"><br>
+            <label class="form-check-label" for="op2">2</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_math" id="op3" value="3"><br>
+            <label class="form-check-label" for="op3">3</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_math" id="op4" value="4"><br>
+            <label class="form-check-label" for="op4">4</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_math" id="op5" value="5"><br>
+            <label class="form-check-label" for="op5">5</label>
+        </div>
+    </td>
+  </tr>
+  <tr>
+    <td class="td_q">Tiendo a posponer las tareas, incluso cuando sé que sería mejor hacerlas de inmediato.</td>
+    <td class="d-flex">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_time2" id="op1" value="1"><br>
+            <label class="form-check-label" for="op1">1</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_time2" id="op2" value="2"><br>
+            <label class="form-check-label" for="op2">2</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_time2" id="op3" value="3"><br>
+            <label class="form-check-label" for="op3">3</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_time2" id="op4" value="4"><br>
+            <label class="form-check-label" for="op4">4</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_time2" id="op5" value="5"><br>
+            <label class="form-check-label" for="op5">5</label>
+        </div>
+    </td>
+  </tr>
+ </table>
+ <br/><span>¿Qué están haciendo <b>Usted</b> para mantenerse económicamente en la vejez?</span>
+ <select class="form-select" aria-label="selectPension" name="p_pension">
+     <option selected>Seleccione</option>
+     <option value="1">Aportando en un fondo de pensiones obligatorias</option>
+     <option value="2">Aportando en un fondo de pensiones voluntarias (por ejemplo, BEPS)</option>
+     <option value="3">Ahorrando</option>
+     <option value="4">Haciendo inversiones</option>
+     <option value="5">Pagando un seguro por su cuenta</option>
+     <option value="6">Preparando a sus hijos para que puedan ayudarlo en su vejez</option>
+     <option value="7">Nada</option>
+ </select>
+ <p></p>
+
+{% next_button %}
+
+{% endblock %}

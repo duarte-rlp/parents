@@ -31,6 +31,7 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
+
     p_sex = models.IntegerField(
     choices=[
         [0, 'Hombre'],
@@ -104,6 +105,69 @@ class Player(BasePlayer):
     ], label="8. ¿Cuál es su ocupación u oficio?")
 
 #    p_risk = models.IntegerField(min=0, max=10, label="9. En una escala del 0 al 10, donde: 0 - significa que no esta dispuesto(a) a tomar riesgos en lo absoluto 10 - significa que esta muy dispuesto(a) a tomar riesgos  Por favor, díga, en general ¿Qué tan dispuesto (a) está o no está usted a tomar riesgos en decisiones financieras?")
+
+    p_climate1 = models.PositiveIntegerField(choices=[1,2,3,4,5],
+                                       widget=widgets.RadioSelectHorizontal(),
+                                       verbose_name="Nos estamos acercando al límite de la cantidad de personas que la Tierra puede sostener."
+                                       )
+
+    p_climate2 = models.PositiveIntegerField(choices=[1,2,3,4,5],
+                                       widget=widgets.RadioSelectHorizontal(),
+                                       verbose_name="Los seres humanos tienen el derecho de modificar el medio ambiente natural para satisfacer sus necesidades."
+                                       )
+    p_climate3 = models.PositiveIntegerField(choices=[1,2,3,4,5],
+                                       widget=widgets.RadioSelectHorizontal(),
+                                       verbose_name="Nos estamos acercando al límite de la cantidad de personas que la Tierra puede sostener."
+                                       )
+    p_climate4 = models.PositiveIntegerField(choices=[1,2,3,4,5],
+                                       widget=widgets.RadioSelectHorizontal(),
+                                       verbose_name="Nos estamos acercando al límite de la cantidad de personas que la Tierra puede sostener."
+                                       )
+    p_climate5 = models.PositiveIntegerField(choices=[1,2,3,4,5],
+                                       widget=widgets.RadioSelectHorizontal(),
+                                       verbose_name="Nos estamos acercando al límite de la cantidad de personas que la Tierra puede sostener."
+                                       )
+    p_climate6 = models.PositiveIntegerField(choices=[1,2,3,4,5],
+                                       widget=widgets.RadioSelectHorizontal(),
+                                       verbose_name="Nos estamos acercando al límite de la cantidad de personas que la Tierra puede sostener."
+                                       )
+    p_climate7 = models.PositiveIntegerField(choices=[1,2,3,4,5],
+                                       widget=widgets.RadioSelectHorizontal(),
+                                       verbose_name="Nos estamos acercando al límite de la cantidad de personas que la Tierra puede sostener."
+                                       )
+    p_climate8 = models.PositiveIntegerField(choices=[1,2,3,4,5],
+                                       widget=widgets.RadioSelectHorizontal(),
+                                       verbose_name="Nos estamos acercando al límite de la cantidad de personas que la Tierra puede sostener."
+                                       )
+    p_climate9 = models.PositiveIntegerField(choices=[1,2,3,4,5],
+                                       widget=widgets.RadioSelectHorizontal(),
+                                       verbose_name="Nos estamos acercando al límite de la cantidad de personas que la Tierra puede sostener."
+                                       )
+    p_climate10 = models.PositiveIntegerField(choices=[1,2,3,4,5],
+                                       widget=widgets.RadioSelectHorizontal(),
+                                       verbose_name="Nos estamos acercando al límite de la cantidad de personas que la Tierra puede sostener."
+                                       )
+    p_climate11 = models.PositiveIntegerField(choices=[1,2,3,4,5],
+                                       widget=widgets.RadioSelectHorizontal(),
+                                       verbose_name="Nos estamos acercando al límite de la cantidad de personas que la Tierra puede sostener."
+                                       )
+    p_climate11 = models.PositiveIntegerField(choices=[1,2,3,4,5],
+                                       widget=widgets.RadioSelectHorizontal(),
+                                       verbose_name="Nos estamos acercando al límite de la cantidad de personas que la Tierra puede sostener."
+                                       )
+    p_climate13 = models.PositiveIntegerField(choices=[1,2,3,4,5],
+                                       widget=widgets.RadioSelectHorizontal(),
+                                       verbose_name="Nos estamos acercando al límite de la cantidad de personas que la Tierra puede sostener."
+                                       )
+    p_climate14 = models.PositiveIntegerField(choices=[1,2,3,4,5],
+                                       widget=widgets.RadioSelectHorizontal(),
+                                       verbose_name="Nos estamos acercando al límite de la cantidad de personas que la Tierra puede sostener."
+                                       )
+    p_climate15 = models.PositiveIntegerField(choices=[1,2,3,4,5],
+                                       widget=widgets.RadioSelectHorizontal(),
+                                       verbose_name="Nos estamos acercando al límite de la cantidad de personas que la Tierra puede sostener."
+                                       )
+    
 
 
 

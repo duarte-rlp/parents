@@ -18,6 +18,7 @@
         var cnt = 0;
         var cnt_scenario = 0;
         var slider_act = 0;
+        var cnt_mistakes = 0;
 
         // Gráfica
         var graph = Highcharts.chart('graph01', {
@@ -288,6 +289,7 @@
                     cell_b.innerHTML = "";
                     cell_t.innerHTML = "";
                 }
+                start = Date.now();
                 step_view += 1;
                 break;
             case 3:
@@ -295,12 +297,15 @@
                 let mon_b = Number(document.getElementById("has_cultivo_2").value);
                 console.log((mon_a + mon_b));
                 if ((mon_a + mon_b) == 100) {
+                    document.getElementById('time_cultivos').value = Date.now - start;
+                    document.getElementById('cnt_mistakes').value = cnt_mistakes;
                     step_view += 1;
                 } else {
                     document.getElementById('div_error').style.display = 'block';
                     document.getElementById('div_error').style.margin = '0 auto';
                     document.getElementById('has_cultivo_1').style.boxShadow = '0px 0px 3px 1px rgba(255, 0, 0, 0.65)';
                     document.getElementById('has_cultivo_2').style.boxShadow = '0px 0px 3px 1px rgba(255, 0, 0, 0.65)';
+                    cnt_mistakes += 1;
                 }
                 break;
             }
@@ -495,6 +500,8 @@ A continuación, le hacemos algunas preguntas sobre las dos opciones de inversi�
             </td>
         </tr>
     </table>
+    <input type="hidden" name="time_cultivos" id="time_cultivos">
+    <input type="hidden" name="cnt_mistakes" id="cnt_mistakes">
 </div>
     
 

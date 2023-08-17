@@ -16,5 +16,7 @@ class graph_01(Page):
             'title_2': 'Cultivo 2'#Caña de azucar
         }
 
+class instructions(Page):
+    pass
 
-page_sequence = [graph_01]
+page_sequence = [instructions, graph_01]

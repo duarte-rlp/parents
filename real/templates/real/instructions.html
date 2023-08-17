@@ -1,0 +1,210 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block scripts %}
+    
+    <script src="{% static 'real/js/highcharts.js' %}"></script>
+    <script src="{% static 'real/js/functions.js' %}"></script>
+    <link href="{% static 'real/css/styles.css' %}" rel="stylesheet">
+    
+    <script>
+
+{% if graphType == 1 %}
+
+        // Gráfica para Banano y Caña juntas
+        Highcharts.chart('graph01', {
+            title: {
+                text: ''
+            },
+            xAxis: {
+                categories: {{ labels }},
+                align: 'center',
+                labels: {
+                    rotation: -45
+                }
+            },
+            yAxis: [{
+                title: {
+                    text: 'Rendimiento',
+                    style: {
+                        color: 'blue'
+                    }
+                },
+                labels: {
+                    format: '${value} /ha',
+                    style: {
+                        color: 'blue'
+                    }
+                }
+            }, {
+                title: {
+                    text: 'Rendimiento',
+                    style: {
+                        color: 'green'
+                    }
+                },
+                labels: {
+                    format: '${value} /ha',
+                    style: {
+                        color: 'green'
+                    }
+                },
+                opposite: true
+            }],
+            series: [{
+                animation: false,
+                yAxis: 1,
+                data: {{ banano }},
+                lineWidth: 1,
+                enableMouseTracking: true,
+                marker:{
+                    enabled: true
+                },
+                color: 'blue',
+                name: '{{ title_1 }}',
+                dashStyle: 'Solid'
+            }, {
+                animation: false,
+                data: {{ canha }},
+                lineWidth: 1,
+                enableMouseTracking: true,
+                marker:{
+                    enabled: true
+                },
+                color: 'green',
+                name: '{{ title_2 }}',
+                dashStyle: 'Solid'
+            }],
+            legend: {
+                enabled: true
+            }
+        });
+
+{% else %}
+
+        // Gráfica Banano
+        Highcharts.chart('graph01', {
+            title: {
+                text: ''
+            },
+            xAxis: {
+                categories: {{ labels }},
+                align: 'center',
+                labels: {
+                    rotation: -45
+                }
+            },
+            yAxis: {
+                title: {
+                    text: 'Rendimiento',
+                  style: {
+                    color: 'blue'
+                  }
+                },
+                labels: {
+                    format: '{value} ton/ha',
+                    style: {
+                        color: 'blue'
+                    }
+                }
+            },
+            series: [{
+                animation: false,
+                data: {{ banano }},
+                lineWidth: 1,
+                enableMouseTracking: true,
+                marker:{
+                    enabled: true
+                },
+                color: 'blue',
+                name: '{{ title_1 }}',
+                dashStyle: 'Solid'
+            }],
+            legend: {
+                enabled: true
+            }
+        });
+
+        // Gráfica Caña de azúcar
+        Highcharts.chart('graph02', {
+            title: {
+                text: ''
+            },
+            xAxis: {
+                categories: {{ labels }},
+                align: 'center',
+                labels: {
+                    rotation: -45
+                }
+            },
+            yAxis: {
+                title: {
+                    text: 'Rendimiento'
+                },
+                labels: {
+                    format: '{value} ton/ha',
+                    style: {
+                        color: 'green'
+                    }
+                }
+            },
+            series: [{
+                animation: false,
+                data: {{ canha }},
+                lineWidth: 1,
+                enableMouseTracking: true,
+                marker:{
+                    enabled: true
+                },
+                color: 'green',
+                name: '{{ title_2 }}',
+                dashStyle: 'Solid'
+            }],
+            legend: {
+                enabled: true
+            }
+        });
+
+{% endif %}
+
+        function validate_next() {
+            let check_01 = document.getElementById("check_slider").value;
+            if(check_01 == 1) {
+                let next_button = document.getElementById('id_next');
+                next_button.style.cssText += 'display: block !important; margin: 0 auto;';
+            }
+        }
+
+    </script>
+{% endblock %}
+
+{% block title %}
+    Actividad 3: Cultivos
+{% endblock %}
+
+{% block content %}
+
+Gracias por completar la actividad 2, ahora empezamos con la tercera actividad. Vamos a hacer un ejercicio similar a los anteriores pero aplicado al contexto agrícola.
+<br>
+<br>
+Imagine es agricultor y suponga que tiene un terreno de 100 hectáreas. En este terreno se pueden sembrar dos cultivos. 
+<br>
+<br>
+Puede sembrar todo en el <i>Cultivo A</i>, o todo en el <i>Cultivo B</i>, o puede dividir su terreno y sembrar parte en el <i>Cultivo A</i> y parte en el <i>Cultivo B</i>. 
+<br>
+<br>
+También le presentaremos un gráfica con los porcentajes de rentabilidad de los cultivos en <b>8 ESCENARIOS que ya ocurrieron</b>. Luego le haremos unas preguntas. 
+<br>
+<br>
+<b>¿Qué pasa si el computador selecciona esta actividad para calcular su pago total?</b>
+<br>
+<br>
+El computador seleccionará al azar uno de los ocho escenarios. Su pago entonces será la cantidad de hectáreas asignadas al <i>Cultivo A</i> y al <i>Cultivo B</i> multiplicado por el porcentaje de rentabilidad de cada cultivo en el ESCENARIO seleccionado. 
+
+<br>
+
+<div class="div_btnNext">
+    <button class="otree-btn-next btn btn-primary" id="id_next">Siguiente</button>
+</div>
+
+{% endblock %}

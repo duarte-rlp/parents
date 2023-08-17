@@ -117,55 +117,55 @@ class Player(BasePlayer):
                                        )
     p_climate3 = models.PositiveIntegerField(choices=[1,2,3,4,5],
                                        widget=widgets.RadioSelectHorizontal(),
-                                       verbose_name="Nos estamos acercando al límite de la cantidad de personas que la Tierra puede sostener."
+                                       verbose_name="Cuando los seres humanos interfieren con la naturaleza, a menudo producen consecuencias desastrosas."
                                        )
     p_climate4 = models.PositiveIntegerField(choices=[1,2,3,4,5],
                                        widget=widgets.RadioSelectHorizontal(),
-                                       verbose_name="Nos estamos acercando al límite de la cantidad de personas que la Tierra puede sostener."
+                                       verbose_name="El ingenio humano asegurará que no hagamos la Tierra inhabitable."
                                        )
     p_climate5 = models.PositiveIntegerField(choices=[1,2,3,4,5],
                                        widget=widgets.RadioSelectHorizontal(),
-                                       verbose_name="Nos estamos acercando al límite de la cantidad de personas que la Tierra puede sostener."
+                                       verbose_name="Los seres humanos están abusando gravemente de la Tierra."
                                        )
     p_climate6 = models.PositiveIntegerField(choices=[1,2,3,4,5],
                                        widget=widgets.RadioSelectHorizontal(),
-                                       verbose_name="Nos estamos acercando al límite de la cantidad de personas que la Tierra puede sostener."
+                                       verbose_name="La Tierra tiene abundantes recursos naturales si simplemente aprendemos cómo usarlos."
                                        )
     p_climate7 = models.PositiveIntegerField(choices=[1,2,3,4,5],
                                        widget=widgets.RadioSelectHorizontal(),
-                                       verbose_name="Nos estamos acercando al límite de la cantidad de personas que la Tierra puede sostener."
+                                       verbose_name="Las plantas y los animales tienen tanto derecho a existir como los humanos."
                                        )
     p_climate8 = models.PositiveIntegerField(choices=[1,2,3,4,5],
                                        widget=widgets.RadioSelectHorizontal(),
-                                       verbose_name="Nos estamos acercando al límite de la cantidad de personas que la Tierra puede sostener."
+                                       verbose_name="El equilibrio de la naturaleza es lo suficientemente fuerte para hacer frente a los impactos de los países industrializados modernos."
                                        )
     p_climate9 = models.PositiveIntegerField(choices=[1,2,3,4,5],
                                        widget=widgets.RadioSelectHorizontal(),
-                                       verbose_name="Nos estamos acercando al límite de la cantidad de personas que la Tierra puede sostener."
+                                       verbose_name="A pesar de nuestras habilidades especiales, los seres humanos todavía estamos sujetos a las leyes de la naturaleza."
                                        )
-    p_climate10 = models.PositiveIntegerField(choices=[1,2,3,4,5],
+    #p_climate10 = models.PositiveIntegerField(choices=[1,2,3,4,5],
+    #                                   widget=widgets.RadioSelectHorizontal(),
+    #                                   verbose_name="La llamada "crisis ecológica" que enfrenta la humanidad ha sido ampliamente exagerada."
+    #                                   )
+    p_climate11 = models.PositiveIntegerField(choices=[1,2,3,4,5],
                                        widget=widgets.RadioSelectHorizontal(),
-                                       verbose_name="Nos estamos acercando al límite de la cantidad de personas que la Tierra puede sostener."
+                                       verbose_name="La Tierra es como una nave espacial con un espacio y recursos muy limitados."
                                        )
     p_climate11 = models.PositiveIntegerField(choices=[1,2,3,4,5],
                                        widget=widgets.RadioSelectHorizontal(),
-                                       verbose_name="Nos estamos acercando al límite de la cantidad de personas que la Tierra puede sostener."
-                                       )
-    p_climate11 = models.PositiveIntegerField(choices=[1,2,3,4,5],
-                                       widget=widgets.RadioSelectHorizontal(),
-                                       verbose_name="Nos estamos acercando al límite de la cantidad de personas que la Tierra puede sostener."
+                                       verbose_name="Los seres humanos estaban destinados a gobernar sobre el resto de la naturaleza."
                                        )
     p_climate13 = models.PositiveIntegerField(choices=[1,2,3,4,5],
                                        widget=widgets.RadioSelectHorizontal(),
-                                       verbose_name="Nos estamos acercando al límite de la cantidad de personas que la Tierra puede sostener."
+                                       verbose_name="El equilibrio de la naturaleza es muy delicado y fácilmente perturbable."
                                        )
     p_climate14 = models.PositiveIntegerField(choices=[1,2,3,4,5],
                                        widget=widgets.RadioSelectHorizontal(),
-                                       verbose_name="Nos estamos acercando al límite de la cantidad de personas que la Tierra puede sostener."
+                                       verbose_name="Los seres humanos eventualmente aprenderán lo suficiente sobre cómo funciona la naturaleza para poder controlarla."
                                        )
     p_climate15 = models.PositiveIntegerField(choices=[1,2,3,4,5],
                                        widget=widgets.RadioSelectHorizontal(),
-                                       verbose_name="Nos estamos acercando al límite de la cantidad de personas que la Tierra puede sostener."
+                                       verbose_name="Si las cosas siguen su curso actual, pronto experimentaremos una enorme catástrofe ambiental."
                                        )
     
 

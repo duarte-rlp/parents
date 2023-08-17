@@ -1,0 +1,397 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+Ambiente
+{% endblock %}
+
+{% block scripts %}
+    <!-- custom style sheet-->
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<br/><span> En una escala del 1 al 5, donde <b>1</b> significa "completamente en desacuerdo" y <b>5</b> significa "completamente de acuerdo", por favor evalua las siguientes afirmaciones: </span>
+    <br><small> Tenga cuidado en no dejar ningún renglón sin marcar.</small><br/>
+<table class="table">
+   <tr>
+     <td class="td_q">1. Nos estamos acercando al límite de la cantidad de personas que la Tierra puede sostener</td>
+     <td class="d-flex">
+         <div class="form-check">
+             <input class="form-check-input" type="radio" name="p_climate1" id="op1" value="1"><br>
+             <label class="form-check-label" for="op1">1</label>
+         </div>
+         <div class="form-check">
+             <input class="form-check-input" type="radio" name="p_climate1" id="op2" value="2"><br>
+             <label class="form-check-label" for="op2">2</label>
+         </div>
+         <div class="form-check">
+             <input class="form-check-input" type="radio" name="p_climate1" id="op3" value="3"><br>
+             <label class="form-check-label" for="op3">3</label>
+         </div>
+         <div class="form-check">
+             <input class="form-check-input" type="radio" name="p_climate1" id="op4" value="4"><br>
+             <label class="form-check-label" for="op4">4</label>
+         </div>
+         <div class="form-check">
+             <input class="form-check-input" type="radio" name="p_climate1" id="op5" value="5"><br>
+             <label class="form-check-label" for="op5">5</label>
+         </div>
+     </td>
+   </tr>
+   <tr>
+     <td class="td_q">2. Los seres humanos tienen el derecho de modificar el medio ambiente natural para satisfacer sus necesidades.</td>
+     <td class="d-flex">
+         <div class="form-check">
+             <input class="form-check-input" type="radio" name="p_climate2" id="op1" value="1"><br>
+             <label class="form-check-label" for="op1">1</label>
+         </div>
+         <div class="form-check">
+             <input class="form-check-input" type="radio" name="p_climate2" id="op2" value="2"><br>
+             <label class="form-check-label" for="op2">2</label>
+         </div>
+         <div class="form-check">
+             <input class="form-check-input" type="radio" name="p_climate2" id="op3" value="3"><br>
+             <label class="form-check-label" for="op3">3</label>
+         </div>
+         <div class="form-check">
+             <input class="form-check-input" type="radio" name="p_climate2" id="op4" value="4"><br>
+             <label class="form-check-label" for="op4">4</label>
+         </div>
+         <div class="form-check">
+             <input class="form-check-input" type="radio" name="p_climate2" id="op5" value="5"><br>
+             <label class="form-check-label" for="op5">5</label>
+         </div>
+     </td>
+   </tr>
+   <tr>
+     <td class="td_q">3. Cuando los seres humanos interfieren con la naturaleza, a menudo producen consecuencias desastrosas.</td>
+     <td class="d-flex">
+         <div class="form-check">
+             <input class="form-check-input" type="radio" name="p_climate3" id="op1" value="1"><br>
+             <label class="form-check-label" for="op1">1</label>
+         </div>
+         <div class="form-check">
+             <input class="form-check-input" type="radio" name="p_climate3" id="op2" value="2"><br>
+             <label class="form-check-label" for="op2">2</label>
+         </div>
+         <div class="form-check">
+             <input class="form-check-input" type="radio" name="p_climate3" id="op3" value="3"><br>
+             <label class="form-check-label" for="op3">3</label>
+         </div>
+         <div class="form-check">
+             <input class="form-check-input" type="radio" name="p_climate3" id="op4" value="4"><br>
+             <label class="form-check-label" for="op4">4</label>
+         </div>
+         <div class="form-check">
+             <input class="form-check-input" type="radio" name="p_climate3" id="op5" value="5"><br>
+             <label class="form-check-label" for="op5">5</label>
+         </div>
+     </td>
+   </tr>
+   <tr>
+    <td class="td_q">4. El ingenio humano asegurará que no hagamos la Tierra inhabitable.</td>
+    <td class="d-flex">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_climate4" id="op1" value="1"><br>
+            <label class="form-check-label" for="op1">1</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_climate4" id="op2" value="2"><br>
+            <label class="form-check-label" for="op2">2</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_climate4" id="op3" value="3"><br>
+            <label class="form-check-label" for="op3">3</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_climate4" id="op4" value="4"><br>
+            <label class="form-check-label" for="op4">4</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_climate4" id="op5" value="5"><br>
+            <label class="form-check-label" for="op5">5</label>
+        </div>
+    </td>
+  </tr>
+  <tr>
+    <td class="td_q">5. Los seres humanos están abusando gravemente de la Tierra.</td>
+    <td class="d-flex">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_climate5" id="op1" value="1"><br>
+            <label class="form-check-label" for="op1">1</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_climate5" id="op2" value="2"><br>
+            <label class="form-check-label" for="op2">2</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_climate5" id="op3" value="3"><br>
+            <label class="form-check-label" for="op3">3</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_climate5" id="op4" value="4"><br>
+            <label class="form-check-label" for="op4">4</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_climate5" id="op5" value="5"><br>
+            <label class="form-check-label" for="op5">5</label>
+        </div>
+    </td>
+  </tr>
+  <tr>
+    <td class="td_q">6. La Tierra tiene abundantes recursos naturales si simplemente aprendemos cómo usarlos.</td>
+    <td class="d-flex">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_climate6" id="op1" value="1"><br>
+            <label class="form-check-label" for="op1">1</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_climate6" id="op2" value="2"><br>
+            <label class="form-check-label" for="op2">2</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_climate6" id="op3" value="3"><br>
+            <label class="form-check-label" for="op3">3</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_climate6" id="op4" value="4"><br>
+            <label class="form-check-label" for="op4">4</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_climate6" id="op5" value="5"><br>
+            <label class="form-check-label" for="op5">5</label>
+        </div>
+    </td>
+  </tr>
+  <tr>
+    <td class="td_q">7. Las plantas y los animales tienen tanto derecho a existir como los humanos.</td>
+    <td class="d-flex">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_climate7" id="op1" value="1"><br>
+            <label class="form-check-label" for="op1">1</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_climate7" id="op2" value="2"><br>
+            <label class="form-check-label" for="op2">2</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_climate7" id="op3" value="3"><br>
+            <label class="form-check-label" for="op3">3</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_climate7" id="op4" value="4"><br>
+            <label class="form-check-label" for="op4">4</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_climate7" id="op5" value="5"><br>
+            <label class="form-check-label" for="op5">5</label>
+        </div>
+    </td>
+  </tr>
+  <tr>
+    <td class="td_q">8. El equilibrio de la naturaleza es lo suficientemente fuerte para hacer frente a los impactos de los países industrializados modernos.</td>
+    <td class="d-flex">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_climate8" id="op1" value="1"><br>
+            <label class="form-check-label" for="op1">1</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_climate8" id="op2" value="2"><br>
+            <label class="form-check-label" for="op2">2</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_climate8" id="op3" value="3"><br>
+            <label class="form-check-label" for="op3">3</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_climate8" id="op4" value="4"><br>
+            <label class="form-check-label" for="op4">4</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_climate8" id="op5" value="5"><br>
+            <label class="form-check-label" for="op5">5</label>
+        </div>
+    </td>
+  </tr>
+  <tr>
+    <td class="td_q">9. A pesar de nuestras habilidades especiales, los seres humanos todavía estamos sujetos a las leyes de la naturaleza.</td>
+    <td class="d-flex">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_climate9" id="op1" value="1"><br>
+            <label class="form-check-label" for="op1">1</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_climate9" id="op2" value="2"><br>
+            <label class="form-check-label" for="op2">2</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_climate9" id="op3" value="3"><br>
+            <label class="form-check-label" for="op3">3</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_climate9" id="op4" value="4"><br>
+            <label class="form-check-label" for="op4">4</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_climate9" id="op5" value="5"><br>
+            <label class="form-check-label" for="op5">5</label>
+        </div>
+    </td>
+  </tr>
+  <tr>
+    <td class="td_q">10. La llamada "crisis ecológica" que enfrenta la humanidad ha sido ampliamente exagerada.</td>
+    <td class="d-flex">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_climate10" id="op1" value="1"><br>
+            <label class="form-check-label" for="op1">1</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_climate10" id="op2" value="2"><br>
+            <label class="form-check-label" for="op2">2</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_climate10" id="op3" value="3"><br>
+            <label class="form-check-label" for="op3">3</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_climate10" id="op4" value="4"><br>
+            <label class="form-check-label" for="op4">4</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_climate10" id="op5" value="5"><br>
+            <label class="form-check-label" for="op5">5</label>
+        </div>
+    </td>
+  </tr>
+  <tr>
+    <td class="td_q">11. La Tierra es como una nave espacial con un espacio y recursos muy limitados.</td>
+    <td class="d-flex">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_climate11" id="op1" value="1"><br>
+            <label class="form-check-label" for="op1">1</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_climate11" id="op2" value="2"><br>
+            <label class="form-check-label" for="op2">2</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_climate11" id="op3" value="3"><br>
+            <label class="form-check-label" for="op3">3</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_climate11" id="op4" value="4"><br>
+            <label class="form-check-label" for="op4">4</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_climate11" id="op5" value="5"><br>
+            <label class="form-check-label" for="op5">5</label>
+        </div>
+    </td>
+  </tr>
+  <tr>
+    <td class="td_q">12. Los seres humanos estaban destinados a gobernar sobre el resto de la naturaleza.</td>
+    <td class="d-flex">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_climate12" id="op1" value="1"><br>
+            <label class="form-check-label" for="op1">1</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_climate12" id="op2" value="2"><br>
+            <label class="form-check-label" for="op2">2</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_climate12" id="op3" value="3"><br>
+            <label class="form-check-label" for="op3">3</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_climate12" id="op4" value="4"><br>
+            <label class="form-check-label" for="op4">4</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_climate12" id="op5" value="5"><br>
+            <label class="form-check-label" for="op5">5</label>
+        </div>
+    </td>
+  </tr>
+  <tr>
+    <td class="td_q">13. El equilibrio de la naturaleza es muy delicado y fácilmente perturbable.</td>
+    <td class="d-flex">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_climate13" id="op1" value="1"><br>
+            <label class="form-check-label" for="op1">1</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_climate13" id="op2" value="2"><br>
+            <label class="form-check-label" for="op2">2</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_climate13" id="op3" value="3"><br>
+            <label class="form-check-label" for="op3">3</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_climate13" id="op4" value="4"><br>
+            <label class="form-check-label" for="op4">4</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_climate13" id="op5" value="5"><br>
+            <label class="form-check-label" for="op5">5</label>
+        </div>
+    </td>
+  </tr>
+  <tr>
+    <td class="td_q">14. Los seres humanos eventualmente aprenderán lo suficiente sobre cómo funciona la naturaleza para poder controlarla.</td>
+    <td class="d-flex">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_climate14" id="op1" value="1"><br>
+            <label class="form-check-label" for="op1">1</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_climate14" id="op2" value="2"><br>
+            <label class="form-check-label" for="op2">2</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_climate14" id="op3" value="3"><br>
+            <label class="form-check-label" for="op3">3</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_climate14" id="op4" value="4"><br>
+            <label class="form-check-label" for="op4">4</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_climate14" id="op5" value="5"><br>
+            <label class="form-check-label" for="op5">5</label>
+        </div>
+    </td>
+  </tr>
+  <tr>
+    <td class="td_q">15. Si las cosas siguen su curso actual, pronto experimentaremos una enorme catástrofe ambiental.</td>
+    <td class="d-flex">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_climate15" id="op1" value="1"><br>
+            <label class="form-check-label" for="op1">1</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_climate15" id="op2" value="2"><br>
+            <label class="form-check-label" for="op2">2</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_climate15" id="op3" value="3"><br>
+            <label class="form-check-label" for="op3">3</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_climate15" id="op4" value="4"><br>
+            <label class="form-check-label" for="op4">4</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_climate15" id="op5" value="5"><br>
+            <label class="form-check-label" for="op5">5</label>
+        </div>
+    </td>
+  </tr>
+ </table>
+ 
+
+{% next_button %}
+
+{% endblock %}

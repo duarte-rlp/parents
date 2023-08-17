@@ -1,0 +1,267 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block scripts %}
+    
+    <link href="{% static 'training/css/styles.css' %}" rel="stylesheet">
+    <script src="{% static 'training/js/highcharts.js' %}"></script>
+    <script src="{% static 'training/js/functions.js' %}"></script>
+    
+    <script>
+
+{% if graphType == 1 %}
+
+        // Gráfica para inversión A e inversión B
+        Highcharts.chart('graph01', {
+            title: {
+                text: ''
+            },
+            xAxis: {
+                min: 0,
+                max: 7,
+                categories: {{ labels }},
+                align: 'center'
+            },
+            yAxis: {
+                title: {
+                    text: 'Retorno por cada $100'
+                },
+                min: {{ min_y }} - 1,
+                max: {{ max_y }} + 1
+            },
+            series: [{
+                animation: false,
+                data: {{ data_a }},
+                lineWidth: 1,
+                enableMouseTracking: true,
+                marker:{
+                    enabled: true
+                },
+                color: 'blue',
+                name: 'Inversión A',
+                dashStyle: 'Dash'
+            }, {
+                animation: false,
+                data: {{ data_b }},
+                lineWidth: 1,
+                enableMouseTracking: true,
+                marker:{
+                    enabled: true
+                },
+                color: 'green',
+                name: 'Inversión B',
+                dashStyle: 'Dash'
+            }],
+            legend: {
+                enabled: false
+            }
+        });
+
+{% else %}
+
+        // Gráfica inversión A
+        Highcharts.chart('graph01', {
+            title: {
+                text: ''
+            },
+            xAxis: {
+                min: 0,
+                max: 7,
+                categories: {{ labels }},
+                align: 'center'
+            },
+            yAxis: {
+                title: {
+                    text: 'Retorno por cada $100'
+                },
+                min: {{ min_y }} - 1,
+                max: {{ max_y }} + 1
+            },
+            series: [{
+                animation: false,
+                data: {{ data_a }},
+                lineWidth: 1,
+                enableMouseTracking: true,
+                marker:{
+                    enabled: true
+                },
+                color: 'blue',
+                name: 'Inversión A',
+                dashStyle: 'Dash'
+            }],
+            legend: {
+                enabled: false
+            }
+        });
+
+        // Gráfica inversión B
+        Highcharts.chart('graph02', {
+            title: {
+                text: ''
+            },
+            xAxis: {
+                min: 0,
+                max: 7,
+                categories: {{ labels }},
+                align: 'center'
+            },
+            yAxis: {
+                title: {
+                    text: 'Retorno por cada $100'
+                },
+                min: {{ min_y }} - 1,
+                max: {{ max_y }} + 1
+            },
+            series: [{
+                animation: false,
+                data: {{ data_b }},
+                lineWidth: 1,
+                enableMouseTracking: true,
+                marker:{
+                    enabled: true
+                },
+                color: 'green',
+                name: 'Inversión B',
+                dashStyle: 'Dash'
+            }],
+            legend: {
+                enabled: false
+            }
+        });
+
+{% endif %}
+
+        function nextCard() {
+            let btn = document.getElementById("id_next");
+            btn.click();
+        }
+
+    </script>
+{% endblock %}
+
+{% block title %}
+    Ejemplo 1
+{% endblock %}
+
+{% block content %}
+
+<table class="table_question">
+    <tr>
+        <td class="cell_question" style="width: 100% !important;">    
+            <div id="text01">
+                Ahora, tiene <toMoney>100000</toMoney> para invertir entre las siguientes opciones de inversión. <br>
+                
+                Puedes invertir todo tu dinero en <i>Inversión A</i>, todo en <i>Inversión B</i>, o una parte de dinero en cada una de las opciones. <br>
+                
+                Haga clic en sobre la barra mueva el cuadro para alcanzar el valor deseado para la <i>Inversión A</i> e <i>Inversión B</i>. <br>
+                
+                Cuando logre las asignaciones deseadas haga clic en “Enviar” para confirmar su decisión y continuar.
+            </div>
+        </td>
+    </tr>
+</table>
+
+<br>  
+{% if graphType == 1 %}
+<div>
+    <div id="graph01" class="div_graph"></div>
+    <div class="div_tabGraph">
+        <table class="tabGraph">
+            <tr>
+                <td class="cell_graphInv">Inversión A</td>
+                <td class="cell_graph" id="a_1">{{ data_a.0 }}</td>
+                <td class="cell_graph" id="a_2">{{ data_a.1 }}</td>
+                <td class="cell_graph" id="a_3">{{ data_a.2 }}</td>
+                <td class="cell_graph" id="a_4">{{ data_a.3 }}</td>
+                <td class="cell_graph" id="a_5">{{ data_a.4 }}</td>
+                <td class="cell_graph" id="a_6">{{ data_a.5 }}</td>
+                <td class="cell_graph" id="a_7">{{ data_a.6 }}</td>
+                <td class="cell_graph" id="a_8">{{ data_a.7 }}</td>
+            </tr>
+            <tr>
+                <td class="cell_graphInv">Inversión B</td>
+                <td class="cell_graph" id="b_1">{{ data_b.0 }}</td>
+                <td class="cell_graph" id="b_2">{{ data_b.1 }}</td>
+                <td class="cell_graph" id="b_3">{{ data_b.2 }}</td>
+                <td class="cell_graph" id="b_4">{{ data_b.3 }}</td>
+                <td class="cell_graph" id="b_5">{{ data_b.4 }}</td>
+                <td class="cell_graph" id="b_6">{{ data_b.5 }}</td>
+                <td class="cell_graph" id="b_7">{{ data_b.6 }}</td>
+                <td class="cell_graph" id="b_8">{{ data_b.7 }}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+{% else %}
+<div>
+    <table class="tabDiv_GraphType2">
+        <tr>
+            <td style="width: 50%;">
+                <div id="graph01" class="div_graphType2"></div>
+                <div class="div_tabGraphType2">
+                    <table class="tabGraph">
+                        <tr>
+                            <td class="cell_graphInv">Inversión A</td>
+                            <td class="cell_graph" id="a_1">{{ data_a.0 }}</td>
+                            <td class="cell_graph" id="a_2">{{ data_a.1 }}</td>
+                            <td class="cell_graph" id="a_3">{{ data_a.2 }}</td>
+                            <td class="cell_graph" id="a_4">{{ data_a.3 }}</td>
+                            <td class="cell_graph" id="a_5">{{ data_a.4 }}</td>
+                            <td class="cell_graph" id="a_6">{{ data_a.5 }}</td>
+                            <td class="cell_graph" id="a_7">{{ data_a.6 }}</td>
+                            <td class="cell_graph" id="a_8">{{ data_a.7 }}</td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+            <td>
+                <div id="graph02" class="div_graphType2"></div>
+                <div class="div_tabGraphType2">
+                    <table class="tabGraph">
+                        <tr>
+                            <td class="cell_graphInv">Inversión B</td>
+                            <td class="cell_graph" id="b_1">{{ data_b.0 }}</td>
+                            <td class="cell_graph" id="b_2">{{ data_b.1 }}</td>
+                            <td class="cell_graph" id="b_3">{{ data_b.2 }}</td>
+                            <td class="cell_graph" id="b_4">{{ data_b.3 }}</td>
+                            <td class="cell_graph" id="b_5">{{ data_b.4 }}</td>
+                            <td class="cell_graph" id="b_6">{{ data_b.5 }}</td>
+                            <td class="cell_graph" id="b_7">{{ data_b.6 }}</td>
+                            <td class="cell_graph" id="b_8">{{ data_b.7 }}</td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+{% endif %}
+<br>
+<div class="card_table" id="h-slider-div" style="text-align: center;">
+    <table class="table_question">
+        <tr>
+            <td class="text_slider"> - </td>
+            <td class="td_slider" rowspan="2">
+                <input type="range" name="slider_example" value="" min="0" max="100000" step="1000" id="sliderDinero" class="slider_dinero" required>
+                <input type="hidden" name="check_slider_example" value="" id="id_check_slider_example"/>
+            </td>
+            <td class="text_slider"> - </td>
+        </tr>
+        <tr>
+            <td style="text-align: center;">
+                <b>Inversión A</b>
+            </td>
+            <td style="text-align: center;">
+                <b>Inversión B</b>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<br>
+
+<div class="div_btnNext">
+    <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next">Enviar</button>
+</div>
+
+{% endblock %}

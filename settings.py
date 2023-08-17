@@ -1,72 +1,72 @@
 from os import environ
 
 SESSION_CONFIGS = [
-    #{
-    #    'name': 'test',
-    #    'display_name': 'Test General',
-    #    'num_demo_participants': 1, 
-    #    'app_sequence': ['home', 'real_effort_numbers','choice_2', 'checker1', 'training', 'allocations', 'real', 'payoff_choice', 'final'],
-    #},
-    #{
-    #    'name': 'home',
-    #    'display_name': 'Instrucciones Generales',
-    #    'num_demo_participants': 1, 
-    #    'app_sequence': ['home'],
-    #},
-    #{
-    #    'name': 'math_operations',
-    #    'display_name': 'Preguntas iniciales',
-    #    'num_demo_participants': 1, 
-    #    'app_sequence': ['real_effort_numbers'],
-    #},
-    #{
-    #    'name': 'choice_2',
-    #    'display_name': 'Actividad 1: Rentabilidad variable',
-    #    'num_demo_participants': 1, 
-    #    'app_sequence': ['choice_2'],
-    #},
-    #{
-    #    'name': 'checker1',
-    #    'display_name': 'Pregunta',
-    #    'num_demo_participants': 1, 
-    #    'app_sequence': ['checker1'],
-    #},
-    #{
-    #    'name': 'graphs',
-    #    'display_name': 'Actividad 2: Instrucciones',
-    #    'num_demo_participants': 1, 
-    #    'app_sequence': ['home', 'training'],
-    #},
-    #{
-    #    'name': 'problems',
-    #    'display_name': 'Actividad 2: Decisiones de Inversión',
-    #    'num_demo_participants': 1, 
-    #    'app_sequence': ['home', 'allocations'],
-    #},
-    #{
-    #    'name': 'real',
-    #    'display_name': 'Actividad 3: Cultivos',
-    #    'num_demo_participants': 1, 
-    #    'app_sequence': ['home', 'real'],
-    #},
-    #{
-    #    'name': 'choice',
-    #    'display_name': 'Actividad 4: Invertir o No invertir',
-    #    'num_demo_participants': 1, 
-    #    'app_sequence': ['choice'],
-    #},
-    #{
-    #    'name': 'payoff_choice',
-    #    'display_name': 'Votación Grupal',
-    #    'num_demo_participants': 1, 
-    #    'app_sequence': ['payoff_choice'],
-    #},
-    #{
-    #    'name': 'survey',
-    #    'display_name': 'Encuesta',
-    #    'num_demo_participants': 1, 
-    #    'app_sequence': ['survey'],
-    #},
+    {
+        'name': 'test',
+        'display_name': 'Test General',
+        'num_demo_participants': 1, 
+        'app_sequence': ['home', 'real_effort_numbers','choice_2', 'checker1', 'training', 'allocations', 'real', 'payoff_choice', 'final'],
+    },
+    {
+        'name': 'home',
+        'display_name': 'Instrucciones Generales',
+        'num_demo_participants': 1, 
+        'app_sequence': ['home'],
+    },
+    {
+        'name': 'math_operations',
+        'display_name': 'Preguntas iniciales',
+        'num_demo_participants': 1, 
+        'app_sequence': ['real_effort_numbers'],
+    },
+    {
+        'name': 'choice_2',
+        'display_name': 'Actividad 1: Rentabilidad variable',
+        'num_demo_participants': 1, 
+        'app_sequence': ['choice_2'],
+    },
+    {
+        'name': 'checker1',
+        'display_name': 'Pregunta',
+        'num_demo_participants': 1, 
+        'app_sequence': ['checker1'],
+    },
+    {
+        'name': 'graphs',
+        'display_name': 'Actividad 2: Instrucciones',
+        'num_demo_participants': 1, 
+        'app_sequence': ['home', 'training'],
+    },
+    {
+        'name': 'problems',
+        'display_name': 'Actividad 2: Decisiones de Inversión',
+        'num_demo_participants': 1, 
+        'app_sequence': ['home', 'allocations'],
+    },
+    {
+        'name': 'real',
+        'display_name': 'Actividad 3: Cultivos',
+        'num_demo_participants': 1, 
+        'app_sequence': ['home', 'real'],
+    },
+    {
+        'name': 'choice',
+        'display_name': 'Actividad 4: Invertir o No invertir',
+        'num_demo_participants': 1, 
+        'app_sequence': ['choice'],
+    },
+    {
+        'name': 'payoff_choice',
+        'display_name': 'Votación Grupal',
+        'num_demo_participants': 1, 
+        'app_sequence': ['payoff_choice'],
+    },
+    {
+        'name': 'survey',
+        'display_name': 'Encuesta',
+        'num_demo_participants': 1, 
+        'app_sequence': ['survey'],
+    },
     #{
     #    'name': 'icl',
     #    'display_name': 'Sale actividad: Rentabilidad fija o variable - ICL 1',

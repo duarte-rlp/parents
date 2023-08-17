@@ -1,0 +1,24 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block scripts %}
+    <link href="{% static 'real_effort_numbers/css/styles.css' %}" rel="stylesheet">
+    <script src="{% static 'real_effort_numbers/js/functions.js' %}"></script>
+{% endblock %}
+
+{% block title %}
+    Preguntas iniciales 
+{% endblock %}
+
+{% block content %}
+
+<p>Le haremos {{ n_questions_letters }} ({{ n_questions_numbers }}) preguntas, una por una.</p>
+
+<p>Si la respuesta es incorrecta, el computador le pedirá que la corrija. 
+    Si la respuesta es correcta, aparecerá la siguiente pregunta.</p>
+
+<div class="div_btnNext">
+    {% next_button %}
+</div>
+
+{% endblock %}

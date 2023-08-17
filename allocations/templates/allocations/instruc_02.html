@@ -1,0 +1,227 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block scripts %}
+    
+    <script src="{% static 'allocations/js/highcharts.js' %}"></script>
+    <script src="{% static 'allocations/js/functions.js' %}"></script>
+    <link href="{% static 'allocations/css/styles.css' %}" rel="stylesheet">
+
+{% endblock %}
+
+{% block title %}
+    Parte 3
+{% endblock %}
+
+{% block content %}
+
+<div style="text-align: center; font-size: 2.4rem;">
+
+  Información de los problemas
+
+</div>
+
+<div style="margin: 0 30px; font-size: 1.4rem;">
+    <b>Orden:</b> {{ n_order_problems }}
+    <br>
+    <b>Nombre del orden de los problemas:</b> {{ order_problems }}
+    <br>
+    <hr>
+    <b>Orden columna A problema 1 (-50%): </b> {{ order_problem_01_a }} -> 
+{% if order_problem_01_a == 0 %}
+    Descendente
+{% else %}
+    Ascendente
+{% endif %}
+    <br>
+    <b>Orden columna B problema 1 (-50%): </b> {{ order_problem_01_b }} -> 
+{% if order_problem_01_b == 0 %}
+    Descendente
+{% else %}
+    Ascendente
+{% endif %}
+    <br>
+    <b>Orden columna A problema 2 (0%): </b> {{ order_problem_02_a }} -> 
+{% if order_problem_02_a == 0 %}
+    Descendente
+{% else %}
+    Ascendente
+{% endif %}
+    <br>
+    <b>Orden columna B problema 2 (0%): </b> {{ order_problem_02_b }} -> 
+{% if order_problem_02_b == 0 %}
+    Descendente
+{% else %}
+    Ascendente
+{% endif %}
+    <br>
+    <b>Orden columna A problema 3 (50%): </b> {{ order_problem_03_a }} -> 
+{% if order_problem_03_a == 0 %}
+    Descendente
+{% else %}
+    Ascendente
+{% endif %}
+    <br>
+    <b>Orden columna B problema 3 (50%): </b> {{ order_problem_03_b }} -> 
+{% if order_problem_03_b == 0 %}
+    Descendente
+{% else %}
+    Ascendente
+{% endif %}
+    <hr>
+    <b>Asset A problema 1 (-50%): </b> {{ assetA_problem_01 }} -> 
+{% if assetA_problem_01 == 0 %}
+    Col_B
+{% else %}
+    Col_A
+{% endif %}
+    <br>
+    <b>Asset A problema 2 (0%): </b> {{ assetA_problem_02 }} -> 
+{% if assetA_problem_02 == 0 %}
+    Col_B
+{% else %}
+    Col_A
+{% endif %}
+    <br>
+    <b>Asset A problema 3 (50%): </b> {{ assetA_problem_03 }} -> 
+{% if assetA_problem_03 == 0 %}
+    Col_B
+{% else %}
+    Col_A
+{% endif %}
+
+    <hr>
+<table style="margin: 0 auto;">
+    <tr>
+        <td style="padding: 5px 10px; text-align: center; border: solid 1px black;" colspan="3">
+            Problema # {{ n_order_problems.0 }} -> 
+{% if n_order_problems.0 == '0' %}
+            -50%
+{% elif n_order_problems.0 == '1' %}
+            0%
+{% else %}
+            +50%
+{% endif %}
+        </td>
+    </tr>
+    <tr>
+        <td style="padding: 5px 10px; text-align: center; border: solid 1px black;">
+            <b>{{ problems.0.index.name }}</b>
+        </td>
+        <td style="padding: 5px 10px; text-align: center; border: solid 1px black;">
+            <b>{{ problems.0.columns.0 }}</b>
+        </td>
+        <td style="padding: 5px 10px; text-align: center; border: solid 1px black;">
+            <b>{{ problems.0.columns.1 }}</b>
+            </td>
+    </tr>
+    {% if problems %}
+    {% for index, row in problems.0.iterrows %}
+    <tr>
+        <td style="padding: 5px 10px; text-align: center; border: solid 1px black;">
+            {{ index }}
+        </td>
+        <td style="padding: 5px 10px; text-align: center; border: solid 1px black;">
+            {{ row.AssetA }}
+        </td>
+        <td style="padding: 5px 10px; text-align: center; border: solid 1px black;">
+            {{ row.AssetB }}
+        </td>
+    </tr>
+    {% endfor %}
+    {% endif %}
+</table>
+
+    <hr>
+<table style="margin: 0 auto;">
+    <tr>
+        <td style="padding: 5px 10px; text-align: center; border: solid 1px black;" colspan="3">
+            Problema # {{ n_order_problems.1 }} -> 
+{% if n_order_problems.1 == '0' %}
+            -50%
+{% elif n_order_problems.1 == '1' %}
+            0%
+{% else %}
+            +50%
+{% endif %}
+        </td>
+    </tr>
+    <tr>
+        <td style="padding: 5px 10px; text-align: center; border: solid 1px black;">
+            <b>{{ problems.1.index.name }}</b>
+        </td>
+        <td style="padding: 5px 10px; text-align: center; border: solid 1px black;">
+            <b>{{ problems.1.columns.0 }}</b>
+        </td>
+        <td style="padding: 5px 10px; text-align: center; border: solid 1px black;">
+            <b>{{ problems.1.columns.1 }}</b>
+            </td>
+    </tr>
+    {% if problems %}
+    {% for index, row in problems.1.iterrows %}
+    <tr>
+        <td style="padding: 5px 10px; text-align: center; border: solid 1px black;">
+            {{ index }}
+        </td>
+        <td style="padding: 5px 10px; text-align: center; border: solid 1px black;">
+            {{ row.AssetA }}
+        </td>
+        <td style="padding: 5px 10px; text-align: center; border: solid 1px black;">
+            {{ row.AssetB }}
+        </td>
+    </tr>
+    {% endfor %}
+    {% endif %}
+</table>
+
+    <hr>
+<table style="margin: 0 auto;">
+    <tr>
+        <td style="padding: 5px 10px; text-align: center; border: solid 1px black;" colspan="3">
+            Problema # {{ n_order_problems.2 }} -> 
+{% if n_order_problems.2 == '0' %}
+            -50%
+{% elif n_order_problems.2 == '1' %}
+            0%
+{% else %}
+            +50%
+{% endif %}
+        </td>
+    </tr>
+    <tr>
+        <td style="padding: 5px 10px; text-align: center; border: solid 1px black;">
+            <b>{{ problems.2.index.name }}</b>
+        </td>
+        <td style="padding: 5px 10px; text-align: center; border: solid 1px black;">
+            <b>{{ problems.2.columns.0 }}</b>
+        </td>
+        <td style="padding: 5px 10px; text-align: center; border: solid 1px black;">
+            <b>{{ problems.2.columns.1 }}</b>
+            </td>
+    </tr>
+    {% if problems %}
+    {% for index, row in problems.2.iterrows %}
+    <tr>
+        <td style="padding: 5px 10px; text-align: center; border: solid 1px black;">
+            {{ index }}
+        </td>
+        <td style="padding: 5px 10px; text-align: center; border: solid 1px black;">
+            {{ row.AssetA }}
+        </td>
+        <td style="padding: 5px 10px; text-align: center; border: solid 1px black;">
+            {{ row.AssetB }}
+        </td>
+    </tr>
+    {% endfor %}
+    {% endif %}
+</table>
+
+</div>
+
+<br>
+
+<div class="div_btnNext">
+    {% next_button %}
+</div>
+
+{% endblock %}

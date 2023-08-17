@@ -1,0 +1,155 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block scripts %}
+    
+    <link href="{% static 'training/css/styles.css' %}" rel="stylesheet">
+    <script src="{% static 'training/js/highcharts.js' %}"></script>
+    <script src="{% static 'training/js/functions.js' %}"></script>
+    
+    <script>
+
+        var data = {{ data }};
+
+        // Gráfica
+        var graph = Highcharts.chart('graph01', {
+            title: {
+                text: ''
+            },
+            xAxis: {
+                min: 0,
+                max: 7,
+                categories: {{ labels }},
+                align: 'center'
+            },
+            yAxis: {
+                title: {
+                    text: 'Retorno por cada $100'
+                },
+                min: {{ min_y }} - 1,
+                max: {{ max_y }} + 1
+            },
+            series: [{
+                animation: true,
+                data: [],
+                lineWidth: 1,
+                enableMouseTracking: true,
+                marker:{
+                    enabled: true
+                },
+                color: 'blue',
+                name: 'Inversión A',
+                dashStyle: 'Dash'
+            }],
+            legend: {
+                enabled: true
+            }
+        });
+
+        function add_point_graph() {
+            var cell = document.getElementById("a_1");
+            var cash_return = (data[0] * 1000) / 100;
+            cell.innerHTML = data[0];
+            graph.series[0].addPoint({
+            x: 0,
+            y: data[0],
+            dataLabels: {
+                enabled: true,
+                format: cash_return.toLocaleString('es-CO'),
+                rotation: 0,
+                y: -5,
+                style: {
+                    color: '#00ff00',
+                    fontSize: '1rem',
+                    fontWeight: 'normal',
+                    textOutline: 'none'
+                    }
+                }
+            });
+            setTimeout(display_next_btn, 0);
+        }
+
+        function display_next_btn() {
+            document.getElementById("div_btnNext").style.display = 'block';
+        }
+
+        function nextView() {
+            let btn = document.getElementById("id_next");
+            btn.removeAttribute("disabled");
+            btn.click();
+        }
+
+        setTimeout(add_point_graph, 0);
+
+    </script>
+{% endblock %}
+
+{% block title %}
+    Instrucciones de Inversión
+{% endblock %}
+
+{% block content %}
+
+<table class="table_question">
+    <tr>
+        <td class="cell_question" style="width: 100% !important;">    
+            <div id="text01">
+                {% if feedback == 1 %}
+                <b>Correcto</b> 
+                 usted 
+                    {% if data.0 < 0 %}
+                        perderá <toMoney>{% widthratio data.0 1 -10 %}</toMoney>.
+                    {% else %}
+                        ganará <toMoney>{% widthratio data.0 1 10 %}</toMoney>.
+                    {% endif %} 
+                {% else %}
+                <b>Incorrecto</b>
+                usted 
+                    {% if data.0 < 0 %}
+                        perderá <toMoney>{% widthratio data.0 1 -10 %}</toMoney>.
+                    {% else %}
+                        ganará <toMoney>{% widthratio data.0 1 10 %}</toMoney>.
+                    {% endif %} 
+                    <br>
+                    Recuerde que por cada <toMoney>100</toMoney> que usted asigne a la <i>Inversión A</i> puede 
+                    {% if data.0 < 0 %}
+                        perder <toMoney>{% widthratio data.0 1 -1 %}</toMoney> (10 x <toMoney>{% widthratio data.0 1 -1 %}</toMoney> = <toMoney>{% widthratio data.0 1 -10 %}</toMoney>).
+                    {% else %}
+                        ganar <toMoney>{{ data.0 }}</toMoney> (10 x <toMoney>{% widthratio data.0 1 1 %}</toMoney> = <toMoney>{% widthratio data.0 1 10 %}</toMoney>).
+                    {% endif %} 
+                {% endif %}
+                <br>
+                Haga clic en <i>“Mostrar siguientes cartas”</i> para destapar las siguientes cartas que están frente a la <i>Inversión A</i>.
+            </div>
+        </td>
+    </tr>
+</table>
+
+<br>  
+<div>
+    <div id="graph01" class="div_graph"></div>
+    <div class="div_tabGraph">
+        <table class="tabGraph">
+            <tr>
+                <td class="cell_graphInv">Inversión A</td>
+                <td class="cell_graph" id="a_1"></td>
+                <td class="cell_graph" id="a_2"></td>
+                <td class="cell_graph" id="a_3"></td>
+                <td class="cell_graph" id="a_4"></td>
+                <td class="cell_graph" id="a_5"></td>
+                <td class="cell_graph" id="a_6"></td>
+                <td class="cell_graph" id="a_7"></td>
+                <td class="cell_graph" id="a_8"></td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<br>
+
+<div class="div_btnNext" id="div_btnNext" style="display: none;">
+    <input type="button" value="Mostrar siguientes cartas" class="btnNext" onclick="nextView()">
+    <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next" disabled>Mostrar siguientes cartas</button>
+</div>
+
+{% endblock %}

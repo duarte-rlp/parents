@@ -1,0 +1,53 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block scripts %}
+    <link href="{% static 'real_effort_numbers/css/styles.css' %}" rel="stylesheet">
+    <script src="{% static 'real_effort_numbers/js/functions.js' %}"></script>
+
+    <script>
+        var start;
+        var cnt_errors = 0;
+
+        function validate() {
+            let in_answ = document.getElementById("id_p1");
+            let ele_cnt = document.getElementById("p1_cnt_mistakes");
+            let ele_mis = document.getElementById("p1_mistakes");
+            let ele_tim = document.getElementById("p1_time");
+            validateAnswer(in_answ, Number({{ answer }}), ele_cnt, ele_mis, ele_tim);
+        }
+
+        window.onload = function(){
+            start = Date.now();
+        };
+    </script>
+{% endblock %}
+
+{% block title %}
+    Preguntas iniciales
+{% endblock %}
+
+{% block content %}
+
+<div class="div_operation">
+    <table>
+        <tr>
+            <td class="cell_question">{{ n_question }}. {{ question }} = </td>
+            <td><input type="number" class="inNumber" name="p1" id="id_p1" oninput="restore_error('id_p1')" required></td>
+        </tr>
+    </table>
+    <div class="error_msg" id="div_error">
+        La respuesta no es correcta, intente de nuevo
+    </div>
+
+</div>
+
+<input type="hidden" name="p1_cnt_mistakes" value="" id="p1_cnt_mistakes">
+<input type="hidden" name="p1_mistakes" value="{ " id="p1_mistakes">
+<input type="hidden" name="p1_time" value="" id="p1_time">
+
+<div class="div_btnNext">
+    <input type="button" value="Siguiente" class="btnNext" onclick="validate()">
+    <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next" disabled>Siguiente</button>
+</div>
+{% endblock %}

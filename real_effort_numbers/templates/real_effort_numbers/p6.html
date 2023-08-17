@@ -1,0 +1,61 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block scripts %}
+    <link href="{% static 'real_effort_numbers/css/styles.css' %}" rel="stylesheet">
+    <script src="{% static 'real_effort_numbers/js/functions.js' %}"></script>
+
+    <script>
+        var start;
+        var cnt_errors = 0;
+
+        function validate() {
+            let in_answ = document.querySelector('input[name="p6"]:checked');
+            let ele_cnt = document.getElementById("p6_cnt_mistakes");
+            let ele_mis = document.getElementById("p6_mistakes");
+            let ele_tim = document.getElementById("p6_time");
+            validateAnswer(in_answ, "{% autoescape off %}{{ answer }}{% endautoescape %}", ele_cnt, ele_mis, ele_tim);
+        }
+
+        window.onload = function(){
+            start = Date.now();
+        };
+    </script>
+{% endblock %}
+
+{% block title %}
+    Preguntas iniciales
+{% endblock %}
+
+{% block content %}
+
+{{ n_question }}. {{ question }}
+<br>
+<br>
+<input type="radio" name="p6" value="> 100.000" id="radio_1" oninput="restore_error_radios()">
+<label for="radio_1">Más de hoy</label>
+<br>
+<input type="radio" name="p6" value="= 100.000" id="radio_2" oninput="restore_error_radios()">
+<label for="radio_2">Exactamente lo mismo</label>
+<br>
+<input type="radio" name="p6" value="{% autoescape off %}{{ answer }}{% endautoescape %}" id="radio_3" oninput="restore_error_radios()">
+<label for="radio_3">Menos que hoy</label>
+<!--<br>
+<input type="radio" name="p6" value="NS/NI" id="radio_4" oninput="restore_error_radios()">
+<label for="radio_4">No sabe, no informa</label> -->
+
+<div class="div_operation">
+    <div class="error_msg" id="div_error">
+        La respuesta no es correcta, intente de nuevo
+    </div>
+</div>
+
+<input type="hidden" name="p6_cnt_mistakes" value="" id="p6_cnt_mistakes">
+<input type="hidden" name="p6_mistakes" value="{ " id="p6_mistakes">
+<input type="hidden" name="p6_time" value="" id="p6_time">
+
+<div class="div_btnNext">
+    <input type="button" value="Siguiente" class="btnNext" onclick="validate()">
+    <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next" disabled>Siguiente</button>
+</div>
+{% endblock %}

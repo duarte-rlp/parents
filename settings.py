@@ -59,7 +59,7 @@ SESSION_CONFIGS = [
     },
     {
         'name': 'real',
-        'display_name': 'Parte 5: Real assets - real',
+        'display_name': 'Actividad 3: Cultivos - real',
         'num_demo_participants': 1, 
         'app_sequence': ['home', 'real'],
     },

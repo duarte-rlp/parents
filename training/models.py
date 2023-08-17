@@ -30,6 +30,7 @@ class Constants(BaseConstants):
     inv_b = [-9, -9, 14, -9, 14, 14, -9, 14]
     time_steps = 200 # en milisegundos = 2 segundos
     money_example = 100 # dinero usado para ejemplos
+    investment_max = 100000 # máxima inversión
 
 
 class Subsession(BaseSubsession):
@@ -66,15 +67,11 @@ class Player(BasePlayer):
     test_05_answer_b = models.StringField()
     test_05_time = models.StringField() # tiempo que demora en presionar continuar
 
+    test_06_number_a = models.IntegerField()
+    test_06_answer_a = models.StringField()
+    test_06_number_b = models.IntegerField()
+    test_06_answer_b = models.StringField()
+    test_06_time = models.StringField() # tiempo que demora en presionar continuar
 
 
-    # Almacenar lo relacionado a la posición de la carta
-    test_06_cardIndex = models.IntegerField()
-
-    # Almacenar el ejemplo del slider
-    slider_example = models.IntegerField()
-    # Almacenar el random del ejemplo
-    test_07_cardIndex = models.IntegerField()
-    test_07_payment = models.IntegerField()
-    test_07_answer = models.IntegerField()
 

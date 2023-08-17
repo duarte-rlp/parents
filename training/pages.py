@@ -49,17 +49,34 @@ class instruc_01(Page):
 
 
 class intro_02(Page):
-    pass
-
-
-class graph_03(Page):
     def vars_for_template(self):
         return {
                 'labels': Constants.inv_labels,
-                'data': Constants.inv_example,
-                'max_y': max(Constants.inv_example),
-                'min_y': min(Constants.inv_example)
+                'data_a': Constants.inv_a,
+                'max_y': max(Constants.inv_a),
+                'min_y': min(Constants.inv_a),
+                'investment_max': Constants.investment_max
                 }
+
+
+class graph_03(Page):
+    form_model = "player"
+    form_fields = [ "test_06_number_a", "test_06_answer_a", 
+                    "test_06_number_b", "test_06_answer_b", 
+                    "test_06_time"]
+    def vars_for_template(self):
+        return {
+                'labels': Constants.inv_labels,
+                'data_a': Constants.inv_a,
+                'data_b': Constants.inv_b,
+                'max_y': max(Constants.inv_a + Constants.inv_b),
+                'min_y': min(Constants.inv_a + Constants.inv_b),
+                'graphType': self.player.participant.vars['graphType'],
+                'investment_max': Constants.investment_max
+                }
+
+class instruc_02(Page):
+    pass
 
 # inicia a mostrar las cartas
 class graph_04(Page):
@@ -412,9 +429,6 @@ class graph_25(Page):
                 'graphType': self.player.participant.vars['graphType']
                 }
 
-class instruc_02(Page):
-    pass
-
 class graph_26(Page):
     form_model = "player"
     form_fields = ["slider_example"]
@@ -486,4 +500,7 @@ page_sequence = [
     graph_01, 
     graph_02, 
     instruc_01,
+    intro_02,
+    graph_03,
+    instruc_02,
     ]

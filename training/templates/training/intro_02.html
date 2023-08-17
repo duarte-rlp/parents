@@ -9,12 +9,18 @@
     
     <script>
 
+        var data_a = {{ data_a }};
+        var slider_act = 0;
+
         // Gráfica
-        Highcharts.chart('graph01', {
+        var graph = Highcharts.chart('graph01', {
             title: {
                 text: ''
             },
             xAxis: {
+                title: {
+                    text: 'Escenarios'
+                },
                 min: 0,
                 max: 7,
                 categories: {{ labels }},
@@ -24,37 +30,117 @@
                 title: {
                     text: 'Retorno por cada $100'
                 },
-                min: {{ min_y }} - 1,
-                max: {{ max_y }} + 1
+                min: {{ min_y }} - 5,
+                max: {{ max_y }} + 5
             },
             series: [{
-                animation: false,
-                data: {{ data }},
-                lineWidth: 0.0,
-                enableMouseTracking: false,
+                animation: true,
+                data: {{ data_a }},
+                lineWidth: 1,
+                enableMouseTracking: true,
                 marker:{
-                    enabled:false
+                    enabled: true
                 },
                 color: 'blue',
-                name: 'Inversión A'
+                name: 'Inversión A',
+                dashStyle: 'Dash'
             }],
             legend: {
-                enabled: false
+                enabled: true
             }
         });
+
+        $(document).ready(function () {
+            $('.slider_dinero').change(
+                function (event) {
+                    var slider_id = event.target.id;
+                    var parent_slider = document.getElementById(slider_id).parentElement.parentElement;
+                    var childs = parent_slider.children;
+
+                    var dinero_pa = childs[0];
+                    var slider_max = childs[1].firstElementChild.max;
+                    var slider_value = childs[1].firstElementChild.value;
+                    var dinero_pb = childs[2];
+
+                    dinero_pa.innerHTML = "$ "+numberWithPoints(slider_max-slider_value);
+                    dinero_pb.innerHTML = "$ "+numberWithPoints(slider_value);
+
+                    if (slider_act == 0) {
+                        var next_button = document.getElementsByClassName('otree-btn-next');
+                        next_button[0].style.cssText += 'display: block !important; margin: 0 auto;';
+                        next_button[0].removeAttribute("disabled");
+                        slider_act = 1;
+                        let fa = document.getElementById("fila_a");
+                        fa.style.visibility = "visible";
+                        for(var i=0; i<fa.childElementCount; i++) {
+                            fa.children[i].style.border = "#000000 1px solid";
+                        }
+                    }
+
+                    for(var i=0; i<8; i++) {
+                        let cell_a = document.getElementById("a_"+(i+1));
+                        let mon_a = ((slider_max-slider_value) * data_a[i]) / 100;
+                        if(mon_a < 0) {
+                            mon_a = "- $" + (mon_a * -1).toLocaleString('es-CO');
+                        } else if(mon_a > 0) {
+                            mon_a = "" + mon_a.toLocaleString('es-CO');
+                        } else {
+                            mon_a = "0";
+                        }
+                        cell_a.innerHTML = mon_a;
+                    }
+                    
+                }
+            );
+        });
+
     </script>
 {% endblock %}
 
 {% block title %}
-    Instrucciones de Inversión
+    Actividad 2: Tablas
 {% endblock %}
 
 {% block content %}
+En la tabla les mostramos las rentabilidades posibles de el dinero asignado a la <i>Inversión A</i> e <i>Inversión B</i>. Las rentabilidades dependen de la cantidad de dinero que usted asigne a la <i>Inversión A</i> y la <i>Inversión B</i>. 
+<br>
+<br>
+Suponga que usted tiene <toMoney>100000</toMoney> que puede asignar a la <i>Inversión A</i> y la <i>Inversión B</i>. Para asignar la cantidad que desea invertir en cada opción, haga clic en sobre la barra y mueva el cuadro que aparece para ver cómo la cantidad de dinero asignada a la <i>Inversión A</i> y la <i>Inversión B</i> afecta las posibles rentabilidades en cada ESCENARIO. 
+<br>
+<br>
+Por ejemplo, si mueve el cuadro completamente a la IZQUIERDA, usted asignará <toMoney>100000</toMoney> a la <i>Inversión A</i> y $0 a la <i>Inversión B</i>, o si mueve el cuadro completamente a la DERECHA usted asignará $0 a la <i>Inversión A</i> y $ 100.000 a la <i>Inversión B</i>. 
 
+<br>
+<br>
+<div>
+    <div id="graph01" class="div_graph"></div>
+</div>
+<br>
+<div class="card_table" id="h-slider-div" style="text-align: center;">
+    <table class="table_question">
+        <tr>
+            <td class="text_slider"> - </td>
+            <td class="td_slider" rowspan="2">
+                <input type="range" name="problem_01_sliderInv_a" value="" min="0" max="{{ investment_max }}" step="1000" id="sliderDinero" class="slider_dinero" required>
+                <input type="hidden" name="check_slider_example" value="" id="id_check_slider_example"/>
+            </td>
+            <td class="text_slider"> - </td>
+        </tr>
+        <tr>
+            <td style="text-align: center;">
+                <b>Inversión A</b>
+            </td>
+            <td style="text-align: center;">
+                <b>Inversión B</b>
+            </td>
+        </tr>
+    </table>
+</div>
 
 
 <div class="div_btnNext">
-    {% next_button %}
+    <input type="button" value="Siguiente" class="btnNext" style="display: none;" onclick="nextView()" id="btnNext">
+    <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next" disabled>Siguiente</button>
 </div>
 
 {% endblock %}

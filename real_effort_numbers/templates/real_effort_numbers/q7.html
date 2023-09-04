@@ -14,16 +14,13 @@
             let ele_cnt = document.getElementById("q7_cnt_mistakes");
             let ele_mis = document.getElementById("q7_mistakes");
             let ele_tim = document.getElementById("q7_time");
+            let ele_isCorrect = document.getElementById("q7_isCorrect");
             
             ele_tim.value = Date.now() - start;
             ele_cnt.value = 0;
             ele_mis.value = '{}';
-            let btn = document.getElementById("id_next");
-            btn.removeAttribute("disabled");
-            btn.click();
-            btn.setAttribute("disabled", true);
 
-            //validateAnswer(in_answ, "{% autoescape off %}{{ answer }}{% endautoescape %}", ele_cnt, ele_mis, ele_tim);
+            validateAnswer(in_answ, "{% autoescape off %}{{ answer }}{% endautoescape %}", ele_cnt, ele_mis, ele_tim, ele_isCorrect);
         }
 
         window.onload = function(){
@@ -37,6 +34,7 @@
 {% endblock %}
 
 {% block content %}
+
 {{ n_question }}. {{ question }}
 <br>
 <br>
@@ -61,6 +59,7 @@
 <input type="hidden" name="q7_cnt_mistakes" value="" id="q7_cnt_mistakes">
 <input type="hidden" name="q7_mistakes" value="{ " id="q7_mistakes">
 <input type="hidden" name="q7_time" value="" id="q7_time">
+<input type="hidden" name="q7_isCorrect" value="" id="q7_isCorrect">
 
 <div class="div_btnNext">
     <input type="button" value="Siguiente" class="btnNext" onclick="validate()">

@@ -22,7 +22,7 @@ class intro_math(Page):
 class q1(Page):
     form_model = "player"
     #form_fields = ["q1", "q1_cnt_mistakes", "q1_mistakes", "q1_time"]
-    form_fields = ["q1", "q1_time"]
+    form_fields = ["q1", "q1_time", 'q1_isCorrect']
 
     def vars_for_template(self):
         return {
@@ -38,7 +38,7 @@ class q1(Page):
 class q2(Page):
     form_model = "player"
     #form_fields = ["q2", "q2_cnt_mistakes", "q2_mistakes", "q2_time"]
-    form_fields = ["q2", "q2_time"]
+    form_fields = ["q2", "q2_time", 'q2_isCorrect']
 
     def vars_for_template(self):
         return {
@@ -54,7 +54,7 @@ class q2(Page):
 class q3(Page):
     form_model = "player"
     #form_fields = ["q3", "q3_cnt_mistakes", "q3_mistakes", "q3_time"]
-    form_fields = ["q3", "q3_time"]
+    form_fields = ["q3", "q3_time", 'q3_isCorrect']
 
     def vars_for_template(self):
         return {
@@ -70,7 +70,7 @@ class q3(Page):
 class q4(Page):
     form_model = "player"
     #form_fields = ["q4", "q4_cnt_mistakes", "q4_mistakes", "q4_time"]
-    form_fields = ["q4", "q4_time"]
+    form_fields = ["q4", "q4_time", 'q4_isCorrect']
 
     def vars_for_template(self):
         return {
@@ -86,7 +86,7 @@ class q4(Page):
 class q5(Page):
     form_model = "player"
     #form_fields = ["q5", "q5_cnt_mistakes", "q5_mistakes", "q5_time"]
-    form_fields = ["q5", "q5_time"]
+    form_fields = ["q5", "q5_time", 'q5_isCorrect']
 
     def vars_for_template(self):
         return {
@@ -102,7 +102,7 @@ class q5(Page):
 class q6(Page):
     form_model = "player"
     #form_fields = ["q6", "q6_cnt_mistakes", "q6_mistakes", "q6_time"]
-    form_fields = ["q6", "q6_time"]
+    form_fields = ["q6", "q6_time", 'q6_isCorrect']
 
     def vars_for_template(self):
         return {
@@ -118,7 +118,7 @@ class q6(Page):
 class q7(Page):
     form_model = "player"
     #form_fields = ["q7", "q7_cnt_mistakes", "q7_mistakes", "q7_time"]
-    form_fields = ["q7", "q7_time"]
+    form_fields = ["q7", "q7_time", 'q7_isCorrect']
 
     def vars_for_template(self):
         return {
@@ -134,7 +134,7 @@ class q7(Page):
 class q8(Page):
     form_model = "player"
     #form_fields = ["q8", "q8_cnt_mistakes", "q8_mistakes", "q8_time"]
-    form_fields = ["q8", "q8_time"]
+    form_fields = ["q8", "q8_time", 'q8_isCorrect']
 
     def vars_for_template(self):
         return {

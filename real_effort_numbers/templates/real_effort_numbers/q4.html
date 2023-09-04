@@ -14,16 +14,13 @@
             let ele_cnt = document.getElementById("q4_cnt_mistakes");
             let ele_mis = document.getElementById("q4_mistakes");
             let ele_tim = document.getElementById("q4_time");
+            let ele_isCorrect = document.getElementById("q4_isCorrect");
             
             ele_tim.value = Date.now() - start;
             ele_cnt.value = 0;
             ele_mis.value = '{}';
-            let btn = document.getElementById("id_next");
-            btn.removeAttribute("disabled");
-            btn.click();
-            btn.setAttribute("disabled", true);
 
-            //validateAnswer(in_answ, Number({{ answer }}), ele_cnt, ele_mis, ele_tim);
+            validateAnswer(in_answ, Number({{ answer }}), ele_cnt, ele_mis, ele_tim, ele_isCorrect);
         }
 
         window.onload = function(){
@@ -54,6 +51,7 @@
 <input type="hidden" name="q4_cnt_mistakes" value="" id="q4_cnt_mistakes">
 <input type="hidden" name="q4_mistakes" value="{ " id="q4_mistakes">
 <input type="hidden" name="q4_time" value="" id="q4_time">
+<input type="hidden" name="q4_isCorrect" value="" id="q4_isCorrect">
 
 <div class="div_btnNext">
     <input type="button" value="Siguiente" class="btnNext" onclick="validate()">

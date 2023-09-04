@@ -31,6 +31,7 @@ class Constants(BaseConstants):
     time_steps = 2000 # en milisegundos = 2 segundos
     money_example = 100 # dinero usado para ejemplos
     investment_max = 100000 # máxima inversión
+    answer_1 = [8, -8] # resultados posibles para la pregunta 1
 
 
 class Subsession(BaseSubsession):

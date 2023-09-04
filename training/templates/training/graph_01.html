@@ -37,10 +37,10 @@
                 max: {{ max_y }} + 5
             },
             series: [{
-                animation: true,
+                animation: false,
                 data: [],
                 lineWidth: 0,
-                enableMouseTracking: true,
+                enableMouseTracking: false,
                 marker:{
                     enabled: true
                 },
@@ -127,7 +127,7 @@
                     btn.click();
                 } else {
                     document.getElementById('test_01_time').value = Date.now() - start;
-                    if(Number(in_test01.value) == 8) {
+                    if((Number(in_test01.value) == Number({{ answers.0 }})) || (Number(in_test01.value) == Number({{ answers.1 }}))){
                         document.getElementById('text_result').innerHTML = 'Correcto';
                         document.getElementById('test_01_answer').value = 'Correct';
                     } else {

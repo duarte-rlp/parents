@@ -21,7 +21,8 @@ class graph_01(Page):
                 'max_y': max(Constants.inv_a),
                 'min_y': min(Constants.inv_a),
                 'time_steps': Constants.time_steps,
-                'money_example': Constants.money_example
+                'money_example': Constants.money_example,
+                'answers': Constants.answer_1
                 }
 
 class graph_02(Page):

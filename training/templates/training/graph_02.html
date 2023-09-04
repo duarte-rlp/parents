@@ -40,10 +40,10 @@
                 max: {{ max_y }} + 5
             },
             series: [{
-                animation: true,
+                animation: false,
                 data: [],
-                lineWidth: 1,
-                enableMouseTracking: true,
+                lineWidth: 0,
+                enableMouseTracking: false,
                 marker:{
                     enabled: true
                 },
@@ -51,10 +51,10 @@
                 name: 'Inversión A',
                 dashStyle: 'Dash'
             }, {
-                animation: true,
+                animation: false,
                 data: [],
-                lineWidth: 1,
-                enableMouseTracking: true,
+                lineWidth: 0,
+                enableMouseTracking: false,
                 marker:{
                     enabled: true
                 },
@@ -562,7 +562,7 @@
 </div>
 
 <div id="step_11" style="display: none; height: 110px;">
-    <b><text id="text_result_04"></text></b>, ganará 15 en la <i>Inversión A</i> y perderá 9 en la <i>Inversión B</i> si el ESCENARIO 4 es elegido al azar para determinar los rendimientos del dinero invertido.
+    <b><text id="text_result_04"></text></b>, ganará <toMoney>15</toMoney> en la <i>Inversión A</i> y perderá <toMoney>9</toMoney> en la <i>Inversión B</i> si el ESCENARIO 4 es elegido al azar para determinar los rendimientos del dinero invertido.
 </div>
 
 <div id="step_12" style="display: none; height: 110px;">

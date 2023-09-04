@@ -10,11 +10,20 @@
         var cnt_errors = 0;
 
         function validate() {
-            let in_answ = document.getElementById("id_p1");
-            let ele_cnt = document.getElementById("p1_cnt_mistakes");
-            let ele_mis = document.getElementById("p1_mistakes");
-            let ele_tim = document.getElementById("p1_time");
-            validateAnswer(in_answ, Number({{ answer }}), ele_cnt, ele_mis, ele_tim);
+            let in_answ = document.getElementById("id_q1");
+            let ele_cnt = document.getElementById("q1_cnt_mistakes");
+            let ele_mis = document.getElementById("q1_mistakes");
+            let ele_tim = document.getElementById("q1_time");
+
+            ele_tim.value = Date.now() - start;
+            ele_cnt.value = 0;
+            ele_mis.value = '{}';
+            let btn = document.getElementById("id_next");
+            btn.removeAttribute("disabled");
+            btn.click();
+            btn.setAttribute("disabled", true);
+
+            //validateAnswer(in_answ, Number({{ answer }}), ele_cnt, ele_mis, ele_tim);
         }
 
         window.onload = function(){
@@ -33,7 +42,7 @@
     <table>
         <tr>
             <td class="cell_question">{{ n_question }}. {{ question }} = </td>
-            <td><input type="number" class="inNumber" name="p1" id="id_p1" oninput="restore_error('id_p1')" required></td>
+            <td><input type="number" class="inNumber" name="q1" id="id_q1" oninput="restore_error('id_q1')" required></td>
         </tr>
     </table>
     <div class="error_msg" id="div_error">
@@ -42,9 +51,9 @@
 
 </div>
 
-<input type="hidden" name="p1_cnt_mistakes" value="" id="p1_cnt_mistakes">
-<input type="hidden" name="p1_mistakes" value="{ " id="p1_mistakes">
-<input type="hidden" name="p1_time" value="" id="p1_time">
+<input type="hidden" name="q1_cnt_mistakes" value="" id="q1_cnt_mistakes">
+<input type="hidden" name="q1_mistakes" value="{ " id="q1_mistakes">
+<input type="hidden" name="q1_time" value="" id="q1_time">
 
 <div class="div_btnNext">
     <input type="button" value="Siguiente" class="btnNext" onclick="validate()">

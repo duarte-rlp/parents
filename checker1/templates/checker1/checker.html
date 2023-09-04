@@ -7,16 +7,19 @@
 
     <script>
         var start;
-        var end;
         var cnt_errors = 0;
 
         function validateColor() {
+            document.getElementById('time_checker').value = Date.now() - start;
+            document.getElementById('cnt_mistakes').value = 0;
+            document.getElementById('mistakes_checker').value = '{}';
+
+            /*
             var rad_col = document.getElementsByName("response_checker");
             if(Array.from(rad_col).find(radio => radio.checked).value == "{{ correct_color }}") {
-                end = Date.now();
                 let time_check = document.getElementById("time_checker");
                 // guardamos el tiempo que demoró en dar la respuesta correcta en milisegundos
-                time_check.value = end - start; 
+                time_check.value = Date.now() - start; 
                 // guardamos la cantidad de errores
                 let cnt_mistakes = document.getElementById("cnt_mistakes");
                 cnt_mistakes.value = cnt_errors;
@@ -34,6 +37,10 @@
                 let add = cnt_errors.toString() + ": {\'option\': \'" + Array.from(rad_col).find(radio => radio.checked).value + "\', \'time\': " + time + "}, ";
                 mistakes.value += add;
             }
+            */
+            let btn = document.getElementById("id_next");
+            btn.removeAttribute("disabled");
+            btn.click();
         }
 
         function restore_error(id_div) {
@@ -64,13 +71,13 @@ En estas actividades, hay participantes que no leen atentamente las preguntas y 
 <br>
 <br>
 
-<input type="radio" class="radios" name="response_checker" onchange="restore_error('div_error')" value="{{ colors.0 }}">{{ colors.0 }}
+<input type="radio" class="radios" name="answer_checker" onchange="restore_error('div_error')" value="{{ colors.0 }}">{{ colors.0 }}
 <br>
-<input type="radio" class="radios" name="response_checker" onchange="restore_error('div_error')" value="{{ colors.1 }}">{{ colors.1 }}
+<input type="radio" class="radios" name="answer_checker" onchange="restore_error('div_error')" value="{{ colors.1 }}">{{ colors.1 }}
 <br>
-<input type="radio" class="radios" name="response_checker" onchange="restore_error('div_error')" value="{{ colors.2 }}">{{ colors.2 }}
+<input type="radio" class="radios" name="answer_checker" onchange="restore_error('div_error')" value="{{ colors.2 }}">{{ colors.2 }}
 <br>
-<input type="radio" class="radios" name="response_checker" onchange="restore_error('div_error')" value="{{ colors.3 }}">{{ colors.3 }}
+<input type="radio" class="radios" name="answer_checker" onchange="restore_error('div_error')" value="{{ colors.3 }}">{{ colors.3 }}
 <br>
 
 <input type="hidden" name="cnt_mistakes" value="" id="cnt_mistakes">

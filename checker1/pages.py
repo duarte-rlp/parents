@@ -17,7 +17,8 @@ class Results(Page):
 
 class checker(Page):
     form_model = 'player'
-    form_fields = ['cnt_mistakes', 'mistakes_checker', 'time_checker', 'response_checker']
+    #form_fields = ['cnt_mistakes', 'mistakes_checker', 'time_checker', 'answer_checker']
+    form_fields = ['time_checker', 'answer_checker']
     def vars_for_template(self):
         colors = Constants.colors_checker.copy()
         random.shuffle(colors)

@@ -19,9 +19,10 @@ class intro_math(Page):
         }
 
 
-class p1(Page):
+class q1(Page):
     form_model = "player"
-    form_fields = ["p1", "p1_cnt_mistakes", "p1_mistakes", "p1_time"]
+    #form_fields = ["q1", "q1_cnt_mistakes", "q1_mistakes", "q1_time"]
+    form_fields = ["q1", "q1_time"]
 
     def vars_for_template(self):
         return {
@@ -34,9 +35,10 @@ class p1(Page):
     def before_next_page(self):
         self.player.cnt_question += 1
 
-class p2(Page):
+class q2(Page):
     form_model = "player"
-    form_fields = ["p2", "p2_cnt_mistakes", "p2_mistakes", "p2_time"]
+    #form_fields = ["q2", "q2_cnt_mistakes", "q2_mistakes", "q2_time"]
+    form_fields = ["q2", "q2_time"]
 
     def vars_for_template(self):
         return {
@@ -49,9 +51,10 @@ class p2(Page):
     def before_next_page(self):
         self.player.cnt_question += 1
 
-class p3(Page):
+class q3(Page):
     form_model = "player"
-    form_fields = ["p3", "p3_cnt_mistakes", "p3_mistakes", "p3_time"]
+    #form_fields = ["q3", "q3_cnt_mistakes", "q3_mistakes", "q3_time"]
+    form_fields = ["q3", "q3_time"]
 
     def vars_for_template(self):
         return {
@@ -64,9 +67,10 @@ class p3(Page):
     def before_next_page(self):
         self.player.cnt_question += 1
 
-class p4(Page):
+class q4(Page):
     form_model = "player"
-    form_fields = ["p4", "p4_cnt_mistakes", "p4_mistakes", "p4_time"]
+    #form_fields = ["q4", "q4_cnt_mistakes", "q4_mistakes", "q4_time"]
+    form_fields = ["q4", "q4_time"]
 
     def vars_for_template(self):
         return {
@@ -79,9 +83,10 @@ class p4(Page):
     def before_next_page(self):
         self.player.cnt_question += 1
 
-class p5(Page):
+class q5(Page):
     form_model = "player"
-    form_fields = ["p5", "p5_cnt_mistakes", "p5_mistakes", "p5_time"]
+    #form_fields = ["q5", "q5_cnt_mistakes", "q5_mistakes", "q5_time"]
+    form_fields = ["q5", "q5_time"]
 
     def vars_for_template(self):
         return {
@@ -94,9 +99,10 @@ class p5(Page):
     def before_next_page(self):
         self.player.cnt_question += 1
 
-class p6(Page):
+class q6(Page):
     form_model = "player"
-    form_fields = ["p6", "p6_cnt_mistakes", "p6_mistakes", "p6_time"]
+    #form_fields = ["q6", "q6_cnt_mistakes", "q6_mistakes", "q6_time"]
+    form_fields = ["q6", "q6_time"]
 
     def vars_for_template(self):
         return {
@@ -109,9 +115,10 @@ class p6(Page):
     def before_next_page(self):
         self.player.cnt_question += 1
 
-class p7(Page):
+class q7(Page):
     form_model = "player"
-    form_fields = ["p7", "p7_cnt_mistakes", "p7_mistakes", "p7_time"]
+    #form_fields = ["q7", "q7_cnt_mistakes", "q7_mistakes", "q7_time"]
+    form_fields = ["q7", "q7_time"]
 
     def vars_for_template(self):
         return {
@@ -124,9 +131,10 @@ class p7(Page):
     def before_next_page(self):
         self.player.cnt_question += 1
 
-class p8(Page):
+class q8(Page):
     form_model = "player"
-    form_fields = ["p8", "p8_cnt_mistakes", "p8_mistakes", "p8_time"]
+    #form_fields = ["q8", "q8_cnt_mistakes", "q8_mistakes", "q8_time"]
+    form_fields = ["q8", "q8_time"]
 
     def vars_for_template(self):
         return {
@@ -157,14 +165,14 @@ class Results(Page):
 page_sequence = [intro_math]
 
 questions = [
-    p1,
-    p2,
-    p3,
-    p4,
-    p5,
-    p6,
-    p7,
-    p8
+    q1,
+    q2,
+    q3,
+    q4,
+    q5,
+    q6,
+    q7,
+    q8
 ]
 
 #random.shuffle(questions)

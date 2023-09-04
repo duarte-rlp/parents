@@ -34,7 +34,7 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    cnt_mistakes = models.IntegerField()
-    mistakes_checker = models.StringField()
+    #cnt_mistakes = models.IntegerField()
+    #mistakes_checker = models.StringField()
+    answer_checker = models.StringField()
     time_checker = models.StringField()
-    response_checker = models.StringField()

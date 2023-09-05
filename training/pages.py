@@ -79,14 +79,28 @@ class graph_03(Page):
 class instruc_02(Page):
     pass
 
+
+class intro_03(Page):
+    def vars_for_template(self):
+        return {
+                'labels': Constants.inv_labels,
+                'data_a': Constants.inv_a,
+                'max_y': max(Constants.inv_a),
+                'min_y': min(Constants.inv_a),
+                'investment_max': Constants.investment_max
+                }
+
 # inicia a mostrar las cartas
 class graph_04(Page):
     def vars_for_template(self):
         return {
                 'labels': Constants.inv_labels,
-                'data': Constants.inv_example,
-                'max_y': max(Constants.inv_example),
-                'min_y': min(Constants.inv_example)
+                'data_a': Constants.inv_a,
+                'data_b': Constants.inv_b,
+                'max_y': max(Constants.inv_a + Constants.inv_b),
+                'min_y': min(Constants.inv_a + Constants.inv_b),
+                'graphType': self.player.participant.vars['graphType'],
+                'investment_max': Constants.investment_max
                 }
 
 # pregunta 
@@ -504,4 +518,6 @@ page_sequence = [
     intro_02,
     graph_03,
     instruc_02,
+    intro_03,
+    graph_04
     ]

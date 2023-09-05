@@ -44,10 +44,10 @@
                 max: {{ max_y }} + 5
             },
             series: [{
-                animation: true,
+                animation: false,
                 data: [],
-                lineWidth: 1,
-                enableMouseTracking: true,
+                lineWidth: 0,
+                enableMouseTracking: false,
                 marker:{
                     enabled: true
                 },
@@ -55,10 +55,10 @@
                 name: 'Cultivo A',
                 dashStyle: 'Dash'
             }, {
-                animation: true,
+                animation: false,
                 data: [],
-                lineWidth: 1,
-                enableMouseTracking: true,
+                lineWidth: 0,
+                enableMouseTracking: false,
                 marker:{
                     enabled: true
                 },
@@ -307,6 +307,7 @@
                     document.getElementById('questions_box').style.display = 'none';
                     document.getElementById('questions').style.display = 'block';
                     document.getElementById('btnNext').style.display = 'none';
+                    document.getElementById('div_tabGraph').style.display = 'none';
                 } else {
                     document.getElementById('div_error').style.display = 'block';
                     document.getElementById('div_error').style.margin = '0 auto';

@@ -1,0 +1,38 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block scripts %}
+    
+    <link href="{% static 'training/css/styles.css' %}" rel="stylesheet">
+    <script src="{% static 'training/js/highcharts.js' %}"></script>
+    <script src="{% static 'training/js/functions.js' %}"></script>
+    
+{% endblock %}
+
+{% block title %}
+    Actividad 2: Ejemplo
+{% endblock %}
+
+{% block content %}
+
+Suponga que recibe <toMoney>100000</toMoney> pesos como dotación inicial y puede asignar ese dinero entre dos opciones:
+<br>
+<br>
+<ul>
+    <li>Inversión A</li>
+    <li>Inversión B</li>
+</ul>
+Puede invertir toda su dotación en A o en B, pero también puede repartirla. La suma del dinero invertido debe ser <toMoney>100000</toMoney> pesos. <b>En este juego usted solo recibirá la rentabilidad de sus inversiones, es decir, la dotación inicial no hace parte de sus ganancias.</b>
+<br>
+<br>
+Cada inversión puede tener porcentajes de rentabilidad positivos o negativos. Cuando el porcentaje de rentabilidad es positivo, usted tendrá <i>ganancias</i> proporcionales a lo que invirtió. Por el contrario, si el porcentaje de rentabilidad es negativo, usted tendrá <i>pérdidas</i> proporcionales a lo invertido, que se le descontarán de sus ganancias totales.
+<br>
+<br>
+Si asigna dinero a ambas inversiones, puede ocurrir que ambas tengan ganancias, que ambas tengan pérdidas o que en una tenga <i>ganancias</i> y en la otra <i>perdidas</i>.
+<br>
+<br>
+<div class="div_btnNext">
+    {% next_button %}
+</div>
+
+{% endblock %}

@@ -41,10 +41,10 @@
                 max: {{ max_y }} + 1
             },
             series: [{
-                animation: true,
+                animation: false,
                 data: [],
-                lineWidth: 1,
-                enableMouseTracking: true,
+                lineWidth: 0,
+                enableMouseTracking: false,
                 marker:{
                     enabled: true
                 },
@@ -52,10 +52,10 @@
                 name: 'Inversión A',
                 dashStyle: 'Dash',
             }, {
-                animation: true,
+                animation: false,
                 data: [],
-                lineWidth: 1,
-                enableMouseTracking: true,
+                lineWidth: 0,
+                enableMouseTracking: false,
                 marker:{
                     enabled: true
                 },
@@ -239,7 +239,7 @@
             document.getElementById("btn_b").disabled = false;
             if(interval_a == 0) {
                 nextCard_a();
-                intervalID = setInterval(nextCard_a, 500);
+                intervalID = setInterval(nextCard_a, 0);
                 if(interval_b == 1) {
                     graph.series[1].setVisible(false);
                 }
@@ -260,7 +260,7 @@
             document.getElementById("btn_a").disabled = false;
             if(interval_b == 0) {
                 nextCard_b();
-                intervalID = setInterval(nextCard_b, 500);
+                intervalID = setInterval(nextCard_b, 0);
                 if(interval_a == 1) {
                     graph.series[0].setVisible(false);
                 }
@@ -277,7 +277,7 @@
             document.getElementById("problem_01_btnSelected").value += add;
             if(interval_a == 0) {
                 nextCard();
-                intervalID = setInterval(nextCard, 500);
+                intervalID = setInterval(nextCard, 0);
             }
         }
 

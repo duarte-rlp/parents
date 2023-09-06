@@ -518,6 +518,6 @@ page_sequence = [
     intro_02,
     graph_03,
     instruc_02,
-    intro_03,
-    graph_04
+#    intro_03,
+#    graph_04
     ]

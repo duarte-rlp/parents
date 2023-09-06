@@ -36,6 +36,16 @@
             series: [{
                 animation: false,
                 data: {{ data_a }},
+                dataLabels: {
+                    enabled: true,
+                    style: {
+                        color: 'blue',
+                        fontSize: '0.8rem',
+                        fontWeight: 'normal',
+                        textOutline: 'none'
+                    }
+
+                },
                 lineWidth: 0,
                 enableMouseTracking: false,
                 marker:{
@@ -94,6 +104,43 @@
             );
         });
 
+        $(document).ready(function () {
+            $('.slider_dinero').change(
+                function (event) {
+                    var slider_id = event.target.id;
+                    var parent_slider = document.getElementById(slider_id).parentElement.parentElement;
+                    var childs = parent_slider.children;
+
+                    var dinero_pa = childs[0];
+                    var slider_max = childs[1].firstElementChild.max;
+                    var slider_value = childs[1].firstElementChild.value;
+                    var dinero_pb = childs[2];
+
+                    dinero_pa.innerHTML = "$ "+numberWithPoints(slider_value);
+                    dinero_pb.innerHTML = "$ "+numberWithPoints(slider_max-slider_value);
+
+                    if (slider_act == 0) {
+                        document.getElementById('btnNext').style.display = 'block';
+                        document.getElementById('btnNext').style.margin = '0 auto';
+                        slider_act = 1;
+                    }
+
+                    for(var i=0; i<8; i++) {
+                        let cell_a = document.getElementById("a_"+(i+1));
+                        let mon_a = (slider_value * data_a[i]) / 100;
+                        if(mon_a < 0) {
+                            mon_a = "- $" + (mon_a * -1).toLocaleString('es-CO');
+                        } else if(mon_a > 0) {
+                            mon_a = "" + mon_a.toLocaleString('es-CO');
+                        } else {
+                            mon_a = "0";
+                        }
+                        cell_a.innerHTML = mon_a;
+                    }
+                }
+            );
+        });
+
     </script>
 {% endblock %}
 
@@ -108,12 +155,27 @@ En la tabla les mostramos las rentabilidades posibles de el dinero asignado a la
 Suponga que usted tiene <toMoney>100000</toMoney> que puede asignar a la <i>Inversión A</i> y la <i>Inversión B</i>. Para asignar la cantidad que desea invertir en cada opción, haga clic en sobre la barra y mueva el cuadro que aparece para ver cómo la cantidad de dinero asignada a la <i>Inversión A</i> y la <i>Inversión B</i> afecta las posibles rentabilidades en cada ESCENARIO. 
 <br>
 <br>
-Por ejemplo, si mueve el cuadro completamente a la DERECHA, usted asignará <toMoney>100000</toMoney> a la <i>Inversión A</i> y $0 a la <i>Inversión B</i>, o si mueve el cuadro completamente a la IZQUIERDA usted asignará $0 a la <i>Inversión A</i> y $ 100.000 a la <i>Inversión B</i>. 
+Por ejemplo, si mueve el cuadro completamente a la DERECHA, usted asignará <toMoney>100000</toMoney> a la <i>Inversión A</i> y <toMoney>0</toMoney> a la <i>Inversión B</i>, o si mueve el cuadro completamente a la IZQUIERDA usted asignará $0 a la <i>Inversión A</i> y <toMoney>100000</toMoney> a la <i>Inversión B</i>. 
 
 <br>
 <br>
 <div>
     <div id="graph01" class="div_graph"></div>
+    <div class="div_tabGraph" id="div_tabGraph">
+        <table class="tabGraph">
+            <tr id="fila_a" style="border: #000000 1px solid;">
+                <td class="cell_graphInv" style="border: #000000 1px solid;"><b>Retorno A</b></td>
+                <td class="cell_graph" id="a_1" style="border: #000000 1px solid;"></td>
+                <td class="cell_graph" id="a_2" style="border: #000000 1px solid;"></td>
+                <td class="cell_graph" id="a_3" style="border: #000000 1px solid;"></td>
+                <td class="cell_graph" id="a_4" style="border: #000000 1px solid;"></td>
+                <td class="cell_graph" id="a_5" style="border: #000000 1px solid;"></td>
+                <td class="cell_graph" id="a_6" style="border: #000000 1px solid;"></td>
+                <td class="cell_graph" id="a_7" style="border: #000000 1px solid;"></td>
+                <td class="cell_graph" id="a_8" style="border: #000000 1px solid;"></td>
+            </tr>
+        </table>
+    </div>
 </div>
 <br>
 <div class="card_table" id="h-slider-div" style="text-align: center;">

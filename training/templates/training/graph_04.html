@@ -368,7 +368,6 @@
                 document.getElementById('step_1').style.display = 'none';
                 document.getElementById('step_2').style.display = 'block';
                 step_view += 1;
-                start = Date.now();
                 break;
             case 2:
                 let in_test06_a = document.getElementById("test_06_number_a");
@@ -417,51 +416,24 @@
 {% endblock %}
 
 {% block content %}
-<div id="step_1" style="height: 160px;">
-Suponga que usted asigna <toMoney>10000</toMoney> en la <i>Inversión A</i> y <toMoney>90000</toMoney> en la <i>Inversión B</i>. Entonces en la columna correspondiente al ESCENARIO 4 de la TABLA ABAJO se mostrarán los siguientes retornos:
-<br>
-<ul>
-    <li>Gana <toMoney>1500</toMoney> -> (<toMoney>10000</toMoney> x {{ data_a.3 }}%)</li>
-    <li>Pierde <toMoney>8100</toMoney> -> (<toMoney>90000</toMoney> x {{ data_b.3 }}%)</li>
-</ul>
-Como ganas <toMoney>1500</toMoney> en la <i>Inversión A</i> y pierdes <toMoney>8100</toMoney> en la <i>Inversión B</i>, el retorno total posible en el ESCENARIO 4 es una pérdida de <toMoney>6600</toMoney>. Los retornos totales se muestran en el último renglón de la tabla.
+<div id="step_1" style="height: 110px;">
+    Haga <i>clic</i> en el botón 
+    {% if graphType == 1 %}
+    "Mostrar Inversión A y B"
+    {% else %}
+    "Mostrar Inversión A" y "Mostrar Inversión B"
+    {% endif %}
+    para ver el porcentaje de rentabilidad (%) que las inversiones pueden generar en cada ESCENARIO.
 </div>
 
-<div id="step_2" style="display: none; height: 160px;">
-<table class="table_question">
-    <tr>
-        <td style="width: 10%;"><b>Pregunta:</b></td>
-        <td class="cell_question" style="width: 90% !important;">
-            <div id="text01">
-                ¿Cuáles serán los retornos en el ESCENARIO 4 de la TABLA si asigna  <toMoney>5000</toMoney> en la <i>Inversión A</i> y <toMoney>95000</toMoney> en la <i>Inversión B</i>?
-            </div>
-        </td>
-    </tr>
-</table>
-<table class="table_question">
-    <tr>
-        <td class="cell_question" style="width: 15% !important; text-align: right; padding-right: 10px;">
-            Inversión A:
-        </td>
-        <td>
-            <div class="answer_test">
-                <input type="number" name="test_06_number_a" id="test_06_number_a" class="inNumber" required>
-                <input type="hidden" name="test_06_answer_a" id="test_06_answer_a">
-            </div>
-        </td>
-        <td class="cell_question" style="width: 15% !important; text-align: right; padding-right: 10px;">
-            Inversión B:
-        </td>
-        <td>
-            <div class="answer_test">
-                <input type="number" name="test_06_number_b" id="test_06_number_b" class="inNumber" required>
-                <input type="hidden" name="test_06_answer_b" id="test_06_answer_b">
-            </div>
-        </td>
-    </tr>
-</table>
-<input type="hidden" name="test_06_time" id="test_06_time">
+<div id="step_2" style="height: 110px;">
+    Haga <i>clic</i> sobre la barra y mueva el cuadro que aparece para ver cómo la cantidad de dinero asignada a la <i>Inversión A</i> y la <i>Inversión B</i> afecta la tabla de las posibles rentabilidades. 
+
 </div>
+
+
+
+
 
 <div id="step_3" style="display: none; height: 160px;">
     <b><text id="text_result_01"></text></b>. En la TABLA se mostrarán los siguientes retornos: gana <toMoney>750</toMoney> en la <i>Inversión A</i> y pierde <toMoney>8550</toMoney> en la <i>Inversión B</i>.

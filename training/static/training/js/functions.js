@@ -16,9 +16,9 @@ $(document).ready(function () {
         let num = Number(elements[j].innerHTML);
         if (num < 0) {
             num = num * -1;
-            elements[j].innerHTML = "-$" + num.toLocaleString('es-CO').toString();
+            elements[j].innerHTML = "-$ " + num.toLocaleString('es-CO').toString();
         }else {
-            elements[j].innerHTML = "$" + num.toLocaleString('es-CO').toString();
+            elements[j].innerHTML = "$ " + num.toLocaleString('es-CO').toString();
         }
     }
 });

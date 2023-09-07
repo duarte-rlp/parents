@@ -1,4 +1,5 @@
 from os import environ
+import os
 
 SESSION_CONFIGS = [
     {
@@ -109,4 +110,9 @@ INSTALLED_APPS = ['otree']
 
 PARTICIPANT_FIELDS = ['graphType']
 
-DEBUG=False
+DEBUG=True
+
+## Variables para Heroku
+OTREE_ENV = os.environ.get("OTREE_ENV", "production")
+OTREE_SECRET_KEY = os.environ.get("OTREE_SECRET_KEY")
+OTREE_DATABASE_URL = os.environ.get("DATABASE_URL")

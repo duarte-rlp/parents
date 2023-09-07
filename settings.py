@@ -115,5 +115,6 @@ DEBUG=True
 ## Variables para Heroku
 OTREE_ENV = os.environ.get("OTREE_ENV", "production")
 OTREE_SECRET_KEY = os.environ.get("OTREE_SECRET_KEY")
+SECRET_KEY = os.environ.get("OTREE_SECRET_KEY")
 OTREE_DATABASE_URL = os.environ.get("DATABASE_URL")
 OTREE_STATIC_ROOT = os.environ.get("OTREE_STATIC_ROOT", "/app/static_files")

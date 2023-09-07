@@ -1,4 +1,5 @@
 from os import environ
+import os
 
 SESSION_CONFIGS = [
     {
@@ -108,5 +109,11 @@ SECRET_KEY = 'ych58g9m8ay^q)l^*n^!=8!t#tjo%$-kb53wkh96i$es(yp7b+'
 INSTALLED_APPS = ['otree']
 
 PARTICIPANT_FIELDS = ['graphType']
+
+BASE_DIR = '/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
 
 DEBUG=True

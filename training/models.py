@@ -74,5 +74,11 @@ class Player(BasePlayer):
     test_06_answer_b = models.StringField()
     test_06_time = models.StringField() # tiempo que demora en presionar continuar
 
+# Las del ejemplo
+    test_07_number_a = models.IntegerField()
+    test_07_number_b = models.IntegerField()
+    test_07_mistakes = models.StringField()
+    test_07_time = models.StringField() # tiempo que demora en presionar continuar
+
 
 

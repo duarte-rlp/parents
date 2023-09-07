@@ -17,6 +17,8 @@
         var start;
         var cnt_scenario = 0;
         var cnt = 0;
+        var cnt_visible = 0;
+        var cnt_mistakes = 0;
 
         var graph = Highcharts.chart('graph01', {
             title: {
@@ -210,10 +212,14 @@
             document.getElementById("btn_a").disabled = true;
             document.getElementById("btn_b").style.backgroundColor = "#007bff";
             document.getElementById("btn_b").disabled = false;
+            cnt_visible += 1;
+            if (cnt_visible >= 2) {
+                document.getElementById('btnNext').style.display = 'block';
+                document.getElementById('btnNext').style.margin = '0 auto';
+            }
             nextCard_a();
             intervalID = setInterval(nextCard_a, 0);
             graph.series[1].setData([]);
-            mostrar_recuadro(2);
             if (cnt == 0) {
                 let fa = document.getElementById('fila_a');
                 let fb = document.getElementById('fila_b');
@@ -239,10 +245,14 @@
             document.getElementById("btn_b").disabled = true;
             document.getElementById("btn_a").style.backgroundColor = "#007bff";
             document.getElementById("btn_a").disabled = false;
+            cnt_visible += 1;
+            if (cnt_visible >= 2) {
+                document.getElementById('btnNext').style.display = 'block';
+                document.getElementById('btnNext').style.margin = '0 auto';
+            }
             nextCard_b();
             intervalID = setInterval(nextCard_b, 0);
             graph.series[0].setData([]);
-            mostrar_recuadro(2);
             if (cnt == 0) {
                 let fa = document.getElementById('fila_a');
                 let fb = document.getElementById('fila_b');
@@ -266,9 +276,10 @@
         function visibleAB() {
             document.getElementById("btn_ab").style.backgroundColor = "#989898";
             document.getElementById("btn_ab").disabled = true;
+            document.getElementById('btnNext').style.display = 'block';
+            document.getElementById('btnNext').style.margin = '0 auto';
             nextCard();
             intervalID = setInterval(nextCard, 0);
-            mostrar_recuadro(2);
             if (cnt == 0) {
                 let fa = document.getElementById('fila_a');
                 let fb = document.getElementById('fila_b');
@@ -367,44 +378,146 @@
             case 1:
                 document.getElementById('step_1').style.display = 'none';
                 document.getElementById('step_2').style.display = 'block';
+                document.getElementById('h-slider-div').style.display = 'block';
+                document.getElementById('btnNext').style.display = 'none';
                 step_view += 1;
                 break;
             case 2:
-                let in_test06_a = document.getElementById("test_06_number_a");
-                let in_test06_b = document.getElementById("test_06_number_b");
-                if ((in_test06_a.value.length == 0) || (in_test06_b.value.length == 0)) {
-                    let btn = document.getElementById("id_next");
-                    btn.removeAttribute("disabled");
-                    btn.click();
-                } else {
-                    document.getElementById('test_06_time').value = Date.now() - start;
-                    if (Number(in_test06_a.value) == 750) {
-                        document.getElementById('test_06_answer_a').value = 'Correct';
-                        if (Number(in_test06_b.value) == -8550) {
-                            document.getElementById('text_result_01').innerHTML = 'Correcto';
-                            document.getElementById('test_06_answer_b').value = 'Correct';
-                        } else {
-                            document.getElementById('text_result_01').innerHTML = 'Incorrecto';
-                            document.getElementById('test_06_answer_b').value = 'Incorrect';
-                        }
-                    } else {
-                        document.getElementById('test_06_answer_a').value = 'Incorrect';
-                        document.getElementById('text_result_01').innerHTML = 'Incorrecto';
-                        if (Number(in_test06_b.value) == -8550) {
-                            document.getElementById('test_06_answer_b').value = 'Correct';
-                        } else {
-                            document.getElementById('test_06_answer_b').value = 'Incorrect';
-                        }
-                    }
-                    document.getElementById('step_2').style.display = 'none';
-                    document.getElementById('step_3').style.display = 'block';
-                    step_view += 1;
+                document.getElementById('step_2').style.display = 'none';
+                document.getElementById('step_3').style.display = 'block';
+                document.getElementById('h-slider-div').style.display = 'none';
+                document.getElementById('btnNext').style.display = 'none';
+                for(var i=0; i<8; i++) {
+                    let cell_a = document.getElementById("a_"+(i+1));
+                    let cell_b = document.getElementById("b_"+(i+1));
+                    let cell_t = document.getElementById("t_"+(i+1));
+                    cell_a.innerHTML = "";
+                    cell_b.innerHTML = "";
+                    cell_t.innerHTML = "";
                 }
+                document.getElementById('money-boxes').style.display = 'block';
+                slider_act = 0;
+                start = Date.now();
+                step_view += 1;
                 break;
             case 3:
+                let inv_a = Number(document.getElementById("test_07_number_a").value);
+                let inv_b = Number(document.getElementById("test_07_number_b").value);
+                if((inv_a + inv_b) == Number({{ investment_max }})) {
+                    document.getElementById('test_07_mistakes').value += "}";
+                    document.getElementById('test_07_time').value = Date.now()-start;
+                    document.getElementById('money-boxes').style.display = 'none';
+                    document.getElementById('step_3').style.display = 'none';
+                    document.getElementById('step_4').style.display = 'block';
+                    document.getElementById('btnScenario').style.display = 'block';
+                    document.getElementById('btnScenario').style.margin = '0 auto';
+                    document.getElementById('btnNext').style.display = 'none';
+                    step_view += 1;
+                } else {
+                    let time = Date.now() - start;
+                    cnt_mistakes += 1;
+                    document.getElementById('test_07_mistakes').value += cnt_mistakes.toString() + ": {\'inversion_a\': " + inv_a.toString() + ", \'inversion_b\': " + inv_b.toString() + ", \'time\': " + time + "}, ";
+                    document.getElementById("div_error").style.display = "block";
+                    document.getElementById("test_07_number_a").style.boxShadow = "0px 0px 3px 1px rgba(255, 0, 0, 0.65)";
+                    document.getElementById("test_07_number_b").style.boxShadow = "0px 0px 3px 1px rgba(255, 0, 0, 0.65)";
+                }
+                break;
+            case 4:
                 let btn = document.getElementById("id_next");
                 btn.removeAttribute("disabled");
                 btn.click();
+                break;
+            }
+        }
+
+        function values_table(){
+            if(document.getElementById("div_error").style.display == "block") {
+                document.getElementById("div_error").style.display = "none";
+            }
+            document.getElementById("test_07_number_a").style.boxShadow = "none";
+            document.getElementById("test_07_number_b").style.boxShadow = "none";
+            if (slider_act == 0) {
+                document.getElementById('btnNext').style.display = 'block';
+                document.getElementById('btnNext').style.margin = '0 auto';
+                slider_act = 1;
+            }
+            for(var i=0; i<8; i++) {
+
+                let cell_a = document.getElementById("a_"+(i+1));
+                let cell_b = document.getElementById("b_"+(i+1));
+                let cell_t = document.getElementById("t_"+(i+1));
+                let mon_a = (document.getElementById("test_07_number_a").value * data_a[i]) / 100;
+                let mon_b = (document.getElementById("test_07_number_b").value * data_b[i]) / 100;
+                let mon_t = mon_a + mon_b;
+                if(mon_a < 0) {
+                    mon_a = "- $" + (mon_a * -1).toLocaleString('es-CO');
+                } else if(mon_a > 0) {
+                    mon_a = "$ " + mon_a.toLocaleString('es-CO');
+                } else {
+                    mon_a = "$ 0";
+                }
+                if(mon_b < 0) {
+                    mon_b = "- $" + (mon_b * -1).toLocaleString('es-CO');
+                } else if(mon_b > 0) {
+                    mon_b = "$ " + mon_b.toLocaleString('es-CO');
+                } else {
+                    mon_b = "$ 0";
+                }
+                if(mon_t < 0) {
+                    mon_t = "- $" + (mon_t * -1).toLocaleString('es-CO');
+                } else if(mon_t > 0) {
+                    mon_t = "$ " + mon_t.toLocaleString('es-CO');
+                } else {
+                    mon_t = "$ 0";
+                }
+                cell_a.innerHTML = mon_a;
+                cell_b.innerHTML = mon_b;
+                cell_t.innerHTML = mon_t;
+            }
+        }
+
+        function nextScenario() {
+            let escenario = ((Math.floor(Math.random() * 8)) + 0.5) - 1;
+            graph.renderer.rect(
+                graph.xAxis[0].toPixels(escenario), 0, graph.xAxis[0].toPixels(2) - graph.xAxis[0].toPixels(1), 250, 5)
+                    .attr({
+                        'stroke-width': 2,
+                        stroke: 'rgba(250, 255, 10, 1',
+                        fill: 'rgba(250, 255, 10, 0.3)',
+                        zIndex: 0
+                    }).addClass('rect')
+                .add();
+            document.getElementById('selected_card').style.display = 'block';
+            let cell_a = document.getElementById("a_"+(escenario+1.5));
+            let cell_b = document.getElementById("b_"+(escenario+1.5));
+            let cell_t = document.getElementById("t_"+(escenario+1.5));
+            cell_a.style.backgroundColor = "#fdf6b5";
+            cell_b.style.backgroundColor = "#fdf6b5";
+            cell_t.style.backgroundColor = "#fdf6b5";
+            document.getElementById('btnScenario').style.display = 'none';
+            document.getElementById('btnNext').style.display = 'block';
+            document.getElementById('btnNext').style.margin = '0 auto';
+            let inv_a = Number(document.getElementById("test_07_number_a").value);
+            let inv_b = Number(document.getElementById("test_07_number_b").value);
+            document.getElementById('n_sce').innerHTML = (escenario+1.5);
+            document.getElementById('asign_a').innerHTML = inv_a;
+            document.getElementById('asign_b').innerHTML = inv_b;
+            document.getElementById('return_inv_a').innerHTML = (inv_a * data_a[(escenario+0.5)])/100;
+            document.getElementById('return_inv_b').innerHTML = (inv_b * data_b[(escenario+0.5)])/100;
+            document.getElementById('return_inv_t').innerHTML = ((inv_a * data_a[(escenario+0.5)])/100) + ((inv_b * data_b[(escenario+0.5)])/100);
+            conv_money();
+        }
+
+        function conv_money() {
+            let elements = document.getElementsByTagName("toMoney");
+            for(let j=0; j<elements.length; j++) {
+                let num = Number(elements[j].innerHTML);
+                if (num < 0) {
+                    num = num * -1;
+                    elements[j].innerHTML = "- $" + num.toLocaleString('es-CO').toString();
+                }else {
+                    elements[j].innerHTML = "$" + num.toLocaleString('es-CO').toString();
+                }
             }
         }
 
@@ -416,7 +529,7 @@
 {% endblock %}
 
 {% block content %}
-<div id="step_1" style="height: 110px;">
+<div id="step_1" style="height: 85px;">
     Haga <i>clic</i> en el botón 
     {% if graphType == 1 %}
     "Mostrar Inversión A y B"
@@ -426,20 +539,19 @@
     para ver el porcentaje de rentabilidad (%) que las inversiones pueden generar en cada ESCENARIO.
 </div>
 
-<div id="step_2" style="height: 110px;">
+<div id="step_2" style="display: none; height: 85px;">
     Haga <i>clic</i> sobre la barra y mueva el cuadro que aparece para ver cómo la cantidad de dinero asignada a la <i>Inversión A</i> y la <i>Inversión B</i> afecta la tabla de las posibles rentabilidades. 
-
 </div>
 
-
-
-
-
-<div id="step_3" style="display: none; height: 160px;">
-    <b><text id="text_result_01"></text></b>. En la TABLA se mostrarán los siguientes retornos: gana <toMoney>750</toMoney> en la <i>Inversión A</i> y pierde <toMoney>8550</toMoney> en la <i>Inversión B</i>.
+<div id="step_3" style="display: none; height: 85px;">
+    Escriba en el cuadro correspondiente de la parte inferior la cantidad de los <toMoney>100000</toMoney> pesos de su dotación que desea asignar a la <i>Inversión A</i> y la <i>Inversión B</i>. Recuerde que la cantidad de dinero invertido debe ser <toMoney>100000</toMoney> pesos.
     <br>
     <br>
-    Como ganas <toMoney>750</toMoney> en la <i>Inversión A</i> y pierdes <toMoney>8550</toMoney> en la <i>Inversión B</i>, el retorno total posible en el ESCENARIO 4 es una perdida de <toMoney>7800</toMoney>. 
+    Luego haga <i>clic</i> en “Enviar” para confirmar su decisión y continuar. 
+</div>
+
+<div id="step_4" style="display: none; height: 85px;">
+    Luego de enviar su decisión. El computador seleccionará al azar el ESCENARIO con los porcentajes que determinarán la rentabilidad de la Inversión A e Inversión B. Haga clic en “Seleccionar ESCENARIO” para ver los porcentajes de rentabilidad que determinarán los retornos de su inversión: 
 </div>
 
 <br>
@@ -458,46 +570,46 @@
     <div id="graph01" class="div_graph"></div>
     <div class="div_tabGraph" id="div_tabGraph">
         <table class="tabGraph">
-            <tr id="fila_a" style="visibility: hidden; border: #ffffff 1px solid;">
-                <td class="cell_graphInv" style="border: #ffffff 1px solid;">Retorno A</td>
-                <td class="cell_graph" id="a_1" style="border: #ffffff 1px solid;"></td>
-                <td class="cell_graph" id="a_2" style="border: #ffffff 1px solid;"></td>
-                <td class="cell_graph" id="a_3" style="border: #ffffff 1px solid;"></td>
-                <td class="cell_graph" id="a_4" style="border: #ffffff 1px solid;"></td>
-                <td class="cell_graph" id="a_5" style="border: #ffffff 1px solid;"></td>
-                <td class="cell_graph" id="a_6" style="border: #ffffff 1px solid;"></td>
-                <td class="cell_graph" id="a_7" style="border: #ffffff 1px solid;"></td>
-                <td class="cell_graph" id="a_8" style="border: #ffffff 1px solid;"></td>
+            <tr id="fila_a" style="border: #000000 1px solid;">
+                <td class="cell_graphInv" style="border: #000000 1px solid;"><b>Retorno A</b></td>
+                <td class="cell_graph" id="a_1" style="border: #000000 1px solid;"></td>
+                <td class="cell_graph" id="a_2" style="border: #000000 1px solid;"></td>
+                <td class="cell_graph" id="a_3" style="border: #000000 1px solid;"></td>
+                <td class="cell_graph" id="a_4" style="border: #000000 1px solid;"></td>
+                <td class="cell_graph" id="a_5" style="border: #000000 1px solid;"></td>
+                <td class="cell_graph" id="a_6" style="border: #000000 1px solid;"></td>
+                <td class="cell_graph" id="a_7" style="border: #000000 1px solid;"></td>
+                <td class="cell_graph" id="a_8" style="border: #000000 1px solid;"></td>
             </tr>
-            <tr id="fila_b" style="visibility: hidden;">
-                <td class="cell_graphInv" style="border: #ffffff 1px solid;">Retorno B</td>
-                <td class="cell_graph" id="b_1" style="border: #ffffff 1px solid;"></td>
-                <td class="cell_graph" id="b_2" style="border: #ffffff 1px solid;"></td>
-                <td class="cell_graph" id="b_3" style="border: #ffffff 1px solid;"></td>
-                <td class="cell_graph" id="b_4" style="border: #ffffff 1px solid;"></td>
-                <td class="cell_graph" id="b_5" style="border: #ffffff 1px solid;"></td>
-                <td class="cell_graph" id="b_6" style="border: #ffffff 1px solid;"></td>
-                <td class="cell_graph" id="b_7" style="border: #ffffff 1px solid;"></td>
-                <td class="cell_graph" id="b_8" style="border: #ffffff 1px solid;"></td>
+            <tr id="fila_b">
+                <td class="cell_graphInv" style="border: #000000 1px solid;"><b>Retorno B</b></td>
+                <td class="cell_graph" id="b_1" style="border: #000000 1px solid;"></td>
+                <td class="cell_graph" id="b_2" style="border: #000000 1px solid;"></td>
+                <td class="cell_graph" id="b_3" style="border: #000000 1px solid;"></td>
+                <td class="cell_graph" id="b_4" style="border: #000000 1px solid;"></td>
+                <td class="cell_graph" id="b_5" style="border: #000000 1px solid;"></td>
+                <td class="cell_graph" id="b_6" style="border: #000000 1px solid;"></td>
+                <td class="cell_graph" id="b_7" style="border: #000000 1px solid;"></td>
+                <td class="cell_graph" id="b_8" style="border: #000000 1px solid;"></td>
             </tr>
         </table>
         <table class="tabGraph" style="margin-top: 15px;">
-            <tr id="fila_total" style="visibility: hidden; border: #ffffff 1px solid;">
-                <td class="cell_graphInv" style="font-weight: bold; border: #ffffff 1px solid;">Total</td>
-                <td class="cell_graph" style="font-weight: bold; border: #ffffff 1px solid;" id="t_1"></td>
-                <td class="cell_graph" style="font-weight: bold; border: #ffffff 1px solid;" id="t_2"></td>
-                <td class="cell_graph" style="font-weight: bold; border: #ffffff 1px solid;" id="t_3"></td>
-                <td class="cell_graph" style="font-weight: bold; border: #ffffff 1px solid;" id="t_4"></td>
-                <td class="cell_graph" style="font-weight: bold; border: #ffffff 1px solid;" id="t_5"></td>
-                <td class="cell_graph" style="font-weight: bold; border: #ffffff 1px solid;" id="t_6"></td>
-                <td class="cell_graph" style="font-weight: bold; border: #ffffff 1px solid;" id="t_7"></td>
-                <td class="cell_graph" style="font-weight: bold; border: #ffffff 1px solid;" id="t_8"></td>
+            <tr id="fila_total" style="border: #000000 1px solid;">
+                <td class="cell_graphInv" style="font-weight: bold; border: #000000 1px solid;">Total</td>
+                <td class="cell_graph" style="font-weight: bold; border: #000000 1px solid;" id="t_1"></td>
+                <td class="cell_graph" style="font-weight: bold; border: #000000 1px solid;" id="t_2"></td>
+                <td class="cell_graph" style="font-weight: bold; border: #000000 1px solid;" id="t_3"></td>
+                <td class="cell_graph" style="font-weight: bold; border: #000000 1px solid;" id="t_4"></td>
+                <td class="cell_graph" style="font-weight: bold; border: #000000 1px solid;" id="t_5"></td>
+                <td class="cell_graph" style="font-weight: bold; border: #000000 1px solid;" id="t_6"></td>
+                <td class="cell_graph" style="font-weight: bold; border: #000000 1px solid;" id="t_7"></td>
+                <td class="cell_graph" style="font-weight: bold; border: #000000 1px solid;" id="t_8"></td>
             </tr>
         </table>
     </div>
 </div>
 <br>
-<div class="card_table" id="h-slider-div" style="text-align: center;">
+<div class="card_table" id="h-slider-div" style="text-align: center; display: none;">
     <table class="table_question">
         <tr>
             <td class="text_slider"> - </td>
@@ -518,10 +630,59 @@
     </table>
 </div>
 
+<div class="card_table" id="money-boxes" style="text-align: center; display: none;">
+    <table class="table_question">
+        <tr>
+            <td class="text_slider"><input type="number" name="test_07_number_a" id="test_07_number_a" class="inNumber_a" oninput="values_table()"></td>
+            <td class="td_slider" rowspan="2">  </td>
+            <td class="text_slider"><input type="number" name="test_07_number_b" id="test_07_number_b" class="inNumber_a" oninput="values_table()"></td>
+        </tr>
+        <tr>
+            <td style="text-align: center;">
+                <b>Inversión A</b>
+            </td>
+            <td style="text-align: center;">
+                <b>Inversión B</b>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div class="card_table" id="selected_card" style="display: none;">
+    El ESCENARIO que determinará los porcentajes de rentabilidad es: <paw id="n_sce"></paw>
+    <br>
+    <br>
+    De los $ 100.000 de su dotación usted asignó <toMoney id="asign_a"></toMoney> a la <i>Inversión A</i> y <toMoney id="asign_b"></toMoney> a la <i>Inversión B</i>. 
+    <br>
+    <br>
+    De acuerdo con la tabla, la asignación que usted hizo tendría los siguientes retornos: 
+    <ul>
+    <li><b>Inversión A:</b> <toMoney id="return_inv_a"></toMoney> </li>
+    <li><b>Inversión B:</b> <toMoney id="return_inv_b"></toMoney> </li>
+    <li><b>Total:</b> <toMoney id="return_inv_t"></toMoney> </li>
+    </ul>
+    Recuerde que el retorno total de la inversión es  la suma de los posibles retornos de la Inversión A y la Inversión B. 
+    <br>
+    <br>
+    <b>Este ejemplo no afectará sus pagos. Ahora comenzará a tomar decisiones de inversión.</b>
+    <br>
+    <br>
+</div>
+
+<input type="hidden" name="test_07_time" id="test_07_time">
+<input type="hidden" name="test_07_mistakes" id="test_07_mistakes" value="{">
+
+<div class="error_msg" id="div_error">
+    Recuerda que la suma de las inversiones debe ser <toMoney>100000</toMoney>.
+</div>
+
 
 <div class="div_btnNext">
+    <input type="button" value="Seleccionar Escenario" class="btnNext" style="display: none;" onclick="nextScenario()" id="btnScenario">
     <input type="button" value="Siguiente" class="btnNext" style="display: none;" onclick="nextView()" id="btnNext">
     <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next" disabled>Siguiente</button>
 </div>
 
 {% endblock %}
+
+

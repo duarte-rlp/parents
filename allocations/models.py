@@ -98,11 +98,35 @@ class Constants(BaseConstants):
             ]
         }, index = [1, 2, 3, 4, 5, 6, 7, 8])
 
+    # Problema de 100%
+    problem_04 = pd.DataFrame({
+        'Col_A': [
+            20,
+            20,
+            20,
+            20,
+            -9,
+            -9,
+            -9,
+            -9
+            ],
+        'Col_B': [
+            19,
+            19,
+            19,
+            19,
+            -10,
+            -10,
+            -10,
+            -10
+            ]
+        }, index = [1, 2, 3, 4, 5, 6, 7, 8])
+
     # List of the problems
-    problems = [problem_01, problem_02, problem_03]
+    problems = [problem_01, problem_02, problem_03, problem_04]
     # Numbers of problems 0 -> n
-    n_problems = list(range(3))
-    name_problems = ['-50%', '0%', '+50%']
+    n_problems = list(range(len(problems)))
+    name_problems = ['-50%', '0%', '+50%', '+100%']
 
 
 class Subsession(BaseSubsession):
@@ -124,10 +148,13 @@ class Player(BasePlayer):
     order_problem_02_b = models.IntegerField()
     order_problem_03_a = models.IntegerField()
     order_problem_03_b = models.IntegerField()
+    order_problem_04_a = models.IntegerField()
+    order_problem_04_b = models.IntegerField()
     # Saber cual es la primera columna, la inversión A
     assetA_problem_01 = models.IntegerField()
     assetA_problem_02 = models.IntegerField()
     assetA_problem_03 = models.IntegerField()
+    assetA_problem_04 = models.IntegerField()
 
     # Datos sobre problemas ya reorganizados
     problem_01_type = models.StringField()
@@ -186,6 +213,25 @@ class Player(BasePlayer):
     problem_03_expect_return_b = models.IntegerField()
     problem_03_probability_b = models.IntegerField()
     problem_03_var = models.IntegerField()
+
+    problem_04_type = models.StringField()
+    problem_04_inv_a = models.StringField()
+    problem_04_order_a = models.StringField()
+    problem_04_order_b = models.StringField()
+    problem_04_btnSelected = models.StringField()
+    problem_04_btnTime = models.StringField()
+    problem_04_sliderSelected = models.StringField()
+    problem_04_sliderTime = models.StringField()
+    problem_04_sliderInv_a = models.IntegerField()
+    problem_04_invCntMistakers = models.StringField()
+    problem_04_invMistakes = models.StringField()
+    problem_04_invTime = models.StringField()
+    problem_04_invVal_a = models.IntegerField()
+    problem_04_invVal_b = models.IntegerField()
+    problem_04_return_b = models.IntegerField()
+    problem_04_expect_return_b = models.IntegerField()
+    problem_04_probability_b = models.IntegerField()
+    problem_04_var = models.IntegerField()
 
     name_app = models.StringField(default = 'allocations')
 

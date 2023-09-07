@@ -14,6 +14,8 @@ class instruc_01(Page):
         self.player.order_problem_02_b = random.randint(0, 1)
         self.player.order_problem_03_a = random.randint(0, 1)
         self.player.order_problem_03_b = random.randint(0, 1)
+        self.player.order_problem_04_a = random.randint(0, 1)
+        self.player.order_problem_04_b = random.randint(0, 1)
 
         p01_temp = Constants.problem_01.copy()
         p01_temp = p01_temp.sort_values(['Col_A', 'Col_B'], ascending = [self.player.order_problem_01_a, self.player.order_problem_01_b])
@@ -21,11 +23,14 @@ class instruc_01(Page):
         p02_temp = p02_temp.sort_values(['Col_A', 'Col_B'], ascending = [self.player.order_problem_02_a, self.player.order_problem_02_b])
         p03_temp = Constants.problem_03.copy()
         p03_temp = p03_temp.sort_values(['Col_A', 'Col_B'], ascending = [self.player.order_problem_03_a, self.player.order_problem_03_b])
+        p04_temp = Constants.problem_04.copy()
+        p04_temp = p04_temp.sort_values(['Col_A', 'Col_B'], ascending = [self.player.order_problem_04_a, self.player.order_problem_04_b])
 
         # 2. Asset A: 1 -> Col_A | 0 -> Col_B
         self.player.assetA_problem_01 = random.randint(0, 1)
         self.player.assetA_problem_02 = random.randint(0, 1)
         self.player.assetA_problem_03 = random.randint(0, 1)
+        self.player.assetA_problem_04 = random.randint(0, 1)
 
         if self.player.assetA_problem_01 == 1:
             p01 = pd.DataFrame({
@@ -60,9 +65,21 @@ class instruc_01(Page):
                 'AssetB': p03_temp['Col_A']
                 })
 
+        if self.player.assetA_problem_04 == 1:
+            p04 = pd.DataFrame({
+                'AssetA': p04_temp['Col_A'],
+                'AssetB': p04_temp['Col_B']
+                })
+        else: 
+            p04 = pd.DataFrame({
+                'AssetA': p04_temp['Col_B'],
+                'AssetB': p04_temp['Col_A']
+                })
+
         p01.index.name = 'Scenario'
         p02.index.name = 'Scenario'
         p03.index.name = 'Scenario'
+        p04.index.name = 'Scenario'
 
         n_order_problems = Constants.n_problems.copy()
         random.shuffle(n_order_problems)
@@ -70,7 +87,7 @@ class instruc_01(Page):
         self.player.participant.vars['order_problems'] = []
         self.player.participant.vars['name_order_problems'] = ""
         self.player.n_order_problems = str(n_order_problems)
-        problems_temp = [p01, p02, p03]
+        problems_temp = [p01, p02, p03, p04]
         problems = []
         for i in n_order_problems:
             self.player.participant.vars['order_problems'].append(Constants.problems[i])
@@ -96,9 +113,12 @@ class instruc_02(Page):
                 'order_problem_02_b': self.player.order_problem_02_b,
                 'order_problem_03_a': self.player.order_problem_03_a,
                 'order_problem_03_b': self.player.order_problem_03_b,
+                'order_problem_04_a': self.player.order_problem_04_a,
+                'order_problem_04_b': self.player.order_problem_04_b,
                 'assetA_problem_01': self.player.assetA_problem_01,
                 'assetA_problem_02': self.player.assetA_problem_02,
                 'assetA_problem_03': self.player.assetA_problem_03,
+                'assetA_problem_04': self.player.assetA_problem_04,
                 'problems': self.player.participant.vars['problems'],
                 'n_problems': list(range(len(self.player.participant.vars['problems'])))
                 }

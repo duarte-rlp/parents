@@ -1,2 +1,2 @@
-web: otree runprodserver
-worker: otree runprodserver
+web: otree prodserver1of2
+worker: otree prodserver1of2

@@ -15,6 +15,7 @@
         var intervalID;
         var interval_a = 0;
         var interval_b = 0;
+        var cnt_ans = 0;
 
     // Gráfica para inversión A e inversión B
         var graph = Highcharts.chart('graph01', {
@@ -37,8 +38,8 @@
             series: [{
                 animation: false,
                 data: [],
-                lineWidth: 1,
-                enableMouseTracking: true,
+                lineWidth: 0,
+                enableMouseTracking: false,
                 marker:{
                     enabled: true
                 },
@@ -48,8 +49,8 @@
             }, {
                 animation: false,
                 data: [],
-                lineWidth: 1,
-                enableMouseTracking: true,
+                lineWidth: 0,
+                enableMouseTracking: false,
                 marker:{
                     enabled: true
                 },
@@ -67,23 +68,19 @@
             btn.click();
         }
 
-        function validate_next() {
-            let check_02 = document.getElementById("check_radio_01").value;
-            let check_03 = document.getElementById("id_check_slider_probability_b").value;
-            let check_04 = document.getElementById("check_radio_02").value;
-            if((check_02 == 1) && (check_03 == 1) && (check_04 == 1)) {
-                let next_button = document.getElementsByClassName('otree-btn-next');
-                    next_button[0].style.cssText += 'display: block !important; margin: 0 auto;';
-            } else {
-                let in_1 = document.getElementById("slider_retorno_01").value;
-                if((in_1 == null) || (in_1 == "")){
-                    if((check_02 == 0) || (check_04 == 0)) {
-                        let btn = document.getElementById("id_next");
-                        btn.click();
-                    }
+        $(document).ready(function () {
+            $('.slider_porcentaje').change(
+                function (event) {
+                    var slider_id = event.target.id;
+                    var slider_value = event.target.value;
+                    var parent_slider = document.getElementById(slider_id).parentElement.parentElement.parentElement;
+                    var child = parent_slider.children[0].children[0].firstElementChild;
+                    child.innerHTML = slider_value + "%";
+                    var check_sli = parent_slider.children[1].lastElementChild.lastElementChild;
+                    check_sli.value = 1;
                 }
-            }
-        }
+            );
+        });
 
         window.onload = function(){
             // Agregar el enter para los inputs de números
@@ -93,7 +90,6 @@
                     in_elements[i].addEventListener("keypress", function(event) {
                         if (event.key === "Enter") {
                             event.preventDefault();
-                            validate_next();
                         }
                     }
                 )}
@@ -261,13 +257,47 @@
                 nextCard();
                 intervalID = setInterval(nextCard, 0);
             }
+            document.getElementById("btn_ab").style.backgroundColor = "#989898";
+            document.getElementById("btn_ab").disabled = true;
+        }
+
+        function validate_checker() {
+            if (Number(document.getElementById('check_box_01').value) + Number(document.getElementById('check_radio_01').value) + Number(document.getElementById('check_slider_01').value) + Number(document.getElementById('check_radio_02').value) + Number(document.getElementById('check_radio_03').value) == 5) {
+                document.getElementById('id_next').style.display = 'block';
+                document.getElementById('id_next').style.margin = '0 auto';
+            }
+        }
+
+        function checker_slider_1() {
+            document.getElementById('check_slider_01').value = 1;
+            validate_checker();
+        }
+
+        function checker_box_1() {
+            document.getElementById('check_box_01').value = 1;
+            validate_checker();
+        }
+
+        function checker_radio_1() {
+            document.getElementById('check_radio_01').value = 1;
+            validate_checker();
+        }
+
+        function checker_radio_2() {
+            document.getElementById('check_radio_02').value = 1;
+            validate_checker();
+        }
+
+        function checker_radio_3() {
+            document.getElementById('check_radio_03').value = 1;
+            validate_checker();
         }
 
     </script>
 {% endblock %}
 
 {% block title %}
-    Actividad 2: Preguntas Decisión de Inversión 3
+    Actividad 2: Preguntas Decisión de Inversión # {{ n_problem }}
 {% endblock %}
 
 {% block content %}
@@ -279,7 +309,7 @@
     <table style="text-align: center; width: 90%; margin: 0 auto;">
         <tr>
             {% if graphType == 1 %}
-            <td><input type="button" value="Mostrar Inversión A y B" onclick="visibleAB()"></td>
+            <td><input type="button" value="Mostrar Inversión A y B" onclick="visibleAB()" id="btn_ab"></td>
             {% else %}
             <td><input type="button" value="Mostrar Inversión A" onclick="visibleA()" id="btn_a"></td>
             <td><input type="button" value="Mostrar Inversión B" onclick="visibleB()" id="btn_b"></td>
@@ -287,157 +317,26 @@
         </tr>
     </table>
     <div id="graph01" class="div_graph"></div>
-    <div class="div_tabGraph">
-        <table class="tabGraph">
-            <tr>
-                <td class="cell_graphInv">Inversión A</td>
-                <td class="cell_graph" id="a_1">{{ data_a.0 }}</td>
-                <td class="cell_graph" id="a_2">{{ data_a.1 }}</td>
-                <td class="cell_graph" id="a_3">{{ data_a.2 }}</td>
-                <td class="cell_graph" id="a_4">{{ data_a.3 }}</td>
-                <td class="cell_graph" id="a_5">{{ data_a.4 }}</td>
-                <td class="cell_graph" id="a_6">{{ data_a.5 }}</td>
-                <td class="cell_graph" id="a_7">{{ data_a.6 }}</td>
-                <td class="cell_graph" id="a_8">{{ data_a.7 }}</td>
-            </tr>
-            <tr>
-                <td class="cell_graphInv">Inversión B</td>
-                <td class="cell_graph" id="b_1">{{ data_b.0 }}</td>
-                <td class="cell_graph" id="b_2">{{ data_b.1 }}</td>
-                <td class="cell_graph" id="b_3">{{ data_b.2 }}</td>
-                <td class="cell_graph" id="b_4">{{ data_b.3 }}</td>
-                <td class="cell_graph" id="b_5">{{ data_b.4 }}</td>
-                <td class="cell_graph" id="b_6">{{ data_b.5 }}</td>
-                <td class="cell_graph" id="b_7">{{ data_b.6 }}</td>
-                <td class="cell_graph" id="b_8">{{ data_b.7 }}</td>
-            </tr>
-        </table>
-    </div>
 </div>
 
 <br>
 
 <ol>
-    <li style="margin-top: 10px;"> Si la Inversión
-        {% if assetA == 'Col_A' %}
-        A
-        {% else %}
-        B
-        {% endif %}
-            tiene un porcentaje de rentabilidad del 20% ¿Cuál es el porcentaje de rentabilidad más probable para la Inversión
-        {% if assetA == 'Col_A' %}
-        B
-        {% else %}
-        A
-        {% endif %}?</li>
-        <div class="card_table" id="h-slider-div" style="text-align: center; margin-top: 10px;">
-            <table class="table_question">
-                <tr>
-                    <td style="width: 25%;"></td>
-                    <td class="cell_question" style="width: 25%;">
-                        <div id="text01">
-                            Retorno Inversión 
-        {% if assetA == 'Col_A' %}
-        B:
-        {% else %}
-        A:
-        {% endif %}
-                        </div>
-                    </td>
-                    <td class="cell_input" style="width: 25%;">
-                        <div class="answer_test">
-                            <input type="number" class="inNumber" name="problem_03_return_b" id="slider_retorno_03" min="-100" max="100" required>
-                        </div>
-                    </td>
-                    <td style="width: 25%;"></td>
-                </tr>
-            </table>
-        </div>
-        
-        <li style="margin-top: 10px;"> Si en la Inversión
-        {% if assetA == 'Col_A' %}
-        B
-        {% else %}
-        A
-        {% endif %}
-         la rentabilidad 
-        {% if assetA_order == 'Decreasing' %}
-            disminuye
-        {% else %}
-            aumenta
-        {% endif %}
-        al 
-        {% if assetA == 'Col_A' %}
-            {% if assetA_order == 'Decreasing' %}
-                -10%
-            {% else %}
-                19%
-            {% endif %}
-        {% else %}
-            {% if assetA_order == 'Decreasing' %}
-                -9%
-            {% else %}
-                20%
-            {% endif %}
-        {% endif %}
-        ¿Qué es más probable que suceda con el porcentaje de rentabilidad de la Inversión
-        {% if assetA == 'Col_A' %}
-        A
-        {% else %}
-        B
-        {% endif %}?
-        </li>
+    <li style="margin-top: 10px;">Si el rendimiento de la <i>Inversión A</i> disminuye, espera que la <i>Inversión B</i> aumente en <input type="number" class="inNumber" name="problem_03_return_b" id="slider_retorno_01" min="0" max="100" required style="display: inline; margin-left: 5px; margin-right: 5px;" oninput="checker_box_1()"> de 100 casos.</li>
+
+    <li style="margin-top: 10px;">Si el rendimiento de la <i>Inversión A</i> aumenta, es más probable que el rendimiento de la <i>Inversión B</i>:</li>
         <div class="card_table" id="h-slider-div" style="text-align: left; margin-top: 10px;">
-            <input type="radio" id="q2_o1" name="problem_03_expect_return_b" value="1" class="items01">
-            <label for="q2_o1" id="l_q2_o1" class="items01"> Disminuya a 
-        {% if assetA == 'Col_A' %}
-            -9%
-        {% else %}
-            -10%
-        {% endif %}</label>
+            <input type="radio" id="q2_o1" name="problem_03_expect_return_b" value="1" class="items01" oninput="checker_radio_1()">
+            <label for="q2_o1" id="l_q2_o1" class="items01"> Aumente</label>
             <br>
-            <input type="radio" id="q2_o2" name="problem_03_expect_return_b" value="2" class="items01">
-            <label for="q2_o2" id="l_q2_o2" class="items01">Se mantenga igual</label>
+            <input type="radio" id="q2_o2" name="problem_03_expect_return_b" value="2" class="items01" oninput="checker_radio_1()">
+            <label for="q2_o2" id="l_q2_o2" class="items01">Disminuya</label>
             <br>
-            <input type="radio" id="q2_o3" name="problem_03_expect_return_b" value="3" class="items01">
-            <label for="q2_o3" id="l_q2_o3" class="items01">Aumente a
-        {% if assetA == 'Col_A' %}
-            20%
-        {% else %}
-            19%
-        {% endif %}</label>
-            <input type="hidden" name="check_radio_01" value="0" id="check_radio_01"/>
+            <input type="radio" id="q2_o3" name="problem_03_expect_return_b" value="3" class="items01" oninput="checker_radio_1()">
+            <label for="q2_o3" id="l_q2_o3" class="items01">Se mantenga igual</label>
         </div>
         
-        <li style="margin-top: 10px;"> Supongamos que se elige otro ESCENARIO. Si el porcentaje de rentabilidad de la Inversión A es del 
-        {% if assetA == 'Col_A' %}
-            {% if assetA_order == 'Decreasing' %}
-                20%
-            {% else %}
-                -9%
-            {% endif %}
-        {% else %}
-            {% if assetA_order == 'Decreasing' %}
-                19%
-            {% else %}
-                -10%
-            {% endif %}
-        {% endif %}
-        ¿Cuál es la probabilidad de que la Inversión B tenga un porcentaje de rentabilidad del 
-        {% if assetA == 'Col_A' %}
-            {% if assetB_order == 'Decreasing' %}
-                19%
-            {% else %}
-                -10%
-            {% endif %}
-        {% else %}
-            {% if assetB_order == 'Decreasing' %}
-                20%
-            {% else %}
-                -9%
-            {% endif %}
-        {% endif %}
-        ?</li>
+        <li style="margin-top: 10px;">Suponga que se selecciona un ESCENARIO al azar, ¿Cuál es la probabilidad de que los rendimientos de la <i>Inversión B</i> estén disminuyendo?</li>
         <div class="card_table" id="h-slider-div" style="text-align: center; margin-top: 10px;">
             <table class="table_question" style="margin: 0 auto; width: 70% !important;">
                 <tr>
@@ -447,27 +346,102 @@
                 </tr>
                 <tr>
                     <td class="td_slider">
-                        <input type="range" name="problem_03_probability_b" value="" min="0" max="100" step="1" id="slider_porcentaje_02" class="slider_porcentaje" required>
-                        <input type="hidden" name="check_slider_probability_b" value="0" id="id_check_slider_probability_b"/>
+                        <input type="range" name="problem_03_probability_b" value="" min="0" max="100" step="1" id="slider_porcentaje_02" class="slider_porcentaje" required oninput="checker_slider_1()">
                     </td>
                 </tr>
             </table>
         </div>
         
-        <li style="margin-top: 10px;"> De acuerdo con las gráficas ¿En cuál inversión la dispersión de los porcentajes de rentabilidad es mayor?
-        </li>
-        <div class="card_table" id="h-slider-div" style="text-align: left; margin-top: 10px;">
-            <input type="radio" id="q4_o1" name="problem_03_var" value="1" class="items02">
-            <label for="q4_o1" id="l_q4_o1" class="items02"> Inversión A</label>
-            <br>
-            <input type="radio" id="q4_o2" name="problem_03_var" value="2" class="items02">
-            <label for="q4_o2" id="l_q4_o2" class="items02">Inversión B</label>
-            <br>
-            <input type="radio" id="q4_o3" name="problem_03_var" value="3" class="items02">
-            <label for="q4_o3" id="l_q4_o3" class="items02">Ambas son iguales</label>
-            <input type="hidden" name="check_radio_02" value="0" id="check_radio_02"/>
-        </div>
+        <li style="margin-top: 10px;">¿Qué tan riesgosa considera usted que es su asignación?</li>
+        <table style="width: 100%; text-align: center; margin-top: 5px;">
+            <tr>
+                <td style="width: 15%;">
+                    Libre de riesgos
+                </td>
+                <td>
+                    <input type="radio" id="risk_op0" name="problem_03_risk" value="0" class="items01" oninput="checker_radio_2()"><br>0
+                </td>
+                <td>
+                    <input type="radio" id="risk_op1" name="problem_03_risk" value="1" class="items01" oninput="checker_radio_2()"><br>1
+                </td>
+                <td>
+                    <input type="radio" id="risk_op2" name="problem_03_risk" value="2" class="items01" oninput="checker_radio_2()"><br>2
+                </td>
+                <td>
+                    <input type="radio" id="risk_op3" name="problem_03_risk" value="3" class="items01" oninput="checker_radio_2()"><br>3
+                </td>
+                <td>
+                    <input type="radio" id="risk_op4" name="problem_03_risk" value="4" class="items01" oninput="checker_radio_2()"><br>4
+                </td>
+                <td>
+                    <input type="radio" id="risk_op5" name="problem_03_risk" value="5" class="items01" oninput="checker_radio_2()"><br>5
+                </td>
+                <td>
+                    <input type="radio" id="risk_op6" name="problem_03_risk" value="6" class="items01" oninput="checker_radio_2()"><br>6
+                </td>
+                <td>
+                    <input type="radio" id="risk_op7" name="problem_03_risk" value="7" class="items01" oninput="checker_radio_2()"><br>7
+                </td>
+                <td>
+                    <input type="radio" id="risk_op8" name="problem_03_risk" value="8" class="items01" oninput="checker_radio_2()"><br>8
+                </td>
+                <td>
+                    <input type="radio" id="risk_op9" name="problem_03_risk" value="9" class="items01" oninput="checker_radio_2()"><br>9
+                </td>
+                <td>
+                    <input type="radio" id="risk_op10" name="problem_03_risk" value="10" class="items01" oninput="checker_radio_2()"><br>10
+                </td>
+                <td style="width: 15%;">
+                    Muy riesgosa
+                </td>
+            </tr>
+        </table>
         
+        <li style="margin-top: 10px;">¿Qué tan seguro está de su decisión de inversión?</li>
+        <table style="width: 100%; text-align: center; margin-top: 5px;">
+            <tr>
+                <td style="width: 15%;">
+                    Nada seguro
+                </td>
+                <td>
+                    <input type="radio" id="insurance_op0" name="problem_03_insurance" value="0" class="items01" oninput="checker_radio_3()"><br>0
+                </td>
+                <td>
+                    <input type="radio" id="insurance_op1" name="problem_03_insurance" value="1" class="items01" oninput="checker_radio_3()"><br>1
+                </td>
+                <td>
+                    <input type="radio" id="insurance_op2" name="problem_03_insurance" value="2" class="items01" oninput="checker_radio_3()"><br>2
+                </td>
+                <td>
+                    <input type="radio" id="insurance_op3" name="problem_03_insurance" value="3" class="items01" oninput="checker_radio_3()"><br>3
+                </td>
+                <td>
+                    <input type="radio" id="insurance_op4" name="problem_03_insurance" value="4" class="items01" oninput="checker_radio_3()"><br>4
+                </td>
+                <td>
+                    <input type="radio" id="insurance_op5" name="problem_03_insurance" value="5" class="items01" oninput="checker_radio_3()"><br>5
+                </td>
+                <td>
+                    <input type="radio" id="insurance_op6" name="problem_03_insurance" value="6" class="items01" oninput="checker_radio_3()"><br>6
+                </td>
+                <td>
+                    <input type="radio" id="insurance_op7" name="problem_03_insurance" value="7" class="items01" oninput="checker_radio_3()"><br>7
+                </td>
+                <td>
+                    <input type="radio" id="insurance_op8" name="problem_03_insurance" value="8" class="items01" oninput="checker_radio_3()"><br>8
+                </td>
+                <td>
+                    <input type="radio" id="insurance_op9" name="problem_03_insurance" value="9" class="items01" oninput="checker_radio_3()"><br>9
+                </td>
+                <td>
+                    <input type="radio" id="insurance_op10" name="problem_03_insurance" value="10" class="items01" oninput="checker_radio_3()"><br>10
+                </td>
+                <td style="width: 15%;">
+                    Muy seguro
+                </td>
+            </tr>
+        </table>
+
         </ol>
         
         <br>
@@ -476,4 +450,11 @@
             <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next">Enviar</button>
         </div>
         
+<input type="hidden" name="check_box_01" value="0" id="check_box_01">
+<input type="hidden" name="check_radio_01" value="0" id="check_radio_01">
+<input type="hidden" name="check_slider_01" value="0" id="check_slider_01">
+<input type="hidden" name="check_radio_02" value="0" id="check_radio_02">
+<input type="hidden" name="check_radio_03" value="0" id="check_radio_03">
+
         {% endblock %}
+

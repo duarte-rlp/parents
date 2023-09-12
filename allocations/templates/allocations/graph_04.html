@@ -184,7 +184,7 @@
                     cnt_selected += 1;
                     let time = Date.now() - start;
                     let add = cnt_selected.toString() + ": {\'value_selected\': " + val_slider + ", \'time\': " + time + "}, ";
-                    document.getElementById("problem_01_sliderSelected").value += add;
+                    document.getElementById("problem_04_sliderSelected").value += add;
 
                     var parent_slider = document.getElementById(event.target.id).parentElement.parentElement;
                     var childs = parent_slider.children;
@@ -242,8 +242,8 @@
         function nextView() {
             switch(step_view) {
                 case 1:
-                    document.getElementById("problem_01_btnSelected").value += "}";
-                    document.getElementById("problem_01_btnTime").value = Date.now() - start;
+                    document.getElementById("problem_04_btnSelected").value += "}";
+                    document.getElementById("problem_04_btnTime").value = Date.now() - start;
                     document.getElementById('step_1').style.display = 'none';
                     document.getElementById('step_2').style.display = 'block';
                     document.getElementById('btnNext').style.display = 'none';
@@ -254,8 +254,8 @@
                     cnt_selected = 0;
                 break;
                 case 2:
-                    document.getElementById("problem_01_sliderSelected").value += "}";
-                    document.getElementById("problem_01_sliderTime").value = Date.now() - start;
+                    document.getElementById("problem_04_sliderSelected").value += "}";
+                    document.getElementById("problem_04_sliderTime").value = Date.now() - start;
                     document.getElementById('step_2').style.display = 'none';
                     document.getElementById('step_3').style.display = 'block';
                     document.getElementById('btnNext').style.display = 'none';
@@ -277,8 +277,8 @@
                     confirm();
                 break;
                 case 4:
-                    document.getElementById('problem_01_invTime').value = Date.now() - start;
-                    document.getElementById('problem_01_invCntMistakers').value = cnt_selected;
+                    document.getElementById('problem_04_invTime').value = Date.now() - start;
+                    document.getElementById('problem_04_invCntMistakers').value = cnt_selected;
                     let btn = document.getElementById("id_next");
                     btn.removeAttribute("disabled");
                     btn.click();
@@ -293,8 +293,8 @@
             if(document.getElementById("div_error").style.display == "block") {
                 document.getElementById("div_error").style.display = "none";
             }
-            document.getElementById("problem_01_invVal_a").style.boxShadow = "none";
-            document.getElementById("problem_01_invVal_b").style.boxShadow = "none";
+            document.getElementById("problem_04_invVal_a").style.boxShadow = "none";
+            document.getElementById("problem_04_invVal_b").style.boxShadow = "none";
             if (slider_act == 0) {
                 document.getElementById('btnNext').style.display = 'block';
                 document.getElementById('btnNext').style.margin = '0 auto';
@@ -304,8 +304,8 @@
                 let cell_a = document.getElementById("a_"+(i+1));
                 let cell_b = document.getElementById("b_"+(i+1));
                 let cell_t = document.getElementById("t_"+(i+1));
-                let mon_a = (document.getElementById("problem_01_invVal_a").value * data_a[i]) / 100;
-                let mon_b = (document.getElementById("problem_01_invVal_b").value * data_b[i]) / 100;
+                let mon_a = (document.getElementById("problem_04_invVal_a").value * data_a[i]) / 100;
+                let mon_b = (document.getElementById("problem_04_invVal_b").value * data_b[i]) / 100;
                 let mon_t = mon_a + mon_b;
                 if(mon_a < 0) {
                     mon_a = "- $" + (mon_a * -1).toLocaleString('es-CO');
@@ -376,7 +376,7 @@
                 }
                 let time = Date.now() - start;
                 let add = cnt_selected.toString() + ": {\'btn\': 'A', \'time\': " + time + "}, ";
-                document.getElementById("problem_01_btnSelected").value += add;
+                document.getElementById("problem_04_btnSelected").value += add;
             }
             document.getElementById("btn_a").style.backgroundColor = "#989898";
             document.getElementById("btn_a").disabled = true;
@@ -396,7 +396,7 @@
                 }
                 let time = Date.now() - start;
                 let add = cnt_selected.toString() + ": {\'btn\': 'B', \'time\': " + time + "}, ";
-                document.getElementById("problem_01_btnSelected").value += add;
+                document.getElementById("problem_04_btnSelected").value += add;
             }
             document.getElementById("btn_b").style.backgroundColor = "#989898";
             document.getElementById("btn_b").disabled = true;
@@ -411,7 +411,7 @@
             cnt_selected += 1;
             let time = Date.now() - start;
             let add = cnt_selected.toString() + ": {\'btn\': 'AB', \'time\': " + time + "}, ";
-            document.getElementById("problem_01_btnSelected").value += add;
+            document.getElementById("problem_04_btnSelected").value += add;
             if(interval_a == 0) {
                 nextCard();
                 intervalID = setInterval(nextCard, 0);
@@ -425,14 +425,14 @@
             let overlay = document.querySelector(".overlay");
             modal.classList.remove("hidden");
             overlay.classList.remove("hidden");
-            document.getElementById("inv_a").innerHTML = "<toMoney>" + document.getElementById("problem_01_invVal_a").value + "</toMoney>";
-            document.getElementById("inv_b").innerHTML = "<toMoney>" + document.getElementById("problem_01_invVal_b").value + "</toMoney>";
+            document.getElementById("inv_a").innerHTML = "<toMoney>" + document.getElementById("problem_04_invVal_a").value + "</toMoney>";
+            document.getElementById("inv_b").innerHTML = "<toMoney>" + document.getElementById("problem_04_invVal_b").value + "</toMoney>";
             conv_money();
-            if(document.getElementById('problem_01_invVal_a').value.length == 0) {
-                document.getElementById('problem_01_invVal_a').value = 0;
+            if(document.getElementById('problem_04_invVal_a').value.length == 0) {
+                document.getElementById('problem_04_invVal_a').value = 0;
             }
-            if(document.getElementById('problem_01_invVal_b').value.length == 0) {
-                document.getElementById('problem_01_invVal_b').value = 0;
+            if(document.getElementById('problem_04_invVal_b').value.length == 0) {
+                document.getElementById('problem_04_invVal_b').value = 0;
             }
         }
 
@@ -444,8 +444,8 @@
         }
 
         function validateInv() {
-            let inv_a = Number(document.getElementById("problem_01_invVal_a").value);
-            let inv_b = Number(document.getElementById("problem_01_invVal_b").value);
+            let inv_a = Number(document.getElementById("problem_04_invVal_a").value);
+            let inv_b = Number(document.getElementById("problem_04_invVal_b").value);
             if((inv_a + inv_b) == 100000) {
                 step_view += 1;
                 nextView();
@@ -453,11 +453,11 @@
                 cnt_selected += 1;
                 let time = Date.now() - start;
                 let add = cnt_selected.toString() + ": {\'inversion_a\': " + inv_a.toString() + ", \'inversion_b\': " + inv_b.toString() + ", \'time\': " + time + "}, ";
-                document.getElementById("problem_01_invMistakes").value += add;
+                document.getElementById("problem_04_invMistakes").value += add;
                 closeModal();
                 document.getElementById("div_error").style.display = "block";
-                document.getElementById("problem_01_invVal_a").style.boxShadow = "0px 0px 3px 1px rgba(255, 0, 0, 0.65)";
-                document.getElementById("problem_01_invVal_b").style.boxShadow = "0px 0px 3px 1px rgba(255, 0, 0, 0.65)";
+                document.getElementById("problem_04_invVal_a").style.boxShadow = "0px 0px 3px 1px rgba(255, 0, 0, 0.65)";
+                document.getElementById("problem_04_invVal_b").style.boxShadow = "0px 0px 3px 1px rgba(255, 0, 0, 0.65)";
             }
         }
 
@@ -561,7 +561,7 @@ Luego haga clic en <i>“Siguiente”</i> para confirmar su decisión y continua
         <tr>
             <td class="text_slider"> - </td>
             <td class="td_slider" rowspan="2">
-                <input type="range" name="problem_01_sliderInv_a" value="" min="0" max="{{ max_inv }}" step="1000" id="sliderDinero" class="slider_dinero" required>
+                <input type="range" name="problem_04_sliderInv_a" value="" min="0" max="{{ max_inv }}" step="1000" id="sliderDinero" class="slider_dinero" required>
                 <input type="hidden" name="check_slider_example" value="" id="id_check_slider_example"/>
             </td>
             <td class="text_slider"> - </td>
@@ -580,9 +580,9 @@ Luego haga clic en <i>“Siguiente”</i> para confirmar su decisión y continua
 <div class="card_table" id="money-boxes" style="text-align: center; display: none;">
     <table class="table_question">
         <tr>
-            <td class="text_slider"><input type="number" name="problem_01_invVal_a" id="problem_01_invVal_a" class="inNumber_a" oninput="values_table()"></td>
+            <td class="text_slider"><input type="number" name="problem_04_invVal_a" id="problem_04_invVal_a" class="inNumber_a" oninput="values_table()"></td>
             <td class="td_slider" rowspan="2">  </td>
-            <td class="text_slider"><input type="number" name="problem_01_invVal_b" id="problem_01_invVal_b" class="inNumber_a" oninput="values_table()"></td>
+            <td class="text_slider"><input type="number" name="problem_04_invVal_b" id="problem_04_invVal_b" class="inNumber_a" oninput="values_table()"></td>
         </tr>
         <tr>
             <td style="text-align: center;">
@@ -599,13 +599,13 @@ Luego haga clic en <i>“Siguiente”</i> para confirmar su decisión y continua
     Recuerda que la suma de las inversiones debe ser $100.000.
 </div>
 
-<input type="hidden" name="problem_01_btnSelected" value="{ " id="problem_01_btnSelected">
-<input type="hidden" name="problem_01_btnTime" value="" id="problem_01_btnTime">
-<input type="hidden" name="problem_01_sliderSelected" value="{ " id="problem_01_sliderSelected">
-<input type="hidden" name="problem_01_sliderTime" value="" id="problem_01_sliderTime">
-<input type="hidden" name="problem_01_invMistakes" value="{ " id="problem_01_invMistakes">
-<input type="hidden" name="problem_01_invTime" value="" id="problem_01_invTime">
-<input type="hidden" name="problem_01_invCntMistakers" value="" id="problem_01_invCntMistakers">
+<input type="hidden" name="problem_04_btnSelected" value="{ " id="problem_04_btnSelected">
+<input type="hidden" name="problem_04_btnTime" value="" id="problem_04_btnTime">
+<input type="hidden" name="problem_04_sliderSelected" value="{ " id="problem_04_sliderSelected">
+<input type="hidden" name="problem_04_sliderTime" value="" id="problem_04_sliderTime">
+<input type="hidden" name="problem_04_invMistakes" value="{ " id="problem_04_invMistakes">
+<input type="hidden" name="problem_04_invTime" value="" id="problem_04_invTime">
+<input type="hidden" name="problem_04_invCntMistakers" value="" id="problem_04_invCntMistakers">
 
 <br>
 

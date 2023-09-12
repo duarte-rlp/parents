@@ -257,6 +257,8 @@
                 nextCard();
                 intervalID = setInterval(nextCard, 0);
             }
+            document.getElementById("btn_ab").style.backgroundColor = "#989898";
+            document.getElementById("btn_ab").disabled = true;
         }
 
         function validate_checker() {
@@ -307,7 +309,7 @@
     <table style="text-align: center; width: 90%; margin: 0 auto;">
         <tr>
             {% if graphType == 1 %}
-            <td><input type="button" value="Mostrar Inversión A y B" onclick="visibleAB()"></td>
+            <td><input type="button" value="Mostrar Inversión A y B" onclick="visibleAB()" id="btn_ab"></td>
             {% else %}
             <td><input type="button" value="Mostrar Inversión A" onclick="visibleA()" id="btn_a"></td>
             <td><input type="button" value="Mostrar Inversión B" onclick="visibleB()" id="btn_b"></td>

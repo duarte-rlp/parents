@@ -315,6 +315,78 @@ class questions_problem_01(Page):
                 'min_y': min(list(self.player.participant.vars['problems'][0]['AssetA']) + list(self.player.participant.vars['problems'][0]['AssetB']))
                 }
 
+class graph_02(Page):
+    form_model = "player"
+    form_fields = ["problem_02_btnSelected", "problem_02_btnTime", "problem_02_sliderSelected", "problem_02_sliderTime", "problem_02_sliderInv_a", "problem_02_invCntMistakers", "problem_02_invMistakes", "problem_02_invTime", "problem_02_invVal_a", "problem_02_invVal_b"]
+    def vars_for_template(self):
+        orden = self.player.n_order_problems.strip('][').split(', ')
+        if orden[1] == '0':
+            self.player.problem_02_type = "-50%"
+            if self.player.assetA_problem_01 == 0:
+                self.player.problem_02_inv_a = 'Col_B'
+            else:
+                self.player.problem_02_inv_a = 'Col_A'
+            if self.player.order_problem_01_a == 0:
+                self.player.problem_02_order_a = 'Decreasing'
+            else:
+                self.player.problem_02_order_a = 'Increasing'
+            if self.player.order_problem_01_b == 0:
+                self.player.problem_02_order_b = 'Decreasing'
+            else:
+                self.player.problem_02_order_b = 'Increasing'
+        elif orden[1] == '1': 
+            self.player.problem_02_type = "0%"
+            if self.player.assetA_problem_02 == 0:
+                self.player.problem_02_inv_a = 'Col_B'
+            else:
+                self.player.problem_02_inv_a = 'Col_A'
+            if self.player.order_problem_02_a == 0:
+                self.player.problem_02_order_a = 'Decreasing'
+            else:
+                self.player.problem_02_order_a = 'Increasing'
+            if self.player.order_problem_02_b == 0:
+                self.player.problem_02_order_b = 'Decreasing'
+            else:
+                self.player.problem_02_order_b = 'Increasing'
+        elif orden[1] == '2': 
+            self.player.problem_02_type = "+50%"
+            if self.player.assetA_problem_03 == 0:
+                self.player.problem_02_inv_a = 'Col_B'
+            else:
+                self.player.problem_02_inv_a = 'Col_A'
+            if self.player.order_problem_03_a == 0:
+                self.player.problem_02_order_a = 'Decreasing'
+            else:
+                self.player.problem_02_order_a = 'Increasing'
+            if self.player.order_problem_03_b == 0:
+                self.player.problem_02_order_b = 'Decreasing'
+            else:
+                self.player.problem_02_order_b = 'Increasing'
+        elif orden[1] == '3':
+            self.player.problem_02_type = "+100%"
+            if self.player.assetA_problem_04 == 0:
+                self.player.problem_02_inv_a = 'Col_B'
+            else:
+                self.player.problem_02_inv_a = 'Col_A'
+            if self.player.order_problem_03_a == 0:
+                self.player.problem_02_order_a = 'Decreasing'
+            else:
+                self.player.problem_02_order_a = 'Increasing'
+            if self.player.order_problem_03_b == 0:
+                self.player.problem_02_order_b = 'Decreasing'
+            else:
+                self.player.problem_02_order_b = 'Increasing'
+        return {
+                'n_problem': 2,
+                'data_a': list(self.player.participant.vars['problems'][1]['AssetA']),
+                'data_b': list(self.player.participant.vars['problems'][1]['AssetB']),
+                'labels': Constants.inv_labels,
+                'graphType': self.player.participant.vars['graphType'],
+                'max_inv': Constants.max_inv,
+                'max_y': max(list(self.player.participant.vars['problems'][1]['AssetA']) + list(self.player.participant.vars['problems'][1]['AssetB'])),
+                'min_y': min(list(self.player.participant.vars['problems'][1]['AssetA']) + list(self.player.participant.vars['problems'][1]['AssetB']))
+                }
+
 class graph_02_a(Page):
     form_model = "player"
     form_fields = ["problem_02_btnSelected", "problem_02_btnTime"]
@@ -362,7 +434,7 @@ class graph_02_c(Page):
 
 class questions_problem_02(Page):
     form_model = "player"
-    form_fields = ["problem_02_return_b", "problem_02_expect_return_b", "problem_02_probability_b", "problem_02_var"]
+    form_fields = ["problem_02_return_b", "problem_02_expect_return_b", "problem_02_probability_b", 'problem_02_risk', 'problem_02_insurance']
     def vars_for_template(self):
         orden = self.player.n_order_problems.strip('][').split(', ')
         if orden[1] == '0':
@@ -435,6 +507,78 @@ class questions_problem_02(Page):
                 'min_y': min(list(self.player.participant.vars['problems'][1]['AssetA']) + list(self.player.participant.vars['problems'][1]['AssetB']))
                 }
 
+class graph_03(Page):
+    form_model = "player"
+    form_fields = ["problem_03_btnSelected", "problem_03_btnTime", "problem_03_sliderSelected", "problem_03_sliderTime", "problem_03_sliderInv_a", "problem_03_invCntMistakers", "problem_03_invMistakes", "problem_03_invTime", "problem_03_invVal_a", "problem_03_invVal_b"]
+    def vars_for_template(self):
+        orden = self.player.n_order_problems.strip('][').split(', ')
+        if orden[2] == '0':
+            self.player.problem_03_type = "-50%"
+            if self.player.assetA_problem_01 == 0:
+                self.player.problem_03_inv_a = 'Col_B'
+            else:
+                self.player.problem_03_inv_a = 'Col_A'
+            if self.player.order_problem_01_a == 0:
+                self.player.problem_03_order_a = 'Decreasing'
+            else:
+                self.player.problem_03_order_a = 'Increasing'
+            if self.player.order_problem_01_b == 0:
+                self.player.problem_03_order_b = 'Decreasing'
+            else:
+                self.player.problem_03_order_b = 'Increasing'
+        elif orden[2] == '1': 
+            self.player.problem_03_type = "0%"
+            if self.player.assetA_problem_02 == 0:
+                self.player.problem_03_inv_a = 'Col_B'
+            else:
+                self.player.problem_03_inv_a = 'Col_A'
+            if self.player.order_problem_02_a == 0:
+                self.player.problem_03_order_a = 'Decreasing'
+            else:
+                self.player.problem_03_order_a = 'Increasing'
+            if self.player.order_problem_02_b == 0:
+                self.player.problem_03_order_b = 'Decreasing'
+            else:
+                self.player.problem_03_order_b = 'Increasing'
+        elif orden[2] == '2': 
+            self.player.problem_03_type = "+50%"
+            if self.player.assetA_problem_03 == 0:
+                self.player.problem_03_inv_a = 'Col_B'
+            else:
+                self.player.problem_03_inv_a = 'Col_A'
+            if self.player.order_problem_03_a == 0:
+                self.player.problem_03_order_a = 'Decreasing'
+            else:
+                self.player.problem_03_order_a = 'Increasing'
+            if self.player.order_problem_03_b == 0:
+                self.player.problem_03_order_b = 'Decreasing'
+            else:
+                self.player.problem_03_order_b = 'Increasing'
+        elif orden[2] == '3':
+            self.player.problem_03_type = "+100%"
+            if self.player.assetA_problem_04 == 0:
+                self.player.problem_03_inv_a = 'Col_B'
+            else:
+                self.player.problem_03_inv_a = 'Col_A'
+            if self.player.order_problem_03_a == 0:
+                self.player.problem_03_order_a = 'Decreasing'
+            else:
+                self.player.problem_03_order_a = 'Increasing'
+            if self.player.order_problem_03_b == 0:
+                self.player.problem_03_order_b = 'Decreasing'
+            else:
+                self.player.problem_03_order_b = 'Increasing'
+        return {
+                'n_problem': 3,
+                'data_a': list(self.player.participant.vars['problems'][2]['AssetA']),
+                'data_b': list(self.player.participant.vars['problems'][2]['AssetB']),
+                'labels': Constants.inv_labels,
+                'graphType': self.player.participant.vars['graphType'],
+                'max_inv': Constants.max_inv,
+                'max_y': max(list(self.player.participant.vars['problems'][2]['AssetA']) + list(self.player.participant.vars['problems'][2]['AssetB'])),
+                'min_y': min(list(self.player.participant.vars['problems'][2]['AssetA']) + list(self.player.participant.vars['problems'][2]['AssetB']))
+                }
+
 class graph_03_a(Page):
     form_model = "player"
     form_fields = ["problem_03_btnSelected", "problem_03_btnTime"]
@@ -482,7 +626,7 @@ class graph_03_c(Page):
 
 class questions_problem_03(Page):
     form_model = "player"
-    form_fields = ["problem_03_return_b", "problem_03_expect_return_b", "problem_03_probability_b", "problem_03_var"]
+    form_fields = ["problem_03_return_b", "problem_03_expect_return_b", "problem_03_probability_b", 'problem_03_risk', 'problem_03_insurance']
     def vars_for_template(self):
         orden = self.player.n_order_problems.strip('][').split(', ')
         if orden[2] == '0':
@@ -553,6 +697,78 @@ class questions_problem_03(Page):
                 'max_inv': Constants.max_inv,
                 'max_y': max(list(self.player.participant.vars['problems'][2]['AssetA']) + list(self.player.participant.vars['problems'][2]['AssetB'])),
                 'min_y': min(list(self.player.participant.vars['problems'][2]['AssetA']) + list(self.player.participant.vars['problems'][2]['AssetB']))
+                }
+
+class graph_04(Page):
+    form_model = "player"
+    form_fields = ["problem_04_btnSelected", "problem_04_btnTime", "problem_04_sliderSelected", "problem_04_sliderTime", "problem_04_sliderInv_a", "problem_04_invCntMistakers", "problem_04_invMistakes", "problem_04_invTime", "problem_04_invVal_a", "problem_04_invVal_b"]
+    def vars_for_template(self):
+        orden = self.player.n_order_problems.strip('][').split(', ')
+        if orden[3] == '0':
+            self.player.problem_04_type = "-50%"
+            if self.player.assetA_problem_01 == 0:
+                self.player.problem_04_inv_a = 'Col_B'
+            else:
+                self.player.problem_04_inv_a = 'Col_A'
+            if self.player.order_problem_01_a == 0:
+                self.player.problem_04_order_a = 'Decreasing'
+            else:
+                self.player.problem_04_order_a = 'Increasing'
+            if self.player.order_problem_01_b == 0:
+                self.player.problem_04_order_b = 'Decreasing'
+            else:
+                self.player.problem_04_order_b = 'Increasing'
+        elif orden[3] == '1': 
+            self.player.problem_04_type = "0%"
+            if self.player.assetA_problem_02 == 0:
+                self.player.problem_04_inv_a = 'Col_B'
+            else:
+                self.player.problem_04_inv_a = 'Col_A'
+            if self.player.order_problem_02_a == 0:
+                self.player.problem_04_order_a = 'Decreasing'
+            else:
+                self.player.problem_04_order_a = 'Increasing'
+            if self.player.order_problem_02_b == 0:
+                self.player.problem_04_order_b = 'Decreasing'
+            else:
+                self.player.problem_04_order_b = 'Increasing'
+        elif orden[3] == '2': 
+            self.player.problem_04_type = "+50%"
+            if self.player.assetA_problem_03 == 0:
+                self.player.problem_04_inv_a = 'Col_B'
+            else:
+                self.player.problem_04_inv_a = 'Col_A'
+            if self.player.order_problem_03_a == 0:
+                self.player.problem_04_order_a = 'Decreasing'
+            else:
+                self.player.problem_04_order_a = 'Increasing'
+            if self.player.order_problem_03_b == 0:
+                self.player.problem_04_order_b = 'Decreasing'
+            else:
+                self.player.problem_04_order_b = 'Increasing'
+        elif orden[3] == '3':
+            self.player.problem_04_type = "+100%"
+            if self.player.assetA_problem_04 == 0:
+                self.player.problem_04_inv_a = 'Col_B'
+            else:
+                self.player.problem_04_inv_a = 'Col_A'
+            if self.player.order_problem_03_a == 0:
+                self.player.problem_04_order_a = 'Decreasing'
+            else:
+                self.player.problem_04_order_a = 'Increasing'
+            if self.player.order_problem_03_b == 0:
+                self.player.problem_04_order_b = 'Decreasing'
+            else:
+                self.player.problem_04_order_b = 'Increasing'
+        return {
+                'n_problem': 4,
+                'data_a': list(self.player.participant.vars['problems'][3]['AssetA']),
+                'data_b': list(self.player.participant.vars['problems'][3]['AssetB']),
+                'labels': Constants.inv_labels,
+                'graphType': self.player.participant.vars['graphType'],
+                'max_inv': Constants.max_inv,
+                'max_y': max(list(self.player.participant.vars['problems'][3]['AssetA']) + list(self.player.participant.vars['problems'][3]['AssetB'])),
+                'min_y': min(list(self.player.participant.vars['problems'][3]['AssetA']) + list(self.player.participant.vars['problems'][3]['AssetB']))
                 }
 
 
@@ -679,22 +895,25 @@ class questions_problem_04(Page):
 
 page_sequence = [
                 instruc_01, 
-                #instruc_02, # retro de cómo quedan los datos ordenados
+                instruc_02, # retro de cómo quedan los datos ordenados
                 graph_01,
                 #graph_01_a, # gráfica que varía el $$ en la tabla
                 #graph_01_b,
                 #graph_01_c,
                 questions_problem_01,
-                graph_02_a,
-                graph_02_b,
-                graph_02_c,
+                graph_02,
+                #graph_02_a,
+                #graph_02_b,
+                #graph_02_c,
                 questions_problem_02,
-                graph_03_a,
-                graph_03_b,
-                graph_03_c,
+                graph_03,
+                #graph_03_a,
+                #graph_03_b,
+                #graph_03_c,
                 questions_problem_03,
-                graph_04_a,
-                graph_04_b,
-                graph_04_c,
+                graph_04,
+                #graph_04_a,
+                #graph_04_b,
+                #graph_04_c,
                 questions_problem_04,
                 ]

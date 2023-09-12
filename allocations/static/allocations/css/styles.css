@@ -186,52 +186,6 @@ input:focus {
     margin-top: -7px !important;
 }
 
-input[type="radio"][disabled]{
-    border: 2px solid #757575;
-    border-radius: 7px;
-    box-shadow: 0px 0px 2px 0px #757575;
-}
-
-input[type="radio"]:checked::before{
-    transform: scale(1);
-}
-
-input[type="radio"]:checked{
-    border: 2px solid #007cff;
-    border-radius: 7px;
-    box-shadow: 0px 0px 2px 0px #007cff;
-}
-
-input[type="radio"]::before{
-    content: "";
-    display: block;
-    height: 6px;
-    width: 6px;
-    border-radius: 3px;
-    z-index: 1;
-    top: 2px;
-    left: 2px;
-    background-color: #007cff;
-    transition: 100ms transform ease-in-out;
-    transform: scale(0);
-    position: absolute;
-}
-
-input[type="radio"]{
-    -webkit-appearance: none;
-    appearance: none;
-    border: 2px solid #757575;
-    border-radius: 7px;
-    box-shadow: 0px 0px 2px 0px #757575;
-    background-color: #ffffff;
-    height: 14px;
-    width: 14px;
-    place-content: center;
-    position: relative;
-    margin: auto 0.5rem;
-    vertical-align: middle;
-}
-
 .modal {
     display: flex;
     flex-direction: column;

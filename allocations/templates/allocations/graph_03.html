@@ -14,8 +14,15 @@
         var data_b = {{ data_b }};
         var start;
         var cnt_selected = 0;
+        var intervalID;
+        var interval_a = 0;
+        var interval_b = 0;
+        var step_view = 1;
+        var slider_act = 0;
 
-{% if graphType == 1 %}
+        window.onload  = function() {
+            start = Date.now();
+        }
 
         // Gráfica para inversión A e inversión B
         var graph = Highcharts.chart('graph01', {
@@ -36,151 +43,381 @@
                 max: {{ max_y }} + 1
             },
             series: [{
-                animation: true,
+                animation: false,
                 data: [],
-                lineWidth: 1,
-                enableMouseTracking: true,
+                lineWidth: 0,
+                enableMouseTracking: false,
                 marker:{
                     enabled: true
                 },
                 color: 'blue',
                 name: 'Inversión A',
-                dashStyle: 'Dash'
+                dashStyle: 'Dash',
             }, {
-                animation: true,
+                animation: false,
                 data: [],
-                lineWidth: 1,
-                enableMouseTracking: true,
+                lineWidth: 0,
+                enableMouseTracking: false,
                 marker:{
                     enabled: true
                 },
                 color: 'green',
                 name: 'Inversión B',
-                dashStyle: 'Dash'
+                dashStyle: 'Dash',
             }],
             legend: {
                 enabled: true
             }
         });
 
-{% else %}
-
-        // Gráfica inversión A
-        var graph_a = Highcharts.chart('graph01', {
-            title: {
-                text: ''
-            },
-            xAxis: {
-                min: 0,
-                max: 7,
-                categories: {{ labels }},
-                align: 'center'
-            },
-            yAxis: {
-                title: {
-                    text: 'Retorno por cada $100'
-                },
-                min: {{ min_y }} - 1,
-                max: {{ max_y }} + 1
-            },
-            series: [{
-                animation: true,
-                data: [],
-                lineWidth: 1,
-                enableMouseTracking: true,
-                marker:{
-                    enabled: true
-                },
-                color: 'blue',
-                name: 'Inversión A',
-                dashStyle: 'Dash'
-            }],
-            legend: {
-                enabled: false
-            }
-        });
-
-        // Gráfica inversión B
-        var graph_b = Highcharts.chart('graph02', {
-            title: {
-                text: ''
-            },
-            xAxis: {
-                min: 0,
-                max: 7,
-                categories: {{ labels }},
-                align: 'center'
-            },
-            yAxis: {
-                title: {
-                    text: 'Retorno por cada $100'
-                },
-                min: {{ min_y }} - 1,
-                max: {{ max_y }} + 1
-            },
-            series: [{
-                animation: true,
-                data: [],
-                lineWidth: 1,
-                enableMouseTracking: true,
-                marker:{
-                    enabled: true
-                },
-                color: 'green',
-                name: 'Inversión B',
-                dashStyle: 'Dash'
-            }],
-            legend: {
-                enabled: false
-            }
-        });
-
-{% endif %}
-
         function add_point_graph(n_data) {
-            var cell_a = document.getElementById("a_"+(n_data+1));
-            var cell_b = document.getElementById("b_"+(n_data+1));
-            cell_a.innerHTML = data_a[n_data];
-            cell_b.innerHTML = data_b[n_data];
-
-            {% if graphType == 1 %}
+            let y_pos_a;
+            let y_pos_b;
+            if(((data_a[n_data] > 0) && (data_b[n_data] > 0)) || ((data_a[n_data] < 0) && (data_b[n_data] < 0))){
+                if(data_a[n_data] > data_b[n_data]){
+                    y_pos_a = -5;
+                    y_pos_b = 25;
+                } else {
+                    y_pos_a = 25;
+                    y_pos_b = -5;
+                }
+            } else {
+                if(data_a[n_data] > 0) {
+                    y_pos_a = -5;
+                } else {
+                    y_pos_a = 25;
+                }
+                if(data_b[n_data] > 0) {
+                    y_pos_b = -5;
+                } else {
+                    y_pos_b = 25;
+                }
+            }
             graph.series[0].addPoint({
-            x: n_data,
-            y: data_a[n_data]
+                x: n_data,
+                y: data_a[n_data],
+                dataLabels: {
+                    enabled: true,
+                    format: data_a[n_data].toLocaleString('es-CO'),
+                    y: y_pos_a,
+                    style: {
+                        color: 'blue',
+                        fontSize: '0.8rem',
+                        fontWeight: 'normal',
+                        textOutline: 'none'
+                    }
+
+                }
             });
             graph.series[1].addPoint({
-            x: n_data,
-            y: data_b[n_data]
+                x: n_data,
+                y: data_b[n_data],
+                dataLabels: {
+                    enabled: true,
+                    format: data_b[n_data].toLocaleString('es-CO'),
+                    y: y_pos_b,
+                    style: {
+                        color: 'green',
+                        fontSize: '0.8rem',
+                        fontWeight: 'normal',
+                        textOutline: 'none'
+                    }
+
+                }
             });
-            {% else %}
-            graph_a.series[0].addPoint({
-            x: n_data,
-            y: data_a[n_data]
-            });
-            graph_b.series[0].addPoint({
-            x: n_data,
-            y: data_b[n_data]
-            });
-            {% endif %}
         }
 
+        function add_point_a(n_data) {
+            let y_pos;
+            if(data_a[n_data] > 0) {
+                y_pos = -5;
+            } else {
+                y_pos = 25;
+            }
+            graph.series[0].addPoint({
+                x: n_data,
+                y: data_a[n_data],
+                dataLabels: {
+                    enabled: true,
+                    format: data_a[n_data].toLocaleString('es-CO'),
+                    y: y_pos,
+                    style: {
+                        color: 'blue',
+                        fontSize: '0.8rem',
+                        fontWeight: 'normal',
+                        textOutline: 'none'
+                    }
+
+                }
+            });
+        }
+
+        function add_point_b(n_data) {
+            let y_pos;
+            if(data_b[n_data] > 0) {
+                y_pos = -5;
+            } else {
+                y_pos = 25;
+            }
+            graph.series[1].addPoint({
+                x: n_data,
+                y: data_b[n_data],
+                dataLabels: {
+                    enabled: true,
+                    format: data_b[n_data].toLocaleString('es-CO'),
+                    y: y_pos,
+                    style: {
+                        color: 'green',
+                        fontSize: '0.8rem',
+                        fontWeight: 'normal',
+                        textOutline: 'none'
+                    }
+
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            $('.slider_dinero').change(
+                function (event) {
+                    let val_slider = document.getElementById(event.target.id).value;
+                    cnt_selected += 1;
+                    let time = Date.now() - start;
+                    let add = cnt_selected.toString() + ": {\'value_selected\': " + val_slider + ", \'time\': " + time + "}, ";
+                    document.getElementById("problem_03_sliderSelected").value += add;
+
+                    var parent_slider = document.getElementById(event.target.id).parentElement.parentElement;
+                    var childs = parent_slider.children;
+
+                    var dinero_pa = childs[0];
+                    var slider_max = childs[1].firstElementChild.max;
+                    var slider_value = childs[1].firstElementChild.value;
+                    var dinero_pb = childs[2];
+
+                    dinero_pa.innerHTML = "$ "+numberWithPoints(val_slider);
+                    dinero_pb.innerHTML = "$ "+numberWithPoints(slider_max-val_slider);
+
+                    if (slider_act == 0) {
+                        document.getElementById('btnNext').style.display = 'block';
+                        document.getElementById('btnNext').style.margin = '0 auto';
+                        slider_act = 1;
+                    }
+
+                    for(var i=0; i<8; i++) {
+                        let cell_a = document.getElementById("a_"+(i+1));
+                        let cell_b = document.getElementById("b_"+(i+1));
+                        let cell_t = document.getElementById("t_"+(i+1));
+                        let mon_a = (slider_value * data_a[i]) / 100;
+                        let mon_b = ((slider_max-slider_value) * data_b[i]) / 100;
+                        let mon_t = mon_a + mon_b;
+                        if(mon_a < 0) {
+                            mon_a = "- $" + (mon_a * -1).toLocaleString('es-CO');
+                        } else if(mon_a > 0) {
+                            mon_a = "$ " + mon_a.toLocaleString('es-CO');
+                        } else {
+                            mon_a = "$ 0";
+                        }
+                        if(mon_b < 0) {
+                            mon_b = "- $" + (mon_b * -1).toLocaleString('es-CO');
+                        } else if(mon_b > 0) {
+                            mon_b = "$ " + mon_b.toLocaleString('es-CO');
+                        } else {
+                            mon_b = "$ 0";
+                        }
+                        if(mon_t < 0) {
+                            mon_t = "- $" + (mon_t * -1).toLocaleString('es-CO');
+                        } else if(mon_t > 0) {
+                            mon_t = "$ " + mon_t.toLocaleString('es-CO');
+                        } else {
+                            mon_t = "$ 0";
+                        }
+                        cell_a.innerHTML = mon_a;
+                        cell_b.innerHTML = mon_b;
+                        cell_t.innerHTML = mon_t;
+                    }
+                }
+            );
+        });
+
         function nextView() {
-            document.getElementById("problem_03_arraySelected").value += "}";
-            document.getElementById("problem_03_time").value = Date.now() - start;
-            let btn = document.getElementById("id_next");
-            btn.removeAttribute("disabled");
-            btn.click();
+            switch(step_view) {
+                case 1:
+                    document.getElementById("problem_03_btnSelected").value += "}";
+                    document.getElementById("problem_03_btnTime").value = Date.now() - start;
+                    document.getElementById('step_1').style.display = 'none';
+                    document.getElementById('step_2').style.display = 'block';
+                    document.getElementById('btnNext').style.display = 'none';
+                    document.getElementById('div_tabGraph').style.display = 'block';
+                    document.getElementById('h-slider-div').style.display = 'block';
+                    start = Date.now();
+                    step_view += 1;
+                    cnt_selected = 0;
+                break;
+                case 2:
+                    document.getElementById("problem_03_sliderSelected").value += "}";
+                    document.getElementById("problem_03_sliderTime").value = Date.now() - start;
+                    document.getElementById('step_2').style.display = 'none';
+                    document.getElementById('step_3').style.display = 'block';
+                    document.getElementById('btnNext').style.display = 'none';
+                    document.getElementById('h-slider-div').style.display = 'none';
+                    document.getElementById('money-boxes').style.display = 'block';
+                    for(var i=0; i<8; i++) {
+                        let cell_a = document.getElementById("a_"+(i+1));
+                        let cell_b = document.getElementById("b_"+(i+1));
+                        let cell_t = document.getElementById("t_"+(i+1));
+                        cell_a.innerHTML = "";
+                        cell_b.innerHTML = "";
+                        cell_t.innerHTML = "";
+                    }
+                    start = Date.now();
+                    step_view += 1;
+                    cnt_selected = 0;
+                break;
+                case 3:
+                    confirm();
+                break;
+                case 4:
+                    document.getElementById('problem_03_invTime').value = Date.now() - start;
+                    document.getElementById('problem_03_invCntMistakers').value = cnt_selected;
+                    let btn = document.getElementById("id_next");
+                    btn.removeAttribute("disabled");
+                    btn.click();
+                break;
+            }
+        }
+
+        function values_table(){
+            if(document.getElementById('btnNext').style.display = 'none') {
+                document.getElementById('btnNext').style.display = 'block';
+            }
+            if(document.getElementById("div_error").style.display == "block") {
+                document.getElementById("div_error").style.display = "none";
+            }
+            document.getElementById("problem_03_invVal_a").style.boxShadow = "none";
+            document.getElementById("problem_03_invVal_b").style.boxShadow = "none";
+            if (slider_act == 0) {
+                document.getElementById('btnNext').style.display = 'block';
+                document.getElementById('btnNext').style.margin = '0 auto';
+                slider_act = 1;
+            }
+            for(var i=0; i<8; i++) {
+                let cell_a = document.getElementById("a_"+(i+1));
+                let cell_b = document.getElementById("b_"+(i+1));
+                let cell_t = document.getElementById("t_"+(i+1));
+                let mon_a = (document.getElementById("problem_03_invVal_a").value * data_a[i]) / 100;
+                let mon_b = (document.getElementById("problem_03_invVal_b").value * data_b[i]) / 100;
+                let mon_t = mon_a + mon_b;
+                if(mon_a < 0) {
+                    mon_a = "- $" + (mon_a * -1).toLocaleString('es-CO');
+                } else if(mon_a > 0) {
+                    mon_a = "$ " + mon_a.toLocaleString('es-CO');
+                } else {
+                    mon_a = "$ 0";
+                }
+                if(mon_b < 0) {
+                    mon_b = "- $" + (mon_b * -1).toLocaleString('es-CO');
+                } else if(mon_b > 0) {
+                    mon_b = "$ " + mon_b.toLocaleString('es-CO');
+                } else {
+                    mon_b = "$ 0";
+                }
+                if(mon_t < 0) {
+                    mon_t = "- $" + (mon_t * -1).toLocaleString('es-CO');
+                } else if(mon_t > 0) {
+                    mon_t = "$ " + mon_t.toLocaleString('es-CO');
+                } else {
+                    mon_t = "$ 0";
+                }
+                cell_a.innerHTML = mon_a;
+                cell_b.innerHTML = mon_b;
+                cell_t.innerHTML = mon_t;
+            }
         }
 
         function nextCard() {
             if(cnt_cards < 8) {
                 add_point_graph(cnt_cards);
             } else {
-                start = Date.now();
-                document.getElementById("h-slider-div").style.display = "block";
                 clearInterval(intervalID);
+                var next_button = document.getElementsByClassName('btnNext');
+                next_button[0].style.cssText += 'display: block !important; margin: 0 auto;';
             }
             cnt_cards += 1;
+        }
+
+        function nextCard_a() {
+            if(cnt_cards < 7) {
+                add_point_a(cnt_cards);
+            } else {
+                add_point_a(cnt_cards);
+                clearInterval(intervalID);
+                cnt_cards = -1;
+            }
+            cnt_cards += 1;
+        }
+
+        function nextCard_b() {
+            if(cnt_cards < 7) {
+                add_point_b(cnt_cards);
+            } else {
+               add_point_b(cnt_cards);
+                clearInterval(intervalID);
+                cnt_cards = -1;
+            }
+            cnt_cards += 1;
+        }
+
+        function visibleA() {
+            if (step_view == 1) {
+                cnt_selected += 1;
+                if (cnt_selected >= 2) {
+                    document.getElementById('btnNext').style.display = 'block';
+                    document.getElementById('btnNext').style.margin = '0 auto';
+                }
+                let time = Date.now() - start;
+                let add = cnt_selected.toString() + ": {\'btn\': 'A', \'time\': " + time + "}, ";
+                document.getElementById("problem_03_btnSelected").value += add;
+            }
+            document.getElementById("btn_a").style.backgroundColor = "#989898";
+            document.getElementById("btn_a").disabled = true;
+            document.getElementById("btn_b").style.backgroundColor = "#007bff";
+            document.getElementById("btn_b").disabled = false;
+            nextCard_a();
+            intervalID = setInterval(nextCard_a, 0);
+            graph.series[1].setData([]);
+        }
+
+        function visibleB() {
+            if (step_view == 1) {
+                cnt_selected += 1;
+                if (cnt_selected >= 2) {
+                    document.getElementById('btnNext').style.display = 'block';
+                    document.getElementById('btnNext').style.margin = '0 auto';
+                }
+                let time = Date.now() - start;
+                let add = cnt_selected.toString() + ": {\'btn\': 'B', \'time\': " + time + "}, ";
+                document.getElementById("problem_03_btnSelected").value += add;
+            }
+            document.getElementById("btn_b").style.backgroundColor = "#989898";
+            document.getElementById("btn_b").disabled = true;
+            document.getElementById("btn_a").style.backgroundColor = "#007bff";
+            document.getElementById("btn_a").disabled = false;
+            nextCard_b();
+            intervalID = setInterval(nextCard_b, 0);
+            graph.series[0].setData([]);
+        }
+
+        function visibleAB() {
+            cnt_selected += 1;
+            let time = Date.now() - start;
+            let add = cnt_selected.toString() + ": {\'btn\': 'AB', \'time\': " + time + "}, ";
+            document.getElementById("problem_03_btnSelected").value += add;
+            if(interval_a == 0) {
+                nextCard();
+                intervalID = setInterval(nextCard, 0);
+            }
+            document.getElementById("btn_ab").style.backgroundColor = "#989898";
+            document.getElementById("btn_ab").disabled = true;
         }
 
         function confirm() {
@@ -188,6 +425,15 @@
             let overlay = document.querySelector(".overlay");
             modal.classList.remove("hidden");
             overlay.classList.remove("hidden");
+            document.getElementById("inv_a").innerHTML = "<toMoney>" + document.getElementById("problem_03_invVal_a").value + "</toMoney>";
+            document.getElementById("inv_b").innerHTML = "<toMoney>" + document.getElementById("problem_03_invVal_b").value + "</toMoney>";
+            conv_money();
+            if(document.getElementById('problem_03_invVal_a').value.length == 0) {
+                document.getElementById('problem_03_invVal_a').value = 0;
+            }
+            if(document.getElementById('problem_03_invVal_b').value.length == 0) {
+                document.getElementById('problem_03_invVal_b').value = 0;
+            }
         }
 
         function closeModal() {
@@ -197,125 +443,125 @@
             overlay.classList.add("hidden");
         }
 
-        $('.slider_dinero').change(
-            function (event) {
-                let val_slider = document.getElementById(event.target.id).value;
+        function validateInv() {
+            let inv_a = Number(document.getElementById("problem_03_invVal_a").value);
+            let inv_b = Number(document.getElementById("problem_03_invVal_b").value);
+            if((inv_a + inv_b) == 100000) {
+                step_view += 1;
+                nextView();
+            } else {
                 cnt_selected += 1;
                 let time = Date.now() - start;
-                let add = cnt_selected.toString() + ": {\'value_selected\': " + val_slider + ", \'time\': " + time + "}, ";
-                document.getElementById("problem_03_arraySelected").value += add;
+                let add = cnt_selected.toString() + ": {\'inversion_a\': " + inv_a.toString() + ", \'inversion_b\': " + inv_b.toString() + ", \'time\': " + time + "}, ";
+                document.getElementById("problem_03_invMistakes").value += add;
+                closeModal();
+                document.getElementById("div_error").style.display = "block";
+                document.getElementById("problem_03_invVal_a").style.boxShadow = "0px 0px 3px 1px rgba(255, 0, 0, 0.65)";
+                document.getElementById("problem_03_invVal_b").style.boxShadow = "0px 0px 3px 1px rgba(255, 0, 0, 0.65)";
+            }
+        }
 
-            });
-
-        var intervalID = setInterval(nextCard, 2000);
+        function conv_money() {
+            let elements = document.getElementsByTagName("toMoney");
+            for(let j=0; j<elements.length; j++) {
+                let num = Number(elements[j].innerHTML);
+                if (num < 0) {
+                    num = num * -1;
+                    elements[j].innerHTML = "- $" + num.toLocaleString('es-CO').toString();
+                }else {
+                    elements[j].innerHTML = "$" + num.toLocaleString('es-CO').toString();
+                }
+            }
+        }
 
     </script>
 {% endblock %}
 
 {% block title %}
-    Actividad 2: Decisión de Inversión 3
+    Actividad 2: Decisión de Inversión # {{ n_problem }}
 {% endblock %}
 
 {% block content %}
 
-<table class="table_question">
-    <tr>
-        <td class="cell_question" style="width: 100% !important;">    
-            <div id="text01">
-                Haga clic en sobre la barra mueva el cuadro para alcanzar el valor deseado para la <i>Inversión A</i> e <i>Inversión B</i>. <br>
-                Cuando logre las asignaciones deseadas haga clic en “Enviar” para confirmar su decisión y continuar.
-            </div>
-        </td>
-    </tr>
-</table>
+<div id="step_1" style="height: 85px;">
+Haga clic en el botón para ver el porcentaje de rentabilidad (%) que las inversiones pueden generar en cada ESCENARIO.
+</div>
+
+<div id="step_2" style="display: none; height: 85px;">
+Haga <i>clic</i> sobre la barra y mueva el cuadro que aparece para ver cómo la cantidad de dinero asignada a la <i>Inversión A</i> y la <i>Inversión B</i> afecta la tabla de las posibles rentabilidades. 
+</div>
+
+<div id="step_3" style="display: none; height: 85px;">
+Escriba en el cuadro correspondiente la cantidad que desea asignar a la <i>Inversión A</i> y la <i>Inversión B</i>. Recuerde que la cantidad de dinero invertido debe ser <toMoney>100000</toMoney> pesos.
+<br>
+<br>
+Luego haga clic en <i>“Siguiente”</i> para confirmar su decisión y continuar. 
+</div>
+
 
 <br>  
-{% if graphType == 1 %}
+
 <div>
+    <table style="text-align: center; width: 90%; margin: 0 auto;">
+        <tr>
+            {% if graphType == 1 %}
+            <td><input type="button" value="Mostrar Inversión A y B" onclick="visibleAB()" id="btn_ab"></td>
+            {% else %}
+            <td><input type="button" value="Mostrar Inversión A" onclick="visibleA()" id="btn_a"></td>
+            <td><input type="button" value="Mostrar Inversión B" onclick="visibleB()" id="btn_b"></td>
+            {% endif %}
+        </tr>
+    </table>
+    <br>
     <div id="graph01" class="div_graph"></div>
-    <div class="div_tabGraph">
+    <div class="div_tabGraph" id="div_tabGraph" style="display: none;">
         <table class="tabGraph">
-            <tr>
-                <td class="cell_graphInv">Inversión A</td>
-                <td class="cell_graph" id="a_1"></td>
-                <td class="cell_graph" id="a_2"></td>
-                <td class="cell_graph" id="a_3"></td>
-                <td class="cell_graph" id="a_4"></td>
-                <td class="cell_graph" id="a_5"></td>
-                <td class="cell_graph" id="a_6"></td>
-                <td class="cell_graph" id="a_7"></td>
-                <td class="cell_graph" id="a_8"></td>
+            <tr id="fila_a" style="border: #000000 1px solid;">
+                <td class="cell_graphInv" style="border: #000000 1px solid;"><b>Retorno A</b></td>
+                <td class="cell_graph" id="a_1" style="border: #000000 1px solid;"></td>
+                <td class="cell_graph" id="a_2" style="border: #000000 1px solid;"></td>
+                <td class="cell_graph" id="a_3" style="border: #000000 1px solid;"></td>
+                <td class="cell_graph" id="a_4" style="border: #000000 1px solid;"></td>
+                <td class="cell_graph" id="a_5" style="border: #000000 1px solid;"></td>
+                <td class="cell_graph" id="a_6" style="border: #000000 1px solid;"></td>
+                <td class="cell_graph" id="a_7" style="border: #000000 1px solid;"></td>
+                <td class="cell_graph" id="a_8" style="border: #000000 1px solid;"></td>
             </tr>
-            <tr>
-                <td class="cell_graphInv">Inversión B</td>
-                <td class="cell_graph" id="b_1"></td>
-                <td class="cell_graph" id="b_2"></td>
-                <td class="cell_graph" id="b_3"></td>
-                <td class="cell_graph" id="b_4"></td>
-                <td class="cell_graph" id="b_5"></td>
-                <td class="cell_graph" id="b_6"></td>
-                <td class="cell_graph" id="b_7"></td>
-                <td class="cell_graph" id="b_8"></td>
+            <tr id="fila_b">
+                <td class="cell_graphInv" style="border: #000000 1px solid;"><b>Retorno B</b></td>
+                <td class="cell_graph" id="b_1" style="border: #000000 1px solid;"></td>
+                <td class="cell_graph" id="b_2" style="border: #000000 1px solid;"></td>
+                <td class="cell_graph" id="b_3" style="border: #000000 1px solid;"></td>
+                <td class="cell_graph" id="b_4" style="border: #000000 1px solid;"></td>
+                <td class="cell_graph" id="b_5" style="border: #000000 1px solid;"></td>
+                <td class="cell_graph" id="b_6" style="border: #000000 1px solid;"></td>
+                <td class="cell_graph" id="b_7" style="border: #000000 1px solid;"></td>
+                <td class="cell_graph" id="b_8" style="border: #000000 1px solid;"></td>
+            </tr>
+        </table>
+        <table class="tabGraph" style="margin-top: 15px;">
+            <tr id="fila_total" style="border: #000000 1px solid;">
+                <td class="cell_graphInv" style="font-weight: bold; border: #000000 1px solid;">Total</td>
+                <td class="cell_graph" style="font-weight: bold; border: #000000 1px solid;" id="t_1"></td>
+                <td class="cell_graph" style="font-weight: bold; border: #000000 1px solid;" id="t_2"></td>
+                <td class="cell_graph" style="font-weight: bold; border: #000000 1px solid;" id="t_3"></td>
+                <td class="cell_graph" style="font-weight: bold; border: #000000 1px solid;" id="t_4"></td>
+                <td class="cell_graph" style="font-weight: bold; border: #000000 1px solid;" id="t_5"></td>
+                <td class="cell_graph" style="font-weight: bold; border: #000000 1px solid;" id="t_6"></td>
+                <td class="cell_graph" style="font-weight: bold; border: #000000 1px solid;" id="t_7"></td>
+                <td class="cell_graph" style="font-weight: bold; border: #000000 1px solid;" id="t_8"></td>
             </tr>
         </table>
     </div>
 </div>
-{% else %}
-<div>
-    <table class="tabDiv_GraphType2">
-        <tr>
-            <td style="width: 50%;">
-                <div id="graph01" class="div_graphType2"></div>
-                <div class="div_tabGraphType2">
-                    <table class="tabGraph">
-                        <tr>
-                            <td class="cell_graphInv">Inversión A</td>
-                            <td class="cell_graph" id="a_1"></td>
-                            <td class="cell_graph" id="a_2"></td>
-                            <td class="cell_graph" id="a_3"></td>
-                            <td class="cell_graph" id="a_4"></td>
-                            <td class="cell_graph" id="a_5"></td>
-                            <td class="cell_graph" id="a_6"></td>
-                            <td class="cell_graph" id="a_7"></td>
-                            <td class="cell_graph" id="a_8"></td>
-                        </tr>
-                    </table>
-                </div>
-            </td>
-            <td>
-                <div id="graph02" class="div_graphType2"></div>
-                <div class="div_tabGraphType2">
-                    <table class="tabGraph">
-                        <tr>
-                            <td class="cell_graphInv">Inversión B</td>
-                            <td class="cell_graph" id="b_1"></td>
-                            <td class="cell_graph" id="b_2"></td>
-                            <td class="cell_graph" id="b_3"></td>
-                            <td class="cell_graph" id="b_4"></td>
-                            <td class="cell_graph" id="b_5"></td>
-                            <td class="cell_graph" id="b_6"></td>
-                            <td class="cell_graph" id="b_7"></td>
-                            <td class="cell_graph" id="b_8"></td>
-                        </tr>
-                    </table>
-                </div>
-            </td>
-        </tr>
-    </table>
-</div>
-{% endif %}
+
 <br>
-<div class="card_table" id="h-slider-div" style="text-align: center;">
+<div class="card_table" id="h-slider-div" style="text-align: center; display: none;">
     <table class="table_question">
-        <tr>
-            <td colspan="4">
-                <h4 style="margin-top: 0.5rem; margin-bottom: 0rem;">Decisión</h4>
-            </td>
-        </tr>
         <tr>
             <td class="text_slider"> - </td>
             <td class="td_slider" rowspan="2">
-                <input type="range" name="problem_03_inv_a_slider" value="" min="0" max="{{ max_inv }}" step="1000" id="sliderDinero" class="slider_dinero" required>
+                <input type="range" name="problem_03_sliderInv_a" value="" min="0" max="{{ max_inv }}" step="1000" id="sliderDinero" class="slider_dinero" required>
                 <input type="hidden" name="check_slider_example" value="" id="id_check_slider_example"/>
             </td>
             <td class="text_slider"> - </td>
@@ -331,14 +577,41 @@
     </table>
 </div>
 
-<input type="hidden" name="problem_03_arraySelected" value="{ " id="problem_03_arraySelected">
-<input type="hidden" name="problem_03_time" value="" id="problem_03_time">
+<div class="card_table" id="money-boxes" style="text-align: center; display: none;">
+    <table class="table_question">
+        <tr>
+            <td class="text_slider"><input type="number" name="problem_03_invVal_a" id="problem_03_invVal_a" class="inNumber_a" oninput="values_table()"></td>
+            <td class="td_slider" rowspan="2">  </td>
+            <td class="text_slider"><input type="number" name="problem_03_invVal_b" id="problem_03_invVal_b" class="inNumber_a" oninput="values_table()"></td>
+        </tr>
+        <tr>
+            <td style="text-align: center;">
+                <b>Inversión A</b>
+            </td>
+            <td style="text-align: center;">
+                <b>Inversión B</b>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div class="error_msg" id="div_error">
+    Recuerda que la suma de las inversiones debe ser $100.000.
+</div>
+
+<input type="hidden" name="problem_03_btnSelected" value="{ " id="problem_03_btnSelected">
+<input type="hidden" name="problem_03_btnTime" value="" id="problem_03_btnTime">
+<input type="hidden" name="problem_03_sliderSelected" value="{ " id="problem_03_sliderSelected">
+<input type="hidden" name="problem_03_sliderTime" value="" id="problem_03_sliderTime">
+<input type="hidden" name="problem_03_invMistakes" value="{ " id="problem_03_invMistakes">
+<input type="hidden" name="problem_03_invTime" value="" id="problem_03_invTime">
+<input type="hidden" name="problem_03_invCntMistakers" value="" id="problem_03_invCntMistakers">
 
 <br>
 
-<div class="div_btnNext">
-    <input type="button" value="Enviar" class="btnNext" style="display: none;" onclick="confirm()">
-    <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next" disabled>Enviar</button>
+<div class="div_btnNext" style="margin-top: -20px;">
+    <input type="button" value="Siguiente" class="btnNext" style="display: none;" onclick="nextView()" id="btnNext">
+    <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next" disabled>Siguiente</button>
 </div>
 
 <section class="modal hidden">
@@ -346,8 +619,8 @@
         <h3>Confirmación</h3>
         <p>
             Por favor confirme los valores asignados: <br>
-              <i>Inversión A:</i> <span id="inv_a"></span><br> 
-              <i>Inversión B:</i> <span id="inv_b"></span>.
+              <i>Inversión A:</i> <span id="inv_a"><toMoney></toMoney></span><br> 
+              <i>Inversión B:</i> <span id="inv_b"><toMoney></toMoney></span>
         </p>
         <p>
             Si es correcto presione el botón "Enviar" de lo contrario presione el botón "Cambiar valores".
@@ -359,7 +632,7 @@
                 <input type="button" value="Cambiar valores" class="btnNext" onclick="closeModal()">
             </td>
             <td>
-                <input type="button" value="Enviar" class="btnNext" onclick="nextCard()">
+                <input type="button" value="Enviar" class="btnNext" onclick="validateInv()">
             </td>
         </tr>
     </table>

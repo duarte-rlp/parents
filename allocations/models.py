@@ -223,7 +223,7 @@ class Player(BasePlayer):
     problem_04_sliderSelected = models.StringField()
     problem_04_sliderTime = models.StringField()
     problem_04_sliderInv_a = models.IntegerField()
-    problem_04_invCntMistakers = models.StringField()
+    problem_04_invCntMistakers  = models.StringField()
     problem_04_invMistakes = models.StringField()
     problem_04_invTime = models.StringField()
     problem_04_invVal_a = models.IntegerField()
@@ -232,7 +232,7 @@ class Player(BasePlayer):
     problem_04_expect_return_b = models.IntegerField()
     problem_04_probability_b = models.IntegerField()
     problem_04_var = models.IntegerField()
-
+    
     name_app = models.StringField(default = 'allocations')
 
 

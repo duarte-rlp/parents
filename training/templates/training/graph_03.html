@@ -336,23 +336,23 @@
                         if(mon_a < 0) {
                             mon_a = "- $" + (mon_a * -1).toLocaleString('es-CO');
                         } else if(mon_a > 0) {
-                            mon_a = "" + mon_a.toLocaleString('es-CO');
+                            mon_a = "$ " + mon_a.toLocaleString('es-CO');
                         } else {
-                            mon_a = "0";
+                            mon_a = "$ 0";
                         }
                         if(mon_b < 0) {
                             mon_b = "- $" + (mon_b * -1).toLocaleString('es-CO');
                         } else if(mon_b > 0) {
-                            mon_b = "" + mon_b.toLocaleString('es-CO');
+                            mon_b = "$ " + mon_b.toLocaleString('es-CO');
                         } else {
-                            mon_b = "0";
+                            mon_b = "$ 0";
                         }
                         if(mon_t < 0) {
                             mon_t = "- $" + (mon_t * -1).toLocaleString('es-CO');
                         } else if(mon_t > 0) {
-                            mon_t = "" + mon_t.toLocaleString('es-CO');
+                            mon_t = "$ " + mon_t.toLocaleString('es-CO');
                         } else {
-                            mon_t = "0";
+                            mon_t = "$ 0";
                         }
                         cell_a.innerHTML = mon_a;
                         cell_b.innerHTML = mon_b;

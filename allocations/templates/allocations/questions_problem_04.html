@@ -69,9 +69,9 @@
 
         function validate_next() {
             let check_02 = document.getElementById("check_radio_01").value;
-            let check_02 = document.getElementById("id_check_slider_probability_b").value;
+            let check_04 = document.getElementById("id_check_slider_probability_b").value;
             let check_04 = document.getElementById("check_radio_02").value;
-            if((check_02 == 1) && (check_02 == 1) && (check_04 == 1)) {
+            if((check_02 == 1) && (check_04 == 1) && (check_04 == 1)) {
                 let next_button = document.getElementsByClassName('otree-btn-next');
                     next_button[0].style.cssText += 'display: block !important; margin: 0 auto;';
             } else {
@@ -267,7 +267,7 @@
 {% endblock %}
 
 {% block title %}
-    Actividad 2: Preguntas Decisión de Inversión 2
+    Actividad 2: Preguntas Decisión de Inversión # {{ n_problem }}
 {% endblock %}
 
 {% block content %}
@@ -346,7 +346,7 @@
                     </td>
                     <td class="cell_input" style="width: 25%;">
                         <div class="answer_test">
-                            <input type="number" class="inNumber" name="problem_02_return_b" id="slider_retorno_02" min="-100" max="100" required>
+                            <input type="number" class="inNumber" name="problem_04_return_b" id="slider_retorno_04" min="-100" max="100" required>
                         </div>
                     </td>
                     <td style="width: 25%;"></td>
@@ -375,9 +375,9 @@
             {% endif %}
         {% else %}
             {% if assetA_order == 'Decreasing' %}
-                -9%
+                -10%
             {% else %}
-                20%
+                19%
             {% endif %}
         {% endif %}
         ¿Qué es más probable que suceda con el porcentaje de rentabilidad de la Inversión
@@ -388,7 +388,7 @@
         {% endif %}?
         </li>
         <div class="card_table" id="h-slider-div" style="text-align: left; margin-top: 10px;">
-            <input type="radio" id="q2_o1" name="problem_02_expect_return_b" value="1" class="items01">
+            <input type="radio" id="q2_o1" name="problem_04_expect_return_b" value="1" class="items01">
             <label for="q2_o1" id="l_q2_o1" class="items01"> Disminuya a 
         {% if assetA == 'Col_A' %}
             -9%
@@ -396,10 +396,10 @@
             -10%
         {% endif %}</label>
             <br>
-            <input type="radio" id="q2_o2" name="problem_02_expect_return_b" value="2" class="items01">
+            <input type="radio" id="q2_o2" name="problem_04_expect_return_b" value="2" class="items01">
             <label for="q2_o2" id="l_q2_o2" class="items01">Se mantenga igual</label>
             <br>
-            <input type="radio" id="q2_o3" name="problem_02_expect_return_b" value="3" class="items01">
+            <input type="radio" id="q2_o3" name="problem_04_expect_return_b" value="3" class="items01">
             <label for="q2_o3" id="l_q2_o3" class="items01">Aumente a
         {% if assetA == 'Col_A' %}
             20%
@@ -447,7 +447,7 @@
                 </tr>
                 <tr>
                     <td class="td_slider">
-                        <input type="range" name="problem_02_probability_b" value="" min="0" max="100" step="1" id="slider_porcentaje_02" class="slider_porcentaje" required>
+                        <input type="range" name="problem_04_probability_b" value="" min="0" max="100" step="1" id="slider_porcentaje_02" class="slider_porcentaje" required>
                         <input type="hidden" name="check_slider_probability_b" value="0" id="id_check_slider_probability_b"/>
                     </td>
                 </tr>
@@ -457,13 +457,13 @@
         <li style="margin-top: 10px;"> De acuerdo con las gráficas ¿En cuál inversión la dispersión de los porcentajes de rentabilidad es mayor?
         </li>
         <div class="card_table" id="h-slider-div" style="text-align: left; margin-top: 10px;">
-            <input type="radio" id="q4_o1" name="problem_02_var" value="1" class="items02">
+            <input type="radio" id="q4_o1" name="problem_04_var" value="1" class="items02">
             <label for="q4_o1" id="l_q4_o1" class="items02"> Inversión A</label>
             <br>
-            <input type="radio" id="q4_o2" name="problem_02_var" value="2" class="items02">
+            <input type="radio" id="q4_o2" name="problem_04_var" value="2" class="items02">
             <label for="q4_o2" id="l_q4_o2" class="items02">Inversión B</label>
             <br>
-            <input type="radio" id="q4_o3" name="problem_02_var" value="3" class="items02">
+            <input type="radio" id="q4_o3" name="problem_04_var" value="3" class="items02">
             <label for="q4_o3" id="l_q4_o3" class="items02">Ambas son iguales</label>
             <input type="hidden" name="check_radio_02" value="0" id="check_radio_02"/>
         </div>
@@ -478,4 +478,3 @@
         
         {% endblock %}
 
-        

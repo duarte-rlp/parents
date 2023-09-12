@@ -37,8 +37,8 @@
             series: [{
                 animation: false,
                 data: [],
-                lineWidth: 1,
-                enableMouseTracking: true,
+                lineWidth: 0,
+                enableMouseTracking: false,
                 marker:{
                     enabled: true
                 },
@@ -48,8 +48,8 @@
             }, {
                 animation: false,
                 data: [],
-                lineWidth: 1,
-                enableMouseTracking: true,
+                lineWidth: 0,
+                enableMouseTracking: false,
                 marker:{
                     enabled: true
                 },
@@ -69,9 +69,9 @@
 
         function validate_next() {
             let check_02 = document.getElementById("check_radio_01").value;
-            let check_03 = document.getElementById("id_check_slider_probability_b").value;
+            let check_01 = document.getElementById("id_check_slider_probability_b").value;
             let check_04 = document.getElementById("check_radio_02").value;
-            if((check_02 == 1) && (check_03 == 1) && (check_04 == 1)) {
+            if((check_02 == 1) && (check_01 == 1) && (check_04 == 1)) {
                 let next_button = document.getElementsByClassName('otree-btn-next');
                     next_button[0].style.cssText += 'display: block !important; margin: 0 auto;';
             } else {
@@ -267,7 +267,7 @@
 {% endblock %}
 
 {% block title %}
-    Actividad 2: Preguntas Decisión de Inversión 1
+    Actividad 2: Preguntas Decisión de Inversión # {{ n_problem }}
 {% endblock %}
 
 {% block content %}
@@ -287,125 +287,23 @@
         </tr>
     </table>
     <div id="graph01" class="div_graph"></div>
-    <div class="div_tabGraph">
-        <table class="tabGraph">
-            <tr>
-                <td class="cell_graphInv">Inversión A</td>
-                <td class="cell_graph" id="a_1">{{ data_a.0 }}</td>
-                <td class="cell_graph" id="a_2">{{ data_a.1 }}</td>
-                <td class="cell_graph" id="a_3">{{ data_a.2 }}</td>
-                <td class="cell_graph" id="a_4">{{ data_a.3 }}</td>
-                <td class="cell_graph" id="a_5">{{ data_a.4 }}</td>
-                <td class="cell_graph" id="a_6">{{ data_a.5 }}</td>
-                <td class="cell_graph" id="a_7">{{ data_a.6 }}</td>
-                <td class="cell_graph" id="a_8">{{ data_a.7 }}</td>
-            </tr>
-            <tr>
-                <td class="cell_graphInv">Inversión B</td>
-                <td class="cell_graph" id="b_1">{{ data_b.0 }}</td>
-                <td class="cell_graph" id="b_2">{{ data_b.1 }}</td>
-                <td class="cell_graph" id="b_3">{{ data_b.2 }}</td>
-                <td class="cell_graph" id="b_4">{{ data_b.3 }}</td>
-                <td class="cell_graph" id="b_5">{{ data_b.4 }}</td>
-                <td class="cell_graph" id="b_6">{{ data_b.5 }}</td>
-                <td class="cell_graph" id="b_7">{{ data_b.6 }}</td>
-                <td class="cell_graph" id="b_8">{{ data_b.7 }}</td>
-            </tr>
-        </table>
-    </div>
 </div>
 
 <br>
 
 <ol>
-    <li style="margin-top: 10px;"> Si la Inversión
-        {% if assetA == 'Col_A' %}
-        A
-        {% else %}
-        B
-        {% endif %}
-            tiene un porcentaje de rentabilidad del 20% ¿Cuál es el porcentaje de rentabilidad más probable para la Inversión
-        {% if assetA == 'Col_A' %}
-        B
-        {% else %}
-        A
-        {% endif %}?</li>
-        <div class="card_table" id="h-slider-div" style="text-align: center; margin-top: 10px;">
-            <table class="table_question">
-                <tr>
-                    <td style="width: 25%;"></td>
-                    <td class="cell_question" style="width: 25%;">
-                        <div id="text01">
-                            Retorno Inversión 
-        {% if assetA == 'Col_A' %}
-        B:
-        {% else %}
-        A:
-        {% endif %}
-                        </div>
-                    </td>
-                    <td class="cell_input" style="width: 25%;">
-                        <div class="answer_test">
-                            <input type="number" class="inNumber" name="problem_03_return_b" id="slider_retorno_03" min="-100" max="100" required>
-                        </div>
-                    </td>
-                    <td style="width: 25%;"></td>
-                </tr>
-            </table>
-        </div>
-        
-        <li style="margin-top: 10px;"> Si en la Inversión
-        {% if assetA == 'Col_A' %}
-        B
-        {% else %}
-        A
-        {% endif %}
-         la rentabilidad 
-        {% if assetA_order == 'Decreasing' %}
-            disminuye
-        {% else %}
-            aumenta
-        {% endif %}
-        al 
-        {% if assetA == 'Col_A' %}
-            {% if assetA_order == 'Decreasing' %}
-                -10%
-            {% else %}
-                19%
-            {% endif %}
-        {% else %}
-            {% if assetA_order == 'Decreasing' %}
-                -10%
-            {% else %}
-                19%
-            {% endif %}
-        {% endif %}
-        ¿Qué es más probable que suceda con el porcentaje de rentabilidad de la Inversión
-        {% if assetA == 'Col_A' %}
-        A
-        {% else %}
-        B
-        {% endif %}?
-        </li>
+    <li style="margin-top: 10px;">Si el rendimiento de la <i>Inversión A</i> disminuye, espera que la <i>Inversión B</i> aumente en <input type="number" class="inNumber" name="problem_01_return_b" id="slider_retorno_01" min="0" max="100" required style="display: inline; margin-left: 5px; margin-right: 5px;"> de 100 casos.</li>
+
+    <li style="margin-top: 10px;">Si el rendimiento de la <i>Inversión A</i> aumenta, es más probable que el rendimiento de la <i>Inversión B</i>:</li>
         <div class="card_table" id="h-slider-div" style="text-align: left; margin-top: 10px;">
-            <input type="radio" id="q2_o1" name="problem_03_expect_return_b" value="1" class="items01">
-            <label for="q2_o1" id="l_q2_o1" class="items01"> Disminuya a 
-        {% if assetA == 'Col_A' %}
-            -9%
-        {% else %}
-            -10%
-        {% endif %}</label>
+            <input type="radio" id="q2_o1" name="problem_01_expect_return_b" value="1" class="items01">
+            <label for="q2_o1" id="l_q2_o1" class="items01"> Aumente</label>
             <br>
-            <input type="radio" id="q2_o2" name="problem_03_expect_return_b" value="2" class="items01">
-            <label for="q2_o2" id="l_q2_o2" class="items01">Se mantenga igual</label>
+            <input type="radio" id="q2_o2" name="problem_01_expect_return_b" value="2" class="items01">
+            <label for="q2_o2" id="l_q2_o2" class="items01">Disminuya</label>
             <br>
-            <input type="radio" id="q2_o3" name="problem_03_expect_return_b" value="3" class="items01">
-            <label for="q2_o3" id="l_q2_o3" class="items01">Aumente a
-        {% if assetA == 'Col_A' %}
-            20%
-        {% else %}
-            19%
-        {% endif %}</label>
+            <input type="radio" id="q2_o3" name="problem_01_expect_return_b" value="3" class="items01">
+            <label for="q2_o3" id="l_q2_o3" class="items01">Se mantenga igual</label>
             <input type="hidden" name="check_radio_01" value="0" id="check_radio_01"/>
         </div>
         
@@ -447,7 +345,7 @@
                 </tr>
                 <tr>
                     <td class="td_slider">
-                        <input type="range" name="problem_03_probability_b" value="" min="0" max="100" step="1" id="slider_porcentaje_02" class="slider_porcentaje" required>
+                        <input type="range" name="problem_01_probability_b" value="" min="0" max="100" step="1" id="slider_porcentaje_02" class="slider_porcentaje" required>
                         <input type="hidden" name="check_slider_probability_b" value="0" id="id_check_slider_probability_b"/>
                     </td>
                 </tr>
@@ -457,13 +355,13 @@
         <li style="margin-top: 10px;"> De acuerdo con las gráficas ¿En cuál inversión la dispersión de los porcentajes de rentabilidad es mayor?
         </li>
         <div class="card_table" id="h-slider-div" style="text-align: left; margin-top: 10px;">
-            <input type="radio" id="q4_o1" name="problem_03_var" value="1" class="items02">
+            <input type="radio" id="q4_o1" name="problem_01_var" value="1" class="items02">
             <label for="q4_o1" id="l_q4_o1" class="items02"> Inversión A</label>
             <br>
-            <input type="radio" id="q4_o2" name="problem_03_var" value="2" class="items02">
+            <input type="radio" id="q4_o2" name="problem_01_var" value="2" class="items02">
             <label for="q4_o2" id="l_q4_o2" class="items02">Inversión B</label>
             <br>
-            <input type="radio" id="q4_o3" name="problem_03_var" value="3" class="items02">
+            <input type="radio" id="q4_o3" name="problem_01_var" value="3" class="items02">
             <label for="q4_o3" id="l_q4_o3" class="items02">Ambas son iguales</label>
             <input type="hidden" name="check_radio_02" value="0" id="check_radio_02"/>
         </div>

@@ -123,6 +123,78 @@ class instruc_02(Page):
                 'n_problems': list(range(len(self.player.participant.vars['problems'])))
                 }
 
+class graph_01(Page):
+    form_model = "player"
+    form_fields = ["problem_01_btnSelected", "problem_01_btnTime", "problem_01_sliderSelected", "problem_01_sliderTime", "problem_01_sliderInv_a", "problem_01_invCntMistakers", "problem_01_invMistakes", "problem_01_invTime", "problem_01_invVal_a", "problem_01_invVal_b"]
+    def vars_for_template(self):
+        orden = self.player.n_order_problems.strip('][').split(', ')
+        if orden[0] == '0':
+            self.player.problem_01_type = "-50%"
+            if self.player.assetA_problem_01 == 0:
+                self.player.problem_01_inv_a = 'Col_B'
+            else:
+                self.player.problem_01_inv_a = 'Col_A'
+            if self.player.order_problem_01_a == 0:
+                self.player.problem_01_order_a = 'Decreasing'
+            else:
+                self.player.problem_01_order_a = 'Increasing'
+            if self.player.order_problem_01_b == 0:
+                self.player.problem_01_order_b = 'Decreasing'
+            else:
+                self.player.problem_01_order_b = 'Increasing'
+        elif orden[0] == '1': 
+            self.player.problem_01_type = "0%"
+            if self.player.assetA_problem_02 == 0:
+                self.player.problem_01_inv_a = 'Col_B'
+            else:
+                self.player.problem_01_inv_a = 'Col_A'
+            if self.player.order_problem_02_a == 0:
+                self.player.problem_01_order_a = 'Decreasing'
+            else:
+                self.player.problem_01_order_a = 'Increasing'
+            if self.player.order_problem_02_b == 0:
+                self.player.problem_01_order_b = 'Decreasing'
+            else:
+                self.player.problem_01_order_b = 'Increasing'
+        elif orden[0] == '2': 
+            self.player.problem_01_type = "+50%"
+            if self.player.assetA_problem_03 == 0:
+                self.player.problem_01_inv_a = 'Col_B'
+            else:
+                self.player.problem_01_inv_a = 'Col_A'
+            if self.player.order_problem_03_a == 0:
+                self.player.problem_01_order_a = 'Decreasing'
+            else:
+                self.player.problem_01_order_a = 'Increasing'
+            if self.player.order_problem_03_b == 0:
+                self.player.problem_01_order_b = 'Decreasing'
+            else:
+                self.player.problem_01_order_b = 'Increasing'
+        elif orden[0] == '3':
+            self.player.problem_01_type = "+100%"
+            if self.player.assetA_problem_04 == 0:
+                self.player.problem_01_inv_a = 'Col_B'
+            else:
+                self.player.problem_01_inv_a = 'Col_A'
+            if self.player.order_problem_03_a == 0:
+                self.player.problem_01_order_a = 'Decreasing'
+            else:
+                self.player.problem_01_order_a = 'Increasing'
+            if self.player.order_problem_03_b == 0:
+                self.player.problem_01_order_b = 'Decreasing'
+            else:
+                self.player.problem_01_order_b = 'Increasing'
+        return {
+                'n_problem': 1,
+                'data_a': list(self.player.participant.vars['problems'][0]['AssetA']),
+                'data_b': list(self.player.participant.vars['problems'][0]['AssetB']),
+                'labels': Constants.inv_labels,
+                'graphType': self.player.participant.vars['graphType'],
+                'max_inv': Constants.max_inv,
+                'max_y': max(list(self.player.participant.vars['problems'][0]['AssetA']) + list(self.player.participant.vars['problems'][0]['AssetB'])),
+                'min_y': min(list(self.player.participant.vars['problems'][0]['AssetA']) + list(self.player.participant.vars['problems'][0]['AssetB']))
+                }
+
 class graph_01_a(Page):
     form_model = "player"
     form_fields = ["problem_01_btnSelected", "problem_01_btnTime"]
@@ -221,11 +293,11 @@ class questions_problem_01(Page):
                 self.player.problem_01_inv_a = 'Col_B'
             else:
                 self.player.problem_01_inv_a = 'Col_A'
-            if self.player.order_problem_03_a == 0:
+            if self.player.order_problem_04_a == 0:
                 self.player.problem_01_order_a = 'Decreasing'
             else:
                 self.player.problem_01_order_a = 'Increasing'
-            if self.player.order_problem_03_b == 0:
+            if self.player.order_problem_04_b == 0:
                 self.player.problem_01_order_b = 'Decreasing'
             else:
                 self.player.problem_01_order_b = 'Increasing'
@@ -607,10 +679,11 @@ class questions_problem_04(Page):
 
 page_sequence = [
                 instruc_01, 
-                instruc_02, # retro de cómo quedan los datos ordenados
-                graph_01_a, # gráfica que varía el $$ en la tabla
-                graph_01_b,
-                graph_01_c,
+                #instruc_02, # retro de cómo quedan los datos ordenados
+                graph_01,
+                #graph_01_a, # gráfica que varía el $$ en la tabla
+                #graph_01_b,
+                #graph_01_c,
                 questions_problem_01,
                 graph_02_a,
                 graph_02_b,
@@ -621,4 +694,7 @@ page_sequence = [
                 graph_03_c,
                 questions_problem_03,
                 graph_04_a,
+                graph_04_b,
+                graph_04_c,
+                questions_problem_04,
                 ]

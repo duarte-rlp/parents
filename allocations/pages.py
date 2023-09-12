@@ -242,7 +242,7 @@ class graph_01_c(Page):
 
 class questions_problem_01(Page):
     form_model = "player"
-    form_fields = ["problem_01_return_b", "problem_01_expect_return_b", "problem_01_probability_b", "problem_01_var"]
+    form_fields = ["problem_01_return_b", "problem_01_expect_return_b", "problem_01_probability_b", 'problem_01_risk', 'problem_01_insurance']
     def vars_for_template(self):
         orden = self.player.n_order_problems.strip('][').split(', ')
         if orden[0] == '0':

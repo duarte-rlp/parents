@@ -174,7 +174,8 @@ class Player(BasePlayer):
     problem_01_return_b = models.IntegerField()
     problem_01_expect_return_b = models.IntegerField()
     problem_01_probability_b = models.IntegerField()
-    problem_01_var = models.IntegerField()
+    problem_01_risk = models.IntegerField()
+    problem_01_insurance = models.IntegerField()
 
     problem_02_type = models.StringField()
     problem_02_inv_a = models.StringField()
@@ -232,7 +233,7 @@ class Player(BasePlayer):
     problem_04_expect_return_b = models.IntegerField()
     problem_04_probability_b = models.IntegerField()
     problem_04_var = models.IntegerField()
-    
+
     name_app = models.StringField(default = 'allocations')
 
 

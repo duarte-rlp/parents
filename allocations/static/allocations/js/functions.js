@@ -12,35 +12,6 @@
         });
 
         $(document).ready(function () {
-            $('.slider_porcentaje').change(
-                function (event) {
-                    var slider_id = event.target.id;
-                    var slider_value = event.target.value;
-                    var parent_slider = document.getElementById(slider_id).parentElement.parentElement.parentElement;
-                    console.log('slider id', slider_id);
-                    console.log('parent', parent_slider);
-                    var child = parent_slider.children[0].children[0].firstElementChild;
-                    child.innerHTML = slider_value + "%";
-                    var check_sli = parent_slider.children[1].lastElementChild.lastElementChild;
-                    check_sli.value = 1;
-                    validate_next();
-                }
-            );
-        });
-
-        $(document).ready(function () {
-            $('.items01').click(
-                function (event) {
-                    var radio_id = event.target.id;
-                    var parent_radio = document.getElementById(radio_id).parentElement;
-                    var check_rad = parent_radio.lastElementChild;
-                    check_rad.value = 1;
-                    validate_next();
-                }
-            );
-        });
-
-        $(document).ready(function () {
             $('.items02').click(
                 function (event) {
                     var radio_id = event.target.id;

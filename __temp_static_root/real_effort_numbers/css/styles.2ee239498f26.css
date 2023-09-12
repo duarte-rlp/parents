@@ -1,0 +1,120 @@
+
+.div_btnNext {
+	width: 100%;
+	align-content: center;
+	text-align: center;
+}
+
+.btnNext {
+	cursor: pointer;
+	color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    border: 1px solid transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.btnNext:hover {
+    background-color: #0069d9;
+    border-color: #0062cc;
+}
+
+.div_operation {
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+
+.inNumber {
+	max-width: 100px;
+	display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    text-align: center;
+}
+
+input:focus {
+	color: #495057;
+    background-color: #fff;
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+
+.error_msg {
+	display: none;
+	color: #ff0000;
+	text-align: center;
+	margin-top: 0.25rem;
+}
+
+.cell_question {
+	padding: 0.375rem 0.75rem;
+}
+
+.tab_operation {
+	margin: 0 auto;
+}
+
+input[type="radio"][disabled]{
+    border: 1px solid #757575;
+    border-radius: 10px;
+    box-shadow: 0px 0px 2px 0px #757575;
+}
+
+input[type="radio"]:checked::before{
+    transform: scale(1);
+}
+
+input[type="radio"]:checked{
+    border: 1px solid #007cff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 2px 0px #007cff;
+}
+
+input[type="radio"]::before{
+    content: "";
+    display: block;
+    height: 13.5px;
+    width: 13.5px;
+    border-radius: 6px;
+    z-index: 1;
+    top: 2px;
+    left: 2px;
+    background-color: #007cff;
+    transition: 100ms transform ease-in-out;
+    transform: scale(0);
+    position: absolute;
+}
+
+input[type="radio"]{
+    -webkit-appearance: none;
+    appearance: none;
+    border: 1px solid #757575;
+    border-radius: 10px;
+    box-shadow: 0px 0px 2px 0px #757575;
+    background-color: #ffffff;
+    height: 20px;
+    width: 20px;
+    place-content: center;
+    position: relative;
+    margin: auto 0.5rem;
+    vertical-align: middle;
+}
+

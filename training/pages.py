@@ -54,6 +54,7 @@ class intro_02(Page):
         return {
                 'labels': Constants.inv_labels,
                 'data_a': Constants.inv_a,
+                'data_b': Constants.inv_b,
                 'max_y': max(Constants.inv_a),
                 'min_y': min(Constants.inv_a),
                 'investment_max': Constants.investment_max

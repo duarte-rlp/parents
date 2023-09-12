@@ -176,8 +176,8 @@
         }
 
         function nextView() {
-            document.getElementById("problem_02_btnSelected").value += "}";
-            document.getElementById("problem_02_btnTime").value = Date.now() - start;
+            document.getElementById("problem_04_sliderSelected").value += "}";
+            document.getElementById("problem_04_sliderTime").value = Date.now() - start;
             let btn = document.getElementById("id_next");
             btn.removeAttribute("disabled");
             btn.click();
@@ -188,8 +188,8 @@
                 add_point_graph(cnt_cards);
             } else {
                 clearInterval(intervalID);
-                var next_button = document.getElementsByClassName('btnNext');
-                next_button[0].style.cssText += 'display: block !important; margin: 0 auto;';
+                document.getElementById("h-slider-div").style.display = "block";
+                document.getElementById("div_tabGraph").style.display = "block";
             }
             cnt_cards += 1;
         }
@@ -199,13 +199,6 @@
                 add_point_a(cnt_cards);
             } else {
                 clearInterval(intervalID);
-                interval_a = 1;
-                if((interval_a == 1) && (interval_b == 1)) {
-                    var next_button = document.getElementsByClassName('btnNext');
-                    next_button[0].style.cssText += 'display: block !important; margin: 0 auto;';
-                    document.getElementById("btn_b").style.backgroundColor = "#007bff";
-                    document.getElementById("btn_b").disabled = false;
-                }
                 cnt_cards = -1;
             }
             cnt_cards += 1;
@@ -216,68 +209,67 @@
                 add_point_b(cnt_cards);
             } else {
                 clearInterval(intervalID);
-                interval_b = 1;
-                if((interval_a == 1) && (interval_b == 1)) {
-                    var next_button = document.getElementsByClassName('btnNext');
-                    next_button[0].style.cssText += 'display: block !important; margin: 0 auto;';
-                    document.getElementById("btn_a").style.backgroundColor = "#007bff";
-                    document.getElementById("btn_a").disabled = false;
-                }
                 cnt_cards = -1;
             }
             cnt_cards += 1;
         }
 
         function visibleA() {
-            cnt_selected += 1;
-            let time = Date.now() - start;
-            let add = cnt_selected.toString() + ": {\'btn\': 'A', \'time\': " + time + "}, ";
-            document.getElementById("problem_02_btnSelected").value += add;
             document.getElementById("btn_a").style.backgroundColor = "#989898";
             document.getElementById("btn_a").disabled = true;
             document.getElementById("btn_b").style.backgroundColor = "#007bff";
             document.getElementById("btn_b").disabled = false;
-            if(interval_a == 0) {
-                nextCard_a();
-                intervalID = setInterval(nextCard_a, 500);
-                if(interval_b == 1) {
-                    graph.series[1].setVisible(false);
-                }
-            } else {
-                graph.series[0].setVisible(true);
-                graph.series[1].setVisible(false);
+            let fa = document.getElementById("fila_a");
+            let fb = document.getElementById("fila_b");
+            fa.style.visibility = "visible";
+            fb.style.visibility = "hidden";
+            for(var i=0; i<fb.childElementCount; i++) {
+                fb.children[i].style.border = "#ffffff 1px solid";
             }
+            for(var i=0; i<fa.childElementCount; i++) {
+                fa.children[i].style.border = "#000000 1px solid";
+                fb.children[i].style.borderTop = "#000000 1px solid";
+            }
+            nextCard_a();
+            intervalID = setInterval(nextCard_a, 0);
+            graph.series[1].setData([]);
         }
 
         function visibleB() {
-            cnt_selected += 1;
-            let time = Date.now() - start;
-            let add = cnt_selected.toString() + ": {\'btn\': 'B', \'time\': " + time + "}, ";
-            document.getElementById("problem_02_btnSelected").value += add;
             document.getElementById("btn_b").style.backgroundColor = "#989898";
             document.getElementById("btn_b").disabled = true;
             document.getElementById("btn_a").style.backgroundColor = "#007bff";
             document.getElementById("btn_a").disabled = false;
-            if(interval_b == 0) {
-                nextCard_b();
-                intervalID = setInterval(nextCard_b, 500);
-                if(interval_a == 1) {
-                    graph.series[0].setVisible(false);
-                }
-            } else {
-                graph.series[0].setVisible(false);
-                graph.series[1].setVisible(true);
+            let fa = document.getElementById("fila_a");
+            let fb = document.getElementById("fila_b");
+            fa.style.visibility = "hidden";
+            fb.style.visibility = "visible";
+            for(var i=0; i<fa.childElementCount; i++) {
+                fa.children[i].style.border = "#ffffff 1px solid";
             }
+            for(var i=0; i<fb.childElementCount; i++) {
+                fb.children[i].style.border = "#000000 1px solid";
+                fa.children[i].style.borderBottom = "#000000 1px solid";
+            }
+            nextCard_b();
+            intervalID = setInterval(nextCard_b, 0);
+            graph.series[0].setData([]);
         }
 
         function visibleAB() {
-            cnt_selected += 1;
-            let time = Date.now() - start;
-            let add = cnt_selected.toString() + ": {\'btn\': 'AB', \'time\': " + time + "}, ";
-            document.getElementById("problem_02_btnSelected").value += add;
+            let fa = document.getElementById("fila_a");
+            let fb = document.getElementById("fila_b");
+            fa.style.visibility = "visible";
+            fb.style.visibility = "visible";
+            for(var i=0; i<fa.childElementCount; i++) {
+                fa.children[i].style.border = "#000000 1px solid";
+            }
+            for(var i=0; i<fb.childElementCount; i++) {
+                fb.children[i].style.border = "#000000 1px solid";
+            }
             if(interval_a == 0) {
                 nextCard();
-                intervalID = setInterval(nextCard, 500);
+                intervalID = setInterval(nextCard, 0);
             }
         }
 
@@ -295,11 +287,53 @@
             overlay.classList.add("hidden");
         }
 
+        $('.slider_dinero').change(
+            function (event) {
+                let val_slider = document.getElementById(event.target.id).value;
+                cnt_selected += 1;
+                let time = Date.now() - start;
+                let add = cnt_selected.toString() + ": {\'value_selected\': " + val_slider + ", \'time\': " + time + "}, ";
+                document.getElementById("problem_04_sliderSelected").value += add;
+                
+                for(var i=0; i<8; i++) {
+                    let cell_a = document.getElementById("a_"+(i+1));
+                    let cell_b = document.getElementById("b_"+(i+1));
+                    let cell_t = document.getElementById("t_"+(i+1));
+                    let mon_a = (val_slider * data_a[i]) / 100;
+                    let mon_b = ((100000 - val_slider) * data_b[i]) / 100;
+                    let mon_t = mon_a + mon_b;
+                    if(mon_a < 0) {
+                        mon_a = "- $" + (mon_a * -1).toLocaleString('es-CO');
+                    } else if(mon_a > 0) {
+                        mon_a = "" + mon_a.toLocaleString('es-CO');
+                    } else {
+                        mon_a = "0";
+                    }
+                    if(mon_b < 0) {
+                        mon_b = "- $" + (mon_b * -1).toLocaleString('es-CO');
+                    } else if(mon_b > 0) {
+                        mon_b = "" + mon_b.toLocaleString('es-CO');
+                    } else {
+                        mon_b = "0";
+                    }
+                    if(mon_t < 0) {
+                        mon_t = "- $" + (mon_t * -1).toLocaleString('es-CO');
+                    } else if(mon_t > 0) {
+                        mon_t = "" + mon_t.toLocaleString('es-CO');
+                    } else {
+                        mon_t = "0";
+                    }
+                    cell_a.innerHTML = mon_a;
+                    cell_b.innerHTML = mon_b;
+                    cell_t.innerHTML = mon_t;
+                }
+            });
+
     </script>
 {% endblock %}
 
 {% block title %}
-    Actividad 2: Decisión de Inversión # {{ n_problem }}
+    Actividad 2: Decisión de Inversión 1 # {{ n_problem }}
 {% endblock %}
 
 {% block content %}
@@ -308,8 +342,7 @@
     <tr>
         <td class="cell_question" style="width: 100% !important;">    
             <div id="text01">
-                Haga clic en el botón para ver el porcentaje de rentabilidad (%) que las inversiones pueden generar en cada ESCENARIO.
-            </div>
+                Haga <i>clic</i> sobre la barra y mueva el cuadro que aparece para ver cómo la cantidad de dinero asignada a la <i>Inversión A</i> y la <i>Inversión B</i> afecta la tabla de las posibles rentabilidades. 
         </td>
     </tr>
 </table>
@@ -328,52 +361,54 @@
         </tr>
     </table>
     <div id="graph01" class="div_graph"></div>
-    <div class="div_tabGraph" id="div_tabGraph" style="display: none;">
+    <div class="div_tabGraph" id="div_tabGraph">
         <table class="tabGraph">
-            <tr>
-                <td class="cell_graphInv">Retorno A</td>
-                <td class="cell_graph" id="a_1" style = ></td>
-                <td class="cell_graph" id="a_2"></td>
-                <td class="cell_graph" id="a_3"></td>
-                <td class="cell_graph" id="a_4"></td>
-                <td class="cell_graph" id="a_5"></td>
-                <td class="cell_graph" id="a_6"></td>
-                <td class="cell_graph" id="a_7"></td>
-                <td class="cell_graph" id="a_8"></td>
+            <tr id="fila_a" style="visibility: hidden; border: #ffffff 1px solid;">
+                <td class="cell_graphInv" style="border: #ffffff 1px solid;">Retorno A</td>
+                <td class="cell_graph" id="a_1" style="border: #ffffff 1px solid;"></td>
+                <td class="cell_graph" id="a_2" style="border: #ffffff 1px solid;"></td>
+                <td class="cell_graph" id="a_3" style="border: #ffffff 1px solid;"></td>
+                <td class="cell_graph" id="a_4" style="border: #ffffff 1px solid;"></td>
+                <td class="cell_graph" id="a_5" style="border: #ffffff 1px solid;"></td>
+                <td class="cell_graph" id="a_6" style="border: #ffffff 1px solid;"></td>
+                <td class="cell_graph" id="a_7" style="border: #ffffff 1px solid;"></td>
+                <td class="cell_graph" id="a_8" style="border: #ffffff 1px solid;"></td>
             </tr>
-            <tr>
-                <td class="cell_graphInv">Retorno B</td>
-                <td class="cell_graph" id="b_1"></td>
-                <td class="cell_graph" id="b_2"></td>
-                <td class="cell_graph" id="b_3"></td>
-                <td class="cell_graph" id="b_4"></td>
-                <td class="cell_graph" id="b_5"></td>
-                <td class="cell_graph" id="b_6"></td>
-                <td class="cell_graph" id="b_7"></td>
-                <td class="cell_graph" id="b_8"></td>
+            <tr id="fila_b" style="visibility: hidden;">
+                <td class="cell_graphInv" style="border: #ffffff 1px solid;">Retorno B</td>
+                <td class="cell_graph" id="b_1" style="border: #ffffff 1px solid;"></td>
+                <td class="cell_graph" id="b_2" style="border: #ffffff 1px solid;"></td>
+                <td class="cell_graph" id="b_3" style="border: #ffffff 1px solid;"></td>
+                <td class="cell_graph" id="b_4" style="border: #ffffff 1px solid;"></td>
+                <td class="cell_graph" id="b_5" style="border: #ffffff 1px solid;"></td>
+                <td class="cell_graph" id="b_6" style="border: #ffffff 1px solid;"></td>
+                <td class="cell_graph" id="b_7" style="border: #ffffff 1px solid;"></td>
+                <td class="cell_graph" id="b_8" style="border: #ffffff 1px solid;"></td>
             </tr>
-            <tr>
-                <td class="cell_graphInv" style="font-weight: bold;">Total</td>
-                <td class="cell_graph" style="font-weight: bold;" id="t_1"></td>
-                <td class="cell_graph" style="font-weight: bold;" id="t_2"></td>
-                <td class="cell_graph" style="font-weight: bold;" id="t_3"></td>
-                <td class="cell_graph" style="font-weight: bold;" id="t_4"></td>
-                <td class="cell_graph" style="font-weight: bold;" id="t_5"></td>
-                <td class="cell_graph" style="font-weight: bold;" id="t_6"></td>
-                <td class="cell_graph" style="font-weight: bold;" id="t_7"></td>
-                <td class="cell_graph" style="font-weight: bold;" id="t_8"></td>
+        </table>
+        <table class="tabGraph" style="margin-top: 15px;">
+            <tr id="fila_total" style="visibility: hidden; border: #ffffff 1px solid;">
+                <td class="cell_graphInv" style="font-weight: bold; border: #ffffff 1px solid;">Total</td>
+                <td class="cell_graph" style="font-weight: bold; border: #ffffff 1px solid;" id="t_1"></td>
+                <td class="cell_graph" style="font-weight: bold; border: #ffffff 1px solid;" id="t_2"></td>
+                <td class="cell_graph" style="font-weight: bold; border: #ffffff 1px solid;" id="t_3"></td>
+                <td class="cell_graph" style="font-weight: bold; border: #ffffff 1px solid;" id="t_4"></td>
+                <td class="cell_graph" style="font-weight: bold; border: #ffffff 1px solid;" id="t_5"></td>
+                <td class="cell_graph" style="font-weight: bold; border: #ffffff 1px solid;" id="t_6"></td>
+                <td class="cell_graph" style="font-weight: bold; border: #ffffff 1px solid;" id="t_7"></td>
+                <td class="cell_graph" style="font-weight: bold; border: #ffffff 1px solid;" id="t_8"></td>
             </tr>
         </table>
     </div>
 </div>
 
 <br>
-<div class="card_table" id="h-slider-div" style="text-align: center; display: none;">
+<div class="card_table" id="h-slider-div" style="text-align: center;">
     <table class="table_question">
         <tr>
             <td class="text_slider"> - </td>
             <td class="td_slider" rowspan="2">
-                <input type="range" name="problem_02_inv_a_slider" value="" min="0" max="{{ max_inv }}" step="1000" id="sliderDinero" class="slider_dinero" required>
+                <input type="range" name="problem_04_sliderInv_a" value="" min="0" max="{{ max_inv }}" step="1000" id="sliderDinero" class="slider_dinero" required>
                 <input type="hidden" name="check_slider_example" value="" id="id_check_slider_example"/>
             </td>
             <td class="text_slider"> - </td>
@@ -389,14 +424,40 @@
     </table>
 </div>
 
-<input type="hidden" name="problem_02_btnSelected" value="{ " id="problem_02_btnSelected">
-<input type="hidden" name="problem_02_btnTime" value="" id="problem_02_btnTime">
+<input type="hidden" name="problem_04_sliderSelected" value="{ " id="problem_04_sliderSelected">
+<input type="hidden" name="problem_04_sliderTime" value="" id="problem_04_sliderTime">
 
 <br>
 
-<div class="div_btnNext" style="margin-top: -20px;">
+<div class="div_btnNext">
     <input type="button" value="Siguiente" class="btnNext" style="display: none;" onclick="nextView()">
     <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next" disabled>Siguiente</button>
 </div>
+
+<section class="modal hidden">
+    <div>
+        <h3>Confirmación</h3>
+        <p>
+            Por favor confirme los valores asignados: <br>
+              <i>Inversión A:</i> <span id="inv_a"></span><br> 
+              <i>Inversión B:</i> <span id="inv_b"></span>.
+        </p>
+        <p>
+            Si es correcto presione el botón "Enviar" de lo contrario presione el botón "Cambiar valores".
+        </p>
+    </div>
+    <table style="width: 100%;" class="table_modal">
+        <tr>
+            <td>
+                <input type="button" value="Cambiar valores" class="btnNext" onclick="closeModal()">
+            </td>
+            <td>
+                <input type="button" value="Enviar" class="btnNext" onclick="nextView()">
+            </td>
+        </tr>
+    </table>
+</section>
+
+<div class="overlay hidden"></div>
 
 {% endblock %}

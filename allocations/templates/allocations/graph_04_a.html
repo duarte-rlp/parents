@@ -176,8 +176,8 @@
         }
 
         function nextView() {
-            document.getElementById("problem_02_btnSelected").value += "}";
-            document.getElementById("problem_02_btnTime").value = Date.now() - start;
+            document.getElementById("problem_04_btnSelected").value += "}";
+            document.getElementById("problem_04_btnTime").value = Date.now() - start;
             let btn = document.getElementById("id_next");
             btn.removeAttribute("disabled");
             btn.click();
@@ -232,14 +232,14 @@
             cnt_selected += 1;
             let time = Date.now() - start;
             let add = cnt_selected.toString() + ": {\'btn\': 'A', \'time\': " + time + "}, ";
-            document.getElementById("problem_02_btnSelected").value += add;
+            document.getElementById("problem_04_btnSelected").value += add;
             document.getElementById("btn_a").style.backgroundColor = "#989898";
             document.getElementById("btn_a").disabled = true;
             document.getElementById("btn_b").style.backgroundColor = "#007bff";
             document.getElementById("btn_b").disabled = false;
             if(interval_a == 0) {
                 nextCard_a();
-                intervalID = setInterval(nextCard_a, 500);
+                intervalID = setInterval(nextCard_a, 0);
                 if(interval_b == 1) {
                     graph.series[1].setVisible(false);
                 }
@@ -253,14 +253,14 @@
             cnt_selected += 1;
             let time = Date.now() - start;
             let add = cnt_selected.toString() + ": {\'btn\': 'B', \'time\': " + time + "}, ";
-            document.getElementById("problem_02_btnSelected").value += add;
+            document.getElementById("problem_04_btnSelected").value += add;
             document.getElementById("btn_b").style.backgroundColor = "#989898";
             document.getElementById("btn_b").disabled = true;
             document.getElementById("btn_a").style.backgroundColor = "#007bff";
             document.getElementById("btn_a").disabled = false;
             if(interval_b == 0) {
                 nextCard_b();
-                intervalID = setInterval(nextCard_b, 500);
+                intervalID = setInterval(nextCard_b, 0);
                 if(interval_a == 1) {
                     graph.series[0].setVisible(false);
                 }
@@ -274,10 +274,10 @@
             cnt_selected += 1;
             let time = Date.now() - start;
             let add = cnt_selected.toString() + ": {\'btn\': 'AB', \'time\': " + time + "}, ";
-            document.getElementById("problem_02_btnSelected").value += add;
+            document.getElementById("problem_04_btnSelected").value += add;
             if(interval_a == 0) {
                 nextCard();
-                intervalID = setInterval(nextCard, 500);
+                intervalID = setInterval(nextCard, 0);
             }
         }
 
@@ -373,7 +373,7 @@
         <tr>
             <td class="text_slider"> - </td>
             <td class="td_slider" rowspan="2">
-                <input type="range" name="problem_02_inv_a_slider" value="" min="0" max="{{ max_inv }}" step="1000" id="sliderDinero" class="slider_dinero" required>
+                <input type="range" name="problem_04_inv_a_slider" value="" min="0" max="{{ max_inv }}" step="1000" id="sliderDinero" class="slider_dinero" required>
                 <input type="hidden" name="check_slider_example" value="" id="id_check_slider_example"/>
             </td>
             <td class="text_slider"> - </td>
@@ -389,8 +389,8 @@
     </table>
 </div>
 
-<input type="hidden" name="problem_02_btnSelected" value="{ " id="problem_02_btnSelected">
-<input type="hidden" name="problem_02_btnTime" value="" id="problem_02_btnTime">
+<input type="hidden" name="problem_04_btnSelected" value="{ " id="problem_04_btnSelected">
+<input type="hidden" name="problem_04_btnTime" value="" id="problem_04_btnTime">
 
 <br>
 

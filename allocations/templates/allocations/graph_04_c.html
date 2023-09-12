@@ -176,9 +176,9 @@
         }
 
         function nextView() {
-            document.getElementById("problem_02_invMistakes").value += "}";
-            document.getElementById("problem_02_invTime").value = Date.now() - start;
-            document.getElementById("problem_02_invCntMistakers").value = cnt_selected;
+            document.getElementById("problem_04_invMistakes").value += "}";
+            document.getElementById("problem_04_invTime").value = Date.now() - start;
+            document.getElementById("problem_04_invCntMistakers").value = cnt_selected;
             let btn = document.getElementById("id_next");
             btn.removeAttribute("disabled");
             btn.click();
@@ -279,14 +279,14 @@
             let overlay = document.querySelector(".overlay");
             modal.classList.remove("hidden");
             overlay.classList.remove("hidden");
-            document.getElementById("inv_a").innerHTML = "<toMoney>" + document.getElementById("problem_02_invVal_a").value + "</toMoney>";
-            document.getElementById("inv_b").innerHTML = "<toMoney>" + document.getElementById("problem_02_invVal_b").value + "</toMoney>";
+            document.getElementById("inv_a").innerHTML = "<toMoney>" + document.getElementById("problem_04_invVal_a").value + "</toMoney>";
+            document.getElementById("inv_b").innerHTML = "<toMoney>" + document.getElementById("problem_04_invVal_b").value + "</toMoney>";
             conv_money();
-            if(document.getElementById('problem_02_invVal_a').value.length == 0) {
-                document.getElementById('problem_02_invVal_a').value = 0;
+            if(document.getElementById('problem_04_invVal_a').value.length == 0) {
+                document.getElementById('problem_04_invVal_a').value = 0;
             }
-            if(document.getElementById('problem_02_invVal_b').value.length == 0) {
-                document.getElementById('problem_02_invVal_b').value = 0;
+            if(document.getElementById('problem_04_invVal_b').value.length == 0) {
+                document.getElementById('problem_04_invVal_b').value = 0;
             }
         }
 
@@ -298,20 +298,19 @@
         }
 
         function validateInv() {
-            let inv_a = Number(document.getElementById("problem_02_invVal_a").value);
-            let inv_b = Number(document.getElementById("problem_02_invVal_b").value);
-            console.log(inv_a + inv_b);
+            let inv_a = Number(document.getElementById("problem_04_invVal_a").value);
+            let inv_b = Number(document.getElementById("problem_04_invVal_b").value);
             if((inv_a + inv_b) == 100000) {
                 nextView();
             } else {
                 cnt_selected += 1;
                 let time = Date.now() - start;
                 let add = cnt_selected.toString() + ": {\'inversion_a\': " + inv_a.toString() + ", \'inversion_b\': " + inv_b.toString() + ", \'time\': " + time + "}, ";
-                document.getElementById("problem_02_invMistakes").value += add;
+                document.getElementById("problem_04_invMistakes").value += add;
                 closeModal();
                 document.getElementById("div_error").style.display = "block";
-                document.getElementById("problem_02_invVal_a").style.boxShadow = "0px 0px 3px 1px rgba(255, 0, 0, 0.65)";
-                document.getElementById("problem_02_invVal_b").style.boxShadow = "0px 0px 3px 1px rgba(255, 0, 0, 0.65)";
+                document.getElementById("problem_04_invVal_a").style.boxShadow = "0px 0px 3px 1px rgba(255, 0, 0, 0.65)";
+                document.getElementById("problem_04_invVal_b").style.boxShadow = "0px 0px 3px 1px rgba(255, 0, 0, 0.65)";
             }
         }
 
@@ -332,15 +331,15 @@
             if(document.getElementById("div_error").style.display == "block") {
                 document.getElementById("div_error").style.display = "none";
             }
-            document.getElementById("problem_02_invVal_a").style.boxShadow = "none";
-            document.getElementById("problem_02_invVal_b").style.boxShadow = "none";
+            document.getElementById("problem_04_invVal_a").style.boxShadow = "none";
+            document.getElementById("problem_04_invVal_b").style.boxShadow = "none";
             for(var i=0; i<8; i++) {
 
                 let cell_a = document.getElementById("a_"+(i+1));
                 let cell_b = document.getElementById("b_"+(i+1));
                 let cell_t = document.getElementById("t_"+(i+1));
-                let mon_a = (document.getElementById("problem_02_invVal_a").value * data_a[i]) / 100;
-                let mon_b = (document.getElementById("problem_02_invVal_b").value * data_b[i]) / 100;
+                let mon_a = (document.getElementById("problem_04_invVal_a").value * data_a[i]) / 100;
+                let mon_b = (document.getElementById("problem_04_invVal_b").value * data_b[i]) / 100;
                 let mon_t = mon_a + mon_b;
                 if(mon_a < 0) {
                     mon_a = "- $" + (mon_a * -1).toLocaleString('es-CO');
@@ -447,9 +446,9 @@
 <div class="card_table" id="h-slider-div" style="text-align: center;">
     <table class="table_question">
         <tr>
-            <td class="text_slider"><input type="number" name="problem_02_invVal_a" id="problem_02_invVal_a" class="inNumber_a" oninput="values_table()"></td>
+            <td class="text_slider"><input type="number" name="problem_04_invVal_a" id="problem_04_invVal_a" class="inNumber_a" oninput="values_table()"></td>
             <td class="td_slider" rowspan="2">  </td>
-            <td class="text_slider"><input type="number" name="problem_02_invVal_b" id="problem_02_invVal_b" class="inNumber_a" oninput="values_table()"></td>
+            <td class="text_slider"><input type="number" name="problem_04_invVal_b" id="problem_04_invVal_b" class="inNumber_a" oninput="values_table()"></td>
         </tr>
         <tr>
             <td style="text-align: center;">
@@ -469,9 +468,9 @@
 
 <br>
 
-<input type="hidden" name="problem_02_invMistakes" value="{ " id="problem_02_invMistakes">
-<input type="hidden" name="problem_02_invTime" value="" id="problem_02_invTime">
-<input type="hidden" name="problem_02_invCntMistakers" value="" id="problem_02_invCntMistakers">
+<input type="hidden" name="problem_04_invMistakes" value="{ " id="problem_04_invMistakes">
+<input type="hidden" name="problem_04_invTime" value="" id="problem_04_invTime">
+<input type="hidden" name="problem_04_invCntMistakers" value="" id="problem_04_invCntMistakers">
 
 
 <br>

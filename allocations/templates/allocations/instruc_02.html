@@ -68,6 +68,20 @@
 {% else %}
     Ascendente
 {% endif %}
+    <br>
+    <b>Orden columna A problema 4 (100%): </b> {{ order_problem_04_a }} -> 
+{% if order_problem_04_a == 0 %}
+    Descendente
+{% else %}
+    Ascendente
+{% endif %}
+    <br>
+    <b>Orden columna B problema 4 (100%): </b> {{ order_problem_04_b }} -> 
+{% if order_problem_04_b == 0 %}
+    Descendente
+{% else %}
+    Ascendente
+{% endif %}
     <hr>
     <b>Asset A problema 1 (-50%): </b> {{ assetA_problem_01 }} -> 
 {% if assetA_problem_01 == 0 %}
@@ -89,6 +103,13 @@
 {% else %}
     Col_A
 {% endif %}
+    <br>
+    <b>Asset A problema 4 (100%): </b> {{ assetA_problem_04 }} -> 
+{% if assetA_problem_04 == 0 %}
+    Col_B
+{% else %}
+    Col_A
+{% endif %}
 
     <hr>
 <table style="margin: 0 auto;">
@@ -99,8 +120,10 @@
             -50%
 {% elif n_order_problems.0 == '1' %}
             0%
-{% else %}
+{% elif n_order_problems.0 == '2' %}
             +50%
+{% elif n_order_problems.0 == '3' %}
+            +100%
 {% endif %}
         </td>
     </tr>
@@ -141,8 +164,10 @@
             -50%
 {% elif n_order_problems.1 == '1' %}
             0%
-{% else %}
+{% elif n_order_problems.1 == '2' %}
             +50%
+{% elif n_order_problems.1 == '3' %}
+            +100%
 {% endif %}
         </td>
     </tr>
@@ -183,8 +208,10 @@
             -50%
 {% elif n_order_problems.2 == '1' %}
             0%
-{% else %}
+{% elif n_order_problems.2 == '2' %}
             +50%
+{% elif n_order_problems.2 == '3' %}
+            +100%
 {% endif %}
         </td>
     </tr>
@@ -201,6 +228,50 @@
     </tr>
     {% if problems %}
     {% for index, row in problems.2.iterrows %}
+    <tr>
+        <td style="padding: 5px 10px; text-align: center; border: solid 1px black;">
+            {{ index }}
+        </td>
+        <td style="padding: 5px 10px; text-align: center; border: solid 1px black;">
+            {{ row.AssetA }}
+        </td>
+        <td style="padding: 5px 10px; text-align: center; border: solid 1px black;">
+            {{ row.AssetB }}
+        </td>
+    </tr>
+    {% endfor %}
+    {% endif %}
+</table>
+
+    <hr>
+<table style="margin: 0 auto;">
+    <tr>
+        <td style="padding: 5px 10px; text-align: center; border: solid 1px black;" colspan="3">
+            Problema # {{ n_order_problems.3 }} -> 
+{% if n_order_problems.3 == '0' %}
+            -50%
+{% elif n_order_problems.3 == '1' %}
+            0%
+{% elif n_order_problems.3 == '2' %}
+            +50%
+{% elif n_order_problems.3 == '3' %}
+            +100%
+{% endif %}
+        </td>
+    </tr>
+    <tr>
+        <td style="padding: 5px 10px; text-align: center; border: solid 1px black;">
+            <b>{{ problems.3.index.name }}</b>
+        </td>
+        <td style="padding: 5px 10px; text-align: center; border: solid 1px black;">
+            <b>{{ problems.3.columns.0 }}</b>
+        </td>
+        <td style="padding: 5px 10px; text-align: center; border: solid 1px black;">
+            <b>{{ problems.3.columns.1 }}</b>
+            </td>
+    </tr>
+    {% if problems %}
+    {% for index, row in problems.3.iterrows %}
     <tr>
         <td style="padding: 5px 10px; text-align: center; border: solid 1px black;">
             {{ index }}

@@ -57,7 +57,8 @@ class intro_02(Page):
                 'data_b': Constants.inv_b,
                 'max_y': max(Constants.inv_a),
                 'min_y': min(Constants.inv_a),
-                'investment_max': Constants.investment_max
+                'investment_max': Constants.investment_max,
+                'graphType': self.player.participant.vars['graphType']
                 }
 
 

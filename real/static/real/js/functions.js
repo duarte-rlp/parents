@@ -18,7 +18,6 @@
                     var parent_radio = document.getElementById(radio_id).parentElement;
                     var check_rad = parent_radio.lastElementChild;
                     check_rad.value = 1;
-                    validate_next();
                 }
             );
         });
@@ -30,7 +29,6 @@
                     var parent_radio = document.getElementById(radio_id).parentElement;
                     var check_rad = parent_radio.lastElementChild;
                     check_rad.value = 1;
-                    validate_next();
                 }
             );
         });

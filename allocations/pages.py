@@ -895,7 +895,7 @@ class questions_problem_04(Page):
 
 page_sequence = [
                 instruc_01, 
-                instruc_02, # retro de cómo quedan los datos ordenados
+                #instruc_02, # retro de cómo quedan los datos ordenados
                 graph_01,
                 #graph_01_a, # gráfica que varía el $$ en la tabla
                 #graph_01_b,

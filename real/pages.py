@@ -5,7 +5,7 @@ from .models import Constants
 
 class graph_01(Page):
     form_model = 'player'
-    form_fields = ['has_cultivo_1', 'has_cultivo_2', 'time_cultivos', 'cnt_mistakes', 'question_1_cultivos', 'question_2_cultivos', 'question_3_cultivos', 'question_4_cultivos']
+    form_fields = ['has_cultivo_1', 'has_cultivo_2', 'time_cultivos_1', 'time_cultivos_2', 'time_cultivos_3', 'time_cultivos_4', 'cnt_mistakes', 'question_1_real', 'question_2_real', 'question_3_real', 'question_4_real', 'question_5_real']
     def vars_for_template(self):
         return {
                 'labels': Constants.anhos,

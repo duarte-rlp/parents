@@ -308,15 +308,10 @@
                 }
                 if ((mon_a + mon_b) == 100) {
                     document.getElementById('time_cultivos_3').value = Date.now() - start;
-                    start = Date.now();
                     document.getElementById('cnt_mistakes').value = cnt_mistakes;
-                    step_view += 1;
-                    document.getElementById('step_3').style.display = 'none';
-                    document.getElementById('step_4').style.display = 'block';
-                    document.getElementById('questions_box').style.display = 'none';
-                    document.getElementById('questions').style.display = 'block';
-                    document.getElementById('btnNext').style.display = 'none';
-                    document.getElementById('div_tabGraph').style.display = 'none';
+                    let btn = document.getElementById("id_next");
+                    btn.removeAttribute("disabled");
+                    btn.click();
                 } else {
                     document.getElementById('div_error').style.display = 'block';
                     document.getElementById('div_error').style.margin = '0 auto';
@@ -324,12 +319,6 @@
                     document.getElementById('has_cultivo_2').style.boxShadow = '0px 0px 3px 1px rgba(255, 0, 0, 0.65)';
                     cnt_mistakes += 1;
                 }
-                break;
-            case 4:
-                document.getElementById('time_cultivos_4').value = Date.now() - start;
-                let btn = document.getElementById("id_next");
-                btn.removeAttribute("disabled");
-                btn.click();
                 break;
             }
         }
@@ -360,7 +349,7 @@
         }
 
         $(document).ready(function () {
-            $('.slider_dinero').change(
+            $('#sliderDinero').change(
                 function (event) {
                     var slider_id = event.target.id;
                     var parent_slider = document.getElementById(slider_id).parentElement.parentElement;
@@ -398,58 +387,6 @@
             );
         });
 
-        $(document).ready(function () {
-            $('.slider_porcentaje').change(
-                function (event) {
-                    var slider_id = event.target.id;
-                    var slider_value = event.target.value;
-                    var parent_slider = document.getElementById(slider_id).parentElement.parentElement.parentElement;
-                    var child = parent_slider.children[0].children[0].firstElementChild;
-                    child.innerHTML = slider_value + "%";
-                    var check_sli = parent_slider.children[1].lastElementChild.lastElementChild;
-                }
-            );
-        });
-
-        function review_q1() {
-            document.getElementById('div_error_q1').style.display = 'none';
-            let val_q1 = Number(document.getElementById('question_1_real').value);
-            if ((val_q1 < 0) || (val_q1 > 100)) {
-                document.getElementById('div_error_q1').style.display = 'block';
-                document.getElementById('div_error_q1').style.margin = '0 auto';
-            }
-            cnt_questions[0] = 1;
-            validate_sum();
-        }
-
-        function review_q2() {
-            cnt_questions[1] = 1;
-            validate_sum();
-        }
-
-        function review_q3() {
-            cnt_questions[2] = 1;
-            validate_sum();
-        }
-
-        function review_q4() {
-            cnt_questions[3] = 1;
-            validate_sum();
-        }
-
-        function review_q5() {
-            cnt_questions[4] = 1;
-            validate_sum();
-        }
-
-        function validate_sum() {
-            let suma = cnt_questions.reduce((acumulador, numero) => acumulador + numero, 0);
-            if (suma == 5) {
-                document.getElementById('btnNext').style.display = 'block';
-                document.getElementById('btnNext').style.margin = '0 auto';
-            }
-        }
-
     </script>
 {% endblock %}
 
@@ -478,10 +415,6 @@ Haga clic en sobre la barra y mueva el cuadro que aparece para ver cómo la cant
 <br>
 <br>
 Luego haga clic en “Enviar” para confirmar su decisión y continuar. 
-</div>
-
-<div id="step_4" style="display: none;">
-A continuación, le hacemos algunas preguntas sobre las dos opciones de inversión. Por favor, léalas y responda atentamente.
 </div>
 
 <br>  
@@ -539,13 +472,13 @@ A continuación, le hacemos algunas preguntas sobre las dos opciones de inversi�
     </div>
 </div>
 <br>
+
 <div class="card_table" id="h-slider-div" style="text-align: center; display: none;">
     <table class="table_question" style="width: 80%; margin: 0 auto;">
         <tr>
             <td class="text_slider" style="width: 22%;"> - </td>
             <td class="td_slider" rowspan="2">
                 <input type="range" name="problem_01_sliderInv_a" value="" min="0" max="{{ investment_max }}" step="1" id="sliderDinero" class="slider_dinero" required>
-                <input type="hidden" name="check_slider_example" value="" id="id_check_slider_example"/>
             </td>
             <td class="text_slider" style="width: 22%;"> - </td>
         </tr>
@@ -559,6 +492,7 @@ A continuación, le hacemos algunas preguntas sobre las dos opciones de inversi�
         </tr>
     </table>
 </div>
+
 <div class="card_table" id="questions_box" style="text-align: center; display: none;">
     <table class="table_question">
         <tr>
@@ -578,136 +512,6 @@ A continuación, le hacemos algunas preguntas sobre las dos opciones de inversi�
     <input type="hidden" name="cnt_mistakes" id="cnt_mistakes">
 </div>
 
-<div id="questions" style="display: none;">
-    <div class="card_table" style="text-align: left; width: 80% !important;">
-        <ol>
-            <li style="margin-top: 10px;">Si el rendimiento del Cultivo A es bajo, espero que el rendimiento del Cultivo B sea alto en <input type="number" class="inNumber" name="question_1_real" id="question_1_real" min="0" max="100" required style="display: inline; margin-left: 5px; margin-right: 5px;" oninput="review_q1()"> de 100 casos. </li>
-            <div class="error_msg" id="div_error_q1">
-                Por favor ingrese un valor entre 0 y 100
-            </div>
-
-            <li style="margin-top: 10px;">Si el rendimiento del Cultivo A es alto, es más probable que el rendimiento del Cultivo B:</li>
-            <div class="card_table" id="h-slider-div" style="text-align: left; margin-top: 10px;">
-                <input type="radio" id="q2_o1" name="question_2_real" value="1" class="items01" oninput="review_q2()">
-                <label for="q2_o1" id="l_q2_o1" class="items01"> Sea alto</label>
-                <br>
-                <input type="radio" id="q2_o2" name="question_2_real" value="2" class="items01" oninput="review_q2()">
-                <label for="q2_o2" id="l_q2_o2" class="items01">Sea bajo</label>
-                <br>
-                <input type="radio" id="q2_o3" name="question_2_real" value="3" class="items01" oninput="review_q2()">
-                <label for="q2_o3" id="l_q2_o3" class="items01">Sea igual</label>
-            </div>
-
-            <li style="margin-top: 10px;">Suponga que se selecciona un ESCENARIO al azar, ¿Cuál es la probabilidad de que los rendimientos del Cultivo B sean bajos? </li>
-            <div class="card_table" id="h-slider-div" style="text-align: center; margin-top: 10px;">
-            <table class="table_question" style="margin: 0 auto; width: 70% !important;">
-                <tr>
-                    <td>
-                        <span>- %</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="td_slider">
-                        <input type="range" name="question_3_real" value="" min="0" max="100" step="1" id="question_3_real" class="slider_porcentaje" required oninput="review_q3()">
-                    </td>
-                </tr>
-            </table>
-        </div>
-
-        <li style="margin-top: 10px;">¿Qué tan riesgosa considera usted que es su asignación?</li>
-        <table style="width: 100%; text-align: center; margin-top: 5px;">
-            <tr>
-                <td style="width: 15%;">
-                    Libre de riesgos
-                </td>
-                <td>
-                    <input type="radio" id="risk_op0" name="question_4_real" value="0" class="items01" oninput="review_q4()"><br>0
-                </td>
-                <td>
-                    <input type="radio" id="risk_op1" name="question_4_real" value="1" class="items01" oninput="review_q4()"><br>1
-                </td>
-                <td>
-                    <input type="radio" id="risk_op2" name="question_4_real" value="2" class="items01" oninput="review_q4()"><br>2
-                </td>
-                <td>
-                    <input type="radio" id="risk_op3" name="question_4_real" value="3" class="items01" oninput="review_q4()"><br>3
-                </td>
-                <td>
-                    <input type="radio" id="risk_op4" name="question_4_real" value="4" class="items01" oninput="review_q4()"><br>4
-                </td>
-                <td>
-                    <input type="radio" id="risk_op5" name="question_4_real" value="5" class="items01" oninput="review_q4()"><br>5
-                </td>
-                <td>
-                    <input type="radio" id="risk_op6" name="question_4_real" value="6" class="items01" oninput="review_q4()"><br>6
-                </td>
-                <td>
-                    <input type="radio" id="risk_op7" name="question_4_real" value="7" class="items01" oninput="review_q4()"><br>7
-                </td>
-                <td>
-                    <input type="radio" id="risk_op8" name="question_4_real" value="8" class="items01" oninput="review_q4()"><br>8
-                </td>
-                <td>
-                    <input type="radio" id="risk_op9" name="question_4_real" value="9" class="items01" oninput="review_q4()"><br>9
-                </td>
-                <td>
-                    <input type="radio" id="risk_op10" name="question_4_real" value="10" class="items01" oninput="review_q4()"><br>10
-                </td>
-                <td style="width: 15%;">
-                    Muy riesgosa
-                </td>
-            </tr>
-        </table>
-
-        <li style="margin-top: 10px;">¿Qué tan seguro está de su decisión de cultivo?</li>
-        <table style="width: 100%; text-align: center; margin-top: 5px;">
-            <tr>
-                <td style="width: 15%;">
-                    Nada seguro
-                </td>
-                <td>
-                    <input type="radio" id="insurance_op0" name="question_5_real" value="0" class="items01" oninput="review_q5()"><br>0
-                </td>
-                <td>
-                    <input type="radio" id="insurance_op1" name="question_5_real" value="1" class="items01" oninput="review_q5()"><br>1
-                </td>
-                <td>
-                    <input type="radio" id="insurance_op2" name="question_5_real" value="2" class="items01" oninput="review_q5()"><br>2
-                </td>
-                <td>
-                    <input type="radio" id="insurance_op3" name="question_5_real" value="3" class="items01" oninput="review_q5()"><br>3
-                </td>
-                <td>
-                    <input type="radio" id="insurance_op4" name="question_5_real" value="4" class="items01" oninput="review_q5()"><br>4
-                </td>
-                <td>
-                    <input type="radio" id="insurance_op5" name="question_5_real" value="5" class="items01" oninput="review_q5()"><br>5
-                </td>
-                <td>
-                    <input type="radio" id="insurance_op6" name="question_5_real" value="6" class="items01" oninput="review_q5()"><br>6
-                </td>
-                <td>
-                    <input type="radio" id="insurance_op7" name="question_5_real" value="7" class="items01" oninput="review_q5()"><br>7
-                </td>
-                <td>
-                    <input type="radio" id="insurance_op8" name="question_5_real" value="8" class="items01" oninput="review_q5()"><br>8
-                </td>
-                <td>
-                    <input type="radio" id="insurance_op9" name="question_5_real" value="9" class="items01" oninput="review_q5()"><br>9
-                </td>
-                <td>
-                    <input type="radio" id="insurance_op10" name="question_5_real" value="10" class="items01" oninput="review_q5()"><br>10
-                </td>
-                <td style="width: 15%;">
-                    Muy seguro
-                </td>
-            </tr>
-        </table>
-
-        </ol>
-    </div>
-</div>
-
 <br>
 
 <div class="error_msg" id="div_error">
@@ -722,10 +526,6 @@ A continuación, le hacemos algunas preguntas sobre las dos opciones de inversi�
 <input type="hidden" value="" name="time_cultivos_1" id="time_cultivos_1" required>
 <input type="hidden" value="" name="time_cultivos_2" id="time_cultivos_2" required>
 <input type="hidden" value="" name="time_cultivos_3" id="time_cultivos_3" required>
-<input type="hidden" value="" name="time_cultivos_4" id="time_cultivos_4" required>
-
-
-<!--  -->
 
 
 {% endblock %}

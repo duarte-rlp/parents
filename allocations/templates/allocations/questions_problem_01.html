@@ -76,8 +76,6 @@
                     var parent_slider = document.getElementById(slider_id).parentElement.parentElement.parentElement;
                     var child = parent_slider.children[0].children[0].firstElementChild;
                     child.innerHTML = slider_value + "%";
-                    var check_sli = parent_slider.children[1].lastElementChild.lastElementChild;
-                    check_sli.value = 1;
                 }
             );
         });
@@ -334,7 +332,7 @@
             </div>
 
     <li style="margin-top: 10px;">Si el rendimiento de la <i>Inversión A</i> es alto, es más probable que el rendimiento de la <i>Inversión B</i>:</li>
-        <div class="card_table" id="h-slider-div" style="text-align: left; margin-top: 10px;">
+        <div class="card_table" id="radio_options" style="text-align: left; margin-top: 10px;">
             <input type="radio" id="q2_o1" name="problem_01_expect_return_b" value="1" class="items01" oninput="checker_radio_1()">
             <label for="q2_o1" id="l_q2_o1" class="items01"> Sea alto</label>
             <br>

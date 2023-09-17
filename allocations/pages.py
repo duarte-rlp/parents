@@ -899,17 +899,17 @@ class questions_problem_04(Page):
         self.player.per_investment_1 = data_a[self.player.n_scene - 1]
         self.player.per_investment_2 = data_b[self.player.n_scene - 1]
         if self.player.n_problem == 1:
-            self.player.amount_invesment_1 = self.player.per_investment_1 * problem_01_invVal_a
-            self.player.amount_invesment_2 = self.player.per_investment_2 * problem_01_invVal_a
+            self.player.amount_invesment_1 = self.player.per_investment_1 * self.player.problem_01_invVal_a
+            self.player.amount_invesment_2 = self.player.per_investment_2 * self.player.problem_01_invVal_a
         elif self.player.n_problem == 2:
-            self.player.amount_invesment_1 = self.player.per_investment_1 * problem_02_invVal_a
-            self.player.amount_invesment_2 = self.player.per_investment_2 * problem_02_invVal_a
+            self.player.amount_invesment_1 = self.player.per_investment_1 * self.player.problem_02_invVal_a
+            self.player.amount_invesment_2 = self.player.per_investment_2 * self.player.problem_02_invVal_a
         elif self.player.n_problem == 3:
-            self.player.amount_invesment_1 = self.player.per_investment_1 * problem_03_invVal_a
-            self.player.amount_invesment_2 = self.player.per_investment_2 * problem_03_invVal_a
+            self.player.amount_invesment_1 = self.player.per_investment_1 * self.player.problem_03_invVal_a
+            self.player.amount_invesment_2 = self.player.per_investment_2 * self.player.problem_03_invVal_a
         elif self.player.n_problem == 4:
-            self.player.amount_invesment_1 = self.player.per_investment_1 * problem_04_invVal_a
-            self.player.amount_invesment_2 = self.player.per_investment_2 * problem_04_invVal_a
+            self.player.amount_invesment_1 = self.player.per_investment_1 * self.player.problem_04_invVal_a
+            self.player.amount_invesment_2 = self.player.per_investment_2 * self.player.problem_04_invVal_a
         self.player.payoff_amount_app = self.player.amount_invesment_1 + self.player.amount_invesment_2
 
 

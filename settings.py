@@ -68,6 +68,12 @@ SESSION_CONFIGS = [
         'num_demo_participants': 1, 
         'app_sequence': ['survey'],
     },
+    {
+        'name': 'final',
+        'display_name': 'Cálculo de pagos',
+        'num_demo_participants': 3, 
+        'app_sequence': ['home', 'choice_2', 'allocations', 'real', 'choice', 'final'],
+    },
 ]
 
 ROOMS = [

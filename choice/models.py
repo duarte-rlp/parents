@@ -59,6 +59,11 @@ class Player(BasePlayer):
 
     time_choice = models.StringField()
 
+    # Para los pagos
     n_investment = models.IntegerField() # Saber al final cual es la fila que se escoge
     coin_toss = models.StringField() # Lado de la moneda
     payoff_amount_app = models.IntegerField() # Total que se paga por esta app
+
+    name_app_n = models.IntegerField(default = 4)
+    name_app = models.StringField(default = 'choice')
+    name_app_2_user = models.StringField(default = 'Invertir o No Invertir')

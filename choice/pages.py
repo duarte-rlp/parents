@@ -22,7 +22,7 @@ class choice(Page):
             else: # Si escogio invertir
                 self.player.coin_toss = random.choice(['heads', 'tails']) # Lanza la moneda
                 if self.player.coin_toss == 'heads': # Si cae cara
-                    # Asigna la perdid
+                    # Asigna la perdida
                     self.player.payoff_amount_app = Constants.loss[self.player.n_investment - 1]
                 else:
                     # Si cae sello, asigna la ganancia

@@ -279,6 +279,7 @@
                 case 4:
                     document.getElementById('problem_02_invTime').value = Date.now() - start;
                     document.getElementById('problem_02_invCntMistakers').value = cnt_selected;
+                    document.getElementById("problem_02_invMistakes").value += '}';
                     let btn = document.getElementById("id_next");
                     btn.removeAttribute("disabled");
                     btn.click();

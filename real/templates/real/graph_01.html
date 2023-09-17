@@ -38,7 +38,7 @@
             },
             yAxis: {
                 title: {
-                    text: 'Retorno en peso por hectárea'
+                    text: 'Retorno en pesos por cada 10 hectáreas'
                 },
                 min: {{ min_y }} - 5,
                 max: {{ max_y }} + 5
@@ -336,8 +336,8 @@
                 let cell_a = document.getElementById("a_"+(i+1));
                 let cell_b = document.getElementById("b_"+(i+1));
                 let cell_t = document.getElementById("t_"+(i+1));
-                let mon_a = (document.getElementById("has_cultivo_1").value * data_a[i]);
-                let mon_b = (document.getElementById("has_cultivo_2").value * data_b[i]);
+                let mon_a = ((document.getElementById("has_cultivo_1").value * data_a[i])/10);
+                let mon_b = ((document.getElementById("has_cultivo_2").value * data_b[i])/10);
                 let mon_t = mon_a + mon_b;
                 mon_a = "$ " + mon_a.toLocaleString('es-CO');
                 mon_b = "$ " + mon_b.toLocaleString('es-CO');
@@ -373,8 +373,8 @@
                         let cell_a = document.getElementById("a_"+(i+1));
                         let cell_b = document.getElementById("b_"+(i+1));
                         let cell_t = document.getElementById("t_"+(i+1));
-                        let mon_a = (slider_value * data_a[i]);
-                        let mon_b = ((slider_max-slider_value) * data_b[i]);
+                        let mon_a = ((slider_value * data_a[i])/10);
+                        let mon_b = (((slider_max-slider_value) * data_b[i])/10);
                         let mon_t = mon_a + mon_b;
                         mon_a = "$ " + mon_a.toLocaleString('es-CO');
                         mon_b = "$ " + mon_b.toLocaleString('es-CO');

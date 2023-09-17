@@ -79,3 +79,13 @@ class Player(BasePlayer):
     question_4_real = models.StringField()
     question_5_real = models.StringField()
 
+    # Variables para los pagos
+    n_scene = models.IntegerField() # Saber cual escenario se escoge
+    amount_cultivo_1 = models.IntegerField() # El total calculado para el cultivo A
+    amount_cultivo_2 = models.IntegerField() # El total calculado para el cultivo B
+    payoff_amount_app = models.IntegerField() # Total que se paga por esta app
+
+    name_app_n = models.IntegerField(default = 3)
+    name_app = models.StringField(default = 'real')
+    name_app_2_user = models.StringField(default = 'Cultivos')
+

@@ -891,6 +891,26 @@ class questions_problem_04(Page):
                 'max_y': max(list(self.player.participant.vars['problems'][3]['AssetA']) + list(self.player.participant.vars['problems'][3]['AssetB'])),
                 'min_y': min(list(self.player.participant.vars['problems'][3]['AssetA']) + list(self.player.participant.vars['problems'][3]['AssetB']))
                 }
+    def before_next_page(self):
+        self.player.n_problem = random.randint(1, 4) # escoger el problema
+        self.player.n_scene = random.randint(1, 8) # escoger el escenario
+        data_a = list(self.player.participant.vars['problems'][self.player.n_problem - 1]['AssetA'])
+        data_b = list(self.player.participant.vars['problems'][self.player.n_problem - 1]['AssetB'])
+        self.player.per_investment_1 = data_a[self.player.n_scene - 1]
+        self.player.per_investment_2 = data_b[self.player.n_scene - 1]
+        if self.player.n_problem == 1:
+            self.player.amount_invesment_1 = self.player.per_investment_1 * problem_01_invVal_a
+            self.player.amount_invesment_2 = self.player.per_investment_2 * problem_01_invVal_a
+        elif self.player.n_problem == 2:
+            self.player.amount_invesment_1 = self.player.per_investment_1 * problem_02_invVal_a
+            self.player.amount_invesment_2 = self.player.per_investment_2 * problem_02_invVal_a
+        elif self.player.n_problem == 3:
+            self.player.amount_invesment_1 = self.player.per_investment_1 * problem_03_invVal_a
+            self.player.amount_invesment_2 = self.player.per_investment_2 * problem_03_invVal_a
+        elif self.player.n_problem == 4:
+            self.player.amount_invesment_1 = self.player.per_investment_1 * problem_04_invVal_a
+            self.player.amount_invesment_2 = self.player.per_investment_2 * problem_04_invVal_a
+        self.player.payoff_amount_app = self.player.amount_invesment_1 + self.player.amount_invesment_2
 
 
 page_sequence = [

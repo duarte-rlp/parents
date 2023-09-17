@@ -242,6 +242,8 @@ class Player(BasePlayer):
     n_scene = models.IntegerField() # El escenario escogido de los 8, del problema escogido
     per_investment_1 = models.IntegerField() # El porcentaje de la inversión A del escenario y problema escogido
     per_investment_2 = models.IntegerField() # El porcentaje de la inversión B del escenario y problema escogido
+    val_invesment_1 = models.IntegerField() # El dinero que se da la inversión A en el problema escogido
+    val_invesment_2 = models.IntegerField() # El dinero que se da la inversión B en el problema escogido
     amount_invesment_1 = models.IntegerField() # El total calculado para la inversión A del escenario y problema escogido
     amount_invesment_2 = models.IntegerField() # El total calculado para la inversión B del escenario y problema escogido
     payoff_amount_app = models.IntegerField() # Total que se paga por esta app

@@ -10,7 +10,7 @@ from otree.api import (
 )
 import random
 
-author = 'Your name here'
+author = 'hopkeinst'
 
 doc = """
 Your app description
@@ -20,6 +20,55 @@ class Constants(BaseConstants):
     name_in_url = 'survey'
     players_per_group = None
     num_rounds = 1
+
+    ## Opciones a las listas de opciones de la encuesta
+    gender_list         =   [
+                                'Hombre', 
+                                'Mujer', 
+                                'Otro'
+                            ]
+    married_list        =   [
+                                'Unión libre', 
+                                'Casada (o)', 
+                                'Viuda (o)', 
+                                'Soltera (o)', 
+                                'Divorciada (o) / Separada(o)'
+                            ]
+    education_list      =   [
+                                'Ninguno',
+                                'Primaria incompleta',
+                                'Primaria completa',
+                                'Bachillerato incompleto',
+                                'Bachillerato completo',
+                                'Técnico o Tecnólogo',
+                                'Pregrado',
+                                'Posgrado (Especialización, Maestría, Doctorado)'
+                            ]
+    job_list            =   [
+                                'Solo estudio',
+                                'Desempleado sin buscar trabajo',
+                                'Desempleado buscando trabajo',
+                                'Empleado a jornada parcial',
+                                'Empleado a jornada completa',
+                                'Trabajador independiente',
+                                'Trabajador no remunerado (por ejemplo: ama de casa, empresa familiar)',
+                                'Retirado o pensionado',
+                                'Otro / Ninguno'
+                            ]
+    incomeRange_list    =   [
+                                'Menos de $ 300.000',
+                                'Entre $ 300.000 - $ 600.000',
+                                'Entre $ 600.000 - $ 900.000',
+                                'Entre $ 900.000 - $ 1.200.000',
+                                'Entre $ 1.200.000 - $ 1.500.000',
+                                'Mayor a $ 1.500.000',
+                                'Otro / Ninguno'
+                            ]
+    expenses_list       =   [
+                                'Mayores',
+                                'Menores',
+                                'Iguales'
+                            ]
 
 
 class Subsession(BaseSubsession):
@@ -32,75 +81,20 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
 
-    p_age = models.IntegerField(label="Edad")
+    q_age           = models.IntegerField()
+    q_gender        = models.StringField()
+    q_married       = models.StringField()
+    q_family        = models.IntegerField()
+    q_children      = models.IntegerField()
+    q_workers       = models.IntegerField()
+    q_educ          = models.StringField()
+    q_job           = models.StringField()
+    q_income        = models.IntegerField()
+    q_incomeRange   = models.StringField()
+    q_expenses      = models.StringField()
+
     
-    p_sex = models.IntegerField(
-    choices=[
-        [0, 'Hombre'],
-        [1, 'Mujer'],
-        [2, 'Otro'],
-    ], label="¿Con qué género se identifica?")
-
-    p_married = models.IntegerField(
-    choices=[
-        [1, 'Unión libre'],
-        [2, 'Casado (a)'],
-        [3, 'Viudo (a)'],
-        [4, 'Soltero (a)'],
-        [5, 'Divorciado (a)/Separado(a)'],
-    ], label="Estado civil")
-
-    p_family = models.IntegerField(min=0, max=20, label="¿Número de miembros del hogar?")
-    
-    p_children = models.IntegerField(min=0, max=20, label="¿Número de hijos?")
-
-    p_workers= models.IntegerField(min=0, max=20, label="¿Número de personas que contribuyen a los ingresos del hogar?")
-
-    p_educ = models.IntegerField(
-    choices=[
-        [1,'Ninguno'],
-        [2,'Primaria incompleta'],
-        [3,'Primaria completa'],
-        [4,'Bachillerato incompleto'],
-        [5,'Bachillerato completo'],
-        [6,'Técnico o Tecnólogo'],
-        [7,'Pregrado'],
-        [8,'Posgrado (Especialización, Maestría, Doctorado)']
-    ], label="¿Cuál es el nivel educativo más alto que cursó o está cursando?")
-
-    p_job = models.IntegerField(
-    choices=[
-        [1,'Solo estudio'],
-        [2,'Desempleado sin buscar trabajo'],
-        [3,'Desempleado buscando trabajo'],
-        [4,'Empleado a jornada parcial'],
-        [5,'Empleado a jornada completa'],
-        [6,'Trabajador independiente'],
-        [7,'Trabajador no remunerado (por ejemplo: ama de casa, empresa familiar)'],
-        [8,'Retirado o pensionado'],
-        [9,'Otro / Ninguno'],
-    ], label="¿Cuál es su situación laboral actual?")
-
-    p_inc = models.CurrencyField(min=c(0), max=c(100000000), label="¿Cuál es su ingreso mensual promedio?")
-
-    p_inc1 = models.IntegerField(
-    choices=[
-        [1,'Menos de $ 300.000'],
-        [2,'Entre $ 300.000 - $ 600.000'],
-        [3,'Entre $ 600.000 - $ 900.000'],
-        [4,'Entre $ 900.000 - $ 1.200.000'],
-        [5,'Entre $ 1.200.000 - $ 1.500.000'],
-        [6,'Mayor a $ 1.500.000'],
-        [7,'Otro / Ninguno'],
-    ], label="¿Es decir que su ingreso mensual promedio se encuentra en un rango de?")
-
-    p_expenses = models.IntegerField(
-    choices=[
-        [1,'Mayores'],
-        [2,'Menores'],
-        [3,'Iguales'],
-    ], label="En el último mes los gastos del hogar frente a sus ingresos han sido:")
-    
+    ########################################################################################################
     #### Risk questions
 
     p_risk = models.IntegerField(min=0, max=10, label="¿Qué tan dispuesto(a) está o no está usted a tomar riesgos en general? (0 - significa nada dispuesto(a), y 10 - significa muy dispuesto(a))")

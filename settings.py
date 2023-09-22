@@ -6,7 +6,7 @@ SESSION_CONFIGS = [
         'name': 'test',
         'display_name': 'Test General',
         'num_demo_participants': 1, 
-        'app_sequence': ['home', 'real_effort_numbers','choice_2', 'checker1', 'training', 'allocations', 'real', 'choice', 'final'],
+        'app_sequence': ['home', 'real_effort_numbers', 'checker1', 'choice_2', 'training', 'allocations', 'real', 'choice', 'survey', 'final'],
     },
     {
         'name': 'home',
@@ -71,7 +71,7 @@ SESSION_CONFIGS = [
     {
         'name': 'final',
         'display_name': 'Cálculo de pagos',
-        'num_demo_participants': 3, 
+        'num_demo_participants': 1, 
         'app_sequence': ['home', 'choice_2', 'allocations', 'real', 'choice', 'final'],
     },
 ]

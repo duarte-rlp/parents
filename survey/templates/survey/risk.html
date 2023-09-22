@@ -15,7 +15,7 @@
 
 
 <div id="q1">
-    ¿Qué tan dispuesta(o) está o no está usted a tomar riesgos en general?
+    <label for="risk" id="l_risk">¿Qué tan dispuesta(o) está o no está usted a tomar riesgos en general?</label><br>
         <table style="width: 100%; text-align: center; margin-top: 5px;">
             <tr>
                 <td style="width: 15%;">
@@ -60,6 +60,21 @@
             </tr>
         </table>
 </div>
+
+<br>
+
+<div id="q2">
+    <label for="risk_list" id="l_risk_list">¿Cuándo estás decidiendo sobre tus inversiones que tanto riesgo estás dispuesto a asumir?</label><br>
+    <select id="risk_list" class="input-list" name="q_risk_list" required>
+        <option class="input-list" value disabled selected>---------</option>
+        {% for opcion in risk_list %}
+            <option value="{{ opcion }}" class="input-list">{{ opcion }}</option>
+        {% endfor %}
+    </select>
+
+</div>
+
+<br>
 
 <!--
 {% formfields %}

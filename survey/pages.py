@@ -34,14 +34,17 @@ class risk(Page):
     form_model      =   'player'
     form_fields     =   [
                             'q_risk',
-                            'p_risk', 
-                            'p_risk1', 
+                            'q_risk_list',
                             'p_returns', 
                             'p_risk2', 
                             'p_loss', 
                             'p_insurance', 
                             'p_patience'
                         ]
+    def vars_for_template(self):
+        return {
+            'risk_list': Constants.risk_list,
+        }
     def is_displayed(self):
         return self.round_number == 1
 

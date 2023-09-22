@@ -69,6 +69,12 @@ class Constants(BaseConstants):
                                 'Menores',
                                 'Iguales'
                             ]
+    risk_list           =   [
+                                'Ningún riesgo',
+                                'Pequeño riesgo',
+                                'Medio riesgo',
+                                'Alto riesgo'
+                            ]
 
 
 class Subsession(BaseSubsession):
@@ -95,21 +101,13 @@ class Player(BasePlayer):
     q_expenses      = models.StringField()
 
 # Risk Questions
-    q_risk = models.IntegerField()
+    q_risk          = models.IntegerField()
+    q_risk_list     = models.StringField()
 
     
     ########################################################################################################
     #### Risk questions
 
-    p_risk = models.IntegerField(min=0, max=10, label="¿Qué tan dispuesto(a) está o no está usted a tomar riesgos en general? (0 - significa nada dispuesto(a), y 10 - significa muy dispuesto(a))")
-
-    p_risk1 = models.IntegerField(
-    choices=[
-        [1,'Ningún riesgo'],
-        [2,'Pequeño riesgo'],
-        [3,'Medio riesgo'],
-        [4,'Alto riesgo'],
-    ], label="¿Cuándo estás decidiendo sobre tus inversiones que tanto riesgo estás dispuesto a asumir?")
 
     p_returns = models.IntegerField(min=0, max=10, label="Cuando decide invertir, ¿qué importancia tiene para usted maximizar los retornos? (0 - significa que no es importante, y 10 - significa que es muy importante)")
 

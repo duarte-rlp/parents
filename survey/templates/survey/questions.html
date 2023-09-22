@@ -88,6 +88,19 @@
             input.value = '';
         }
 
+        function nextView() {
+            let income_box = document.getElementById('income_box');
+            val = income_box.value;
+            val = val.replace('$ ', '');
+            val = val.replace('.', '');
+            val = val.replace(/[^\d]/g, '');
+            income_box.value = val;
+            let btn = document.getElementById("id_next");
+            btn.removeAttribute("disabled");
+            btn.click();
+
+        }
+
     </script>
 
 {% endblock %}
@@ -100,7 +113,7 @@
 
 <div id="q1">
     <label for="age_box" id="l_age_box">¿Cuál es tu edad, en años?</label><br>
-    <input type="number" name="q_age" id="age_box" class="inNumber" min="0" max="99" oninput="validate_number(this)">
+    <input type="number" name="q_age" id="age_box" class="inNumber" min="0" max="99" oninput="validate_number(this)" required>
     <div style="color:red; text-align: left; display: none;"></div>
 </div>
 
@@ -132,7 +145,7 @@
 
 <div id="q4">
     <label for="family_box" id="l_family_box">¿Cuántas personas conforman su hogar?</label><br>
-    <input type="number" name="q_family" id="family_box" class="inNumber" min="0" max="20" oninput="validate_number(this)">
+    <input type="number" name="q_family" id="family_box" class="inNumber" min="0" max="20" oninput="validate_number(this)" required>
     <div style="color:red; text-align: left; display: none;"></div>
 </div>
 
@@ -140,7 +153,7 @@
 
 <div id="q5">
     <label for="children_box" id="l_children_box">¿Cuántos hijos tienes?</label><br>
-    <input type="number" name="q_children" id="children_box" class="inNumber" min="0" max="20" oninput="validate_number(this)">
+    <input type="number" name="q_children" id="children_box" class="inNumber" min="0" max="20" oninput="validate_number(this)" required>
     <div style="color:red; text-align: left; display: none;"></div>
 </div>
 
@@ -148,7 +161,7 @@
 
 <div id="q6">
     <label for="workers_box" id="l_workers_box">¿Cuántas personas contribuyen a los ingresos del hogar?</label><br>
-    <input type="number" name="q_workers" id="workers_box" class="inNumber" min="0" oninput="validate_number(this)">
+    <input type="number" name="q_workers" id="workers_box" class="inNumber" min="0" oninput="validate_number(this)" required>
     <div style="color:red; text-align: left; display: none;"></div>
 </div>
 
@@ -180,7 +193,7 @@
 
 <div id="q9">
     <label for="income_box" id="l_income_box">¿Cuál es su ingreso mensual promedio?</label><br>
-    <input type="text" name="q_income" id="income_box" class="inNumber" oninput="validate_number(this)" style="max-width: 200px !important;">
+    <input type="text" name="q_income" id="income_box" class="inNumber" oninput="validate_number(this)" style="max-width: 200px !important;" required>
     <div style="color:red; text-align: left; display: none;"></div>
 </div>
 
@@ -214,8 +227,9 @@
 {% formfields %}
 -->
 
-<div style="text-align: center; width: 100%">
-{% next_button %}
+<div class="div_btnNext">
+    <input type="button" value="Siguiente" class="btnNext" onclick="nextView()" id="btnNext">
+    <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next" disabled>Siguiente</button>
 </div>
 
 {% endblock %}

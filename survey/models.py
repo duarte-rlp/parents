@@ -81,6 +81,7 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
 
+# Initial Questions
     q_age           = models.IntegerField()
     q_gender        = models.StringField()
     q_married       = models.StringField()
@@ -92,6 +93,9 @@ class Player(BasePlayer):
     q_income        = models.IntegerField()
     q_incomeRange   = models.StringField()
     q_expenses      = models.StringField()
+
+# Risk Questions
+    q_risk = models.IntegerField()
 
     
     ########################################################################################################

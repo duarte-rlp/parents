@@ -33,6 +33,7 @@ class questions(Page):
 class risk(Page):
     form_model      =   'player'
     form_fields     =   [
+                            'q_risk',
                             'p_risk', 
                             'p_risk1', 
                             'p_returns', 
@@ -60,4 +61,4 @@ class agro(Page):
     def is_displayed(self):
         return self.round_number == 1
 
-page_sequence = [questions]
+page_sequence = [questions, risk]

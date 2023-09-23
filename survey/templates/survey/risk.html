@@ -22,7 +22,7 @@
                     Nada dispuesta(o)
                 </td>
                 <td>
-                    <input type="radio" id="risk_op0" name="q_risk" value="0" class="items01"><br>0
+                    <input type="radio" id="risk_op0" name="q_risk" value="0" class="items01" required><br>0
                 </td>
                 <td>
                     <input type="radio" id="risk_op1" name="q_risk" value="1" class="items01"><br>1
@@ -65,13 +65,222 @@
 
 <div id="q2">
     <label for="risk_list" id="l_risk_list">¿Cuándo estás decidiendo sobre tus inversiones que tanto riesgo estás dispuesto a asumir?</label><br>
-    <select id="risk_list" class="input-list" name="q_risk_list" required>
+    <select id="risk_list" class="input-list" name="q_riskList" required>
         <option class="input-list" value disabled selected>---------</option>
         {% for opcion in risk_list %}
             <option value="{{ opcion }}" class="input-list">{{ opcion }}</option>
         {% endfor %}
     </select>
 
+</div>
+
+<br>
+
+<div id="q3">
+    <label for="returns" id="l_returns">Cuando decide invertir, ¿Qué tan importante es para usted maximizar los retornos?</label><br>
+        <table style="width: 100%; text-align: center; margin-top: 5px;">
+            <tr>
+                <td style="width: 15%;">
+                    No es importante
+                </td>
+                <td>
+                    <input type="radio" id="returns_op0" name="q_returns" value="0" class="items01" required><br>0
+                </td>
+                <td>
+                    <input type="radio" id="returns_op1" name="q_returns" value="1" class="items01"><br>1
+                </td>
+                <td>
+                    <input type="radio" id="returns_op2" name="q_returns" value="2" class="items01"><br>2
+                </td>
+                <td>
+                    <input type="radio" id="returns_op3" name="q_returns" value="3" class="items01"><br>3
+                </td>
+                <td>
+                    <input type="radio" id="returns_op4" name="q_returns" value="4" class="items01"><br>4
+                </td>
+                <td>
+                    <input type="radio" id="returns_op5" name="q_returns" value="5" class="items01"><br>5
+                </td>
+                <td>
+                    <input type="radio" id="returns_op6" name="q_returns" value="6" class="items01"><br>6
+                </td>
+                <td>
+                    <input type="radio" id="returns_op7" name="q_returns" value="7" class="items01"><br>7
+                </td>
+                <td>
+                    <input type="radio" id="returns_op8" name="q_returns" value="8" class="items01"><br>8
+                </td>
+                <td>
+                    <input type="radio" id="returns_op9" name="q_returns" value="9" class="items01"><br>9
+                </td>
+                <td>
+                    <input type="radio" id="returns_op10" name="q_returns" value="10" class="items01"><br>10
+                </td>
+                <td style="width: 15%;">
+                    Es muy importante
+                </td>
+            </tr>
+        </table>
+</div>
+
+<br>
+
+<div id="q4">
+    <label for="riskImportant" id="l_riskImportant">Cuando decide invertir, ¿Qué tan importante es para usted minimizar los riesgos?</label><br>
+        <table style="width: 100%; text-align: center; margin-top: 5px;">
+            <tr>
+                <td style="width: 15%;">
+                    No es importante
+                </td>
+                <td>
+                    <input type="radio" id="riskImportant_op0" name="q_riskImportant" value="0" class="items01" required><br>0
+                </td>
+                <td>
+                    <input type="radio" id="riskImportant_op1" name="q_riskImportant" value="1" class="items01"><br>1
+                </td>
+                <td>
+                    <input type="radio" id="riskImportant_op2" name="q_riskImportant" value="2" class="items01"><br>2
+                </td>
+                <td>
+                    <input type="radio" id="riskImportant_op3" name="q_riskImportant" value="3" class="items01"><br>3
+                </td>
+                <td>
+                    <input type="radio" id="riskImportant_op4" name="q_riskImportant" value="4" class="items01"><br>4
+                </td>
+                <td>
+                    <input type="radio" id="riskImportant_op5" name="q_riskImportant" value="5" class="items01"><br>5
+                </td>
+                <td>
+                    <input type="radio" id="riskImportant_op6" name="q_riskImportant" value="6" class="items01"><br>6
+                </td>
+                <td>
+                    <input type="radio" id="riskImportant_op7" name="q_riskImportant" value="7" class="items01"><br>7
+                </td>
+                <td>
+                    <input type="radio" id="riskImportant_op8" name="q_riskImportant" value="8" class="items01"><br>8
+                </td>
+                <td>
+                    <input type="radio" id="riskImportant_op9" name="q_riskImportant" value="9" class="items01"><br>9
+                </td>
+                <td>
+                    <input type="radio" id="riskImportant_op10" name="q_riskImportant" value="10" class="items01"><br>10
+                </td>
+                <td style="width: 15%;">
+                    Es muy importante
+                </td>
+            </tr>
+        </table>
+</div>
+
+<br>
+
+<div id="q5">
+    <label for="loss" id="l_loss">Cuando decide invertir, ¿Qué tan importante es para usted minimizar las pérdidas?</label><br>
+        <table style="width: 100%; text-align: center; margin-top: 5px;">
+            <tr>
+                <td style="width: 15%;">
+                    No es importante
+                </td>
+                <td>
+                    <input type="radio" id="loss_op0" name="q_loss" value="0" class="items01" required><br>0
+                </td>
+                <td>
+                    <input type="radio" id="loss_op1" name="q_loss" value="1" class="items01"><br>1
+                </td>
+                <td>
+                    <input type="radio" id="loss_op2" name="q_loss" value="2" class="items01"><br>2
+                </td>
+                <td>
+                    <input type="radio" id="loss_op3" name="q_loss" value="3" class="items01"><br>3
+                </td>
+                <td>
+                    <input type="radio" id="loss_op4" name="q_loss" value="4" class="items01"><br>4
+                </td>
+                <td>
+                    <input type="radio" id="loss_op5" name="q_loss" value="5" class="items01"><br>5
+                </td>
+                <td>
+                    <input type="radio" id="loss_op6" name="q_loss" value="6" class="items01"><br>6
+                </td>
+                <td>
+                    <input type="radio" id="loss_op7" name="q_loss" value="7" class="items01"><br>7
+                </td>
+                <td>
+                    <input type="radio" id="loss_op8" name="q_loss" value="8" class="items01"><br>8
+                </td>
+                <td>
+                    <input type="radio" id="loss_op9" name="q_loss" value="9" class="items01"><br>9
+                </td>
+                <td>
+                    <input type="radio" id="loss_op10" name="q_loss" value="10" class="items01"><br>10
+                </td>
+                <td style="width: 15%;">
+                    Es muy importante
+                </td>
+            </tr>
+        </table>
+</div>
+
+<br>
+
+<div id="q6">
+    <label for="insurance_list" id="l_risk_list">Durante los últimos 12 meses, usted o algún miembro de su hogar ha contratado o renovado algún seguro de vida, vehículo, terremoto, robo, desempleo u otro seguro, en forma voluntaria?</label><br>
+    <select id="insurance_list" class="input-list" name="q_insurance" required>
+        <option class="input-list" value disabled selected>---------</option>
+        {% for opcion in insurance_list %}
+            <option value="{{ opcion }}" class="input-list">{{ opcion }}</option>
+        {% endfor %}
+    </select>
+
+</div>
+
+<br>
+
+<div id="q7">
+    <label for="patience" id="l_patience">¿Es usted generalmente paciente o impaciente?</label><br>
+        <table style="width: 100%; text-align: center; margin-top: 5px;">
+            <tr>
+                <td style="width: 15%;">
+                    Muy impaciente
+                </td>
+                <td>
+                    <input type="radio" id="patience_op0" name="q_patience" value="0" class="items01" required><br>0
+                </td>
+                <td>
+                    <input type="radio" id="patience_op1" name="q_patience" value="1" class="items01"><br>1
+                </td>
+                <td>
+                    <input type="radio" id="patience_op2" name="q_patience" value="2" class="items01"><br>2
+                </td>
+                <td>
+                    <input type="radio" id="patience_op3" name="q_patience" value="3" class="items01"><br>3
+                </td>
+                <td>
+                    <input type="radio" id="patience_op4" name="q_patience" value="4" class="items01"><br>4
+                </td>
+                <td>
+                    <input type="radio" id="patience_op5" name="q_patience" value="5" class="items01"><br>5
+                </td>
+                <td>
+                    <input type="radio" id="patience_op6" name="q_patience" value="6" class="items01"><br>6
+                </td>
+                <td>
+                    <input type="radio" id="patience_op7" name="q_patience" value="7" class="items01"><br>7
+                </td>
+                <td>
+                    <input type="radio" id="patience_op8" name="q_patience" value="8" class="items01"><br>8
+                </td>
+                <td>
+                    <input type="radio" id="patience_op9" name="q_patience" value="9" class="items01"><br>9
+                </td>
+                <td>
+                    <input type="radio" id="patience_op10" name="q_patience" value="10" class="items01"><br>10
+                </td>
+                <td style="width: 15%;">
+                    Muy paciente
+                </td>
+            </tr>
+        </table>
 </div>
 
 <br>

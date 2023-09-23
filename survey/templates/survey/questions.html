@@ -24,12 +24,9 @@
             }
             if (input.id == 'income_box') {
                 if (!regex.test(value)) {
-                    console.log('1', value);
                     value = value.replace('$ ', '');
                     value = value.replace('.', '');
                     value = value.replace(/[^\d]/g, '');
-                    console.log('2', value);
-                    console.log('l', value.length);
                     if (value.length == 0) {
                         value = null;
                         input.value = '';
@@ -37,7 +34,6 @@
                         value = Number(value);
                         input.value = value;
                     }
-                    console.log('3', value);
                 }
             }
             if (!regex.test(value)) {
@@ -71,6 +67,8 @@
                     }
                 break;
                 case 'income_box':
+                    document.getElementById('incomeRange_list').nextElementSibling.style.display = 'none';
+                    document.getElementById('incomeRange_list').nextElementSibling.innerHTML = '';
                     if((Number(value) < 0) || (Number(value) > 100000000)) {
                         show_error(input, div_error, 'Debe ser un valor entre $ 1 y $ 100.000.000');
                     } else {
@@ -98,6 +96,16 @@
             let btn = document.getElementById("id_next");
             btn.removeAttribute("disabled");
             btn.click();
+        }
+
+        function check_incomeRange(input) {
+            let income_box = document.getElementById('income_box');
+            let div_error = input.nextElementSibling;
+            div_error.style.display = 'none';
+            div_error.innerHTML = '';
+            if (income_box.value == '') {
+                show_error(input, div_error, 'Antes de seleccionar una opción aquí ingrese el monto del ingreso mensual (1 pregunta arriba)');
+            }
         }
 
     </script>
@@ -200,12 +208,13 @@
 
 <div id="q10">
     <label for="incomeRange_list" id="l_incomeRange_list">Teniendo en cuenta su respuesta anterior, su ingreso mensual promedio se encuentra en un rango de:</label><br>
-    <select id="incomeRange_list" class="input-list" name="q_incomeRange" required>
+    <select id="incomeRange_list" class="input-list" name="q_incomeRange" required onchange="check_incomeRange(this)">
         <option class="input-list" value disabled selected>---------</option>
         {% for opcion in incomeRange_list %}
             <option value="{{ opcion }}" class="input-list">{{ opcion }}</option>
         {% endfor %}
     </select>
+    <div style="color:red; text-align: left; display: none;"></div>
 </div>
 
 <br>

@@ -75,6 +75,11 @@ class Constants(BaseConstants):
                                 'Medio riesgo',
                                 'Alto riesgo'
                             ]
+    insurance_list      =   [
+                                'Si',
+                                'No',
+                                'No lo sé / No me acuerdo'
+                            ]
 
 
 class Subsession(BaseSubsession):
@@ -102,27 +107,12 @@ class Player(BasePlayer):
 
 # Risk Questions
     q_risk          = models.IntegerField()
-    q_risk_list     = models.StringField()
-
-    
-    ########################################################################################################
-    #### Risk questions
-
-
-    p_returns = models.IntegerField(min=0, max=10, label="Cuando decide invertir, ¿qué importancia tiene para usted maximizar los retornos? (0 - significa que no es importante, y 10 - significa que es muy importante)")
-
-    p_risk2 = models.IntegerField(min=0, max=10, label="Cuando decide invertir, ¿qué importancia tiene para usted minimizar los riesgos? (0 - significa que no es importante, y 10 - significa que es muy importante)")
-
-    p_loss = models.IntegerField(min=0, max=10, label="Cuando decide invertir, ¿qué importancia tiene para usted minimizar las pérdidas? (0 - significa que no es importante, y 10 - significa que es muy importante)")
-
-    p_insurance = models.IntegerField(
-    choices=[
-        [1,'Sí'],
-        [2,'No'],
-        [3,'No lo sé / No me acuerdo'],
-    ], label="Durante los últimos 12 meses, usted o algún miembro de su hogar ha contratado o renovado algún seguro de vida, vehículo, terremoto, robo, desempleo u otro seguro, en forma voluntaria?") 
-
-    p_patience = models.IntegerField(min=0, max=10, label="¿Es usted generalmente más paciente o impaciente? (0 - significa muy impaciente, y 10 - significa muy paciente)")
+    q_riskList      = models.StringField()
+    q_returns       = models.IntegerField()
+    q_riskImportant = models.IntegerField()
+    q_loss          = models.IntegerField()
+    q_insurance     = models.StringField()
+    q_patience      = models.IntegerField()
 
     #### Agriculture and climate
 

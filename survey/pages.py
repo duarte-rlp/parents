@@ -34,16 +34,17 @@ class risk(Page):
     form_model      =   'player'
     form_fields     =   [
                             'q_risk',
-                            'q_risk_list',
-                            'p_returns', 
-                            'p_risk2', 
-                            'p_loss', 
-                            'p_insurance', 
-                            'p_patience'
+                            'q_riskList',
+                            'q_returns',
+                            'q_riskImportant',
+                            'q_loss',
+                            'q_insurance',
+                            'q_patience'
                         ]
     def vars_for_template(self):
         return {
             'risk_list': Constants.risk_list,
+            'insurance_list': Constants.insurance_list
         }
     def is_displayed(self):
         return self.round_number == 1
@@ -51,6 +52,7 @@ class risk(Page):
 class agro(Page):
     form_model      =   'player'
     form_fields     =   [
+                            '',
                             'p_hectareas', 
                             'p_farminc', 
                             'p_crops', 
@@ -64,4 +66,4 @@ class agro(Page):
     def is_displayed(self):
         return self.round_number == 1
 
-page_sequence = [questions, risk]
+page_sequence = [questions, risk, agro]

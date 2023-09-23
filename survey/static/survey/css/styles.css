@@ -124,3 +124,8 @@ input[type="radio"]{
     transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
+tr.row_option:hover {
+    background-color: #007cff22;
+}
+
+

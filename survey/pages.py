@@ -52,9 +52,9 @@ class risk(Page):
 class agro(Page):
     form_model      =   'player'
     form_fields     =   [
-                            '',
-                            'p_hectareas', 
-                            'p_farminc', 
+                            'q_hectares',
+                            'q_farminc',
+
                             'p_crops', 
                             'p_crops1', 
                             'p_crops3', 
@@ -63,6 +63,11 @@ class agro(Page):
                             'p_events', 
                             'p_measures'
                         ]
+    def vars_for_template(self):
+        return {
+            'hectares_list': Constants.hectares_list,
+            'farminc_list': Constants.farminc_list,
+        }
     def is_displayed(self):
         return self.round_number == 1
 

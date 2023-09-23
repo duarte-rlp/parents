@@ -80,6 +80,22 @@ class Constants(BaseConstants):
                                 'No',
                                 'No lo sé / No me acuerdo'
                             ]
+    hectares_list       =   [
+                                'Ninguna / No trabajo en finca',
+                                'Menos de 1 hectárea',
+                                'Entre 1 - 3 hectáreas',
+                                'Entre 3 - 5 hectáreas',
+                                'Entre 5 - 10 hectáreas',
+                                'Más que 10 hectáreas',
+                                'No lo sé / No me acuerdo'
+                            ]
+    farminc_list        =   [
+                                'Cultivos',
+                                'Ganado',
+                                'Pescado',
+                                'No lo sé / No me acuerdo',
+                                'No trabajo en finca'
+                            ]
 
 
 class Subsession(BaseSubsession):
@@ -114,26 +130,12 @@ class Player(BasePlayer):
     q_insurance     = models.StringField()
     q_patience      = models.IntegerField()
 
+# Agriculture & Climate Questions
+    q_hectares      = models.StringField()
+    q_farminc       = models.StringField()
+    q_crops         = models.StringField()
+
     #### Agriculture and climate
-
-    p_hectareas = models.IntegerField(
-    choices=[
-        [1,'Ninguna / No trabajo en finca'],
-        [2,'Menos de 1 hectárea'],
-        [3,'Entre 1 - 3 hectáreas'],
-        [4,'Entre 3 - 5 hectáreas'],
-        [5,'Entre 5 - 10 hectáreas'],
-        [6,'Más que 10 hectáreas'],
-        [7,'No lo sé / No me acuerdo'],
-    ], label="¿Cuánta superficie dedicada a actividades agricolas o pecuarias manejó el año pasado?")
-
-    p_farminc = models.IntegerField(
-    choices=[
-        [1,'Cultivos'],
-        [2,'Ganado'],
-        [3,'No lo sé / No me acerdo'],
-        [4,'No trabajo en finca'],
-    ], label="¿Cuál es la principal fuente de ingresos de la finca en la que trabaja?")
 
     p_crops = models.IntegerField(
     choices=[

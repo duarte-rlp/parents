@@ -13,6 +13,31 @@
 
 {% block content %}
 
+<div id="q1">
+    <label for="hectares_list" id="l_hectares_list">El año pasado ¿Cuántas hectáreas dedicó a actividades agrícolas o pecuarias?</label><br>
+    <select id="hectares_list" class="input-list" name="q_hectares" required>
+        <option class="input-list" value disabled selected>---------</option>
+        {% for opcion in hectares_list %}
+            <option value="{{ opcion }}" class="input-list">{{ opcion }}</option>
+        {% endfor %}
+    </select>
+</div>
+
+<br>
+
+<div id="q2">
+    <label for="farminc_list" id="l_farminc_list">¿Cuál es la principal fuente de ingresos de la finca donde trabaja?</label><br>
+    <select id="farminc_list" class="input-list" name="q_farminc" required>
+        <option class="input-list" value disabled selected>---------</option>
+        {% for opcion in farminc_list %}
+            <option value="{{ opcion }}" class="input-list">{{ opcion }}</option>
+        {% endfor %}
+    </select>
+</div>
+
+<br>
+
+
 {% formfields %}
 
 <div style="text-align: center; width: 100%">

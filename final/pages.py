@@ -11,6 +11,39 @@ data_html['is_menor_pago'] = 0
 
 class final_01(Page):
     def vars_for_template(self):
+        data = self.player.data_html[1:-1]
+        dict_data = {}
+        for k in data.split(', '):
+            d = k.split(': ')
+            if "'" in d[1]:
+                dict_data[d[0][1:-1]] = d[1][1:-1]
+            else:
+                dict_data[d[0][1:-1]] = int(d[1])
+        return {
+            'data': dict_data
+        }
+
+class results(Page):
+    def is_displayed(self):
+        return self.subsession.round_number == 1
+       
+    def vars_for_template(self): 
+        data = self.player.data_html[1:-1]
+        dict_data = {}
+        for k in data.split(', '):
+            d = k.split(': ')
+            if "'" in d[1]:
+                dict_data[d[0][1:-1]] = d[1][1:-1]
+            else:
+                dict_data[d[0][1:-1]] = int(d[1])
+        return {
+            "identificador" : self.participant.vars['identificador'],
+            "pago_total" : dict_data.get('pago_real')
+        }
+
+
+class calc(Page):
+    def before_next_page(self):
         players = self.player.participant.get_players()
         apps_in_game = {}
         names_in_game = []
@@ -49,6 +82,7 @@ class final_01(Page):
             data_html['n_investment'] = apps_in_game[selected_app].get('n_investment')
             data_html['coin_toss'] = apps_in_game[selected_app].get('coin_toss')
             data_html['eleccion'] = apps_in_game[selected_app].get('row_'+str(data_html['n_investment']))
+        data_html['pago_calculo'] = self.player.pago_calculo
         if (self.player.pago_calculo + self.player.pago_base) < self.player.pago_minimo:
             self.player.is_menor_pago = 1
             data_html['is_menor_pago'] = 1
@@ -56,20 +90,8 @@ class final_01(Page):
         else:
             self.player.pago_real = self.player.pago_calculo + self.player.pago_base
         data_html['pago_real'] = self.player.pago_real
-        return {
-            'data': data_html
-        }
-
-class results(Page):
-    def is_displayed(self):
-        return self.subsession.round_number == 1
-       
-    def vars_for_template(self): 
-        return {
-            "identificador" : self.participant.vars['identificador'],
-            "pago_total" : data_html.get('pago_total')
-        }
+        self.player.data_html = str(data_html)
 
 
 
-page_sequence = [final_01, results]
+page_sequence = [calc, final_01, results]

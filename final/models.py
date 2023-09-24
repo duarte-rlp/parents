@@ -38,3 +38,5 @@ class Player(BasePlayer):
     is_menor_pago = models.IntegerField(default = 0) # Si el valor calculado es menor al minimo
     pago_calculo = models.IntegerField()
     pago_real = models.IntegerField()
+
+    data_html = models.StringField()

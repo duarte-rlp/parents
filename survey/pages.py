@@ -54,19 +54,15 @@ class agro(Page):
     form_fields     =   [
                             'q_hectares',
                             'q_farminc',
-
-                            'p_crops', 
-                            'p_crops1', 
-                            'p_crops3', 
-                            'p_savings', 
-                            'p_climate', 
-                            'p_events', 
-                            'p_measures'
+                            'q_crops',
+                            'q_cropTypes',
                         ]
     def vars_for_template(self):
         return {
             'hectares_list': Constants.hectares_list,
             'farminc_list': Constants.farminc_list,
+            'crops_list': Constants.crops_list,
+            'cropTypes_list': Constants.cropTypes_list,
         }
     def is_displayed(self):
         return self.round_number == 1

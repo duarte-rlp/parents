@@ -96,6 +96,25 @@ class Constants(BaseConstants):
                                 'No lo sé / No me acuerdo',
                                 'No trabajo en finca'
                             ]
+    crops_list          =   [
+                                'Sólo un cultivo a la vez',
+                                '2 cultivos al mismo tiempo',
+                                '3 o más cultivos al mismo tiempo',
+                                'Ningún cultivo / No lo sé'
+                            ]
+    cropTypes_list      =   [
+                                'Aguacate',
+                                'Arroz',
+                                'Banano',
+                                'Cacao',
+                                'Caña de azúcar',
+                                'Frijol',
+                                'Maíz',
+                                'Pasto',
+                                'Platano',
+                                'Otros',
+                                'No cultivo ningún cultivo / No lo sé'
+                            ]
 
 
 class Subsession(BaseSubsession):
@@ -134,32 +153,10 @@ class Player(BasePlayer):
     q_hectares      = models.StringField()
     q_farminc       = models.StringField()
     q_crops         = models.StringField()
+    q_cropTypes     = models.StringField()
 
     #### Agriculture and climate
-
-    p_crops = models.IntegerField(
-    choices=[
-        [1,'Sólo un cultivo a la vez'],
-        [2,'2 cultivos al mismo tiempo'],
-        [3,'3 cultivos o más al mismo tiempo'],
-        [4,'No cultivo ningún cultivo / No lo sé'],
-    ], label="¿Cuando cultiva, cuántos cultivos comerciales diferentes siembra al mismo tiempo?")
-
-    p_crops1 = models.IntegerField(
-    choices=[
-        [1,'Aguacate'],
-        [2,'Arroz'],
-        [3,'Banano'],
-        [4,'Cacao'],
-        [5,'Caña de azúcar'],
-        [6, 'Frijol'],
-        [7, 'Maíz'],
-        [8, 'Pasto'],
-        [9, 'Platano'],
-        [10, 'Otros'],
-        [11, 'No cultivo ningún cultivo / No lo sé'],
-    ], label="¿Qué tipo de cultivos siembró el año pasado? (Puede marcar varias opciones)")
-
+    
     ### insert p_crops2
 
     p_crops3 = models.IntegerField(

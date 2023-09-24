@@ -37,6 +37,27 @@
 
 <br>
 
+<div id="q3">
+    <label for="crops_list" id="l_crops_list">¿Cuando cultiva, cuántos cultivos diferentes siembra al mismo tiempo?</label><br>
+    <select id="crops_list" class="input-list" name="q_crops" required>
+        <option class="input-list" value disabled selected>---------</option>
+        {% for opcion in crops_list %}
+            <option value="{{ opcion }}" class="input-list">{{ opcion }}</option>
+        {% endfor %}
+    </select>
+</div>
+
+<br>
+
+<div id="q4">
+    <label for="cropTypes_list" id="l_cropTypes_list">¿Qué tipo de cultivos sembró el año pasado? (Puede marcar varias opciones)</label><br>
+        {% for opcion in cropTypes_list %}
+        <label><input type="checkbox" name="q_cropTypes[]" value="{{ opcion }}">{{ opcion }}</label><br>
+        {% endfor %}
+</div>
+
+<br>
+
 
 {% formfields %}
 

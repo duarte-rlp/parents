@@ -97,7 +97,7 @@ input[type="checkbox"]::before{
     width: 13.5px;
     z-index: 1;
     top: 2px;
-    left: 2px;
+    left: 2.5px;
     background-color: #007cff;
     transition: 100ms transform ease-in-out;
     transform: scale(0);
@@ -161,4 +161,19 @@ tr.row_option:hover {
     background-color: #007cff22;
 }
 
+tr.row_option_sta {
+    text-align: left;
+}
 
+ul {
+    margin-bottom: 0.2rem;
+}
+
+.table_option {
+    width: 100%;
+    text-align: center;
+}
+
+.table_option:hover {
+    background-color: #007cff22;
+}

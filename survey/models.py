@@ -115,6 +115,59 @@ class Constants(BaseConstants):
                                 'Otros',
                                 'No cultivo ningún cultivo / No lo sé'
                             ]
+    cropImportance_list =   [
+                                'Rendimientos en años anteriores',
+                                'Rendimientos esperados el próximo año',
+                                'Clima en los años anteriores',
+                                'Clima esperado para el próximo año',
+                                'Conocimiento sobre cómo realizar los cultivos',
+                                'Los cultivos que se están realizando en otras fincas de la región'
+                            ]
+    cropsLoss_list      =   [
+                                'Sí, una vez',
+                                'Sí, más de una vez',
+                                'No, nunca',
+                                'No tengo cultivos'
+                            ]
+    savings_list        =   [
+                                'Si',
+                                'No',
+                                'No tengo cultivos'
+                            ]
+    protection_list     =   [
+                                'Tener ahorros para poder usar en caso de pérdida de ingresos',
+                                'Tener diferentes tipos de cultivos para evitar pérdidas',
+                                'Tener ganado para compensar pérdidas en cultivos',
+                                'Tener otras fuentes de ingresos además de la granja (por ejemplo: otro trabajo u ocupación)',
+                                'Tener un seguro contra pérdidas de cosechas (por ejemplo: seguro contra el mal clima)',
+                                'Pedir ayuda de familiares o amigos en tales casos'
+                            ]
+    climate_list        =   [
+                                'Si',
+                                'No',
+                                'No tengo cultivos'
+                            ]
+    events_list         =   [
+                                'Incendios forestales',
+                                'Inundaciones',
+                                'Más lluvia de lo habitual',
+                                'Menos lluvia de lo habitual',
+                                'Sequías',
+                                'Temperaturas más altas de lo habitual',
+                                'Temperaturas más bajas de lo habitual',
+                                'Terremotos/Temblores',
+                                'Otros desastres naturales',
+                                'Ningún problema',
+                                'No lo sé / No me acuerdo'
+                            ]
+    measures_list       =   [
+                                'Disponer de los ahorros',
+                                'Endeudarse',
+                                'Pedir ayuda a un conocido del barrio-vereda',
+                                'Pedir ayuda a un familiar',
+                                'Vender un activo',
+                                'No podria hacer nada y tendría que reducir el consumo'
+                            ]
 
 
 class Subsession(BaseSubsession):
@@ -154,59 +207,23 @@ class Player(BasePlayer):
     q_farminc       = models.StringField()
     q_crops         = models.StringField()
     q_cropTypes     = models.StringField()
-
-    #### Agriculture and climate
-    
-    ### insert p_crops2
-
-    p_crops3 = models.IntegerField(
-    choices=[
-        [1,'Sí, una vez'],
-        [2,'Sí, más de una vez'],
-        [3,'No, nunca'],
-        [4,'No cultivo ningún cultivo / No lo sé'],
-    ], label="¿Alguna vez ha experimentado una pérdida de cosechas?")
-
-    p_savings = models.IntegerField(
-    choices=[
-        [1,'Sí'],
-        [2,'No'],
-        [3,'No cultivo ningún cultivo / No lo sé'],
-    ], label="¿Tiene reservas de dinero o cualquier otra forma de ingreso para protegerse contra pérdidas de cosechas?")
-
-    ### insert p_protection
-
-    p_climate = models.IntegerField(
-    choices=[
-        [1,'Sí'],
-        [2,'No'],
-        [3,'No cultivo ningún cultivo / No lo sé'],
-    ], label="En su opinión, ¿el cambio climático ya ha afectado la producción agrícola?")
-
-    p_events = models.IntegerField(
-    choices=[
-        [1,'Incendios forestales'],
-        [2,'Inundaciones'],
-        [3,'Más lluvia de lo habitual'],
-        [4,'Menos lluvia de lo habitual'],
-        [5,'Sequías'],
-        [6,'Temperaturas más altas de lo habitual'],
-        [7,'Temperaturas más bajas de lo habitual'],
-        [8,'Terremotos/Temblores'],
-        [9,'Otros desastres naturales'],
-        [10,'Ningún problema'],
-        [11,'No lo sé / No me acuerdo'],
-    ], label="Durante los últimos 12 meses, ¿en esta zona o vecindario se presentaron algunos de los siguientes problemas? (Puede marcar varias opciones)")
-
-    p_measures = models.IntegerField(
-    choices=[
-        [1,'Disponer de los ahorros'],
-        [2,'Endeudarse'],
-        [3,'Pedir ayuda a un conocido del barrio-vereda'],
-        [4,'Pedir ayuda a un familiar'],
-        [5,'Vender un activo'],
-        [6,'No podria hacer nada y tendría que reducir el consumo'],
-    ], label="¿Si estos eventos afectarán negativamente a su hogar, qué medidas tomaría?")
+    q_cropsImp_1    = models.IntegerField()
+    q_cropsImp_2    = models.IntegerField()
+    q_cropsImp_3    = models.IntegerField()
+    q_cropsImp_4    = models.IntegerField()
+    q_cropsImp_5    = models.IntegerField()
+    q_cropsImp_6    = models.IntegerField()
+    q_cropsLoss     = models.StringField()
+    q_savings       = models.StringField()
+    q_protection_1  = models.IntegerField()
+    q_protection_2  = models.IntegerField()
+    q_protection_3  = models.IntegerField()
+    q_protection_4  = models.IntegerField()
+    q_protection_5  = models.IntegerField()
+    q_protection_6  = models.IntegerField()
+    q_climate       = models.StringField()
+    q_events        = models.StringField()
+    q_measures      = models.StringField()
 
 
 

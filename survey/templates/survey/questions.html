@@ -119,7 +119,7 @@
 {% block content %}
 
 <div id="q1">
-    <label for="age_box" id="l_age_box">¿Cuál es tu edad, en años?</label><br>
+    <label for="age_box" id="l_age_box"><b>¿Cuál es tu edad, en años?</b></label><br>
     <input type="number" name="q_age" id="age_box" class="inNumber" min="0" max="99" oninput="validate_number(this)" required>
     <div style="color:red; text-align: left; display: none;"></div>
 </div>
@@ -127,7 +127,7 @@
 <br>
 
 <div id="q2">
-    <label for="gender_list" id="l_gender_list">¿Con qué género se identifica?</label><br>
+    <label for="gender_list" id="l_gender_list"><b>¿Con qué género se identifica?</b></label><br>
     <select id="gender_list" class="input-list" name="q_gender" required>
         <option class="input-list" value disabled selected>---------</option>
         {% for opcion in gender_list %}
@@ -139,7 +139,7 @@
 <br>
 
 <div id="q3">
-    <label for="married_list" id="l_married_list">¿Cuál es tu estado civil?</label><br>
+    <label for="married_list" id="l_married_list"><b>¿Cuál es tu estado civil?</b></label><br>
     <select id="married_list" class="input-list" name="q_married" required>
         <option class="input-list" value disabled selected>---------</option>
         {% for opcion in married_list %}
@@ -151,7 +151,7 @@
 <br>
 
 <div id="q4">
-    <label for="family_box" id="l_family_box">¿Cuántas personas conforman su hogar?</label><br>
+    <label for="family_box" id="l_family_box"><b>¿Cuántas personas conforman su hogar?</b></label><br>
     <input type="number" name="q_family" id="family_box" class="inNumber" min="0" max="20" oninput="validate_number(this)" required>
     <div style="color:red; text-align: left; display: none;"></div>
 </div>
@@ -159,7 +159,7 @@
 <br>
 
 <div id="q5">
-    <label for="children_box" id="l_children_box">¿Cuántos hijos tienes?</label><br>
+    <label for="children_box" id="l_children_box"><b>¿Cuántos hijos tienes?</b></label><br>
     <input type="number" name="q_children" id="children_box" class="inNumber" min="0" max="20" oninput="validate_number(this)" required>
     <div style="color:red; text-align: left; display: none;"></div>
 </div>
@@ -167,7 +167,7 @@
 <br>
 
 <div id="q6">
-    <label for="workers_box" id="l_workers_box">¿Cuántas personas contribuyen a los ingresos del hogar?</label><br>
+    <label for="workers_box" id="l_workers_box"><b>¿Cuántas personas contribuyen a los ingresos del hogar?</b></label><br>
     <input type="number" name="q_workers" id="workers_box" class="inNumber" min="0" oninput="validate_number(this)" required>
     <div style="color:red; text-align: left; display: none;"></div>
 </div>
@@ -175,7 +175,7 @@
 <br>
 
 <div id="q7">
-    <label for="education_list" id="l_education_list">¿Cuál es el nivel educativo más alto que cursó o estás cursando?</label><br>
+    <label for="education_list" id="l_education_list"><b>¿Cuál es el nivel educativo más alto que cursó o estás cursando?</b></label><br>
     <select id="education_list" class="input-list" name="q_educ" required>
         <option class="input-list" value disabled selected>---------</option>
         {% for opcion in education_list %}
@@ -187,7 +187,7 @@
 <br>
 
 <div id="q8">
-    <label for="job_list" id="l_job_list">¿Cuál es tu situación laboral actual?</label><br>
+    <label for="job_list" id="l_job_list"><b>¿Cuál es tu situación laboral actual?</b></label><br>
     <select id="job_list" class="input-list" name="q_job" required>
         <option class="input-list" value disabled selected>---------</option>
         {% for opcion in job_list %}
@@ -199,7 +199,7 @@
 <br>
 
 <div id="q9">
-    <label for="income_box" id="l_income_box">¿Cuál es su ingreso mensual promedio?</label><br>
+    <label for="income_box" id="l_income_box"><b>¿Cuál es su ingreso mensual promedio?</b></label><br>
     <input type="text" name="q_income" id="income_box" class="inNumber" oninput="validate_number(this)" style="max-width: 200px !important;" required>
     <div style="color:red; text-align: left; display: none;"></div>
 </div>
@@ -207,7 +207,7 @@
 <br>
 
 <div id="q10">
-    <label for="incomeRange_list" id="l_incomeRange_list">Teniendo en cuenta su respuesta anterior, su ingreso mensual promedio se encuentra en un rango de:</label><br>
+    <label for="incomeRange_list" id="l_incomeRange_list"><b>Teniendo en cuenta su respuesta anterior, su ingreso mensual promedio se encuentra en un rango de:</b></label><br>
     <select id="incomeRange_list" class="input-list" name="q_incomeRange" required onchange="check_incomeRange(this)">
         <option class="input-list" value disabled selected>---------</option>
         {% for opcion in incomeRange_list %}
@@ -220,7 +220,7 @@
 <br>
 
 <div id="q11">
-    <label for="expenses_list" id="l_expenses_list">En el último mes los gastos del hogar frente a sus ingresos han sido:</label><br>
+    <label for="expenses_list" id="l_expenses_list"><b>En el último mes los gastos del hogar frente a sus ingresos han sido:</b></label><br>
     <select id="expenses_list" class="input-list" name="q_expenses" required>
         <option class="input-list" value disabled selected>---------</option>
         {% for opcion in expenses_list %}

@@ -924,26 +924,14 @@ class questions_problem_04(Page):
 
 
 page_sequence = [
-                instruc_01, 
-                #instruc_02, # retro de cómo quedan los datos ordenados
-                graph_01,
-                #graph_01_a, # gráfica que varía el $$ en la tabla
-                #graph_01_b,
-                #graph_01_c,
-                questions_problem_01,
-                graph_02,
-                #graph_02_a,
-                #graph_02_b,
-                #graph_02_c,
-                questions_problem_02,
-                graph_03,
-                #graph_03_a,
-                #graph_03_b,
-                #graph_03_c,
-                questions_problem_03,
-                graph_04,
-                #graph_04_a,
-                #graph_04_b,
-                #graph_04_c,
-                questions_problem_04,
+                    instruc_01, 
+                    #instruc_02, # retro de cómo quedan los datos ordenados
+                    graph_04,
+                    #questions_problem_04,
+                    graph_02,
+                    #questions_problem_02,
+                    graph_03,
+                    #questions_problem_03,
+                    graph_01,
+                    questions_problem_01,
                 ]

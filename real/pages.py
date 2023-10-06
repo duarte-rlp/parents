@@ -45,5 +45,7 @@ class instructions(Page):
     pass
     
 
-page_sequence = [instructions, graph_01, questions_graph_01]
-
+page_sequence = [
+                    instructions, 
+                    graph_01, 
+                ]

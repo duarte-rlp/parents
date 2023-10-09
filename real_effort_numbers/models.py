@@ -31,8 +31,8 @@ class Constants(BaseConstants):
                 '¿Cuál sería el resultado de 60 - 19?',
                 '¿Cuál sería el resultado de 6 x 19?',
                 '¿Cuánto sería el 9% de 200?',
-                'Suponga que usted posee $ 100.000 en un producto financiero que paga un interés anual del 2%. Si se mantiene por 5 años dicho producto, sin realizar ningún otro pago ni retirar el dinero, ¿cuánto tendrá al terminar de estos 5 años?',
-                'Suponga que su cuenta de ahorro paga un interés de un 1% anual. Usted sabe también que la tasa de inflación es de un 2% anual. Después de un año, ¿cuánto sería el valor real del dinero en esta cuenta?',
+                'Suponga que usted posee $ 100.000 en un producto financiero que paga un interés anual del 2%. Si se mantiene por 5 años dicho producto, sin realizar ningún otro pago ni retirar el dinero, ¿Cuánto tendrá al terminar de estos 5 años?',
+                'Suponga que su cuenta de ahorro paga un interés de un 1% anual. Usted sabe también que la tasa de inflación es de un 2% anual. Después de un año, ¿Cuánto sería el valor real del dinero en esta cuenta?',
                 'La siguiente frase es verdadera o falsa: «Las acciones son normalmente más riesgosas que los bonos o títulos»',
                 'La siguiente frase es verdadera o falsa: «Comprar una acción de una empresa es menos riesgoso que comprar con el mismo dinero varias acciones de distintas empresas»'
                 ]

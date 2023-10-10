@@ -423,6 +423,14 @@
                 }
                 break;
             case 4:
+                let inv_a_c4 = Number(document.getElementById("test_07_number_a").value);
+                let inv_b_c4 = Number(document.getElementById("test_07_number_b").value);
+                if (inv_a_c4 == Number({{ investment_max }})) {
+                    document.getElementById("test_07_number_b").value = 0;
+                }
+                if (inv_b_c4 == Number({{ investment_max }})) {
+                    document.getElementById("test_07_number_a").value = 0;
+                }
                 let btn = document.getElementById("id_next");
                 btn.removeAttribute("disabled");
                 btn.click();
@@ -529,7 +537,7 @@
 {% endblock %}
 
 {% block content %}
-<div id="step_1" style="height: 85px;">
+<div id="step_1" style="height: 110px;">
     Haga <i>clic</i> en el botón 
     {% if graphType == 1 %}
     "Mostrar Inversión A y B"
@@ -539,21 +547,21 @@
     para ver el porcentaje de rentabilidad (%) que las inversiones pueden generar en cada ESCENARIO.
 </div>
 
-<div id="step_2" style="display: none; height: 85px;">
+<div id="step_2" style="display: none; height: 110px;">
     Haga <i>clic</i> sobre la barra y mueva el cuadro que aparece para ver cómo la cantidad de dinero asignada a la <i>Inversión A</i> y la <i>Inversión B</i> afecta la tabla de las posibles rentabilidades. 
     <br>
     <br>
     Por favor explore la rentabilidad que recibiría en las distintas asignaciones.  Cuándo haya escogido su asignación preferida, escriba estos valores en la siguiente pantalla.  (Si prefiere, anote el valor en un papel).
 </div>
 
-<div id="step_3" style="display: none; height: 85px;">
+<div id="step_3" style="display: none; height: 110px;">
     Escriba en el cuadro correspondiente de la parte inferior la cantidad de los <toMoney>100000</toMoney> pesos de su dotación que desea asignar a la <i>Inversión A</i> y la <i>Inversión B</i>. Recuerde que la cantidad de dinero invertido debe ser <toMoney>100000</toMoney> pesos.
     <br>
     <br>
     Luego haga <i>clic</i> en “Enviar” para confirmar su decisión y continuar. 
 </div>
 
-<div id="step_4" style="display: none; height: 85px;">
+<div id="step_4" style="display: none; height: 110px;">
     Luego de enviar su decisión. El computador seleccionará al azar el ESCENARIO con los porcentajes que determinarán la rentabilidad de la Inversión A e Inversión B. Al final de la actividad le diremos cuál de los escenarios fue. 
 </div>
 

@@ -81,8 +81,9 @@ class instruc_01(Page):
         p03.index.name = 'Scenario'
         p04.index.name = 'Scenario'
 
-        n_order_problems = Constants.n_problems.copy()
+        n_order_problems = Constants.n_problems.copy()[1:]
         random.shuffle(n_order_problems)
+        n_order_problems.append(0)
 
         self.player.participant.vars['order_problems'] = []
         self.player.participant.vars['name_order_problems'] = ""
@@ -128,7 +129,7 @@ class graph_01(Page):
     form_fields = ["problem_01_btnSelected", "problem_01_btnTime", "problem_01_sliderSelected", "problem_01_sliderTime", "problem_01_sliderInv_a", "problem_01_invCntMistakers", "problem_01_invMistakes", "problem_01_invTime", "problem_01_invVal_a", "problem_01_invVal_b"]
     def vars_for_template(self):
         return {
-                'n_problem': 4,
+                'n_problem': 1,
                 'data_a': list(self.player.participant.vars['problems'][0]['AssetA']),
                 'data_b': list(self.player.participant.vars['problems'][0]['AssetB']),
                 'labels': Constants.inv_labels,
@@ -140,7 +141,7 @@ class graph_01(Page):
 
 class questions_problem_01(Page):
     form_model = "player"
-    form_fields = ["problem_01_return_b", "problem_01_expect_return_b", "problem_01_probability_b", 'problem_01_risk', 'problem_01_insurance']
+    form_fields = ["problem_minus50perc_return_b", "problem_minus50perc_expect_return_b", "problem_minus50perc_probability_b", 'problem_minus50perc_risk', 'problem_minus50perc_insurance']
     def vars_for_template(self):
         return {
                 'n_problem': 4,
@@ -170,39 +171,9 @@ class graph_02(Page):
                 'min_y': min(list(self.player.participant.vars['problems'][1]['AssetA']) + list(self.player.participant.vars['problems'][1]['AssetB']))
                 }
 
-class questions_problem_02(Page):
-    form_model = "player"
-    form_fields = ["problem_02_return_b", "problem_02_expect_return_b", "problem_02_probability_b", 'problem_02_risk', 'problem_02_insurance']
-    def vars_for_template(self):
-        return {
-                'n_problem': 2,
-                'data_a': list(self.player.participant.vars['problems'][1]['AssetA']),
-                'data_b': list(self.player.participant.vars['problems'][1]['AssetB']),
-                'labels': Constants.inv_labels,
-                'graphType': self.player.participant.vars['graphType'],
-                'max_inv': Constants.max_inv,
-                'max_y': max(list(self.player.participant.vars['problems'][1]['AssetA']) + list(self.player.participant.vars['problems'][1]['AssetB'])),
-                'min_y': min(list(self.player.participant.vars['problems'][1]['AssetA']) + list(self.player.participant.vars['problems'][1]['AssetB']))
-                }
-
 class graph_03(Page):
     form_model = "player"
     form_fields = ["problem_03_btnSelected", "problem_03_btnTime", "problem_03_sliderSelected", "problem_03_sliderTime", "problem_03_sliderInv_a", "problem_03_invCntMistakers", "problem_03_invMistakes", "problem_03_invTime", "problem_03_invVal_a", "problem_03_invVal_b"]
-    def vars_for_template(self):
-        return {
-                'n_problem': 3,
-                'data_a': list(self.player.participant.vars['problems'][2]['AssetA']),
-                'data_b': list(self.player.participant.vars['problems'][2]['AssetB']),
-                'labels': Constants.inv_labels,
-                'graphType': self.player.participant.vars['graphType'],
-                'max_inv': Constants.max_inv,
-                'max_y': max(list(self.player.participant.vars['problems'][2]['AssetA']) + list(self.player.participant.vars['problems'][2]['AssetB'])),
-                'min_y': min(list(self.player.participant.vars['problems'][2]['AssetA']) + list(self.player.participant.vars['problems'][2]['AssetB']))
-                }
-
-class questions_problem_03(Page):
-    form_model = "player"
-    form_fields = ["problem_03_return_b", "problem_03_expect_return_b", "problem_03_probability_b", 'problem_03_risk', 'problem_03_insurance']
     def vars_for_template(self):
         return {
                 'n_problem': 3,
@@ -220,22 +191,7 @@ class graph_04(Page):
     form_fields = ["problem_04_btnSelected", "problem_04_btnTime", "problem_04_sliderSelected", "problem_04_sliderTime", "problem_04_sliderInv_a", "problem_04_invCntMistakers", "problem_04_invMistakes", "problem_04_invTime", "problem_04_invVal_a", "problem_04_invVal_b"]
     def vars_for_template(self):
         return {
-                'n_problem': 1,
-                'data_a': list(self.player.participant.vars['problems'][3]['AssetA']),
-                'data_b': list(self.player.participant.vars['problems'][3]['AssetB']),
-                'labels': Constants.inv_labels,
-                'graphType': self.player.participant.vars['graphType'],
-                'max_inv': Constants.max_inv,
-                'max_y': max(list(self.player.participant.vars['problems'][3]['AssetA']) + list(self.player.participant.vars['problems'][3]['AssetB'])),
-                'min_y': min(list(self.player.participant.vars['problems'][3]['AssetA']) + list(self.player.participant.vars['problems'][3]['AssetB']))
-                }
-
-class questions_problem_04(Page):
-    form_model = "player"
-    form_fields = ["problem_04_return_b", "problem_04_expect_return_b", "problem_04_probability_b", 'problem_04_risk', 'problem_04_insurance']
-    def vars_for_template(self):
-        return {
-                'n_problem': 1,
+                'n_problem': 4,
                 'data_a': list(self.player.participant.vars['problems'][3]['AssetA']),
                 'data_b': list(self.player.participant.vars['problems'][3]['AssetB']),
                 'labels': Constants.inv_labels,
@@ -279,9 +235,9 @@ def calcular_pagos(self):
 
 page_sequence = [
                     instruc_01, 
-                    graph_04,
+                    graph_01,
                     graph_02,
                     graph_03,
-                    graph_01,
+                    graph_04,
                     questions_problem_01,
                 ]

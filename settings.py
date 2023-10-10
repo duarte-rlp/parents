@@ -120,7 +120,7 @@ DEBUG=False
 
 SECRET_KEY = 'ych58g9m8ay^q)l^*n^!=8!t#tjo%$-kb53wkh96i$es(yp7b+'
 
-OTREE_STATIC_ROOT = os.environ.get("OTREE_STATIC_ROOT", "/app/static_files")
+OTREE_STATIC_ROOT = os.environ.get("OTREE_STATIC_ROOT", "/app/__temp_static_root")
 
 ## Variables para Heroku
 """

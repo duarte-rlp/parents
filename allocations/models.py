@@ -171,11 +171,13 @@ class Player(BasePlayer):
     problem_01_invTime = models.StringField()
     problem_01_invVal_a = models.IntegerField()
     problem_01_invVal_b = models.IntegerField()
+    '''
     problem_01_return_b = models.IntegerField()
     problem_01_expect_return_b = models.IntegerField()
     problem_01_probability_b = models.IntegerField()
     problem_01_risk = models.IntegerField()
     problem_01_insurance = models.IntegerField()
+    '''
 
     problem_02_type = models.StringField()
     problem_02_inv_a = models.StringField()
@@ -191,11 +193,13 @@ class Player(BasePlayer):
     problem_02_invTime = models.StringField()
     problem_02_invVal_a = models.IntegerField()
     problem_02_invVal_b = models.IntegerField()
+    '''
     problem_02_return_b = models.IntegerField()
     problem_02_expect_return_b = models.IntegerField()
     problem_02_probability_b = models.IntegerField()
     problem_02_risk = models.IntegerField()
     problem_02_insurance = models.IntegerField()
+    '''
 
     problem_03_type = models.StringField()
     problem_03_inv_a = models.StringField()
@@ -211,11 +215,13 @@ class Player(BasePlayer):
     problem_03_invTime = models.StringField()
     problem_03_invVal_a = models.IntegerField()
     problem_03_invVal_b = models.IntegerField()
+    '''
     problem_03_return_b = models.IntegerField()
     problem_03_expect_return_b = models.IntegerField()
     problem_03_probability_b = models.IntegerField()
     problem_03_risk = models.IntegerField()
     problem_03_insurance = models.IntegerField()
+    '''
 
     problem_04_type = models.StringField()
     problem_04_inv_a = models.StringField()
@@ -231,11 +237,20 @@ class Player(BasePlayer):
     problem_04_invTime = models.StringField()
     problem_04_invVal_a = models.IntegerField()
     problem_04_invVal_b = models.IntegerField()
+    '''
     problem_04_return_b = models.IntegerField()
     problem_04_expect_return_b = models.IntegerField()
     problem_04_probability_b = models.IntegerField()
     problem_04_risk = models.IntegerField()
     problem_04_insurance = models.IntegerField()
+    '''
+
+    # Variables para el caso de -50%
+    problem_minus50perc_return_b = models.IntegerField()
+    problem_minus50perc_expect_return_b = models.IntegerField()
+    problem_minus50perc_probability_b = models.IntegerField()
+    problem_minus50perc_risk = models.IntegerField()
+    problem_minus50perc_insurance = models.IntegerField()
 
     # Variables para los pagos
     n_problem = models.IntegerField() # El problema escogido, de los 4

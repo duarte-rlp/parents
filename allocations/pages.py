@@ -139,23 +139,6 @@ class graph_01(Page):
                 'min_y': min(list(self.player.participant.vars['problems'][0]['AssetA']) + list(self.player.participant.vars['problems'][0]['AssetB']))
                 }
 
-class questions_problem_01(Page):
-    form_model = "player"
-    form_fields = ["problem_minus50perc_return_b", "problem_minus50perc_expect_return_b", "problem_minus50perc_probability_b", 'problem_minus50perc_risk', 'problem_minus50perc_insurance']
-    def vars_for_template(self):
-        return {
-                'n_problem': 4,
-                'data_a': list(self.player.participant.vars['problems'][0]['AssetA']),
-                'data_b': list(self.player.participant.vars['problems'][0]['AssetB']),
-                'labels': Constants.inv_labels,
-                'graphType': self.player.participant.vars['graphType'],
-                'max_inv': Constants.max_inv,
-                'max_y': max(list(self.player.participant.vars['problems'][0]['AssetA']) + list(self.player.participant.vars['problems'][0]['AssetB'])),
-                'min_y': min(list(self.player.participant.vars['problems'][0]['AssetA']) + list(self.player.participant.vars['problems'][0]['AssetB']))
-                }
-    def before_next_page(self):
-        calcular_pagos(self)
-
 class graph_02(Page):
     form_model = "player"
     form_fields = ["problem_02_btnSelected", "problem_02_btnTime", "problem_02_sliderSelected", "problem_02_sliderTime", "problem_02_sliderInv_a", "problem_02_invCntMistakers", "problem_02_invMistakes", "problem_02_invTime", "problem_02_invVal_a", "problem_02_invVal_b"]
@@ -201,6 +184,23 @@ class graph_04(Page):
                 'min_y': min(list(self.player.participant.vars['problems'][3]['AssetA']) + list(self.player.participant.vars['problems'][3]['AssetB']))
                 }
 
+class questions_problem_minus50perc(Page):
+    form_model = "player"
+    form_fields = ["problem_minus50perc_return_b", "problem_minus50perc_expect_return_b", "problem_minus50perc_probability_b", 'problem_minus50perc_risk', 'problem_minus50perc_insurance']
+    def vars_for_template(self):
+        return {
+                'n_problem': 4,
+                'data_a': list(self.player.participant.vars['problems'][3]['AssetA']),
+                'data_b': list(self.player.participant.vars['problems'][3]['AssetB']),
+                'labels': Constants.inv_labels,
+                'graphType': self.player.participant.vars['graphType'],
+                'max_inv': Constants.max_inv,
+                'max_y': max(list(self.player.participant.vars['problems'][3]['AssetA']) + list(self.player.participant.vars['problems'][3]['AssetB'])),
+                'min_y': min(list(self.player.participant.vars['problems'][3]['AssetA']) + list(self.player.participant.vars['problems'][3]['AssetB']))
+                }
+    def before_next_page(self):
+        calcular_pagos(self)
+
 def calcular_pagos(self):
     self.player.n_problem = random.randint(1, 4) # escoger el problema
     self.player.n_scene = random.randint(1, 8) # escoger el escenario
@@ -239,5 +239,5 @@ page_sequence = [
                     graph_02,
                     graph_03,
                     graph_04,
-                    questions_problem_01,
+                    questions_problem_minus50perc,
                 ]

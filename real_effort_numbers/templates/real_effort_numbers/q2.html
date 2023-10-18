@@ -26,13 +26,19 @@
         window.onload = function(){
             start = Date.now();
         };
-
+/*
         $(document).ready(function () {
             $('.btnNext').click(
                 function () {
                     validate();
                 }
             );
+        });
+*/
+        $(document).ready(function () {
+            $('.btnNext').on('click touchstart', function (event) {
+                validate();
+            });
         });
     </script>
 {% endblock %}

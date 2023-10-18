@@ -18,6 +18,11 @@ class graph_01(Page):
                 'investment_max': Constants.investment_max,
                 'graphType': self.player.participant.vars['graphType']
                 }
+    def before_next_page(self):
+        self.player.n_scene = random.randint(1, 8) # escoger el escenario
+        self.player.amount_cultivo_1 = int((Constants.cultivo_1[self.player.n_scene-1] * self.player.has_cultivo_1)/10) # calcula el $$$ por el cultivo A
+        self.player.amount_cultivo_2 = int((Constants.cultivo_2[self.player.n_scene-1] * self.player.has_cultivo_2)/10) # calcula el $$$ por el cultivo B
+        self.player.payoff_amount_app = self.player.amount_cultivo_1 + self.player.amount_cultivo_2
 
 
 class questions_graph_01(Page):
@@ -34,11 +39,6 @@ class questions_graph_01(Page):
                 'investment_max': Constants.investment_max,
                 'graphType': self.player.participant.vars['graphType']
                 }
-    def before_next_page(self):
-        self.player.n_scene = random.randint(1, 8) # escoger el escenario
-        self.player.amount_cultivo_1 = int((Constants.cultivo_1[self.player.n_scene-1] * self.player.has_cultivo_1)/10) # calcula el $$$ por el cultivo A
-        self.player.amount_cultivo_2 = int((Constants.cultivo_2[self.player.n_scene-1] * self.player.has_cultivo_2)/10) # calcula el $$$ por el cultivo B
-        self.player.payoff_amount_app = self.player.amount_cultivo_1 + self.player.amount_cultivo_2
 
 
 class instructions(Page):

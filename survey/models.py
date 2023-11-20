@@ -127,12 +127,12 @@ class Constants(BaseConstants):
                                 'Sí, una vez',
                                 'Sí, más de una vez',
                                 'No, nunca',
-                                'No tengo cultivos'
+                                'No trabajo en finca / No lo sé'
                             ]
     savings_list        =   [
                                 'Si',
                                 'No',
-                                'No tengo cultivos'
+                                'No trabajo en finca / No lo sé'
                             ]
     protection_list     =   [
                                 'Tener ahorros para poder usar en caso de pérdida de ingresos',
@@ -141,11 +141,12 @@ class Constants(BaseConstants):
                                 'Tener otras fuentes de ingresos además de la granja (por ejemplo: otro trabajo u ocupación)',
                                 'Tener un seguro contra pérdidas de cosechas (por ejemplo: seguro contra el mal clima)',
                                 'Pedir ayuda de familiares o amigos en tales casos'
+                                'No trabajo en finca / No lo sé'
                             ]
     climate_list        =   [
                                 'Si',
                                 'No',
-                                'No tengo cultivos'
+                                'No trabajo en finca / No lo sé'
                             ]
     events_list         =   [
                                 'Incendios forestales',

@@ -100,7 +100,7 @@ class Constants(BaseConstants):
                                 'Sólo un cultivo a la vez',
                                 '2 cultivos al mismo tiempo',
                                 '3 o más cultivos al mismo tiempo',
-                                'Ningún cultivo / No lo sé'
+                                'No trabajo en finca / No lo sé'
                             ]
     cropTypes_list      =   [
                                 'Aguacate',
@@ -113,7 +113,7 @@ class Constants(BaseConstants):
                                 'Pasto',
                                 'Platano',
                                 'Otros',
-                                'No cultivo ningún cultivo / No lo sé'
+                                'No trabajo en finca / No lo sé'
                             ]
     cropImportance_list =   [
                                 'Rendimientos en años anteriores',

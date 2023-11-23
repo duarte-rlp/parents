@@ -10,7 +10,7 @@ from otree.api import (
 )
 import random
 
-author = 'hopkeinst'
+author = '@hopkeinst'
 
 doc = """
 Your app description
@@ -68,6 +68,11 @@ class Constants(BaseConstants):
                                 'Mayores',
                                 'Menores',
                                 'Iguales'
+                            ]
+    devices_list        =   [
+                                'Computador',
+                                'Tableta',
+                                'Celular'
                             ]
     risk_list           =   [
                                 'Ningún riesgo',
@@ -193,6 +198,7 @@ class Player(BasePlayer):
     q_income        = models.IntegerField()
     q_incomeRange   = models.StringField()
     q_expenses      = models.StringField()
+    q_device        = models.StringField()
 
 # Risk Questions
     q_risk          = models.IntegerField()

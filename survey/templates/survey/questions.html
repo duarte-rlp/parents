@@ -231,6 +231,18 @@
 
 <br>
 
+<div id="q12">
+    <label for="devices_list" id="l_devices_list"><b>Desde qué tipo de dispositivo está respondiendo este cuestionario:</b></label><br>
+    <select id="devices_list" class="input-list" name="q_device" required>
+        <option class="input-list" value disabled selected>---------</option>
+        {% for opcion in devices_list %}
+            <option value="{{ opcion }}" class="input-list">{{ opcion }}</option>
+        {% endfor %}
+    </select>
+</div>
+
+<br>
+
 <!--
 {% formfields %}
 -->

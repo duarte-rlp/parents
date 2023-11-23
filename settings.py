@@ -57,12 +57,6 @@ SESSION_CONFIGS = [
         'app_sequence': ['choice'],
     },
     {
-        'name': 'payoff_choice',
-        'display_name': 'Votación Grupal',
-        'num_demo_participants': 1, 
-        'app_sequence': ['payoff_choice'],
-    },
-    {
         'name': 'survey',
         'display_name': 'Encuesta',
         'num_demo_participants': 1, 
@@ -121,6 +115,9 @@ DEBUG=False
 SECRET_KEY = 'ych58g9m8ay^q)l^*n^!=8!t#tjo%$-kb53wkh96i$es(yp7b+'
 
 OTREE_STATIC_ROOT = os.environ.get("OTREE_STATIC_ROOT", "/app/__temp_static_root")
+
+OTREE_ADMIN_PASSWORD = os.environ.get('OTREE_ADMIN_PASSWORD', "admin_password")
+OTREE_PRODUCTION = os.environ.get('OTREE_PRODUCTION', "true")
 
 ## Variables para Heroku
 """

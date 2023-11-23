@@ -16,7 +16,8 @@ class questions(Page):
                             "q_job", 
                             "q_income", 
                             "q_incomeRange",
-                            "q_expenses"
+                            "q_expenses",
+                            "q_device"
                         ]
     def vars_for_template(self):
         return {
@@ -25,7 +26,8 @@ class questions(Page):
             "education_list": Constants.education_list,
             "job_list": Constants.job_list,
             "incomeRange_list": Constants.incomeRange_list,
-            "expenses_list": Constants.expenses_list
+            "expenses_list": Constants.expenses_list,
+            "devices_list": Constants.devices_list
         }
     def is_displayed(self):
         return self.round_number == 1

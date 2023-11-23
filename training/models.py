@@ -12,7 +12,7 @@ from otree.api import (
 import random
 
 
-author = 'Ferley, Jorge'
+author = '@hopkeinst'
 
 doc = """
 Your app description

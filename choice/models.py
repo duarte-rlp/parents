@@ -19,24 +19,24 @@ Your app description
 
 class Constants(BaseConstants):
     name_in_url = 'choice'
-    description = 'Actividad 6: Invertir o no invertir'
+    description = 'Atividade 4: Lançar ou não lançar uma moeda'
     players_per_group = None
     num_rounds = 1
     loss = [
-            -6000,
-            -9000,
-            -12000,
-            -15000,
-            -18000,
-            -21000
+            -6,
+            -9,
+            -12,
+            -15,
+            -18,
+            -21
     ]
     earnings = [
-                18000,
-                18000,
-                18000,
-                18000,
-                18000,
-                18000
+                18,
+                18,
+                18,
+                18,
+                18,
+                18
     ]
 
 

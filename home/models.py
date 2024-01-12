@@ -36,7 +36,7 @@ class Group(BaseGroup):
 class Player(BasePlayer):
     consent = models.BooleanField(blank=True)
     consent_account = models.BooleanField(blank=True)
-    identificador = models.StringField(label='Su código está compuesto por las iniciales de su primer nombre y apellido seguido de su fecha de nacimiento. Por ejemplo, si usted se llama Lina Ríos y usted nació el 11 de febrero de 1995, su código será LR11021995. Para iniciar por favor ingrese su código, escriba todo en mayúscula. Este código es importante para asegurar su participación en el resto de la actividad y la realización de los pagos.')
+    identificador = models.StringField(label='Seu código é composto pela inicial do seu primeiro nome seguida da sua data de nascimento. Por exemplo, se seu nome é João e você nasceu em 1 de janeiro de 1980, seu código será J01011980. Para começar, digite seu código, escrevendo tudo em letras maiúsculas. Este código é importante para garantir a sua participação no resto da atividade e a realização do seu pagamento.')
     graphType = models.IntegerField()
     graphType_str = models.StringField()
 

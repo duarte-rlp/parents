@@ -30,7 +30,7 @@
             },
             yAxis: {
                 title: {
-                    text: 'Retorno por cada $100'
+                    text: 'Retorno para cada R$ 100'
                 },
                 min: {{ min_y }} - 1,
                 max: {{ max_y }} + 1
@@ -44,7 +44,7 @@
                     enabled: true
                 },
                 color: 'blue',
-                name: 'Inversión A',
+                name: 'Investimento A',
                 dashStyle: 'Dash'
             }, {
                 animation: false,
@@ -55,7 +55,7 @@
                     enabled: true
                 },
                 color: 'green',
-                name: 'Inversión B',
+                name: 'Investimento B',
                 dashStyle: 'Dash'
             }],
             legend: {
@@ -301,22 +301,22 @@
 {% endblock %}
 
 {% block title %}
-    Actividad 2: Preguntas Decisión de Inversión {{ n_problem }}
+    Atividade 2: Perguntas Decisão de Investimento {{ n_problem }}
 {% endblock %}
 
 {% block content %}
 <p>
-    A continuación, le hacemos algunas preguntas sobre las dos opciones de inversión. Por favor, léalas y responda atentamente. 
+    A seguir, fazemos algumas perguntas sobre as duas opções de investimento. Por favor, as responda com atenção. 
 </p>
 
 <div>
     <table style="text-align: center; width: 90%; margin: 0 auto;">
         <tr>
             {% if graphType == 1 %}
-            <td><input type="button" value="Mostrar Inversión A y B" onclick="visibleAB()" id="btn_ab"></td>
+            <td><input type="button" value="Mostrar Investimentos A e B" onclick="visibleAB()" id="btn_ab"></td>
             {% else %}
-            <td><input type="button" value="Mostrar Inversión A" onclick="visibleA()" id="btn_a"></td>
-            <td><input type="button" value="Mostrar Inversión B" onclick="visibleB()" id="btn_b"></td>
+            <td><input type="button" value="Mostrar Investimento A" onclick="visibleA()" id="btn_a"></td>
+            <td><input type="button" value="Mostrar Investimento B" onclick="visibleB()" id="btn_b"></td>
             {% endif %}
         </tr>
     </table>
@@ -326,24 +326,24 @@
 <br>
 
 <ol>
-    <li style="margin-top: 10px;">Si el rendimiento de la <i>Inversión A</i> es bajo, espero que el rendimiento de la <i>Inversión B</i> sea alto en <input type="number" class="inNumber" name="problem_minus50perc_return_b" id="question_1" min="0" max="8" required style="display: inline; margin-left: 5px; margin-right: 5px;" oninput="checker_box_1()"> de 8 casos.</li>
+    <li style="margin-top: 10px;">Se o rendimento do <i>Investimento A</i> é baixo, espero que o rendimento do <i>Investimento B</i> seja alto em <input type="number" class="inNumber" name="problem_minus50perc_return_b" id="question_1" min="0" max="8" required style="display: inline; margin-left: 5px; margin-right: 5px;" oninput="checker_box_1()"> de 8 casos.</li>
             <div class="error_msg" id="div_error_q1">
-                Por favor ingrese un valor entre 0 y 8
+                O valor deve ser entre 0 e 8
             </div>
 
-    <li style="margin-top: 10px;">Si el rendimiento de la <i>Inversión A</i> es alto, es más probable que el rendimiento de la <i>Inversión B</i>:</li>
+    <li style="margin-top: 10px;">Se o rendimento do <i>Investimento A</i> é alto, é mais provável que o rendimento do <i>Investimento B</i>:</li>
         <div class="card_table" id="radio_options" style="text-align: left; margin-top: 10px;">
             <input type="radio" id="q2_o1" name="problem_minus50perc_expect_return_b" value="1" class="items01" oninput="checker_radio_1()">
-            <label for="q2_o1" id="l_q2_o1" class="items01"> Sea alto</label>
+            <label for="q2_o1" id="l_q2_o1" class="items01"> Seja alto</label>
             <br>
             <input type="radio" id="q2_o2" name="problem_minus50perc_expect_return_b" value="2" class="items01" oninput="checker_radio_1()">
-            <label for="q2_o2" id="l_q2_o2" class="items01">Sea bajo</label>
+            <label for="q2_o2" id="l_q2_o2" class="items01">Seja baixo</label>
             <br>
             <input type="radio" id="q2_o3" name="problem_minus50perc_expect_return_b" value="3" class="items01" oninput="checker_radio_1()">
-            <label for="q2_o3" id="l_q2_o3" class="items01">Es igual de probable que sea alto o bajo</label>
+            <label for="q2_o3" id="l_q2_o3" class="items01">Tem a mesma probabilidade de ser alto ou baixo</label>
         </div>
         
-        <li style="margin-top: 10px;">Suponga que se selecciona un ESCENARIO al azar, ¿Cuál es la probabilidad de que los rendimientos de la <i>Inversión B</i> sean bajos?</li>
+        <li style="margin-top: 10px;">Suponha que um CENÁRIO seja selecionado aleatoriamente, qual é a probabilidade de que os retornos do <i>Investimento B</i> sejam baixos?</li>
         <div class="card_table" id="h-slider-div" style="text-align: center; margin-top: 10px;">
             <table class="table_question" style="margin: 0 auto; width: 70% !important;">
                 <tr>
@@ -359,11 +359,11 @@
             </table>
         </div>
         
-        <li style="margin-top: 10px;">¿Qué tan riesgosa considera usted que es su asignación?</li>
+        <li style="margin-top: 10px;">Quão arriscado você considera seu investimento?</li>
         <table style="width: 100%; text-align: center; margin-top: 5px;">
             <tr>
                 <td style="width: 15%;">
-                    Libre de riesgos
+                    Livre de riscos
                 </td>
                 <td>
                     <input type="radio" id="risk_op0" name="problem_minus50perc_risk" value="0" class="items01" oninput="checker_radio_2()"><br>0
@@ -399,16 +399,16 @@
                     <input type="radio" id="risk_op10" name="problem_minus50perc_risk" value="10" class="items01" oninput="checker_radio_2()"><br>10
                 </td>
                 <td style="width: 15%;">
-                    Muy riesgosa
+                    Muito arriscado
                 </td>
             </tr>
         </table>
         
-        <li style="margin-top: 10px;">¿Qué tan seguro está de su decisión de inversión?</li>
+        <li style="margin-top: 10px;">Quão confiante você está sobre sua decisão de investimento?</li>
         <table style="width: 100%; text-align: center; margin-top: 5px;">
             <tr>
                 <td style="width: 15%;">
-                    Nada seguro
+                    Nada confiante
                 </td>
                 <td>
                     <input type="radio" id="insurance_op0" name="problem_minus50perc_insurance" value="0" class="items01" oninput="checker_radio_3()"><br>0
@@ -444,7 +444,7 @@
                     <input type="radio" id="insurance_op10" name="problem_minus50perc_insurance" value="10" class="items01" oninput="checker_radio_3()"><br>10
                 </td>
                 <td style="width: 15%;">
-                    Muy seguro
+                    Muito confiante
                 </td>
             </tr>
         </table>

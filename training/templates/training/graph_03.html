@@ -24,7 +24,7 @@
             },
             xAxis: {
                 title: {
-                    text: 'Escenarios'
+                    text: 'Cenários'
                 },
                 min: 0,
                 max: 7,
@@ -33,7 +33,7 @@
             },
             yAxis: {
                 title: {
-                    text: 'Retorno por cada $100'
+                    text: 'Retorno para cada R$ 100'
                 },
                 min: {{ min_y }} - 5,
                 max: {{ max_y }} + 5
@@ -47,7 +47,7 @@
                     enabled: true
                 },
                 color: 'blue',
-                name: 'Inversión A',
+                name: 'Investimento A',
                 dashStyle: 'Dash'
             }, {
                 animation: false,
@@ -58,7 +58,7 @@
                     enabled: true
                 },
                 color: 'green',
-                name: 'Inversión B',
+                name: 'Investimento B',
                 dashStyle: 'Dash'
             }],
             legend: {
@@ -382,15 +382,15 @@
                     if (Number(in_test06_a.value) == 750) {
                         document.getElementById('test_06_answer_a').value = 'Correct';
                         if (Number(in_test06_b.value) == -8550) {
-                            document.getElementById('text_result_01').innerHTML = 'Correcto';
+                            document.getElementById('text_result_01').innerHTML = 'Correto';
                             document.getElementById('test_06_answer_b').value = 'Correct';
                         } else {
-                            document.getElementById('text_result_01').innerHTML = 'Incorrecto';
+                            document.getElementById('text_result_01').innerHTML = 'Incorreto';
                             document.getElementById('test_06_answer_b').value = 'Incorrect';
                         }
                     } else {
                         document.getElementById('test_06_answer_a').value = 'Incorrect';
-                        document.getElementById('text_result_01').innerHTML = 'Incorrecto';
+                        document.getElementById('text_result_01').innerHTML = 'Incorreto';
                         if (Number(in_test06_b.value) == -8550) {
                             document.getElementById('test_06_answer_b').value = 'Correct';
                         } else {
@@ -413,18 +413,18 @@
 {% endblock %}
 
 {% block title %}
-    Actividad 2: Tablas
+    Atividade 2: Tabelas
 {% endblock %}
 
 {% block content %}
 <div id="step_1" style="height: 160px;">
-Por favor asigne <toMoney>10000</toMoney> en la <i>Inversión A</i> y <toMoney>90000</toMoney> en la <i>Inversión B</i> moviendo la barra inferior. Luego de hacer clic en <i>Mostrar Inversión</i>, en la columna correspondiente al ESCENARIO 4 de la TABLA ABAJO se mostrarán los siguientes retornos:
+Por favor, invista <toMoney>10</toMoney> no <i>Investimento A</i> e <toMoney>90</toMoney> no <i>Investimento B</i> movendo a barra inferior. Após clicar em <i>Mostrar Investimento</i>, na coluna correspondente ao CENÁRIO 4 da TABELA ABAIXO serão mostrados os seguintes retornos:
 <br>
 <ul>
-    <li>Gana <toMoney>1500</toMoney> -> (<toMoney>10000</toMoney> x {{ data_a.3 }}%)</li>
-    <li>Pierde <toMoney>8100</toMoney> -> (<toMoney>90000</toMoney> x {{ data_b.3 }}%)</li>
+    <li>Ganha <toMoney>1,50</toMoney> -> (<toMoney>10</toMoney> x {{ data_a.3 }}%)</li>
+    <li>Perde <toMoney>8,10</toMoney> -> (<toMoney>90</toMoney> x {{ data_b.3 }}%)</li>
 </ul>
-Como ganas <toMoney>1500</toMoney> en la <i>Inversión A</i> y pierdes <toMoney>8100</toMoney> en la <i>Inversión B</i>, el retorno total posible en el ESCENARIO 4 es una pérdida de <toMoney>6600</toMoney>. Los retornos totales se muestran en el último renglón de la tabla.
+Como você ganha <toMoney>1,50</toMoney> no <i>Investimento A</i> e perde <toMoney>8,10</toMoney> no <i>Investimento B</i>, o retorno total possível no CENÁRIO 4 é uma perda de <toMoney>6,60</toMoney>. Os retornos totais são mostrados na última linha da tabela.
 </div>
 
 <div id="step_2" style="display: none; height: 160px;">
@@ -433,7 +433,7 @@ Como ganas <toMoney>1500</toMoney> en la <i>Inversión A</i> y pierdes <toMoney>
         <td style="width: 10%;"><b>Pregunta:</b></td>
         <td class="cell_question" style="width: 90% !important;">
             <div id="text01">
-                ¿Cuáles serán los retornos en el ESCENARIO 4 de la TABLA si asigna  <toMoney>5000</toMoney> en la <i>Inversión A</i> y <toMoney>95000</toMoney> en la <i>Inversión B</i>?
+                Quais serão os retornos no CENÁRIO 4 da TABELA se você alocar <toMoney>5</toMoney> no <i>Investimento A</i> e <toMoney>95</toMoney> no <i>Investimento B</i> >?
             </div>
         </td>
     </tr>
@@ -441,7 +441,7 @@ Como ganas <toMoney>1500</toMoney> en la <i>Inversión A</i> y pierdes <toMoney>
 <table class="table_question">
     <tr>
         <td class="cell_question" style="width: 15% !important; text-align: right; padding-right: 10px;">
-            Inversión A:
+            Investimento A:
         </td>
         <td>
             <div class="answer_test">
@@ -450,7 +450,7 @@ Como ganas <toMoney>1500</toMoney> en la <i>Inversión A</i> y pierdes <toMoney>
             </div>
         </td>
         <td class="cell_question" style="width: 15% !important; text-align: right; padding-right: 10px;">
-            Inversión B:
+            Investimento B:
         </td>
         <td>
             <div class="answer_test">
@@ -464,10 +464,10 @@ Como ganas <toMoney>1500</toMoney> en la <i>Inversión A</i> y pierdes <toMoney>
 </div>
 
 <div id="step_3" style="display: none; height: 160px;">
-    <b><text id="text_result_01"></text></b>. En la TABLA se mostrarán los siguientes retornos: gana <toMoney>750</toMoney> en la <i>Inversión A</i> y pierde <toMoney>8550</toMoney> en la <i>Inversión B</i>.
+    <b><text id="text_result_01"></text></b>. A TABELA mostrará os seguintes retornos: você ganha <toMoney>0,75</toMoney> no <i>Investimento A</i> e perde <toMoney>8,55</toMoney> no <i>Investimento B</i> .
     <br>
     <br>
-    Como ganas <toMoney>750</toMoney> en la <i>Inversión A</i> y pierdes <toMoney>8550</toMoney> en la <i>Inversión B</i>, el retorno total posible en el ESCENARIO 4 es una perdida de <toMoney>7800</toMoney>. 
+    Como você ganha <toMoney>0,75</toMoney> no <i>Investimento A</i> e perde <toMoney>8,55</toMoney> no <i>Investimento B</i>, o retorno total possível no CENÁRIO 4 é uma perda de <toMoney>7,80</toMoney>. 
 </div>
 
 <br>
@@ -548,8 +548,8 @@ Como ganas <toMoney>1500</toMoney> en la <i>Inversión A</i> y pierdes <toMoney>
 
 
 <div class="div_btnNext">
-    <input type="button" value="Siguiente" class="btnNext" style="display: none;" onclick="nextView()" id="btnNext">
-    <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next" disabled>Siguiente</button>
+    <input type="button" value="Avançar" class="btnNext" style="display: none;" onclick="nextView()" id="btnNext">
+    <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next" disabled>Avançar</button>
 </div>
 
 {% endblock %}

@@ -29,7 +29,7 @@
             },
             xAxis: {
                 title: {
-                    text: 'Escenarios'
+                    text: 'Cenários'
                 },
                 min: 0,
                 max: 7,
@@ -38,7 +38,7 @@
             },
             yAxis: {
                 title: {
-                    text: 'Retorno en pesos por cada 10 hectáreas'
+                    text: 'Rentabilidade em reais por hectár'
                 },
                 min: {{ min_y }} - 5,
                 max: {{ max_y }} + 5
@@ -391,30 +391,30 @@
 {% endblock %}
 
 {% block title %}
-    Actividad 3: Cultivos
+    Atividade 3: Cultivos
 {% endblock %}
 
 {% block content %}
 
 <div id="step_1">
-Haga clic en el botón
+Clique no botão
 {% if graphType == 1 %}
-"Mostrar Cultivo A y B"
+"Mostrar Cultivos A e B"
 {% else %}
-"Mostrar Cultivo A" y "Mostrar Cultivo B"
+"Mostrar Cultivo A" e "Mostrar Cultivo B"
 {% endif %}
-para ver el porcentaje de rentabilidad (peso por hectárea) que cada cultivo puede generar en cada escenario.
+para ver a rentabilidade (reais por hectare) que os cultivos podem gerar em cada cenário.
 </div>
 
 <div id="step_2" style="display: none;">
-Haga clic en sobre la barra y mueva el cuadro que aparece para ver cómo la cantidad de hectáreas asignadas al <i>Cultivo A</i> y al <i>Cultivo B</i> afecta las posibles rentabilidades.
+Clique na barra e mova a caixa para ver como o número de hectares para o <i>Cultivo A</i> e para o <i>Cultivo B</i> afeta os retornos.
 </div>
 
 <div id="step_3" style="display: none;">
-<b>Basándose únicamente en las rentabilidades y sin tener en cuenta ningún costo adicional,</b> escriba en el cuadro correspondiente la cantidad de hectáreas que desea asignar al Cultivo A y al Cultivo B. Recuerde que la cantidad de tierra asignada debe ser 100 hectáreas.
+<b>Com base apenas na rentabilidade e sem ter em conta quaisquer custos adicionais, escreva nas caixas em quantos hectáres deseja plantar cada um dos cultivos. Lembre-se que a quantidade de terra total deve ser de 100 hectares.
 <br>
 <br>
-Luego haga clic en “Enviar” para confirmar su decisión y continuar. 
+Em seguida, clique em “Enviar” para confirmar sua decisão e continuar. 
 </div>
 
 <br>  
@@ -422,7 +422,7 @@ Luego haga clic en “Enviar” para confirmar su decisión y continuar.
     <table style="text-align: center; width: 90%; margin: 0 auto;">
         <tr>
             {% if graphType == 1 %}
-            <td><input type="button" value="Mostrar Cultivo A y B" onclick="visibleAB()" id="btn_ab"></td>
+            <td><input type="button" value="Mostrar Cultivos A e B" onclick="visibleAB()" id="btn_ab"></td>
             {% else %}
             <td><input type="button" value="Mostrar Cultivo A" onclick="visibleA()" id="btn_a"></td>
             <td><input type="button" value="Mostrar Cultivo B" onclick="visibleB()" id="btn_b"></td>
@@ -515,12 +515,12 @@ Luego haga clic en “Enviar” para confirmar su decisión y continuar.
 <br>
 
 <div class="error_msg" id="div_error">
-    Recuerda que la suma de la cantidad de hectáreas debe ser 100.
+    Lembre-se que a soma do número de hectares deve ser 100.
 </div>
 
 <div class="div_btnNext">
-    <input type="button" value="Siguiente" class="btnNext" style="display: none;" onclick="nextView()" id="btnNext">
-    <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next" disabled>Siguiente</button>
+    <input type="button" value="Avançar" class="btnNext" style="display: none;" onclick="nextView()" id="btnNext">
+    <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next" disabled>Avançar</button>
 </div>
 
 <input type="hidden" value="" name="time_cultivos_1" id="time_cultivos_1" required>

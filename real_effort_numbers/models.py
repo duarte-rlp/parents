@@ -27,14 +27,14 @@ class Constants(BaseConstants):
     num_rounds = 1
     marks_per_correct_answer = 1
     questions = [
-                '¿Cuál sería el resultado de 18 - 20?',
-                '¿Cuál sería el resultado de 60 - 19?',
-                '¿Cuál sería el resultado de 6 x 19?',
-                '¿Cuánto sería el 9% de 200?',
-                'Suponga que usted posee $ 100.000 en un producto financiero que paga un interés anual del 2%. Si se mantiene por 5 años dicho producto, sin realizar ningún otro pago ni retirar el dinero, ¿Cuánto tendrá al terminar de estos 5 años?',
-                'Suponga que su cuenta de ahorro paga un interés de un 1% anual. Usted sabe también que la tasa de inflación es de un 2% anual. Después de un año, ¿Cuánto sería el valor real del dinero en esta cuenta?',
-                'La siguiente frase es verdadera o falsa: «Las acciones son normalmente más riesgosas que los bonos o títulos»',
-                'La siguiente frase es verdadera o falsa: «Comprar una acción de una empresa es menos riesgoso que comprar con el mismo dinero varias acciones de distintas empresas»'
+                'Quanto é 18 - 20?',
+                'Quanto é 60 - 19?',
+                'Quanto é 6 x 19?',
+                'Quanto é 9% de 200?',
+                'Suponha que você tem R$ 100 em um investimento que paga juros anuais de 2%. Se o investimento for guardado por 5 anos, sem efetuar nenhum outro pagamento ou sacar o dinheiro, quanto você terá ao final desses 5 anos?',
+                'Suponha que sua conta poupança pague juros de 1% ao ano. Você também sabe que a taxa de inflação é de 2% ao ano. Após um ano, quanto seria o valor real do dinheiro nesta conta poupança?',
+                'Verdadeiro ou falso: «As ações são geralmente mais arriscadas do que títulos de tesouro direto ou renda fixa»',
+                'Verdadeiro ou falso: «Comprar uma ação de uma empresa é menos arriscado do que comprar várias ações de empresas diferentes com o mesmo dinheiro.»'
                 ]
     answers =   [
                 '-2',

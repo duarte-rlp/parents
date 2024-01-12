@@ -56,7 +56,7 @@
                     enabled: true
                 },
                 color: 'blue',
-                name: 'Inversión A',
+                name: 'Investimento A',
                 dashStyle: 'Dash'
             }, {
                 animation: false,
@@ -78,7 +78,7 @@
                     enabled: true
                 },
                 color: 'green',
-                name: 'Inversión B',
+                name: 'Investimento B',
                 dashStyle: 'Dash'
             }],
             legend: {
@@ -326,28 +326,27 @@
 {% endblock %}
 
 {% block title %}
-    Actividad 2: Tablas
+    Atividade 2: Tabelas
 {% endblock %}
 
 {% block content %}
-En la tabla les mostramos las rentabilidades posibles de el dinero asignado a la <i>Inversión A</i> e <i>Inversión B</i>. Las rentabilidades dependen de la cantidad de dinero que usted asigne a la <i>Inversión A</i> y la <i>Inversión B</i>. 
+Na tabela mostramos os possíveis retornos do dinheiro atribuído ao <i>Investimento A</i> e ao <i>Investimento B</i>. Os retornos dependem da quantidade de dinheiro que você aloca para o <i>Investimento A</i> e o <i>Investimento B</i>.
 <br>
 <br>
-Suponga que usted tiene <toMoney>100000</toMoney> que puede asignar a la <i>Inversión A</i> y la <i>Inversión B</i>. Para asignar la cantidad que desea invertir en cada opción, haga clic en sobre la barra y mueva el cuadro que aparece para ver cómo la cantidad de dinero asignada a la <i>Inversión A</i> y la <i>Inversión B</i> afecta las posibles rentabilidades en cada ESCENARIO. 
+Suponha que você tenha <toMoney>100</toMoney> reais que pode investir no <i>Investimento A</i> e no <i>Investimento B</i>. Para escolher quanto deseja investir em cada opção, clique na barra e mova a caixa que aparece para ver o valor investido no <i>Investimento A</i> e no <i>Investimento B</i> afeta os retornos possíveis em cada CENÁRIO.
 <br>
 <br>
-Por ejemplo, si mueve el cuadro completamente a la DERECHA, usted asignará <toMoney>100000</toMoney> a la <i>Inversión A</i> y <toMoney>0</toMoney> a la <i>Inversión B</i>, o si mueve el cuadro completamente a la IZQUIERDA usted asignará <toMoney>0</toMoney> a la <i>Inversión A</i> y <toMoney>100000</toMoney> a la <i>Inversión B</i>. 
-
+Por exemplo, se você mover a caixa totalmente para a DIREITA, você investirá <toMoney>100</toMoney> no <i>Investimento A</i> e <toMoney>0</toMoney> no <i>Investimento B</i>, ou se você mover a caixa totalmente para a ESQUERDA, você investirá <toMoney>0</toMoney> no <i>Investimento A</i> e <toMoney>100</toMoney> no <i>Investimento B </i>.
 <br>
 <br>
 <div>
     <table style="text-align: center; width: 90%; margin: 0 auto;">
         <tr>
             {% if graphType == 1 %}
-            <td><input type="button" value="Mostrar Inversión A y B" onclick="visibleAB()" id="btn_ab"></td>
+            <td><input type="button" value="Mostrar Investimentos A e B" onclick="visibleAB()" id="btn_ab"></td>
             {% else %}
-            <td><input type="button" value="Mostrar Inversión A" onclick="visibleA()" id="btn_a"></td>
-            <td><input type="button" value="Mostrar Inversión B" onclick="visibleB()" id="btn_b"></td>
+            <td><input type="button" value="Mostrar Investimento A" onclick="visibleA()" id="btn_a"></td>
+            <td><input type="button" value="Mostrar Investimento B" onclick="visibleB()" id="btn_b"></td>
             {% endif %}
         </tr>
     </table>
@@ -399,17 +398,17 @@ Por ejemplo, si mueve el cuadro completamente a la DERECHA, usted asignará <toM
         <tr>
             <td class="text_slider"> - </td>
             <td class="td_slider" rowspan="2">
-                <input type="range" name="problem_01_sliderInv_a" value="" min="0" max="{{ investment_max }}" step="1000" id="sliderDinero" class="slider_dinero" required>
+                <input type="range" name="problem_01_sliderInv_a" value="" min="0" max="{{ investment_max }}" step="1" id="sliderDinero" class="slider_dinero" required>
                 <input type="hidden" name="check_slider_example" value="" id="id_check_slider_example"/>
             </td>
             <td class="text_slider"> - </td>
         </tr>
         <tr>
             <td style="text-align: center;">
-                <b>Inversión A</b>
+                <b>Investimento A</b>
             </td>
             <td style="text-align: center;">
-                <b>Inversión B</b>
+                <b>Investimento B</b>
             </td>
         </tr>
     </table>
@@ -417,8 +416,8 @@ Por ejemplo, si mueve el cuadro completamente a la DERECHA, usted asignará <toM
 
 
 <div class="div_btnNext">
-    <input type="button" value="Siguiente" class="btnNext" style="display: none;" onclick="nextView()" id="btnNext">
-    <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next" disabled>Siguiente</button>
+    <input type="button" value="Avançar" class="btnNext" style="display: none;" onclick="nextView()" id="btnNext">
+    <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next" disabled>Avançar</button>
 </div>
 
 {% endblock %}

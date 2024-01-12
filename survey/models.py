@@ -23,156 +23,158 @@ class Constants(BaseConstants):
 
     ## Opciones a las listas de opciones de la encuesta
     gender_list         =   [
-                                'Hombre', 
-                                'Mujer', 
-                                'Otro'
+                                'Homem', 
+                                'Mulher', 
+                                'Outro'
                             ]
     married_list        =   [
-                                'Unión libre', 
-                                'Casada (o)', 
-                                'Viuda (o)', 
-                                'Soltera (o)', 
-                                'Divorciada (o) / Separada(o)'
+                                'Solteiro(a)',
+                                'União estável', 
+                                'Casado(a)', 
+                                'Viúvo(a)',  
+                                'Divorciado(a) / Separado(a)'
                             ]
     education_list      =   [
-                                'Ninguno',
-                                'Primaria incompleta',
-                                'Primaria completa',
-                                'Bachillerato incompleto',
-                                'Bachillerato completo',
-                                'Técnico o Tecnólogo',
-                                'Pregrado',
-                                'Posgrado (Especialización, Maestría, Doctorado)'
+                                'Nenhum',
+                                'Primário incompleto',
+                                'Primário completo',
+                                'Ensino médio incompleto',
+                                'Ensino médio completo',
+                                'Ensino técnico incompleto',
+                                'Ensino técnico completo',
+                                'Bacharelado incompleto',
+                                'Bacharelado completo',
+                                'Pós-Graduação (especialização, mestrado, doutorado)'
                             ]
     job_list            =   [
-                                'Solo estudio',
-                                'Desempleado sin buscar trabajo',
-                                'Desempleado buscando trabajo',
-                                'Empleado a jornada parcial',
-                                'Empleado a jornada completa',
-                                'Trabajador independiente',
-                                'Trabajador no remunerado (por ejemplo: ama de casa, empresa familiar)',
-                                'Retirado o pensionado',
-                                'Otro / Ninguno'
+                                'Estudante',
+                                'Desempregado(a) sem procurar trabalho',
+                                'Desempregado(a) à procura de trabalho',
+                                'Empregado(a) em meio período',
+                                'Empregado(a) em período integral',
+                                'Autônomo(a)',
+                                'Trabalhador(a) não remunerado (por exemplo: dono(a) de casa, em empresa familiar)',
+                                'Aposentado(a) ou pensionista',
+                                'Outro / Nenhum'
                             ]
     incomeRange_list    =   [
-                                'Menos de $ 300.000',
-                                'Entre $ 300.000 - $ 600.000',
-                                'Entre $ 600.000 - $ 900.000',
-                                'Entre $ 900.000 - $ 1.200.000',
-                                'Entre $ 1.200.000 - $ 1.500.000',
-                                'Mayor a $ 1.500.000',
-                                'Otro / Ninguno'
+                                'Menos de R$ 1.500',
+                                'Entre R$ 1.500 e R$ 3.200',
+                                'Entre R$ 3.200 e R$ 7.600',
+                                'Entre R$ 7.600 e R$ 23.800',
+                                'Acima de R$ 23.800',
+                                'Outro / Nenhum'
                             ]
     expenses_list       =   [
-                                'Mayores',
+                                'Maiores',
                                 'Menores',
-                                'Iguales'
+                                'Iguais'
                             ]
     devices_list        =   [
                                 'Computador',
-                                'Tableta',
+                                'Tablet',
                                 'Celular'
                             ]
     risk_list           =   [
-                                'Ningún riesgo',
-                                'Pequeño riesgo',
-                                'Medio riesgo',
-                                'Alto riesgo'
+                                'Nenhum risco',
+                                'Pequeno risco',
+                                'Médio risco',
+                                'Alto risco'
                             ]
     insurance_list      =   [
-                                'Si',
-                                'No',
-                                'No lo sé / No me acuerdo'
+                                'Sim',
+                                'Não',
+                                'Não sei / Não me lembro'
                             ]
     hectares_list       =   [
-                                'Ninguna / No trabajo en finca',
-                                'Menos de 1 hectárea',
-                                'Entre 1 - 3 hectáreas',
-                                'Entre 3 - 5 hectáreas',
-                                'Entre 5 - 10 hectáreas',
-                                'Más que 10 hectáreas',
-                                'No lo sé / No me acuerdo'
+                                'Não trabalho com agro / Nenhum',
+                                'Menos de 1 hectare',
+                                'Entre 1 e 3 hectares',
+                                'Entre 3 e 5 hectares',
+                                'Entre 5 e 10 hectares',
+                                'Mais que 10 hectares',
+                                'Não sei / Não me lembro'
                             ]
     farminc_list        =   [
+                                'Não trabalho com agro',
                                 'Cultivos',
-                                'Ganado',
-                                'Pescado',
-                                'No lo sé / No me acuerdo',
-                                'No trabajo en finca'
+                                'Gado',
+                                'Pesca',
+                                'Não sei/Não me lembro'
                             ]
     crops_list          =   [
-                                'Sólo un cultivo a la vez',
-                                '2 cultivos al mismo tiempo',
-                                '3 o más cultivos al mismo tiempo',
-                                'No trabajo en finca / No lo sé'
+                                'Não trabalho com agro / Não sei',
+                                'Apenas um cultivo de cada vez',
+                                '2 cultivos ao mesmo tempo',
+                                '3 ou mais cultivos ao mesmo tempo'
                             ]
     cropTypes_list      =   [
-                                'Aguacate',
-                                'Arroz',
-                                'Banano',
-                                'Cacao',
-                                'Caña de azúcar',
-                                'Frijol',
-                                'Maíz',
+                                'Não trabalho com agro / Não sei',
+                                'Hortaliças (por exemplo: alface, rúcula, agrião)',
+                                'Frutas (por exemplo: laranja, banana)',
+                                'Vegetais (por exemplo: abobrinha, chuchu, etc.)',
+                                'Grãos (por exemplo: arroz, feijão, etc.)',
+                                'Tubérculos (por exemplo: batata, mandioca, etc.)',
+                                'Cana de açúcar',
+                                'Soja',
+                                'Milho',
                                 'Pasto',
-                                'Platano',
-                                'Otros',
-                                'No trabajo en finca / No lo sé'
+                                'Outros'
                             ]
     cropImportance_list =   [
-                                'Rendimientos en años anteriores',
-                                'Rendimientos esperados el próximo año',
-                                'Clima en los años anteriores',
-                                'Clima esperado para el próximo año',
-                                'Conocimiento sobre cómo realizar los cultivos',
-                                'Los cultivos que se están realizando en otras fincas de la región'
+                                'Não trabalho com agro',
+                                'Desempenhos em anos anteriores',
+                                'Retornos esperados para o próximo ano',
+                                'Clima em anos anteriores',
+                                'Clima esperado para o próximo ano',
+                                'Meu conhecimento sobre como cultivar',
+                                'Os cultivos que estão que outros agricultores da região estão cultivando’
                             ]
     cropsLoss_list      =   [
-                                'Sí, una vez',
-                                'Sí, más de una vez',
-                                'No, nunca',
-                                'No trabajo en finca / No lo sé'
+                                'Não trabalho com agro / Não sei',
+                                'Sim uma vez',
+                                'Sim, mais de uma vez',
+                                'Não, nunca'
                             ]
     savings_list        =   [
-                                'Si',
-                                'No',
-                                'No trabajo en finca / No lo sé'
+                                'Não trabalho com agro / Não sei',
+                                'Sim',
+                                'Não
                             ]
     protection_list     =   [
-                                'Tener ahorros para poder usar en caso de pérdida de ingresos',
-                                'Tener diferentes tipos de cultivos para evitar pérdidas',
-                                'Tener ganado para compensar pérdidas en cultivos',
-                                'Tener otras fuentes de ingresos además de la granja (por ejemplo: otro trabajo u ocupación)',
-                                'Tener un seguro contra pérdidas de cosechas (por ejemplo: seguro contra el mal clima)',
-                                'Pedir ayuda de familiares o amigos en tales casos'
-                                'No trabajo en finca / No lo sé'
+                                'Não trabalho com agro / Não sei',
+                                'Ter poupança para poder utilizar em caso de quebra de safra',
+                                'Ter diferentes tipos de cultivos para evitar perdas',
+                                'Ter gado para compensar as perdas nas colheitas',
+                                'Ter outras fontes de renda além do agro (por exemplo: outro emprego ou ocupação)',
+                                'Ter seguro contra quebras de safra (por exemplo: seguro contra intempéries)',
+                                'Pedir ajuda de familiares ou amigos nesses casos'
                             ]
     climate_list        =   [
-                                'Si',
-                                'No',
-                                'No trabajo en finca / No lo sé'
+                                'Não trabalho com agro / Não sei',
+                                'Sim',
+                                'Não
                             ]
     events_list         =   [
-                                'Incendios forestales',
-                                'Inundaciones',
-                                'Más lluvia de lo habitual',
-                                'Menos lluvia de lo habitual',
-                                'Sequías',
-                                'Temperaturas más altas de lo habitual',
-                                'Temperaturas más bajas de lo habitual',
-                                'Terremotos/Temblores',
-                                'Otros desastres naturales',
-                                'Ningún problema',
-                                'No lo sé / No me acuerdo'
+                                'Incêndios florestais',
+                                'Inundações',
+                                'Mais chuva que o normal',
+                                'Menos chuva que o normal',
+                                'Secas',
+                                'Temperaturas mais altas que o normal',
+                                'Temperaturas mais baixas que o normal',
+                                'Terremotos / Tremores',
+                                'Outros desastres naturais',
+                                'Nenhum problema',
+                                'Não sei / não me lembro'
                             ]
     measures_list       =   [
-                                'Disponer de los ahorros',
-                                'Endeudarse',
-                                'Pedir ayuda a un conocido del barrio-vereda',
-                                'Pedir ayuda a un familiar',
-                                'Vender un activo',
-                                'No podria hacer nada y tendría que reducir el consumo'
+                                'Usar as economias próprias',
+                                'Fazer uma dívida',
+                                'Pedir ajuda a alguém conhecido',
+                                'Pedir ajuda a um membro da família',
+                                'Vender algo de valor',
+                                'Reduzir as compras'
                             ]
 
 

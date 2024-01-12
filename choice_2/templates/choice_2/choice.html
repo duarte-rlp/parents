@@ -71,68 +71,68 @@
 {% endblock %}
 
 {% block title %}
-    Actividad 1: Inversiones con rentabilidad variable
+    Atividade 1: Investimentos com rentabilidade variável
 {% endblock %}
 
 {% block content %}
 
-Para seleccionar UNA inversión haga clic en el círculo que está en el mismo renglón. No hay respuestas correctas o incorrectas. Las opciones de inversión y su rentabilidad si al lanzar la moneda sale CARA o SELLO son las siguientes: 
+Para selecionar UM investimento clique no círculo na mesma linha. Não há respostas corretas ou incorretas. As opções de investimento e sua rentabilidade se a moeda der cara ou coroa são as seguintes: 
 
 <br>
 <br>
 
 <table style="margin: 0 auto;">
     <tr>
-        <td class="cell_radios_head">Marque solo<br>UNA opción</td>
-        <td class="cell_radios_head">Opciones de<br>Inversión</td>
-        <td class="cell_radios_head">Rentabilidad<br>si sale CARA</td>
-        <td class="cell_radios_head">Rentabilidad<br>si sale SELLO</td>
+        <td class="cell_radios_head">Marque somente<br>UMA opção</td>
+        <td class="cell_radios_head">Opções de<br>Investimento</td>
+        <td class="cell_radios_head">Rentabilidade<br>se der CARA</td>
+        <td class="cell_radios_head">Rentabilidade<br>se der COROA</td>
     </tr>
     <tr class="row_option">
         <td class="cell_option" style="text-align: center;"><input type="radio" class="radios" name="investment_heads" value="{{ investment_heads.0 }}"></td>
-        <td class="cell_option"style="text-align: center;">Inversión 1</td>
+        <td class="cell_option"style="text-align: center;">Investimento 1</td>
         <td class="cell_option"style="text-align: center;"><toMoney>{{ investment_heads.0 }}</toMoney></td>
         <td class="cell_option"style="text-align: center;"><toMoney>{{ investment_tails.0 }}</toMoney></td>
     </tr>
     <tr class="row_option">
         <td class="cell_option" style="text-align: center;"><input type="radio" class="radios" name="investment_heads" value="{{ investment_heads.1 }}"></td>
-        <td class="cell_option"style="text-align: center;">Inversión 2</td>
+        <td class="cell_option"style="text-align: center;">Investimento 2</td>
         <td class="cell_option"style="text-align: center;"><toMoney>{{ investment_heads.1 }}</toMoney></td>
         <td class="cell_option"style="text-align: center;"><toMoney>{{ investment_tails.1 }}</toMoney></td>
     </tr>
     <tr class="row_option">
         <td class="cell_option" style="text-align: center;"><input type="radio" class="radios" name="investment_heads" value="{{ investment_heads.2 }}"></td>
-        <td class="cell_option"style="text-align: center;">Inversión 3</td>
+        <td class="cell_option"style="text-align: center;">Investimento 3</td>
         <td class="cell_option"style="text-align: center;"><toMoney>{{ investment_heads.2 }}</toMoney></td>
         <td class="cell_option"style="text-align: center;"><toMoney>{{ investment_tails.2 }}</toMoney></td>
     </tr>
     <tr class="row_option">
         <td class="cell_option" style="text-align: center;"><input type="radio" class="radios" name="investment_heads" value="{{ investment_heads.3 }}"></td>
-        <td class="cell_option"style="text-align: center;">Inversión 4</td>
+        <td class="cell_option"style="text-align: center;">Investimento 4</td>
         <td class="cell_option"style="text-align: center;"><toMoney>{{ investment_heads.3 }}</toMoney></td>
         <td class="cell_option"style="text-align: center;"><toMoney>{{ investment_tails.3 }}</toMoney></td>
     </tr>
     <tr class="row_option">
         <td class="cell_option" style="text-align: center;"><input type="radio" class="radios" name="investment_heads" value="{{ investment_heads.4 }}"></td>
-        <td class="cell_option"style="text-align: center;">Inversión 5</td>
+        <td class="cell_option"style="text-align: center;">Investimento 5</td>
         <td class="cell_option"style="text-align: center;"><toMoney>{{ investment_heads.4 }}</toMoney></td>
         <td class="cell_option"style="text-align: center;"><toMoney>{{ investment_tails.4 }}</toMoney></td>
     </tr>
     <tr class="row_option">
         <td class="cell_option" style="text-align: center;"><input type="radio" class="radios" name="investment_heads" value="{{ investment_heads.5 }}"></td>
-        <td class="cell_option"style="text-align: center;">Inversión 6</td>
+        <td class="cell_option"style="text-align: center;">Investimento 6</td>
         <td class="cell_option"style="text-align: center;"><toMoney>{{ investment_heads.5 }}</toMoney></td>
         <td class="cell_option"style="text-align: center;"><toMoney>{{ investment_tails.5 }}</toMoney></td>
     </tr>
     <tr class="row_option">
         <td class="cell_option" style="text-align: center;"><input type="radio" class="radios" name="investment_heads" value="{{ investment_heads.6 }}"></td>
-        <td class="cell_option"style="text-align: center;">Inversión 7</td>
+        <td class="cell_option"style="text-align: center;">Investimento 7</td>
         <td class="cell_option"style="text-align: center;"><toMoney>{{ investment_heads.6 }}</toMoney></td>
         <td class="cell_option"style="text-align: center;"><toMoney>{{ investment_tails.6 }}</toMoney></td>
     </tr>
     <tr class="row_option">
         <td class="cell_option" style="text-align: center;"><input type="radio" class="radios" name="investment_heads" value="{{ investment_heads.7 }}"></td>
-        <td class="cell_option"style="text-align: center;">Inversión 8</td>
+        <td class="cell_option"style="text-align: center;">Investimento 8</td>
         <td class="cell_option"style="text-align: center;"><toMoney>{{ investment_heads.7 }}</toMoney></td>
         <td class="cell_option"style="text-align: center;"><toMoney>{{ investment_tails.7 }}</toMoney></td>
     </tr>
@@ -146,12 +146,12 @@ Para seleccionar UNA inversión haga clic en el círculo que está en el mismo r
 <input type="hidden" name="n_investment" id="n_investment" value="">
 
 <div class="div_btnNext">
-    <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next">Siguiente</button>
+    <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next">Avançar</button>
 </div>
 
 <div class="div_btnNext">
     <input type="button" value="Siguiente" class="btnNext" onclick="validate()" style="display: none;" id="btnNext">
-    <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next" disabled>Siguiente</button>
+    <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next" disabled>Avançar</button>
 </div>
 
 {% endblock %}

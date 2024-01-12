@@ -38,29 +38,29 @@
             }
             if (!regex.test(value)) {
                 div_error.style.display = 'block';
-                div_error.innerHTML = 'No tiene un formato de número';
+                div_error.innerHTML = 'Por favor insira um número';
                 input.value = '';
                 value = null;
             }
             switch (input.id) {
                 case 'age_box':
                     if((Number(value) < 0) || (Number(value) > 99)) {
-                        show_error(input, div_error, 'Debe ser un valor entre 1 y 99');
+                        show_error(input, div_error, 'Deve ser um valor entre 1 e 99');
                     }
                 break;
                 case 'children_box':
                 case 'family_box':
                     if((Number(value) < 0) || (Number(value) > 20)) {
-                        show_error(input, div_error, 'Debe ser un valor entre 0 y 20');
+                        show_error(input, div_error, 'Deve ser um valor entre 0 e 20');
                     }
                 break;
                 case 'workers_box':
                     if (document.getElementById('family_box').value == "") {
-                        show_error(input, div_error, 'Primero ingrese la cantidad de personas que conforman el hogar (2 preguntas arriba)');
+                        show_error(input, div_error, 'Primeiro insira o número de pessoas na residência (2 perguntas acima)');
                     } else {
                         let maxi = Number(document.getElementById('family_box').value);
                         if((Number(value) < 0) || (Number(value) > maxi)) {
-                            show_error(input, div_error, 'Debe ser un valor entre 0 y ' + maxi + ' (lo que respondiste 2 preguntas arriba)');
+                            show_error(input, div_error, 'Deve ser um valor entre 0 e ' + maxi + ' (o que respondeu 2 perguntas acima)');
                         } else {
                             input.max = maxi;
                         }
@@ -70,7 +70,7 @@
                     document.getElementById('incomeRange_list').nextElementSibling.style.display = 'none';
                     document.getElementById('incomeRange_list').nextElementSibling.innerHTML = '';
                     if((Number(value) < 0) || (Number(value) > 100000000)) {
-                        show_error(input, div_error, 'Debe ser un valor entre $ 1 y $ 100.000.000');
+                        show_error(input, div_error, 'Deve ser um valor entre R$ 1 e R$ 100.000.000');
                     } else {
                         if (value != null) {
                             input.value = "$ " + Number(value).toLocaleString('es-CO');
@@ -104,7 +104,7 @@
             div_error.style.display = 'none';
             div_error.innerHTML = '';
             if (income_box.value == '') {
-                show_error(input, div_error, 'Antes de seleccionar una opción aquí ingrese el monto del ingreso mensual (1 pregunta arriba)');
+                show_error(input, div_error, 'Antes de selecionar uma opção aqui insira o valor da renda mensal (1 pergunta acima)');
             }
         }
 
@@ -113,13 +113,13 @@
 {% endblock %}
 
 {% block title %}
-    Encuesta final
+    Perguntas finais
 {% endblock %}
 
 {% block content %}
 
 <div id="q1">
-    <label for="age_box" id="l_age_box"><b>¿Cuál es tu edad, en años?</b></label><br>
+    <label for="age_box" id="l_age_box"><b>Qual é a sua idade?</b></label><br>
     <input type="number" name="q_age" id="age_box" class="inNumber" min="0" max="99" oninput="validate_number(this)" required>
     <div style="color:red; text-align: left; display: none;"></div>
 </div>
@@ -127,7 +127,7 @@
 <br>
 
 <div id="q2">
-    <label for="gender_list" id="l_gender_list"><b>¿Con qué género se identifica?</b></label><br>
+    <label for="gender_list" id="l_gender_list"><b>Qual é o seu gênero?</b></label><br>
     <select id="gender_list" class="input-list" name="q_gender" required>
         <option class="input-list" value disabled selected>---------</option>
         {% for opcion in gender_list %}
@@ -139,7 +139,7 @@
 <br>
 
 <div id="q3">
-    <label for="married_list" id="l_married_list"><b>¿Cuál es tu estado civil?</b></label><br>
+    <label for="married_list" id="l_married_list"><b>Qual é seu estado civil?</b></label><br>
     <select id="married_list" class="input-list" name="q_married" required>
         <option class="input-list" value disabled selected>---------</option>
         {% for opcion in married_list %}
@@ -151,7 +151,7 @@
 <br>
 
 <div id="q4">
-    <label for="family_box" id="l_family_box"><b>¿Cuántas personas conforman su hogar?</b></label><br>
+    <label for="family_box" id="l_family_box"><b>Quantas pessoas vivem em sua casa?</b></label><br>
     <input type="number" name="q_family" id="family_box" class="inNumber" min="0" max="20" oninput="validate_number(this)" required>
     <div style="color:red; text-align: left; display: none;"></div>
 </div>
@@ -159,7 +159,7 @@
 <br>
 
 <div id="q5">
-    <label for="children_box" id="l_children_box"><b>¿Cuántos hijos tienes?</b></label><br>
+    <label for="children_box" id="l_children_box"><b>Quantos filhos você tem?</b></label><br>
     <input type="number" name="q_children" id="children_box" class="inNumber" min="0" max="20" oninput="validate_number(this)" required>
     <div style="color:red; text-align: left; display: none;"></div>
 </div>
@@ -167,7 +167,7 @@
 <br>
 
 <div id="q6">
-    <label for="workers_box" id="l_workers_box"><b>¿Cuántas personas contribuyen a los ingresos del hogar?</b></label><br>
+    <label for="workers_box" id="l_workers_box"><b>Quantas pessoas contribuem para a renda da sua casa?</b></label><br>
     <input type="number" name="q_workers" id="workers_box" class="inNumber" min="0" oninput="validate_number(this)" required>
     <div style="color:red; text-align: left; display: none;"></div>
 </div>
@@ -175,7 +175,7 @@
 <br>
 
 <div id="q7">
-    <label for="education_list" id="l_education_list"><b>¿Cuál es el nivel educativo más alto que cursó o estás cursando?</b></label><br>
+    <label for="education_list" id="l_education_list"><b>Qual é o nível de ensino mais alto que você concluiu ou está cursando?</b></label><br>
     <select id="education_list" class="input-list" name="q_educ" required>
         <option class="input-list" value disabled selected>---------</option>
         {% for opcion in education_list %}
@@ -187,7 +187,7 @@
 <br>
 
 <div id="q8">
-    <label for="job_list" id="l_job_list"><b>¿Cuál es tu situación laboral actual?</b></label><br>
+    <label for="job_list" id="l_job_list"><b>Qual é a sua situação atual de emprego?</b></label><br>
     <select id="job_list" class="input-list" name="q_job" required>
         <option class="input-list" value disabled selected>---------</option>
         {% for opcion in job_list %}
@@ -199,7 +199,7 @@
 <br>
 
 <div id="q9">
-    <label for="income_box" id="l_income_box"><b>¿Cuál es su ingreso mensual promedio?</b></label><br>
+    <label for="income_box" id="l_income_box"><b>Qual é a sua renda média mensal aproximada? (As respostas são anônimas, não é possível identificar participantes)</b></label><br>
     <input type="text" name="q_income" id="income_box" class="inNumber" oninput="validate_number(this)" style="max-width: 200px !important;" required>
     <div style="color:red; text-align: left; display: none;"></div>
 </div>
@@ -207,7 +207,7 @@
 <br>
 
 <div id="q10">
-    <label for="incomeRange_list" id="l_incomeRange_list"><b>Teniendo en cuenta su respuesta anterior, su ingreso mensual promedio se encuentra en un rango de:</b></label><br>
+    <label for="incomeRange_list" id="l_incomeRange_list"><b>Tendo em conta a sua resposta anterior, a sua renda média mensal está no intervalo de:</b></label><br>
     <select id="incomeRange_list" class="input-list" name="q_incomeRange" required onchange="check_incomeRange(this)">
         <option class="input-list" value disabled selected>---------</option>
         {% for opcion in incomeRange_list %}
@@ -220,7 +220,7 @@
 <br>
 
 <div id="q11">
-    <label for="expenses_list" id="l_expenses_list"><b>En el último mes los gastos del hogar frente a sus ingresos han sido:</b></label><br>
+    <label for="expenses_list" id="l_expenses_list"><b>No último mês, as despesas da sua residência foram maiores, menores ou iguais à renda?</b></label><br>
     <select id="expenses_list" class="input-list" name="q_expenses" required>
         <option class="input-list" value disabled selected>---------</option>
         {% for opcion in expenses_list %}
@@ -232,7 +232,7 @@
 <br>
 
 <div id="q12">
-    <label for="devices_list" id="l_devices_list"><b>Desde qué tipo de dispositivo está respondiendo este cuestionario:</b></label><br>
+    <label for="devices_list" id="l_devices_list"><b>De que tipo de dispositivo você está respondendo esta atividade:</b></label><br>
     <select id="devices_list" class="input-list" name="q_device" required>
         <option class="input-list" value disabled selected>---------</option>
         {% for opcion in devices_list %}
@@ -248,8 +248,8 @@
 -->
 
 <div class="div_btnNext">
-    <input type="button" value="Siguiente" class="btnNext" onclick="nextView()" id="btnNext">
-    <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next" disabled>Siguiente</button>
+    <input type="button" value="Avançar" class="btnNext" onclick="nextView()" id="btnNext">
+    <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next" disabled>Avançar</button>
 </div>
 
 {% endblock %}

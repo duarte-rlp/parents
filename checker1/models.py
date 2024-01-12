@@ -21,7 +21,7 @@ class Constants(BaseConstants):
     name_in_url = 'checker1'
     players_per_group = None
     num_rounds = 1
-    colors_checker = ['Blanco', 'Turquesa', 'Celeste', 'Negro']
+    colors_checker = ['Branco', 'Turquesa', 'Vermelho', 'Preto']
     correct_color = "Turquesa"
 
 

@@ -37,7 +37,7 @@
             },
             yAxis: {
                 title: {
-                    text: 'Retorno por cada $100'
+                    text: 'Retorno para cada R$ 100'
                 },
                 min: {{ min_y }} - 1,
                 max: {{ max_y }} + 1
@@ -51,7 +51,7 @@
                     enabled: true
                 },
                 color: 'blue',
-                name: 'Inversión A',
+                name: 'Investimento A',
                 dashStyle: 'Dash',
             }, {
                 animation: false,
@@ -62,7 +62,7 @@
                     enabled: true
                 },
                 color: 'green',
-                name: 'Inversión B',
+                name: 'Investimento B',
                 dashStyle: 'Dash',
             }],
             legend: {
@@ -479,24 +479,23 @@
 {% endblock %}
 
 {% block title %}
-    Actividad 2: Decisión de Inversión {{ n_problem }}
+    Atividade 2: Decisão de Investimento {{ n_problem }}
 {% endblock %}
 
 {% block content %}
 
 <div id="step_1" style="height: 85px;">
-Haga clic en el botón para ver el porcentaje de rentabilidad (%) que las inversiones pueden generar en cada ESCENARIO.
+Clique no botão para ver o percentual de rentabilidade (%) que os investimentos podem gerar em cada CENÁRIO.
 </div>
 
 <div id="step_2" style="display: none; height: 85px;">
-Haga <i>clic</i> sobre la barra y mueva el cuadro que aparece para ver cómo la cantidad de dinero asignada a la <i>Inversión A</i> y la <i>Inversión B</i> afecta la tabla de las posibles rentabilidades.  Cuándo haya escogido su asignación preferida, escriba estos valores en la siguiente pantalla. (Si prefiere, anote el valor en un papel) 
-</div>
+<i>Clique</i> na barra e mova a caixa que aparece para ver como a quantidade de dinheiro investida no <i>Investimento A</i> e o <i>Investimento B</i> afeta os retornos. Depois de escolher quanto investir em cada investimento, insira esses valores na próxima tela. (Se preferir, anote o valor em um papel)</div>
 
 <div id="step_3" style="display: none; height: 85px;">
-Escriba en el cuadro correspondiente la cantidad que desea asignar a la <i>Inversión A</i> y la <i>Inversión B</i>. Recuerde que la cantidad de dinero invertido debe ser <toMoney>100000</toMoney> pesos.
+Escreva nas caixas o valor que deseja investir no <i>Investimento A</i> e no <i>Investimento B</i>. Lembre-se que o valor investido total deve ser de <toMoney>100</toMoney> reais.
 <br>
 <br>
-Luego haga clic en <i>“Siguiente”</i> para confirmar su decisión y continuar. 
+Em seguida, clique em <i>“Avançar”</i> para confirmar sua decisão e continuar.
 </div>
 
 
@@ -506,10 +505,10 @@ Luego haga clic en <i>“Siguiente”</i> para confirmar su decisión y continua
     <table style="text-align: center; width: 90%; margin: 0 auto;">
         <tr>
             {% if graphType == 1 %}
-            <td><input type="button" value="Mostrar Inversión A y B" onclick="visibleAB()" id="btn_ab"></td>
+            <td><input type="button" value="Mostrar Investimentos A e B" onclick="visibleAB()" id="btn_ab"></td>
             {% else %}
-            <td><input type="button" value="Mostrar Inversión A" onclick="visibleA()" id="btn_a"></td>
-            <td><input type="button" value="Mostrar Inversión B" onclick="visibleB()" id="btn_b"></td>
+            <td><input type="button" value="Mostrar Investimento A" onclick="visibleA()" id="btn_a"></td>
+            <td><input type="button" value="Mostrar Investimento B" onclick="visibleB()" id="btn_b"></td>
             {% endif %}
         </tr>
     </table>
@@ -562,17 +561,17 @@ Luego haga clic en <i>“Siguiente”</i> para confirmar su decisión y continua
         <tr>
             <td class="text_slider"> - </td>
             <td class="td_slider" rowspan="2">
-                <input type="range" name="problem_04_sliderInv_a" value="" min="0" max="{{ max_inv }}" step="1000" id="sliderDinero" class="slider_dinero" required>
+                <input type="range" name="problem_04_sliderInv_a" value="" min="0" max="{{ max_inv }}" step="1" id="sliderDinero" class="slider_dinero" required>
                 <input type="hidden" name="check_slider_example" value="" id="id_check_slider_example"/>
             </td>
             <td class="text_slider"> - </td>
         </tr>
         <tr>
             <td style="text-align: center;">
-                <b>Inversión A</b>
+                <b>Investimento A</b>
             </td>
             <td style="text-align: center;">
-                <b>Inversión B</b>
+                <b>Investimento B</b>
             </td>
         </tr>
     </table>
@@ -587,17 +586,17 @@ Luego haga clic en <i>“Siguiente”</i> para confirmar su decisión y continua
         </tr>
         <tr>
             <td style="text-align: center;">
-                <b>Inversión A</b>
+                <b>Investimento A</b>
             </td>
             <td style="text-align: center;">
-                <b>Inversión B</b>
+                <b>Investimento B</b>
             </td>
         </tr>
     </table>
 </div>
 
 <div class="error_msg" id="div_error">
-    Recuerda que la suma de las inversiones debe ser $100.000.
+    Lembre-se que a soma dos investimentos deve ser de R$ 100.
 </div>
 
 <input type="hidden" name="problem_04_btnSelected" value="{ " id="problem_04_btnSelected">
@@ -611,26 +610,23 @@ Luego haga clic en <i>“Siguiente”</i> para confirmar su decisión y continua
 <br>
 
 <div class="div_btnNext" style="margin-top: -20px;">
-    <input type="button" value="Siguiente" class="btnNext" style="display: none;" onclick="nextView()" id="btnNext">
-    <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next" disabled>Siguiente</button>
+    <input type="button" value="Avançar" class="btnNext" style="display: none;" onclick="nextView()" id="btnNext">
+    <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next" disabled>Avançar</button>
 </div>
 
 <section class="modal hidden">
     <div>
-        <h3>Confirmación</h3>
+        <h3>Confirmação</h3>
         <p>
-            Por favor confirme los valores asignados: <br>
-              <i>Inversión A:</i> <span id="inv_a"><toMoney></toMoney></span><br> 
-              <i>Inversión B:</i> <span id="inv_b"><toMoney></toMoney></span>
-        </p>
-        <p>
-            Si es correcto presione el botón "Enviar" de lo contrario presione el botón "Cambiar valores".
+            Confirme os valores investidos: <br>
+              <i>Investimento A:</i> <span id="inv_a"><toMoney></toMoney></span><br> 
+              <i>Investimento B:</i> <span id="inv_b"><toMoney></toMoney></span>
         </p>
     </div>
     <table style="width: 100%;" class="table_modal">
         <tr>
             <td>
-                <input type="button" value="Cambiar valores" class="btnNext" onclick="closeModal()">
+                <input type="button" value="Alterar valores" class="btnNext" onclick="closeModal()">
             </td>
             <td>
                 <input type="button" value="Enviar" class="btnNext" onclick="validateInv()">

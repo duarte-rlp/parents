@@ -38,7 +38,7 @@
             },
             yAxis: {
                 title: {
-                    text: 'Retorno en pesos por cada 10 hectáreas'
+                    text: 'Rentabilidade em reais por hectár'
                 },
                 min: {{ min_y }} - 5,
                 max: {{ max_y }} + 5
@@ -309,19 +309,19 @@
 {% endblock %}
 
 {% block title %}
-    Actividad 3: Cultivos
+    Atividade 3: Cultivos
 {% endblock %}
 
 {% block content %}
 
-A continuación, le hacemos algunas preguntas sobre las dos opciones de inversión. Por favor, léalas y responda atentamente.
+A seguir, fazemos algumas perguntas sobre as duas opções de cultivo. Por favor, responda-as com atenção.
 <br>
 <br>
 <div>
     <table style="text-align: center; width: 90%; margin: 0 auto;">
         <tr>
             {% if graphType == 1 %}
-            <td><input type="button" value="Mostrar Cultivo A y B" onclick="visibleAB()" id="btn_ab"></td>
+            <td><input type="button" value="Mostrar Cultivos A e B" onclick="visibleAB()" id="btn_ab"></td>
             {% else %}
             <td><input type="button" value="Mostrar Cultivo A" onclick="visibleA()" id="btn_a"></td>
             <td><input type="button" value="Mostrar Cultivo B" onclick="visibleB()" id="btn_b"></td>
@@ -337,9 +337,9 @@ A continuación, le hacemos algunas preguntas sobre las dos opciones de inversi�
 <div id="questions">
     <div class="card_table" style="text-align: left; width: 80% !important;">
         <ol>
-            <li style="margin-top: 10px;">Si el rendimiento del Cultivo A es bajo, espero que el rendimiento del Cultivo B sea alto en <input type="number" class="inNumber" name="question_1_real" id="question_1_real" min="0" max="100" required style="display: inline; margin-left: 5px; margin-right: 5px;" oninput="review_q1()"> de 100 casos. </li>
+            <li style="margin-top: 10px;">Se o rendimento do Cultivo A for baixo, espero que o rendimento do Cultivo B seja alto em <input type="number" class="inNumber" name="question_1_real" id="question_1_real" min="0" max="100" required style="display: inline; margin-left: 5px; margin-right: 5px;" oninput="review_q1()"> de 8 casos. </li>
             <div class="error_msg" id="div_error_q1">
-                Por favor ingrese un valor entre 0 y 100
+                O valor deve ser entre 0 e 8.
             </div>
 
             <li style="margin-top: 10px;">Si el rendimiento del Cultivo A es alto, es más probable que el rendimiento del Cultivo B:</li>

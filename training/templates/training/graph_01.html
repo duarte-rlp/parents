@@ -22,7 +22,7 @@
             },
             xAxis: {
                 title: {
-                    text: 'Escenarios'
+                    text: 'Cenários'
                 },
                 min: 0,
                 max: 7,
@@ -31,7 +31,7 @@
             },
             yAxis: {
                 title: {
-                    text: 'Retorno por cada $100'
+                    text: 'Retorno para cada R$ 100'
                 },
                 min: {{ min_y }} - 5,
                 max: {{ max_y }} + 5
@@ -45,7 +45,7 @@
                     enabled: true
                 },
                 color: 'blue',
-                name: 'Inversión A',
+                name: 'Investimento A',
                 dashStyle: 'Dash'
             }],
             legend: {
@@ -128,10 +128,10 @@
                 } else {
                     document.getElementById('test_01_time').value = Date.now() - start;
                     if((Number(in_test01.value) == Number({{ answers.0 }})) || (Number(in_test01.value) == Number({{ answers.1 }}))){
-                        document.getElementById('text_result').innerHTML = 'Correcto';
+                        document.getElementById('text_result').innerHTML = 'Correto';
                         document.getElementById('test_01_answer').value = 'Correct';
                     } else {
-                        document.getElementById('text_result').innerHTML = 'Incorrecto';
+                        document.getElementById('text_result').innerHTML = 'Incorreto';
                         document.getElementById('test_01_answer').value = 'Incorrect';
                     }
                     document.getElementById('step_4').style.display = 'none';
@@ -151,32 +151,32 @@
 {% endblock %}
 
 {% block title %}
-    Actividad 2: Gráficas
+    Atividade 2: Gráficos
 {% endblock %}
 
 {% block content %}
 <div id="step_1" style="height: 115px;">
-Le mostraremos el porcentaje de rentabilidad de la INVERSIÓN A en 8 ESCENARIOS posibles (8 POSICIONES en la gráfica).
+    Mostraremos o percentual de rentabilidade do INVESTIMENTO A em 8 CENÁRIOS possíveis (8 POSIÇÕES no gráfico).
 <br>
 <br>
-El porcentaje de rentabilidad de cada inversión puede ser distinto en cada ESCENARIO. Haga <i>clic</i> en el botón "Mostrar Inversión" para ver los RETORNOS POR CADA $100 que una inversión puede generar.
+O percentual de rentabilidade de cada investimento poderá ser diferente em cada CENÁRIO. <i>Clique</i> no botão "Mostrar Investimento" para ver o RETORNO PARA CADA R$ 100 investidos que o investimento pode gerar.
 </div>
 
 <div id="step_2" style="display: none; height: 115px;">
-El primer porcentaje de rentabilidad es {{ data_a.0 }}%. Eso quiere decir que por cada <toMoney>100</toMoney> pesos que se asigne a la <i>Inversión A</i> puede ganar <toMoney>15</toMoney> pesos.
+A primeira porcentagem de lucratividade é {{ data_a.0 }}%. Isso significa que para cada <toMoney>100</toMoney> reais atribuídos ao <i>Investimento A</i> você pode ganhar <toMoney>15</toMoney> reais.
 </div>
 
 <div id="step_3" style="display: none; height: 115px;">
-Como puede ver, <b>el porcentaje de rentabilidad de la inversión puede ser positivo o negativo</b>. Cuando sale un número positivo significa que la inversión generó <i>ganancias</i>, pero cuando sale un número negativo significa que la inversión generó <i>pérdidas</i>. 
+Como você pode ver, <b>o retorno do investimento pode ser positiva ou negativa</b>. Quando aparece um número positivo significa que o investimento gerou <i>lucros</i>, mas quando aparece um número negativo significa que o investimento gerou <i>perdas</i>. 
 </div>
 
 <div id="step_4" style="display: none; height: 115px;">
 <table class="table_question">
     <tr>
-        <td style="width: 10%;"><b>Pregunta:</b></td>
+        <td style="width: 10%;"><b>Pergunta:</b></td>
         <td class="cell_question">
             <div id="text01">
-                ¿Cuánto perderá si asigna <toMoney>100</toMoney> a la <i>Inversión A</i> y el porcentaje de rentabilidad es -8% ?
+                Quanto perderá se você investir <toMoney>100</toMoney> no <i>Investimento A</i> e a porcentagem de rentabilidade é de -8% ?
             </div>
         </td>
         <td class="cell_input">
@@ -194,13 +194,13 @@ Como puede ver, <b>el porcentaje de rentabilidad de la inversión puede ser posi
 <b><text id="text_result"></text></b>, perderá <toMoney>8</toMoney>.
 <br>
 <br>
-Recuerde que por cada <toMoney>100</toMoney> que usted asigne a la <i>Inversión A</i> puede perder <toMoney>8</toMoney>.
+Rcorde que para cada <toMoney>100</toMoney> reais que você investe no <i>Investimento A</i> pode perder <toMoney>8</toMoney>.
 </div>
 
 <br>
 
 <div style="text-align: center;">
-    <input type="button" value="Mostrar Inversión" class="btnNext" onclick="start_points()" id="btn_start_points">
+    <input type="button" value="Mostrar Investimento" class="btnNext" onclick="start_points()" id="btn_start_points">
 </div>
 
 <br>  
@@ -212,7 +212,7 @@ Recuerde que por cada <toMoney>100</toMoney> que usted asigne a la <i>Inversión
 
 <div class="div_btnNext">
     <input type="button" value="Siguiente" class="btnNext" style="display: none;" onclick="nextView()" id="btnNext">
-    <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next" disabled>Siguiente</button>
+    <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next" disabled>Avançar</button>
 </div>
 
 {% endblock %}

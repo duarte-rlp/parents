@@ -30,7 +30,7 @@
 {% endblock %}
 
 {% block title %}
-    Preguntas iniciales 
+    Perguntas iniciais 
 {% endblock %}
 
 {% block content %}
@@ -39,20 +39,20 @@
 <br>
 <br>
 <input type="radio" name="q5" value="{% autoescape off %}{{ answer }}{% endautoescape %}" id="radio_1" oninput="restore_error_radios()">
-<label for="radio_1">Más de $ 102.000</label>
+<label for="radio_1">Mais que R$ 102</label>
 <br>
 <input type="radio" name="q5" value="= 102.000" id="radio_2" oninput="restore_error_radios()">
-<label for="radio_2">Exactamente $ 102.000</label>
+<label for="radio_2">Exatamente R$ 102</label>
 <br>
 <input type="radio" name="q5" value="< 102.000" id="radio_3" oninput="restore_error_radios()">
-<label for="radio_3">Menos de $ 102.000</label>
+<label for="radio_3">Menos que R$ 102</label>
 <!-- <br>
 <input type="radio" name="q5" value="NS/NI" id="radio_4" oninput="restore_error_radios()">
 <label for="radio_4">No sabe, no informa</label> -->
 
 <div class="div_operation">
     <div class="error_msg" id="div_error">
-        La respuesta no es correcta, intente de nuevo
+        A resposta não está correta, tente novamente
     </div>
 </div>
 
@@ -63,6 +63,6 @@
 
 <div class="div_btnNext">
     <input type="button" value="Siguiente" class="btnNext" onclick="validate()">
-    <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next" disabled>Siguiente</button>
+    <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next" disabled>Avançar</button>
 </div>
 {% endblock %}

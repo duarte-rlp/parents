@@ -30,7 +30,7 @@
 {% endblock %}
 
 {% block title %}
-    Preguntas iniciales
+    Perguntas iniciais
 {% endblock %}
 
 {% block content %}
@@ -39,7 +39,7 @@
 <br>
 <br>
 <input type="radio" name="q7" value="{% autoescape off %}{{ answer }}{% endautoescape %}" id="radio_1" oninput="restore_error_radios()">
-<label for="radio_1">Verdadero</label>
+<label for="radio_1">Verdadeiro</label>
 <br>
 <input type="radio" name="q7" value="false" id="radio_2" oninput="restore_error_radios()">
 <label for="radio_2">Falso</label>
@@ -52,7 +52,7 @@
 
 <div class="div_operation">
     <div class="error_msg" id="div_error">
-        La respuesta no es correcta, intente de nuevo
+        A resposta não está correta, tente novamente
     </div>
 </div>
 
@@ -63,6 +63,6 @@
 
 <div class="div_btnNext">
     <input type="button" value="Siguiente" class="btnNext" onclick="validate()">
-    <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next" disabled>Siguiente</button>
+    <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next" disabled>Avançar</button>
 </div>
 {% endblock %}

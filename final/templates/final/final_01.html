@@ -9,60 +9,60 @@
 {% endblock %}
 
 {% block title %}
-    Descripción del pago
+    Descrição do Pagamento
 {% endblock %}
 
 {% block content %}
 
-De las actividades posibles para pago, la seleccionada fue la # <b>{{ data.n_app }}</b> que es sobre <b>{{ data.nombre_formal }}</b>.
+A atividade selecionada para o seu pagamento foi a # <b>{{ data.n_app }}</b> que é sobre <b>{{ data.nombre_formal }}</b>.
 <br>
 <br>
 
 {% if data.nombre_app == 'choice_2' %}
 
-En esta actividad tu seleccionaste la <b>Inversión # {{ data.n_investment }}</b>.
+Nesta atividade, você selecionou o <b>Investimento {{ data.n_investment }}</b>.
 <br>
 <br>
-Al lanzar la moneda sale
+Quando a moeda é jogada, ela sai 
     {% if data.coin_toss == 'heads' %}
         <b>cara</b>
     {% elif data.coin_toss == 'tails' %}
-        <b>sello</b>
+        <b>coroa</b>
     {% endif %}
-    dando una GANANCIA de <b><toMoney>{{ data.payoff_amount_app }}</toMoney></b>.
+    dando um ganho de <b><toMoney>{{ data.payoff_amount_app }}</toMoney></b>.
 
 {% elif data.nombre_app == 'allocations' %}
 
-En esta actividad se seleccionó al azar el problema # <b>{{ data.n_problem }}</b> y de este se selección al azar el escenario # <b>{{ data.n_scene }}</b>.
+Nessa atividade, foi selecionado aleatoriamente o problema <b>{{ data.n_problem }}</b> e o cenário <b>{{ data.n_scene }}</b>.
 <br><br>
-Aquí escogiste invertir <b><toMoney>{{ data.val_invesment_1 }}</toMoney></b> que tiene un retorno de <b>{{ data.per_investment_1 }} %</b> en la <b>Inversión A</b> resultando en un retorno de <b><toMoney>{{ data.amount_invesment_1 }}</toMoney></b> y <b><toMoney>{{ data.val_invesment_2 }}</toMoney></b> que tiene un retorno de <b>{{ data.per_investment_2 }} %</b> en la <b>Inversión B</b> resultando en un retorno de <b><toMoney>{{ data.amount_invesment_2 }}</toMoney></b>; dando una 
+Você investiu <b><toMoney>{{ data.val_invesment_1 }}</toMoney></b> que tem um retorno de <b>{{ data.per_investment_1 }} %</b> no <b>Investimento A</b> resultando em um retorno de <b><toMoney>{{ data.amount_invesment_1 }}</toMoney></b> e <b><toMoney>{{ data.val_invesment_2 }}</toMoney></b> que tem um retorno de <b>{{ data.per_investment_2 }} %</b> no <b>Investimento B</b> resultando em um retorno de <b><toMoney>{{ data.amount_invesment_2 }}</toMoney></b>. No total, você teve  
     {% if data.payoff_amount_app < 0 %}
-        PÉRDIDA
+        uma PERDA
     {% else %}
-        GANANCIA
+        um GANHO
     {% endif %}
 de <b><toMoney>{{ data.payoff_amount_app }}</toMoney></b>.
 
 {% elif data.nombre_app == 'real' %}
 
-En esta actividad se seleccionó al azar el escenario # <b>{{ data.n_scene }}</b>.
+Nesta atividade, o cenário selecionado aleatoriamente foi o de número <b>{{ data.n_scene }}</b>.
 <br><br>
-Aquí escogiste invertir <b>{{ data.has_1 }} hectáreas</b> en el <b>Cultivo A</b> dando un retorno de <b><toMoney>{{ data.amount_cultivo_1 }}</toMoney></b> y <b>{{ data.has_2 }} hectáreas</b> en el <b>Cultivo B</b> dando un retorno de <b><toMoney>{{ data.amount_cultivo_2 }}</toMoney></b>; dando un total de GANANCIA de <b><toMoney>{{ data.payoff_amount_app }}</toMoney></b>.
+Você investiu <b>{{ data.has_1 }} hectares</b> no <b>Cultivo A</b> dando um retorno de <b><toMoney>{{ data.amount_cultivo_1 }}</toMoney></b> e <b>{{ data.has_2 }} hectares</b> no <b>Cultivo B</b> dando um retorno de <b><toMoney>{{ data.amount_cultivo_2 }}</toMoney></b>. No total, você teve um GANHO de <b><toMoney>{{ data.payoff_amount_app }}</toMoney></b>.
 
 {% elif data.nombre_app == 'choice' %}
 
-En esta actividad se seleccionó al azar la fila <b>{{ data.n_investment }}</b>. 
+Nesta atividade, a moeda selecionada aleatoriamente foi a de número <b>{{ data.n_investment }}</b>. 
 <br>
 <br>
-En esta fila usted seleccionó
+Você selecionou
     {% if data.eleccion == 0 %}
-        NO INVERTIR, por lo cual no presentas ganancia ni pérdida dando un pago de <b><toMoney>{{ data.payoff_amount_app }}</toMoney></b>.
+        NÃO LANÇAR a moeda. Portanto, você não apresenta lucro ou prejuízo ao efetuar um pagamento de <b><toMoney>{{ data.payoff_amount_app }}</toMoney></b>.
     {% elif data.eleccion == 1 %}
-        INVERTIR, y se lanza la moneda saliendo
+        LANÇAR a moeda. O computador lançou a moeda e saiu  
             {% if data.coin_toss == 'heads' %}
-                <b>cara</b>, por lo cual presentas <b>pérdida</b> de <b><toMoney>{{ data.payoff_amount_app }}</toMoney></b>.
+                <b>cara</b>, e infelizmente você teve uma <b>perda</b> de <b><toMoney>{{ data.payoff_amount_app }}</toMoney></b>.
             {% elif data.coin_toss == 'tails' %}
-                <b>sello</b>, por lo cual <b>ganancia</b> de <b><toMoney>{{ data.payoff_amount_app }}</toMoney></b>.
+                <b>coroa</b>, e você teve um <b>ganho</b> de <b><toMoney>{{ data.payoff_amount_app }}</toMoney></b>.
             {% endif %}
     {% endif %}
 
@@ -70,18 +70,18 @@ En esta fila usted seleccionó
 
 <br>
 <br>
-Al monto base de <toMoney>{{ data.pago_base }}</toMoney> se le 
+Ao valor inicial de <toMoney>{{ data.pago_base }}</toMoney> se  
 {% if data.payoff_amount_app < 0 %}
-    restan las PÉRDIDAS 
+    subtrai as PERDAS 
 {% else %}
-    suman las GANANCIAS 
+    somam os GANHOS 
 {% endif %}
-de la actividad seleccionada dando como valor total a pagar de <b><toMoney>{{ data.pago_real }}</toMoney></b>.
+da atividade selecionada, resultando em um valor total a ser pago de <b><toMoney>{{ data.pago_real }}</toMoney></b>.
 
 <div style="text-align: left;">
 <br>
 {% if data.is_menor_pago == 1 %}
-Dado que su pago total es menor que el mínimo usted recibirá <b><toMoney>{{ data.pago_real }}</toMoney></b>
+Como o seu pagamento total é menor que o mínimo que você receberá <b><toMoney>{{ data.pago_real }}</toMoney></b>
 {% endif %}
 <br>
 <br>

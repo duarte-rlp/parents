@@ -33,8 +33,8 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
     activity_pay = models.StringField()
-    pago_minimo = models.IntegerField(default = 20000)
-    pago_base = models.IntegerField(default = 20000)
+    pago_minimo = models.IntegerField(default = 20)
+    pago_base = models.IntegerField(default = 20)
     is_menor_pago = models.IntegerField(default = 0) # Si el valor calculado es menor al minimo
     pago_calculo = models.IntegerField()
     pago_real = models.IntegerField()

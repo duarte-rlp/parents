@@ -19,28 +19,28 @@ Rentabilidad variable
 
 class Constants(BaseConstants):
     name_in_url = 'choice_2'
-    description = 'Actividad 2: Rentabilidad variable'
+    description = 'Atividade 1: Rentabilidad variable'
     players_per_group = None
     num_rounds = 1
     investment_heads = [
-                        9000,
-                        8100,
-                        7200,
-                        6300,
-                        5400,
-                        3600,
-                        1800,
+                        9,
+                        8.1,
+                        7.2,
+                        6.3,
+                        5.4,
+                        3.6,
+                        1.8,
                         0
                         ]
     investment_tails = [
-                        9000,
-                        17100,
-                        21600,
-                        22500,
-                        27000,
-                        28800,
-                        34200,
-                        36000
+                        9,
+                        17.1,
+                        21.6,
+                        22.5,
+                        27,
+                        28.8,
+                        34.2,
+                        36
                         ]
 
 

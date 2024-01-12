@@ -26,7 +26,7 @@
             },
             xAxis: {
                 title: {
-                    text: 'Escenarios'
+                    text: 'Cenários'
                 },
                 min: 0,
                 max: 7,
@@ -35,7 +35,7 @@
             },
             yAxis: {
                 title: {
-                    text: 'Retorno por cada $100'
+                    text: 'Retorno para cada R$ 100'
                 },
                 min: {{ min_y }} - 5,
                 max: {{ max_y }} + 5
@@ -49,7 +49,7 @@
                     enabled: true
                 },
                 color: 'blue',
-                name: 'Inversión A',
+                name: 'Investimento A',
                 dashStyle: 'Dash'
             }, {
                 animation: false,
@@ -60,7 +60,7 @@
                     enabled: true
                 },
                 color: 'green',
-                name: 'Inversión B',
+                name: 'Investimento B',
                 dashStyle: 'Dash'
             }],
             legend: {
@@ -533,36 +533,36 @@
 {% endblock %}
 
 {% block title %}
-    Actividad 2: Ejemplo
+    Atividade 2: Exemplo
 {% endblock %}
 
 {% block content %}
 <div id="step_1" style="height: 110px;">
-    Haga <i>clic</i> en el botón 
+    <i>Clique</i> no botão  
     {% if graphType == 1 %}
-    "Mostrar Inversión A y B"
+    "Mostrar Investimentos A e B"
     {% else %}
-    "Mostrar Inversión A" y "Mostrar Inversión B"
+    "Mostrar Investimento A" e "Mostrar Investimento B"
     {% endif %}
-    para ver el porcentaje de rentabilidad (%) que las inversiones pueden generar en cada ESCENARIO.
+    para ver o percentual de rentabilidade (%) que os investimentos podem gerar em cada CENÁRIO.
 </div>
 
 <div id="step_2" style="display: none; height: 110px;">
-    Haga <i>clic</i> sobre la barra y mueva el cuadro que aparece para ver cómo la cantidad de dinero asignada a la <i>Inversión A</i> y la <i>Inversión B</i> afecta la tabla de las posibles rentabilidades. 
+    <i>Clique</i> na barra e mova a caixa que aparece para ver como a quantidade de dinheiro investida no <i>Investimento A</i> e no <i>Investimento B</i> afeta a tabela de possíveis retorna.
     <br>
     <br>
-    Por favor explore la rentabilidad que recibiría en las distintas asignaciones.  Cuándo haya escogido su asignación preferida, escriba estos valores en la siguiente pantalla.  (Si prefiere, anote el valor en un papel).
+    Por favor, explore os retornos que você receberia em diferentes quantidades investidas em A e B. Depois de escolher o quanto investir em A e B, insira esses valores na próxima tela. (Se preferir, anote o valor em um pedaço de papel.)
 </div>
 
 <div id="step_3" style="display: none; height: 110px;">
-    Escriba en el cuadro correspondiente de la parte inferior la cantidad de los <toMoney>100000</toMoney> pesos de su dotación que desea asignar a la <i>Inversión A</i> y la <i>Inversión B</i>. Recuerde que la cantidad de dinero invertido debe ser <toMoney>100000</toMoney> pesos.
+    Escreva na caixa correspondente na parte inferior o valor dos <toMoney>100</toMoney> reais que deseja investir no <i>Investimento A</i> e no <i>Investimento B</i>. Lembre-se que o valor investido total deve ser de <toMoney>100</toMoney> reais.
     <br>
     <br>
-    Luego haga <i>clic</i> en “Enviar” para confirmar su decisión y continuar. 
+    Em seguida, <i>clique</i> em “Enviar” para confirmar sua decisão e continuar.
 </div>
 
 <div id="step_4" style="display: none; height: 110px;">
-    Luego de enviar su decisión. El computador seleccionará al azar el ESCENARIO con los porcentajes que determinarán la rentabilidad de la Inversión A e Inversión B. Al final de la actividad le diremos cuál de los escenarios fue. 
+    Depois de enviar sua decisão. O computador selecionará aleatoriamente o CENÁRIO com os percentuais que determinarão a rentabilidade do Investimento A e do Investimento B. Ao final da atividade informaremos qual dos cenários foi selecionado. 
 </div>
 
 <br>
@@ -570,10 +570,10 @@
     <table style="text-align: center; width: 90%; margin: 0 auto;">
         <tr>
             {% if graphType == 1 %}
-            <td><input type="button" value="Mostrar Inversión A y B" onclick="visibleAB()" id="btn_ab"></td>
+            <td><input type="button" value="Mostrar Investimentos A e B" onclick="visibleAB()" id="btn_ab"></td>
             {% else %}
-            <td><input type="button" value="Mostrar Inversión A" onclick="visibleA()" id="btn_a"></td>
-            <td><input type="button" value="Mostrar Inversión B" onclick="visibleB()" id="btn_b"></td>
+            <td><input type="button" value="Mostrar Investimento A" onclick="visibleA()" id="btn_a"></td>
+            <td><input type="button" value="Mostrar Investimento B" onclick="visibleB()" id="btn_b"></td>
             {% endif %}
         </tr>
     </table>
@@ -625,17 +625,17 @@
         <tr>
             <td class="text_slider"> - </td>
             <td class="td_slider" rowspan="2">
-                <input type="range" name="problem_01_sliderInv_a" value="" min="0" max="{{ investment_max }}" step="1000" id="sliderDinero" class="slider_dinero" required>
+                <input type="range" name="problem_01_sliderInv_a" value="" min="0" max="{{ investment_max }}" step="1" id="sliderDinero" class="slider_dinero" required>
                 <input type="hidden" name="check_slider_example" value="" id="id_check_slider_example"/>
             </td>
             <td class="text_slider"> - </td>
         </tr>
         <tr>
             <td style="text-align: center;">
-                <b>Inversión A</b>
+                <b>Investimento A</b>
             </td>
             <td style="text-align: center;">
-                <b>Inversión B</b>
+                <b>Investimento B</b>
             </td>
         </tr>
     </table>
@@ -650,32 +650,32 @@
         </tr>
         <tr>
             <td style="text-align: center;">
-                <b>Inversión A</b>
+                <b>Investimento A</b>
             </td>
             <td style="text-align: center;">
-                <b>Inversión B</b>
+                <b>Investimento B</b>
             </td>
         </tr>
     </table>
 </div>
 
 <div class="card_table" id="selected_card" style="display: none;">
-    El ESCENARIO que determinará los porcentajes de rentabilidad es: <paw id="n_sce"></paw>
+    O CENÁRIO que determinará os percentuais de rentabilidade é: <paw id="n_sce"></paw>
     <br>
     <br>
-    De los $ 100.000 de su dotación usted asignó <toMoney id="asign_a"></toMoney> a la <i>Inversión A</i> y <toMoney id="asign_b"></toMoney> a la <i>Inversión B</i>. 
+    Dos R$ 100 você investiu <toMoney id="asign_a"></toMoney> no <i>Investimento A</i> e <toMoney id="asign_b"></toMoney> no <i>Investimento B</i>. 
     <br>
     <br>
-    De acuerdo con la tabla, la asignación que usted hizo tendría los siguientes retornos: 
+    De acordo com a tabela, a atribuição que você fez teria os seguintes retornos: 
     <ul>
-    <li><b>Inversión A:</b> <toMoney id="return_inv_a"></toMoney> </li>
-    <li><b>Inversión B:</b> <toMoney id="return_inv_b"></toMoney> </li>
+    <li><b>Investimento A:</b> <toMoney id="return_inv_a"></toMoney> </li>
+    <li><b>Investimento B:</b> <toMoney id="return_inv_b"></toMoney> </li>
     <li><b>Total:</b> <toMoney id="return_inv_t"></toMoney> </li>
     </ul>
-    Recuerde que el retorno total de la inversión es  la suma de los posibles retornos de la Inversión A y la Inversión B. 
+    Lembre-se de que o retorno total do investimento é a soma dos retornos possíveis do Investimento A e do Investimento B. 
     <br>
     <br>
-    <b>Este ejemplo no afectará sus pagos. Ahora comenzará a tomar decisiones de inversión.</b>
+    <b>Este exemplo não afetará seus pagamentos. Agora você começará a tomar decisões de investimento.</b>
     <br>
     <br>
 </div>
@@ -684,14 +684,14 @@
 <input type="hidden" name="test_07_mistakes" id="test_07_mistakes" value="{">
 
 <div class="error_msg" id="div_error">
-    Recuerda que la suma de las inversiones debe ser <toMoney>100000</toMoney>.
+    Lembre-se que a soma dos investimentos deve ser de <toMoney>100</toMoney> reais.
 </div>
 
 
 <div class="div_btnNext">
-    <input type="button" value="Seleccionar Escenario" class="btnNext" style="display: none;" onclick="nextScenario()" id="btnScenario">
-    <input type="button" value="Siguiente" class="btnNext" style="display: none;" onclick="nextView()" id="btnNext">
-    <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next" disabled>Siguiente</button>
+    <input type="button" value="Selecionar Cenário" class="btnNext" style="display: none;" onclick="nextScenario()" id="btnScenario">
+    <input type="button" value="Avançar" class="btnNext" style="display: none;" onclick="nextView()" id="btnNext">
+    <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next" disabled>Avançar</button>
 </div>
 
 {% endblock %}

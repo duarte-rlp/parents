@@ -122,7 +122,6 @@ class Constants(BaseConstants):
                                 'Outros'
                             ]
     cropImportance_list =   [
-                                'Não trabalho com agro',
                                 'Desempenhos em anos anteriores',
                                 'Retornos esperados para o próximo ano',
                                 'Clima em anos anteriores',
@@ -142,7 +141,6 @@ class Constants(BaseConstants):
                                 'Não'
                             ]
     protection_list     =   [
-                                'Não trabalho com agro / Não sei',
                                 'Ter poupança para poder utilizar em caso de quebra de safra',
                                 'Ter diferentes tipos de cultivos para evitar perdas',
                                 'Ter gado para compensar as perdas nas colheitas',

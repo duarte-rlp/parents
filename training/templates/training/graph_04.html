@@ -537,14 +537,14 @@
 {% endblock %}
 
 {% block content %}
-<div id="step_1" style="height: 110px;">
+<div id="step_1" style="height: 55px;">
     <i>Clique</i> no botão  
     {% if graphType == 1 %}
     "Mostrar Investimentos A e B"
     {% else %}
     "Mostrar Investimento A" e "Mostrar Investimento B"
     {% endif %}
-    para ver o percentual de rentabilidade (%) que os investimentos podem gerar em cada CENÁRIO.
+    para ver a porcentagem de retorno que os investimentos podem gerar em cada CENÁRIO.
 </div>
 
 <div id="step_2" style="display: none; height: 110px;">
@@ -561,7 +561,7 @@
     Em seguida, <i>clique</i> em “Enviar” para confirmar sua decisão e continuar.
 </div>
 
-<div id="step_4" style="display: none; height: 110px;">
+<div id="step_4" style="display: none; height: 55px;">
     Depois de enviar sua decisão. O computador selecionará aleatoriamente o CENÁRIO com os percentuais que determinarão a rentabilidade do Investimento A e do Investimento B. Ao final da atividade informaremos qual dos cenários foi selecionado. 
 </div>
 
@@ -663,13 +663,13 @@
     O CENÁRIO que determinará os percentuais de rentabilidade é: <paw id="n_sce"></paw>
     <br>
     <br>
-    Dos R$ 100 você investiu <toMoney id="asign_a"></toMoney> no <i>Investimento A</i> e <toMoney id="asign_b"></toMoney> no <i>Investimento B</i>. 
+    Dos R$ 100, você investiu <toMoney id="asign_a"></toMoney> no <i>Investimento A</i> e <toMoney id="asign_b"></toMoney> no <i>Investimento B</i>. 
     <br>
     <br>
-    De acordo com a tabela, a atribuição que você fez teria os seguintes retornos: 
+    De acordo com a tabela, seu investimento teria os seguintes retornos: 
     <ul>
-    <li><b>Investimento A:</b> <toMoney id="return_inv_a"></toMoney> </li>
-    <li><b>Investimento B:</b> <toMoney id="return_inv_b"></toMoney> </li>
+    <li><b>Retorno A:</b> <toMoney id="return_inv_a"></toMoney> </li>
+    <li><b>Retorno B:</b> <toMoney id="return_inv_b"></toMoney> </li>
     <li><b>Total:</b> <toMoney id="return_inv_t"></toMoney> </li>
     </ul>
     Lembre-se de que o retorno total do investimento é a soma dos retornos possíveis do Investimento A e do Investimento B. 

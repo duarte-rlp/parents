@@ -95,7 +95,7 @@ LANGUAGE_CODE = 'pt'
 
 # e.g. EUR, GBP, CNY, JPY
 REAL_WORLD_CURRENCY_CODE = 'BRL'
-USE_POINTS = False
+USE_POINTS = True
 
 ADMIN_USERNAME = 'rafael'
 # for security, best to set admin password in an environment variable

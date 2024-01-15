@@ -265,6 +265,6 @@ class Player(BasePlayer):
 
     name_app_n = models.IntegerField(default = 2)
     name_app = models.StringField(default = 'allocations')
-    name_app_2_user = models.StringField(default = 'Decisiones de inversión')
+    name_app_2_user = models.StringField(default = 'Decisões de investimento')
 
 

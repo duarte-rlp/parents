@@ -33,8 +33,8 @@ class Constants(BaseConstants):
                 'Quanto é 9% de 200?',
                 'Suponha que você tem R$ 100 em um investimento que paga juros anuais de 2%. Se o investimento for guardado por 5 anos, sem efetuar nenhum outro pagamento ou sacar o dinheiro, quanto você terá ao final desses 5 anos?',
                 'Suponha que sua conta poupança pague juros de 1% ao ano. Você também sabe que a taxa de inflação é de 2% ao ano. Após um ano, quanto seria o valor real do dinheiro nesta conta poupança?',
-                'Verdadeiro ou falso: «As ações são geralmente mais arriscadas do que títulos de tesouro direto ou renda fixa»',
-                'Verdadeiro ou falso: «Comprar uma ação de uma empresa é menos arriscado do que comprar várias ações de empresas diferentes com o mesmo dinheiro.»'
+                'Verdadeiro ou falso: "As ações são geralmente mais arriscadas do que títulos de tesouro direto ou renda fixa"',
+                'Verdadeiro ou falso: "Comprar uma ação de uma empresa é menos arriscado do que comprar várias ações de empresas diferentes com o mesmo dinheiro."'
                 ]
     answers =   [
                 '-2',

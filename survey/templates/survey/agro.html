@@ -37,13 +37,13 @@
 {% endblock %}
 
 {% block title %}
-    Agricultura
+    Perguntas finais
 {% endblock %}
 
 {% block content %}
 
 <div id="q1">
-    <label for="hectares_list" id="l_hectares_list"><b>No ano passado, quantos hectares você dedicou a atividades agropecuárias ou qual é o tamanho em hectares da fazenda onde você trabalha?</b></label><br>
+    <label for="hectares_list" id="l_hectares_list"><b>Qual é o tamanho médio em hectares da fazenda onde você (ou alguém da sua residência) trabalha?</b></label><br>
     <select id="hectares_list" class="input-list" name="q_hectares" required>
         <option class="input-list" value disabled selected>---------</option>
         {% for opcion in hectares_list %}
@@ -55,7 +55,7 @@
 <br>
 
 <div id="q2">
-    <label for="farminc_list" id="l_farminc_list"><b>Qual é a principal fonte de renda da fazenda onde você trabalha?</b></label><br>
+    <label for="farminc_list" id="l_farminc_list"><b>Qual é a principal fonte de renda da fazenda onde você (ou alguém da sua residência) trabalha?</b></label><br>
     <select id="farminc_list" class="input-list" name="q_farminc" required>
         <option class="input-list" value disabled selected>---------</option>
         {% for opcion in farminc_list %}
@@ -67,7 +67,7 @@
 <br>
 
 <div id="q3">
-    <label for="crops_list" id="l_crops_list"><b>Quantos cultivos diferentes você cultiva ao mesmo tempo?</b></label><br>
+    <label for="crops_list" id="l_crops_list"><b>Normalmente, quantos cultivos diferentes você (ou alguém da sua residência) cultiva ao mesmo tempo?</b></label><br>
     <select id="crops_list" class="input-list" name="q_crops" required>
         <option class="input-list" value disabled selected>---------</option>
         {% for opcion in crops_list %}
@@ -79,7 +79,7 @@
 <br>
 
 <div id="q4">
-    <b>Que tipo de cultivos você cultivou no ano passado? (Você pode marcar várias opções)</b><br>
+    <b>Que tipo de cultivos você cultivou no ano passado? Você pode marcar várias opções.</b><br>
         {% for opcion in cropTypes_list %}
         <label><input type="checkbox" name="opt_cropTypes" value="{{ opcion }}">{{ opcion }}</label><br>
         {% endfor %}

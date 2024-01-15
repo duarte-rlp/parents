@@ -66,4 +66,4 @@ class Player(BasePlayer):
 
     name_app_n = models.IntegerField(default = 4)
     name_app = models.StringField(default = 'choice')
-    name_app_2_user = models.StringField(default = 'Invertir o No Invertir')
+    name_app_2_user = models.StringField(default = 'Lançar ou não as moedas')

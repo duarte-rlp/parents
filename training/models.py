@@ -25,13 +25,13 @@ class Constants(BaseConstants):
     num_rounds = 1
     # Datos de inversiones
     inv_labels = [1, 2, 3, 4, 5, 6, 7, 8]
-    inv_example = [15, -8, 15, 15, -8, -8, -8, 15] # array exampl for training app
-    inv_a = [15, -8, 15, 15, -8, -8, -8, 15]
-    inv_b = [-9, -9, 14, -9, 14, 14, -9, 14]
+    inv_example = [30, 5, 30, 30, 5, 5, 5, 30] # array exampl for training app
+    inv_a = [30, 5, 30, 30, 5, 5, 5, 30]
+    inv_b = [0, 0, 25, 0, 25, 25, 0, 25]
     time_steps = 1000 # en milisegundos = 2 segundos
     money_example = 100 # dinero usado para ejemplos
     investment_max = 100 # máxima inversión
-    answer_1 = [8, -8] # resultados posibles para la pregunta 1
+    answer_1 = [5, -5] # resultados posibles para la pregunta 1
 
 
 class Subsession(BaseSubsession):

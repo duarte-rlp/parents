@@ -447,7 +447,7 @@
         function validateInv() {
             let inv_a = Number(document.getElementById("problem_04_invVal_a").value);
             let inv_b = Number(document.getElementById("problem_04_invVal_b").value);
-            if((inv_a + inv_b) == 100000) {
+            if((inv_a + inv_b) == 100) {
                 step_view += 1;
                 nextView();
             } else {
@@ -485,19 +485,21 @@
 {% block content %}
 
 <div id="step_1" style="height: 85px;">
-Clique no botão para ver o percentual de rentabilidade (%) que os investimentos podem gerar em cada CENÁRIO.
+Clique no botão para ver as porcentagens de retorno dos investimentos em cada CENÁRIO.
 </div>
-
+    
 <div id="step_2" style="display: none; height: 85px;">
-<i>Clique</i> na barra e mova a caixa que aparece para ver como a quantidade de dinheiro investida no <i>Investimento A</i> e o <i>Investimento B</i> afeta os retornos. Depois de escolher quanto investir em cada investimento, insira esses valores na próxima tela. (Se preferir, anote o valor em um papel)</div>
-
+<i>Clique</i> na barra e mova a caixa que aparece para ver como a quantidade de dinheiro investida no <i>Investimento A</i> e o <i>Investimento B</i> afeta os retornos. 
+<br>
+<br>
+Depois de escolher quanto investir em cada investimento, insira esses valores na próxima tela. (Se preferir, anote o valor em um papel)</div>
+    
 <div id="step_3" style="display: none; height: 85px;">
-Escreva nas caixas o valor que deseja investir no <i>Investimento A</i> e no <i>Investimento B</i>. Lembre-se que o valor investido total deve ser de <toMoney>100</toMoney> reais.
+Escreva nas caixas o valor que deseja investir no <i>Investimento A</i> e no <i>Investimento B</i>. Lembre-se que o valor investido total deve ser de 100 reais.
 <br>
 <br>
 Em seguida, clique em <i>“Avançar”</i> para confirmar sua decisão e continuar.
 </div>
-
 
 <br>  
 

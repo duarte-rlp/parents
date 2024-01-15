@@ -156,18 +156,18 @@
 
 {% block content %}
 <div id="step_1" style="height: 115px;">
-    Mostraremos o percentual de rentabilidade do INVESTIMENTO A em 8 CENÁRIOS possíveis (8 POSIÇÕES no gráfico).
+    Mostraremos a porcentagem de retorno do INVESTIMENTO A em 8 CENÁRIOS possíveis (8 POSIÇÕES no gráfico).
 <br>
 <br>
-O percentual de rentabilidade de cada investimento poderá ser diferente em cada CENÁRIO. <i>Clique</i> no botão "Mostrar Investimento" para ver o RETORNO PARA CADA R$ 100 investidos que o investimento pode gerar.
+A porcentagem de retorno de cada investimento poderá ser diferente em cada CENÁRIO. <i>Clique</i> no botão "Mostrar Investimento" para ver o RETORNO PARA CADA R$ 100 investidos que o investimento pode gerar.
 </div>
 
 <div id="step_2" style="display: none; height: 115px;">
-A primeira porcentagem de lucratividade é {{ data_a.0 }}%. Isso significa que para cada <toMoney>100</toMoney> reais atribuídos ao <i>Investimento A</i> você pode ganhar <toMoney>15</toMoney> reais.
+A primeira porcentagem de retorno é {{ data_a.0 }}%. Isso significa que para cada <toMoney>100</toMoney> reais atribuídos ao <i>Investimento A</i> você pode ganhar <toMoney>30</toMoney> reais.
 </div>
 
 <div id="step_3" style="display: none; height: 115px;">
-Como você pode ver, <b>o retorno do investimento pode ser positiva ou negativa</b>. Quando aparece um número positivo significa que o investimento gerou <i>lucros</i>, mas quando aparece um número negativo significa que o investimento gerou <i>perdas</i>. 
+Como você pode ver, <b>o retorno do investimento pode ser alto ou baixo</b>. De acordo com o gráfico, o retorno alto é de R$ 30 para cada R$ 100 investidos. E o retorno baixo é de R$ 5 para cada R$ 100 investidos. Quanto maior o retorno, maior será o seu ganho com a atividade. 
 </div>
 
 <div id="step_4" style="display: none; height: 115px;">
@@ -176,7 +176,7 @@ Como você pode ver, <b>o retorno do investimento pode ser positiva ou negativa<
         <td style="width: 10%;"><b>Pergunta:</b></td>
         <td class="cell_question">
             <div id="text01">
-                Quanto perderá se você investir <toMoney>100</toMoney> no <i>Investimento A</i> e a porcentagem de rentabilidade é de -8% ?
+                Quanto ganhará se você investir <toMoney>100</toMoney> no <i>Investimento A</i> e a porcentagem de retorno é de 5%?
             </div>
         </td>
         <td class="cell_input">
@@ -194,7 +194,7 @@ Como você pode ver, <b>o retorno do investimento pode ser positiva ou negativa<
 <b><text id="text_result"></text></b>, perderá <toMoney>8</toMoney>.
 <br>
 <br>
-Rcorde que para cada <toMoney>100</toMoney> reais que você investe no <i>Investimento A</i> pode perder <toMoney>8</toMoney>.
+Recorde que para cada <toMoney>100</toMoney> reais que você investe no <i>Investimento A</i> pode ganhar <toMoney>5</toMoney> ou <toMoney>30</toMoney>.
 </div>
 
 <br>
@@ -211,7 +211,7 @@ Rcorde que para cada <toMoney>100</toMoney> reais que você investe no <i>Invest
 <br>
 
 <div class="div_btnNext">
-    <input type="button" value="Siguiente" class="btnNext" style="display: none;" onclick="nextView()" id="btnNext">
+    <input type="button" value="Avançar" class="btnNext" style="display: none;" onclick="nextView()" id="btnNext">
     <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next" disabled>Avançar</button>
 </div>
 

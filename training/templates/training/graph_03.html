@@ -421,10 +421,10 @@
 Por favor, invista <toMoney>10</toMoney> no <i>Investimento A</i> e <toMoney>90</toMoney> no <i>Investimento B</i> movendo a barra inferior. Após clicar em <i>Mostrar Investimento</i>, na coluna correspondente ao CENÁRIO 4 da TABELA ABAIXO serão mostrados os seguintes retornos:
 <br>
 <ul>
-    <li>Ganha <toMoney>1,50</toMoney> -> (<toMoney>10</toMoney> x {{ data_a.3 }}%)</li>
-    <li>Perde <toMoney>8,10</toMoney> -> (<toMoney>90</toMoney> x {{ data_b.3 }}%)</li>
+    <li>Retorno A: <toMoney>3</toMoney> (<toMoney>10</toMoney> x {{ data_a.3 }}%)</li>
+    <li>Retorno B: <toMoney>0</toMoney> (<toMoney>90</toMoney> x {{ data_b.3 }}%)</li>
 </ul>
-Como você ganha <toMoney>1,50</toMoney> no <i>Investimento A</i> e perde <toMoney>8,10</toMoney> no <i>Investimento B</i>, o retorno total possível no CENÁRIO 4 é uma perda de <toMoney>6,60</toMoney>. Os retornos totais são mostrados na última linha da tabela.
+Como você ganha <toMoney>3</toMoney> no <i>Investimento A</i> e <toMoney>0</toMoney> no <i>Investimento B</i>, o retorno total possível no CENÁRIO 4 é de <toMoney>3</toMoney>. Os retornos totais são mostrados na última linha da tabela.
 </div>
 
 <div id="step_2" style="display: none; height: 160px;">
@@ -433,7 +433,7 @@ Como você ganha <toMoney>1,50</toMoney> no <i>Investimento A</i> e perde <toMon
         <td style="width: 10%;"><b>Pregunta:</b></td>
         <td class="cell_question" style="width: 90% !important;">
             <div id="text01">
-                Quais serão os retornos no CENÁRIO 4 da TABELA se você alocar <toMoney>5</toMoney> no <i>Investimento A</i> e <toMoney>95</toMoney> no <i>Investimento B</i> >?
+                Quais serão os retornos no CENÁRIO 4 da TABELA se você investir <toMoney>5</toMoney> no <i>Investimento A</i> e <toMoney>95</toMoney> no <i>Investimento B</i> >?
             </div>
         </td>
     </tr>
@@ -441,7 +441,7 @@ Como você ganha <toMoney>1,50</toMoney> no <i>Investimento A</i> e perde <toMon
 <table class="table_question">
     <tr>
         <td class="cell_question" style="width: 15% !important; text-align: right; padding-right: 10px;">
-            Investimento A:
+            Retorno A:
         </td>
         <td>
             <div class="answer_test">
@@ -450,7 +450,7 @@ Como você ganha <toMoney>1,50</toMoney> no <i>Investimento A</i> e perde <toMon
             </div>
         </td>
         <td class="cell_question" style="width: 15% !important; text-align: right; padding-right: 10px;">
-            Investimento B:
+            Retorno B:
         </td>
         <td>
             <div class="answer_test">
@@ -464,10 +464,10 @@ Como você ganha <toMoney>1,50</toMoney> no <i>Investimento A</i> e perde <toMon
 </div>
 
 <div id="step_3" style="display: none; height: 160px;">
-    <b><text id="text_result_01"></text></b>. A TABELA mostrará os seguintes retornos: você ganha <toMoney>0,75</toMoney> no <i>Investimento A</i> e perde <toMoney>8,55</toMoney> no <i>Investimento B</i> .
+    <b><text id="text_result_01"></text></b>. A TABELA mostrará os seguintes retornos: você ganha <toMoney>1.50</toMoney> no <i>Investimento A</i> e <toMoney>0</toMoney> no <i>Investimento B</i> .
     <br>
     <br>
-    Como você ganha <toMoney>0,75</toMoney> no <i>Investimento A</i> e perde <toMoney>8,55</toMoney> no <i>Investimento B</i>, o retorno total possível no CENÁRIO 4 é uma perda de <toMoney>7,80</toMoney>. 
+    Portanto, o retorno total possível no CENÁRIO 4 é de <toMoney>1.50</toMoney> (R$ 1,50 + R$ 0). 
 </div>
 
 <br>
@@ -475,10 +475,10 @@ Como você ganha <toMoney>1,50</toMoney> no <i>Investimento A</i> e perde <toMon
     <table style="text-align: center; width: 90%; margin: 0 auto;">
         <tr>
             {% if graphType == 1 %}
-            <td><input type="button" value="Mostrar Inversión A y B" onclick="visibleAB()" id="btn_ab"></td>
+            <td><input type="button" value="Mostrar Investimentos A e B" onclick="visibleAB()" id="btn_ab"></td>
             {% else %}
-            <td><input type="button" value="Mostrar Inversión A" onclick="visibleA()" id="btn_a"></td>
-            <td><input type="button" value="Mostrar Inversión B" onclick="visibleB()" id="btn_b"></td>
+            <td><input type="button" value="Mostrar Investimento A" onclick="visibleA()" id="btn_a"></td>
+            <td><input type="button" value="Mostrar Investimento B" onclick="visibleB()" id="btn_b"></td>
             {% endif %}
         </tr>
     </table>
@@ -530,17 +530,17 @@ Como você ganha <toMoney>1,50</toMoney> no <i>Investimento A</i> e perde <toMon
         <tr>
             <td class="text_slider"> - </td>
             <td class="td_slider" rowspan="2">
-                <input type="range" name="problem_01_sliderInv_a" value="" min="0" max="{{ investment_max }}" step="1000" id="sliderDinero" class="slider_dinero" required>
+                <input type="range" name="problem_01_sliderInv_a" value="" min="0" max="{{ investment_max }}" step="1" id="sliderDinero" class="slider_dinero" required>
                 <input type="hidden" name="check_slider_example" value="" id="id_check_slider_example"/>
             </td>
             <td class="text_slider"> - </td>
         </tr>
         <tr>
             <td style="text-align: center;">
-                <b>Inversión A</b>
+                <b>Investimento A</b>
             </td>
             <td style="text-align: center;">
-                <b>Inversión B</b>
+                <b>Investimento B</b>
             </td>
         </tr>
     </table>

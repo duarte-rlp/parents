@@ -23,24 +23,24 @@ class Constants(BaseConstants):
     players_per_group = None
     num_rounds = 1
     investment_heads = [
-                        9,
-                        8.1,
-                        7.2,
-                        6.3,
-                        5.4,
-                        3.6,
-                        1.8,
+                        9.00,
+                        8.10,
+                        7.20,
+                        6.30,
+                        5.40,
+                        3.60,
+                        1.80,
                         0
                         ]
     investment_tails = [
-                        9,
-                        17.1,
-                        21.6,
-                        22.5,
-                        27,
-                        28.8,
-                        34.2,
-                        36
+                        9.00,
+                        17.10,
+                        21.60,
+                        22.50,
+                        27.00,
+                        28.80,
+                        34.20,
+                        36.00
                         ]
 
 
@@ -69,4 +69,4 @@ class Player(BasePlayer):
 
     name_app_n = models.IntegerField(default = 1)
     name_app = models.StringField(default = 'choice_2')
-    name_app_2_user = models.StringField(default = 'Rentabilidad variable')
+    name_app_2_user = models.StringField(default = 'Rentabilidade variável')

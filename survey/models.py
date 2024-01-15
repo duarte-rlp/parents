@@ -128,7 +128,7 @@ class Constants(BaseConstants):
                                 'Clima em anos anteriores',
                                 'Clima esperado para o próximo ano',
                                 'Meu conhecimento sobre como cultivar',
-                                'Os cultivos que estão que outros agricultores da região estão cultivando’
+                                'Os cultivos que outros agricultores da região estão cultivando'
                             ]
     cropsLoss_list      =   [
                                 'Não trabalho com agro / Não sei',
@@ -139,7 +139,7 @@ class Constants(BaseConstants):
     savings_list        =   [
                                 'Não trabalho com agro / Não sei',
                                 'Sim',
-                                'Não
+                                'Não'
                             ]
     protection_list     =   [
                                 'Não trabalho com agro / Não sei',
@@ -153,7 +153,7 @@ class Constants(BaseConstants):
     climate_list        =   [
                                 'Não trabalho com agro / Não sei',
                                 'Sim',
-                                'Não
+                                'Não'
                             ]
     events_list         =   [
                                 'Incêndios florestais',

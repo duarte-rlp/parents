@@ -91,10 +91,10 @@ SESSION_CONFIG_DEFAULTS = dict(
 
 # ISO-639 code
 # for example: de, fr, ja, ko, zh-hans
-LANGUAGE_CODE = 'es'
+LANGUAGE_CODE = 'pt'
 
 # e.g. EUR, GBP, CNY, JPY
-REAL_WORLD_CURRENCY_CODE = 'COP'
+REAL_WORLD_CURRENCY_CODE = 'BRL'
 USE_POINTS = False
 
 ADMIN_USERNAME = 'rafael'

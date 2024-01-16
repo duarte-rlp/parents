@@ -110,7 +110,7 @@ INSTALLED_APPS = ['otree']
 
 PARTICIPANT_FIELDS = ['graphType']
 
-DEBUG=True
+DEBUG=False
 
 SECRET_KEY = 'ych58g9m8ay^q)l^*n^!=8!t#tjo%$-kb53wkh96i$es(yp7b+'
 

@@ -38,7 +38,7 @@
             },
             yAxis: {
                 title: {
-                    text: 'Rentabilidade em reais para cada 100 hectres'
+                    text: 'Retorno para cada 100 hectares'
                 },
                 min: {{ min_y }} - 5,
                 max: {{ max_y }} + 5
@@ -336,8 +336,8 @@
                 let cell_a = document.getElementById("a_"+(i+1));
                 let cell_b = document.getElementById("b_"+(i+1));
                 let cell_t = document.getElementById("t_"+(i+1));
-                let mon_a = ((document.getElementById("has_cultivo_1").value * data_a[i])/10);
-                let mon_b = ((document.getElementById("has_cultivo_2").value * data_b[i])/10);
+                let mon_a = ((document.getElementById("has_cultivo_1").value * data_a[i])/100);
+                let mon_b = ((document.getElementById("has_cultivo_2").value * data_b[i])/100);
                 let mon_t = mon_a + mon_b;
                 mon_a = "R$ " + mon_a.toLocaleString('pt-BR');
                 mon_b = "R$ " + mon_b.toLocaleString('pt-BR');
@@ -373,8 +373,8 @@
                         let cell_a = document.getElementById("a_"+(i+1));
                         let cell_b = document.getElementById("b_"+(i+1));
                         let cell_t = document.getElementById("t_"+(i+1));
-                        let mon_a = ((slider_value * data_a[i])/10);
-                        let mon_b = (((slider_max-slider_value) * data_b[i])/10);
+                        let mon_a = ((slider_value * data_a[i])/100);
+                        let mon_b = (((slider_max-slider_value) * data_b[i])/100);
                         let mon_t = mon_a + mon_b;
                         mon_a = "R$ " + mon_a.toLocaleString('pt-BR');
                         mon_b = "R$ " + mon_b.toLocaleString('pt-BR');
@@ -411,7 +411,7 @@ Clique na barra e mova a caixa para ver como o número de hectares para o <i>Cul
 </div>
 
 <div id="step_3" style="display: none;">
-<b>Com base apenas no retorno e sem ter custos adicionais, escreva nas caixas em quantos hectáres deseja plantar cada um dos cultivos. Lembre-se que a quantidade de terra total deve ser de 100 hectares.
+Com base apenas no retorno e sem ter custos adicionais, escreva nas caixas em quantos hectares deseja plantar cada um dos cultivos. Lembre-se que a quantidade de terra total deve ser de 100 hectares.
 <br>
 <br>
 Em seguida, clique em “Enviar” para confirmar sua decisão e continuar. 

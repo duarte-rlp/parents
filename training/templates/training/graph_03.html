@@ -379,9 +379,9 @@
                     btn.click();
                 } else {
                     document.getElementById('test_06_time').value = Date.now() - start;
-                    if (Number(in_test06_a.value) == 750) {
+                    if (Number(in_test06_a.value) == 1.50) {
                         document.getElementById('test_06_answer_a').value = 'Correct';
-                        if (Number(in_test06_b.value) == -8550) {
+                        if (Number(in_test06_b.value) == 0) {
                             document.getElementById('text_result_01').innerHTML = 'Correto';
                             document.getElementById('test_06_answer_b').value = 'Correct';
                         } else {
@@ -391,7 +391,7 @@
                     } else {
                         document.getElementById('test_06_answer_a').value = 'Incorrect';
                         document.getElementById('text_result_01').innerHTML = 'Incorreto';
-                        if (Number(in_test06_b.value) == -8550) {
+                        if (Number(in_test06_b.value) == 0) {
                             document.getElementById('test_06_answer_b').value = 'Correct';
                         } else {
                             document.getElementById('test_06_answer_b').value = 'Incorrect';
@@ -418,22 +418,23 @@
 
 {% block content %}
 <div id="step_1" style="height: 160px;">
-Por favor, invista <toMoney>10</toMoney> no <i>Investimento A</i> e <toMoney>90</toMoney> no <i>Investimento B</i> movendo a barra inferior. Após clicar em <i>Mostrar Investimento</i>, na coluna correspondente ao CENÁRIO 4 da TABELA ABAIXO serão mostrados os seguintes retornos:
+Clique em "Mostrar Investimento". Em seguida, invista R$ 10 no <i>Investimento A</i> e R$ 90 no <i>Investimento B</i> movendo a barra inferior. Na TABELA ABAIXO serão mostrados os retornos para o investimento. Por exemplo, a tabela mostra os seguintes retornos para o CENÁRIO 4:
+<br>
 <br>
 <ul>
-    <li>Retorno A: <toMoney>3</toMoney> (<toMoney>10</toMoney> x {{ data_a.3 }}%)</li>
-    <li>Retorno B: <toMoney>0</toMoney> (<toMoney>90</toMoney> x {{ data_b.3 }}%)</li>
+    <li>Retorno A: R$ 3 (R$ 10 x {{ data_a.3 }}%)</li>
+    <li>Retorno B: R$ 3 (R$ 90 x {{ data_b.3 }}%)</li>
 </ul>
-Como você ganha <toMoney>3</toMoney> no <i>Investimento A</i> e <toMoney>0</toMoney> no <i>Investimento B</i>, o retorno total possível no CENÁRIO 4 é de <toMoney>3</toMoney>. Os retornos totais são mostrados na última linha da tabela.
+Como você ganha R$ 3 no <i>Investimento A</i> e R$ 0 no <i>Investimento B</i>, o retorno total possível no CENÁRIO 4 é de R$ 3. Os retornos totais são mostrados na última linha da tabela.
 </div>
 
 <div id="step_2" style="display: none; height: 160px;">
 <table class="table_question">
     <tr>
-        <td style="width: 10%;"><b>Pregunta:</b></td>
+        <td style="width: 10%;"><b>Pergunta:</b></td>
         <td class="cell_question" style="width: 90% !important;">
             <div id="text01">
-                Quais serão os retornos no CENÁRIO 4 da TABELA se você investir <toMoney>5</toMoney> no <i>Investimento A</i> e <toMoney>95</toMoney> no <i>Investimento B</i> >?
+                Quais serão os retornos no CENÁRIO 4 da TABELA se você investir R$ 5 no <i>Investimento A</i> e R$ 95 no <i>Investimento B</i>?
             </div>
         </td>
     </tr>
@@ -464,10 +465,10 @@ Como você ganha <toMoney>3</toMoney> no <i>Investimento A</i> e <toMoney>0</toM
 </div>
 
 <div id="step_3" style="display: none; height: 160px;">
-    <b><text id="text_result_01"></text></b>. A TABELA mostrará os seguintes retornos: você ganha <toMoney>1.50</toMoney> no <i>Investimento A</i> e <toMoney>0</toMoney> no <i>Investimento B</i> .
+    <b><text id="text_result_01"></text></b>. A TABELA mostrará os seguintes retornos: você ganha R$ 1,50 no <i>Investimento A</i> e R$ 0 no <i>Investimento B</i> .
     <br>
     <br>
-    Portanto, o retorno total possível no CENÁRIO 4 é de <toMoney>1.50</toMoney> (R$ 1,50 + R$ 0). 
+    Portanto, o retorno total possível no CENÁRIO 4 é de R$ 1,50 (R$ 1,50 + R$ 0). 
 </div>
 
 <br>

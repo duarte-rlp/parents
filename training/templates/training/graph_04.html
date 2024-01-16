@@ -538,7 +538,7 @@
 
 {% block content %}
 <div id="step_1" style="height: 55px;">
-    <i>Clique</i> no botão  
+    Clique no botão  
     {% if graphType == 1 %}
     "Mostrar Investimentos A e B"
     {% else %}
@@ -548,21 +548,21 @@
 </div>
 
 <div id="step_2" style="display: none; height: 110px;">
-    <i>Clique</i> na barra e mova a caixa que aparece para ver como a quantidade de dinheiro investida no <i>Investimento A</i> e no <i>Investimento B</i> afeta a tabela de possíveis retorna.
+    Clique na barra e mova a caixa que aparece para ver como a quantidade de dinheiro investida no <i>Investimento A</i> e no <i>Investimento B</i> afeta a tabela de possíveis retorna.
     <br>
     <br>
     Por favor, explore os retornos que você receberia em diferentes quantidades investidas em A e B. Depois de escolher o quanto investir em A e B, insira esses valores na próxima tela. (Se preferir, anote o valor em um pedaço de papel.)
 </div>
 
 <div id="step_3" style="display: none; height: 110px;">
-    Escreva na caixa correspondente na parte inferior o valor dos <toMoney>100</toMoney> reais que deseja investir no <i>Investimento A</i> e no <i>Investimento B</i>. Lembre-se que o valor investido total deve ser de <toMoney>100</toMoney> reais.
+    Escreva nas caixas abaixo da tabela o valor dos 100 reais que deseja investir no <i>Investimento A</i> e no <i>Investimento B</i>. Lembre-se que o valor investido total deve ser de 100 reais.
     <br>
     <br>
-    Em seguida, <i>clique</i> em “Enviar” para confirmar sua decisão e continuar.
+    Em seguida, clique em “Enviar” para confirmar sua decisão e continuar.
 </div>
 
 <div id="step_4" style="display: none; height: 55px;">
-    Depois de enviar sua decisão. O computador selecionará aleatoriamente o CENÁRIO com os percentuais que determinarão a rentabilidade do Investimento A e do Investimento B. Ao final da atividade informaremos qual dos cenários foi selecionado. 
+    Depois de enviar sua decisão. O computador selecionará aleatoriamente o CENÁRIO para determinar os retornos do Investimento A e do Investimento B. Ao final da atividade informaremos qual dos cenários foi selecionado. 
 </div>
 
 <br>
@@ -660,7 +660,7 @@
 </div>
 
 <div class="card_table" id="selected_card" style="display: none;">
-    O CENÁRIO que determinará os percentuais de rentabilidade é: <paw id="n_sce"></paw>
+    O CENÁRIO que determinará o retorno é: CENÁRIO <paw id="n_sce"></paw>
     <br>
     <br>
     Dos R$ 100, você investiu <toMoney id="asign_a"></toMoney> no <i>Investimento A</i> e <toMoney id="asign_b"></toMoney> no <i>Investimento B</i>. 
@@ -684,7 +684,7 @@
 <input type="hidden" name="test_07_mistakes" id="test_07_mistakes" value="{">
 
 <div class="error_msg" id="div_error">
-    Lembre-se que a soma dos investimentos deve ser de <toMoney>100</toMoney> reais.
+    Lembre-se que a soma dos investimentos deve ser de 100 reais.
 </div>
 
 

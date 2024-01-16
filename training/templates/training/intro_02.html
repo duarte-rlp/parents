@@ -22,7 +22,7 @@
             },
             xAxis: {
                 title: {
-                    text: 'Cenarios'
+                    text: 'Cenários'
                 },
                 min: 0,
                 max: 7,
@@ -31,7 +31,7 @@
             },
             yAxis: {
                 title: {
-                    text: 'Retorno por cada $100'
+                    text: 'Retorno para cada R$ 100'
                 },
                 min: {{ min_y }} - 5,
                 max: {{ max_y }} + 5
@@ -330,17 +330,17 @@
 {% endblock %}
 
 {% block content %}
-Suponha que você tenha <toMoney>100</toMoney> reais para investir. Você poderá escolher investir tudo em um único investimento, ou dividir o dinheiro entre os dois investimentos. O valor que você ganha depende da quantidade de dinheiro que você distribui para cada opção de investimento.
+Suponha que você tenha 100 reais para investir. Você poderá escolher investir tudo em um único investimento, ou dividir o dinheiro entre os dois investimentos. O valor que você ganha depende da quantidade de dinheiro que você distribui para cada opção de investimento.
 <br>
 <br>
-Para escolher quanto deseja investir em cada investimento, clique na barra e mova a caixa que aparece até obter o valor desejado para cada investimento.
+Para escolher quanto deseja investir em cada investimento, clique na barra azul abaixo da tabela e mova a caixa que aparece até obter o valor desejado para cada investimento.
 <br>
 <br>
 Por exemplo, se você mover a caixa totalmente para a DIREITA, você investirá <toMoney>100</toMoney> no <i>Investimento A</i> e <toMoney>0</toMoney> no <i>Investimento B</i>. <br>
 Se você mover a caixa totalmente para a ESQUERDA, você investirá <toMoney>0</toMoney> no <i>Investimento A</i> e <toMoney>100</toMoney> no <i>Investimento B </i>.
 <br>
 <br>
-Na tabela mostramos como os retornos mudam dependendo em quanto é investido no <i>Investimento A</i> e no <i>Investimento B</i>.
+Na tabela, você pode ver como os retornos mudam dependendo de quanto é investido em cada investimento.
 <br>
 <br>
 <div>

@@ -360,9 +360,9 @@
                     btn.click();
                 } else {
                     document.getElementById('test_05_time').value = Date.now() - start;
-                    if (Number(in_test05_a.value) == 15) {
+                    if (Number(in_test05_a.value) == 30) {
                         document.getElementById('test_05_answer_a').value = 'Correct';
-                        if (Number(in_test05_b.value) == -9) {
+                        if (Number(in_test05_b.value) == 0) {
                             document.getElementById('text_result_04').innerHTML = 'Correto';
                             document.getElementById('test_05_answer_b').value = 'Correct';
                         } else {
@@ -372,7 +372,7 @@
                     } else {
                         document.getElementById('test_05_answer_a').value = 'Incorrect';
                         document.getElementById('text_result_04').innerHTML = 'Incorreto';
-                        if (Number(in_test05_b.value) == -9) {
+                        if (Number(in_test05_b.value) == 0) {
                             document.getElementById('test_05_answer_b').value = 'Correct';
                         } else {
                             document.getElementById('test_05_answer_b').value = 'Incorrect';
@@ -435,10 +435,10 @@
 {% block content %}
 
 <div id="step_1" style="height: 110px;">
-    Apresentamos agora as porcentagens de retorno de DOIS INVESTIMENTOS ao mesmo tempo.
+    Apresentamos agora as porcentagens de retorno de <b>dois investimentos</b> ao mesmo tempo.
     <br>
     <br>
-    <i>Clique</i> em
+    Clique em
     {% if graphType == 1 %}
     "Mostrar Investimentos A e B" para ver as porcentagens de retorno do Investimento A e do Investimento B.
     {% else %}
@@ -452,7 +452,7 @@
         <td style="width: 10%;"><b>Pergunta:</b></td>
         <td class="cell_question">
             <div id="text01">
-                Em quantos cenários os retornos do <i>Investimento A</i> e do <i>Investimento B</i> são <b>altas</b> ao mesmo tempo?
+                Em quantos cenários os retornos do Investimento A e do Investimento B são <b>altos</b> ao mesmo tempo?
             </div>
         </td>
         <td class="cell_input">
@@ -467,7 +467,7 @@
 </div>
 
 <div id="step_3" style="display: none; height: 110px;">
-    <b><text id="text_result_01"></text></b>, em 2 cenários os retornos do <i>Investimento A</i> e do <i>Investimento B</i> são <b>altas</b> ao mesmo tempo (Cenário 3 e Cenário 8).
+    <b><text id="text_result_01"></text></b>, em 2 cenários os retornos do Investimento A e do Investimento B são <b>altos</b> ao mesmo tempo (Cenário 3 e Cenário 8).
 </div>
 
 <div id="step_4" style="display: none; height: 110px;">
@@ -476,7 +476,7 @@
         <td style="width: 10%;"><b>Pergunta:</b></td>
         <td class="cell_question">
             <div id="text01">
-                Em quantos cenários os retornos do <i>Investimento A</i> e do <i>Investimento B</i> são <b>baixos</b> ao mesmo tempo?
+                Em quantos cenários os retornos do Investimento A e do Investimento B são <b>baixos</b> ao mesmo tempo?
             </div>
         </td>
         <td class="cell_input">
@@ -491,7 +491,7 @@
 </div>
 
 <div id="step_5" style="display: none; height: 110px;">
-    <b><text id="text_result_02"></text></b>, em 2 cenários os retornos do <i>Investimento A</i> e do <i>Investimento B</i> são <b>baixos</b> ao mesmo tempo (Cenário 2 e Cenário 7).
+    <b><text id="text_result_02"></text></b>, em 2 cenários os retornos do Investimento A e do Investimento B são <b>baixos</b> ao mesmo tempo (Cenário 2 e Cenário 7).
 </div>
 
 <div id="step_6" style="display: none; height: 110px;">
@@ -519,7 +519,7 @@
 </div>
 
 <div id="step_8" style="display: none; height: 110px;">
-    O computador selecionará aleatoriamente UM cenário. O cenário selecionado determinará o pagamento que você receberá por cada investimento. Ou seja, os pagamentos de cada investimento serão determinados de acordo com UM dos oito cenários.     
+    Dentre os 8 cenários, apenas UM será selecionado para calcular o retorno do investimento. A seleção será feita pelo computador aleatoriamente.     
 </div>
 
 <div id="step_9" style="display: none; height: 110px;">
@@ -532,7 +532,7 @@
         <td style="width: 10%;"><b>Pergunta:</b></td>
         <td class="cell_question" style="width: 90% !important;">
             <div id="text01">
-                Se o computador escolher aleatoriamente o CENÁRIO 4, qual será o retorno para cada <toMoney>100</toMoney> reais investidos em A e B?
+                Se o computador escolher o CENÁRIO 4, qual será o retorno para cada R$ 100 reais investidos em A e B?
             </div>
         </td>
     </tr>
@@ -563,7 +563,7 @@
 </div>
 
 <div id="step_11" style="display: none; height: 110px;">
-    <b><text id="text_result_04"></text></b>, ganhará <toMoney>30</toMoney> no <i>Investimento A</i> e <toMoney>0</toMoney> no <i>Investimento B</i> se o CENÁRIO 4 for escolhido aleatoriamente para determinar o retorno do dinheiro investido.
+    <b><text id="text_result_04"></text></b>, ganhará R$ 30 no <i>Investimento A</i> e R$ 0 no <i>Investimento B</i> se o CENÁRIO 4 for escolhido aleatoriamente para determinar o retorno do dinheiro investido.
 </div>
 
 <div id="step_12" style="display: none; height: 110px;">

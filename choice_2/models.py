@@ -69,4 +69,4 @@ class Player(BasePlayer):
 
     name_app_n = models.IntegerField(default = 1)
     name_app = models.StringField(default = 'choice_2')
-    name_app_2_user = models.StringField(default = 'Rentabilidade variável')
+    name_app_2_user = models.StringField(default = 'Em qual opção investir?')

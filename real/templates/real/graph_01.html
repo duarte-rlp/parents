@@ -38,7 +38,7 @@
             },
             yAxis: {
                 title: {
-                    text: 'Rentabilidade em reais por hectár'
+                    text: 'Rentabilidade em reais para cada 100 hectres'
                 },
                 min: {{ min_y }} - 5,
                 max: {{ max_y }} + 5
@@ -99,7 +99,7 @@
                 y: data_a[n_data],
                 dataLabels: {
                     enabled: true,
-                    format: data_a[n_data].toLocaleString('es-CO'),
+                    format: data_a[n_data].toLocaleString('pt-BR'),
                     y: y_pos_a,
                     style: {
                         color: 'blue',
@@ -115,7 +115,7 @@
                 y: data_b[n_data],
                 dataLabels: {
                     enabled: true,
-                    format: data_b[n_data].toLocaleString('es-CO'),
+                    format: data_b[n_data].toLocaleString('pt-BR'),
                     y: y_pos_b,
                     style: {
                         color: 'green',
@@ -140,7 +140,7 @@
                 y: data_a[n_data],
                 dataLabels: {
                     enabled: true,
-                    format: data_a[n_data].toLocaleString('es-CO'),
+                    format: data_a[n_data].toLocaleString('pt-BR'),
                     y: y_pos,
                     style: {
                         color: 'blue',
@@ -165,7 +165,7 @@
                 y: data_b[n_data],
                 dataLabels: {
                     enabled: true,
-                    format: data_b[n_data].toLocaleString('es-CO'),
+                    format: data_b[n_data].toLocaleString('pt-BR'),
                     y: y_pos,
                     style: {
                         color: 'green',
@@ -339,9 +339,9 @@
                 let mon_a = ((document.getElementById("has_cultivo_1").value * data_a[i])/10);
                 let mon_b = ((document.getElementById("has_cultivo_2").value * data_b[i])/10);
                 let mon_t = mon_a + mon_b;
-                mon_a = "$ " + mon_a.toLocaleString('es-CO');
-                mon_b = "$ " + mon_b.toLocaleString('es-CO');
-                mon_t = "$ " + mon_t.toLocaleString('es-CO');
+                mon_a = "R$ " + mon_a.toLocaleString('pt-BR');
+                mon_b = "R$ " + mon_b.toLocaleString('pt-BR');
+                mon_t = "R$ " + mon_t.toLocaleString('pt-BR');
                 cell_a.innerHTML = mon_a;
                 cell_b.innerHTML = mon_b;
                 cell_t.innerHTML = mon_t;
@@ -360,8 +360,8 @@
                     var slider_value = childs[1].firstElementChild.value;
                     var dinero_pb = childs[2];
 
-                    dinero_pa.innerHTML = numberWithPoints(slider_value) + " hectáreas";
-                    dinero_pb.innerHTML = numberWithPoints(slider_max-slider_value) + " hectáreas";
+                    dinero_pa.innerHTML = numberWithPoints(slider_value) + " hectares";
+                    dinero_pb.innerHTML = numberWithPoints(slider_max-slider_value) + " hectares";
 
                     if (slider_act == 0) {
                         document.getElementById('btnNext').style.display = 'block';
@@ -376,9 +376,9 @@
                         let mon_a = ((slider_value * data_a[i])/10);
                         let mon_b = (((slider_max-slider_value) * data_b[i])/10);
                         let mon_t = mon_a + mon_b;
-                        mon_a = "$ " + mon_a.toLocaleString('es-CO');
-                        mon_b = "$ " + mon_b.toLocaleString('es-CO');
-                        mon_t = "$ " + mon_t.toLocaleString('es-CO');
+                        mon_a = "R$ " + mon_a.toLocaleString('pt-BR');
+                        mon_b = "R$ " + mon_b.toLocaleString('pt-BR');
+                        mon_t = "R$ " + mon_t.toLocaleString('pt-BR');
                         cell_a.innerHTML = mon_a;
                         cell_b.innerHTML = mon_b;
                         cell_t.innerHTML = mon_t;
@@ -403,7 +403,7 @@ Clique no botão
 {% else %}
 "Mostrar Cultivo A" e "Mostrar Cultivo B"
 {% endif %}
-para ver a rentabilidade (reais por hectare) que os cultivos podem gerar em cada cenário.
+para ver o retorno para cada 100 hectares plantados que os cultivos podem gerar em cada cenário.
 </div>
 
 <div id="step_2" style="display: none;">
@@ -411,7 +411,7 @@ Clique na barra e mova a caixa para ver como o número de hectares para o <i>Cul
 </div>
 
 <div id="step_3" style="display: none;">
-<b>Com base apenas na rentabilidade e sem ter em conta quaisquer custos adicionais, escreva nas caixas em quantos hectáres deseja plantar cada um dos cultivos. Lembre-se que a quantidade de terra total deve ser de 100 hectares.
+<b>Com base apenas no retorno e sem ter custos adicionais, escreva nas caixas em quantos hectáres deseja plantar cada um dos cultivos. Lembre-se que a quantidade de terra total deve ser de 100 hectares.
 <br>
 <br>
 Em seguida, clique em “Enviar” para confirmar sua decisão e continuar. 

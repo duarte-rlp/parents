@@ -24,7 +24,7 @@ class Constants(BaseConstants):
     num_rounds = 1
     investment_heads = [
                         9,
-                        8.1,
+                        (8.10),
                         7.2,
                         6.3,
                         5.4,
@@ -34,7 +34,7 @@ class Constants(BaseConstants):
                         ]
     investment_tails = [
                         9,
-                        17.1,
+                        (17.10),
                         21.6,
                         22.5,
                         27.,

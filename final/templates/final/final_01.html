@@ -35,11 +35,11 @@ A moeda foi jogada pelo computador e saiu
 
 Nessa atividade, foi selecionado aleatoriamente o problema <b>{{ data.n_problem }}</b> e o cenário <b>{{ data.n_scene }}</b>.
 <br><br>
-Você investiu <b><toMoney>{{ data.val_invesment_1 }}</toMoney></b> que tem um retorno de <b>{{ data.per_investment_1 }} %</b> no <b>Investimento A</b> resultando em um retorno de <b><toMoney>{{ data.amount_invesment_1 }}</toMoney></b> e <b><toMoney>{{ data.val_invesment_2 }}</toMoney></b> que tem um retorno de <b>{{ data.per_investment_2 }} %</b> no <b>Investimento B</b> resultando em um retorno de <b><toMoney>{{ data.amount_invesment_2 }}</toMoney></b>. No total, você teve  
+No <b>Investimento A</b>, você investiu <b><toMoney>{{ data.val_invesment_1 }}</toMoney></b>, com uma porcentagem de retorno de <b>{{ data.per_investment_1 }} %</b>. No <b>Investimento B</b>, você investiu <b><toMoney>{{ data.val_invesment_2 }}</toMoney></b>, com uma porcentagem de retorno de <b>{{ data.per_investment_2 }} %</b>. No total, você teve  
     {% if data.payoff_amount_app < 0 %}
-        uma PERDA
+        uma perda
     {% else %}
-        um GANHO
+        um ganho
     {% endif %}
 de <b><toMoney>{{ data.payoff_amount_app }}</toMoney></b>.
 
@@ -72,20 +72,19 @@ Você selecionou
 <br>
 Ao valor inicial de <toMoney>{{ data.pago_base }}</toMoney> se  
 {% if data.payoff_amount_app < 0 %}
-    subtrai as PERDAS 
+    subtrai as PERDAS da atividade selecionada, resultando em um valor menor que 20 reais. Como o seu pagamento total é menor que o mínimo, você receberá <b><toMoney>{{ data.pago_real }}</toMoney></b>.
 {% else %}
-    somam os GANHOS 
+    somam os GANHOS da atividade selecionada, resultando em um valor total a ser pago de <b><toMoney>{{ data.pago_real }}</toMoney></b>.
 {% endif %}
-da atividade selecionada, resultando em um valor total a ser pago de <b><toMoney>{{ data.pago_real }}</toMoney></b>.
 
-<div style="text-align: left;">
+<!-- <div style="text-align: left;">
 <br>
 {% if data.is_menor_pago == 1 %}
-Como o seu pagamento total é menor que o mínimo que você receberá <b><toMoney>{{ data.pago_real }}</toMoney></b>
+Como o seu pagamento total é menor que o mínimo, você receberá <b><toMoney>{{ data.pago_real }}</toMoney></b>.
 {% endif %}
 <br>
 <br>
-</div>
+</div> -->
 
 <div class="div_btnNext">
     {% next_button %}

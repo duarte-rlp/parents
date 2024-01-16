@@ -33,24 +33,24 @@ class Constants(BaseConstants):
             8
             ]
     cultivo_1 = [
-            10,
-            13,
-            17,
-            18,
-            20,
-            18,
-            16,
-            14
+            30,
+            33,
+            37,
+            38,
+            40,
+            39,
+            36,
+            35
             ]
     cultivo_2 = [
-            17,
-            16,
-            13,
-            7,
-            10,
-            16,
-            17,
-            16
+            34,
+            35,
+            34,
+            27,
+            30,
+            34,
+            37,
+            36
             ]
     time_steps = 500 # tiempo en aparecer cada punto
     investment_max = 100

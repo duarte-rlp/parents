@@ -23,24 +23,24 @@ class Constants(BaseConstants):
     players_per_group = None
     num_rounds = 1
     investment_heads = [
+                        10,
                         9,
-                        c(8.10),
-                        7.2,
-                        6.3,
-                        5.4,
-                        3.6,
-                        1.8,
+                        8,
+                        7,
+                        6,
+                        4,
+                        2,
                         0
                         ]
     investment_tails = [
-                        9,
-                        c(17.10),
-                        21.6,
-                        22.5,
-                        27.,
-                        28.8,
-                        34.2,
-                        36
+                        10,
+                        19,
+                        24,
+                        25,
+                        30,
+                        32,
+                        38,
+                        40
                         ]
 
 

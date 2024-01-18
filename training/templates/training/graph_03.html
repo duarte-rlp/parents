@@ -94,7 +94,7 @@
                 y: data_a[n_data],
                 dataLabels: {
                     enabled: true,
-                    format: data_a[n_data].toLocaleString('es-CO'),
+                    format: data_a[n_data].toLocaleString('pt-BR'),
                     y: y_pos_a,
                     style: {
                         color: 'blue',
@@ -110,7 +110,7 @@
                 y: data_b[n_data],
                 dataLabels: {
                     enabled: true,
-                    format: data_b[n_data].toLocaleString('es-CO'),
+                    format: data_b[n_data].toLocaleString('pt-BR'),
                     y: y_pos_b,
                     style: {
                         color: 'green',
@@ -135,7 +135,7 @@
                 y: data_a[n_data],
                 dataLabels: {
                     enabled: true,
-                    format: data_a[n_data].toLocaleString('es-CO'),
+                    format: data_a[n_data].toLocaleString('pt-BR'),
                     y: y_pos,
                     style: {
                         color: 'blue',
@@ -160,7 +160,7 @@
                 y: data_b[n_data],
                 dataLabels: {
                     enabled: true,
-                    format: data_b[n_data].toLocaleString('es-CO'),
+                    format: data_b[n_data].toLocaleString('pt-BR'),
                     y: y_pos,
                     style: {
                         color: 'green',
@@ -317,8 +317,8 @@
                     var slider_value = childs[1].firstElementChild.value;
                     var dinero_pb = childs[2];
 
-                    dinero_pa.innerHTML = "$ "+numberWithPoints(slider_value);
-                    dinero_pb.innerHTML = "$ "+numberWithPoints(slider_max-slider_value);
+                    dinero_pa.innerHTML = "R$ "+numberWithPoints(slider_value);
+                    dinero_pb.innerHTML = "R$ "+numberWithPoints(slider_max-slider_value);
 
                     if (slider_act == 0) {
                         document.getElementById('btnNext').style.display = 'block';
@@ -334,25 +334,25 @@
                         let mon_b = ((slider_max-slider_value) * data_b[i]) / 100;
                         let mon_t = mon_a + mon_b;
                         if(mon_a < 0) {
-                            mon_a = "- $" + (mon_a * -1).toLocaleString('es-CO');
+                            mon_a = "-R$" + (mon_a * -1).toLocaleString('pt-BR');
                         } else if(mon_a > 0) {
-                            mon_a = "$ " + mon_a.toLocaleString('es-CO');
+                            mon_a = "R$ " + mon_a.toLocaleString('pt-BR');
                         } else {
-                            mon_a = "$ 0";
+                            mon_a = "R$ 0";
                         }
                         if(mon_b < 0) {
-                            mon_b = "- $" + (mon_b * -1).toLocaleString('es-CO');
+                            mon_b = "-R$" + (mon_b * -1).toLocaleString('pt-BR');
                         } else if(mon_b > 0) {
-                            mon_b = "$ " + mon_b.toLocaleString('es-CO');
+                            mon_b = "R$ " + mon_b.toLocaleString('pt-BR');
                         } else {
-                            mon_b = "$ 0";
+                            mon_b = "R$ 0";
                         }
                         if(mon_t < 0) {
-                            mon_t = "- $" + (mon_t * -1).toLocaleString('es-CO');
+                            mon_t = "-R$" + (mon_t * -1).toLocaleString('pt-BR');
                         } else if(mon_t > 0) {
-                            mon_t = "$ " + mon_t.toLocaleString('es-CO');
+                            mon_t = "R$ " + mon_t.toLocaleString('pt-BR');
                         } else {
-                            mon_t = "$ 0";
+                            mon_t = "R$ 0";
                         }
                         cell_a.innerHTML = mon_a;
                         cell_b.innerHTML = mon_b;
@@ -417,18 +417,18 @@
 {% endblock %}
 
 {% block content %}
-<div id="step_1" style="height: 160px;">
+<div id="step_1" style="height: 180px;">
 Clique em "Mostrar Investimento". Em seguida, invista R$ 10 no <i>Investimento A</i> e R$ 90 no <i>Investimento B</i> movendo a barra inferior. Na TABELA ABAIXO serão mostrados os retornos para o investimento. Por exemplo, a tabela mostra os seguintes retornos para o CENÁRIO 4:
 <br>
 <br>
 <ul>
     <li>Retorno A: R$ 3 (R$ 10 x {{ data_a.3 }}%)</li>
-    <li>Retorno B: R$ 3 (R$ 90 x {{ data_b.3 }}%)</li>
+    <li>Retorno B: R$ 0 (R$ 90 x {{ data_b.3 }}%)</li>
 </ul>
 Como você ganha R$ 3 no <i>Investimento A</i> e R$ 0 no <i>Investimento B</i>, o retorno total possível no CENÁRIO 4 é de R$ 3. Os retornos totais são mostrados na última linha da tabela.
 </div>
 
-<div id="step_2" style="display: none; height: 160px;">
+<div id="step_2" style="display: none; height: 120px;">
 <table class="table_question">
     <tr>
         <td style="width: 10%;"><b>Pergunta:</b></td>

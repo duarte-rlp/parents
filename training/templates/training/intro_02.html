@@ -98,8 +98,8 @@
                     var slider_value = childs[1].firstElementChild.value;
                     var dinero_pb = childs[2];
 
-                    dinero_pa.innerHTML = "$ "+numberWithPoints(slider_value);
-                    dinero_pb.innerHTML = "$ "+numberWithPoints(slider_max-slider_value);
+                    dinero_pa.innerHTML = "R$ "+numberWithPoints(slider_value);
+                    dinero_pb.innerHTML = "R$ "+numberWithPoints(slider_max-slider_value);
 
                     if (slider_act == 0) {
                         var next_button = document.getElementsByClassName('otree-btn-next');
@@ -127,25 +127,25 @@
                         let mon_b = ((slider_max-slider_value) * data_b[i]) / 100;
                         let mon_t = mon_a + mon_b;
                         if(mon_a < 0) {
-                            mon_a = "- $" + (mon_a * -1).toLocaleString('es-CO');
+                            mon_a = "-R$" + (mon_a * -1).toLocaleString('pt-BR');
                         } else if(mon_a > 0) {
-                            mon_a = "$ " + mon_a.toLocaleString('es-CO');
+                            mon_a = "R$ " + mon_a.toLocaleString('pt-BR');
                         } else {
-                            mon_a = "$ 0";
+                            mon_a = "R$ 0";
                         }
                         if(mon_b < 0) {
-                            mon_b = "- $" + (mon_b * -1).toLocaleString('es-CO');
+                            mon_b = "-R$" + (mon_b * -1).toLocaleString('pt-BR');
                         } else if(mon_b > 0) {
-                            mon_b = "$ " + mon_b.toLocaleString('es-CO');
+                            mon_b = "R$ " + mon_b.toLocaleString('pt-BR');
                         } else {
-                            mon_b = "$ 0";
+                            mon_b = "R$ 0";
                         }
                         if(mon_t < 0) {
-                            mon_t = "- $" + (mon_t * -1).toLocaleString('es-CO');
+                            mon_t = "-R$" + (mon_t * -1).toLocaleString('pt-BR');
                         } else if(mon_t > 0) {
-                            mon_t = "$ " + mon_t.toLocaleString('es-CO');
+                            mon_t = "R$ " + mon_t.toLocaleString('pt-BR');
                         } else {
-                            mon_t = "$ 0";
+                            mon_t = "R$ 0";
                         }
                         cell_a.innerHTML = mon_a;
                         cell_b.innerHTML = mon_b;
@@ -184,7 +184,7 @@
                 y: data_a[n_data],
                 dataLabels: {
                     enabled: true,
-                    format: data_a[n_data].toLocaleString('es-CO'),
+                    format: data_a[n_data].toLocaleString('pt-BR'),
                     y: y_pos_a,
                     style: {
                         color: 'blue',
@@ -200,7 +200,7 @@
                 y: data_b[n_data],
                 dataLabels: {
                     enabled: true,
-                    format: data_b[n_data].toLocaleString('es-CO'),
+                    format: data_b[n_data].toLocaleString('pt-BR'),
                     y: y_pos_b,
                     style: {
                         color: 'green',
@@ -225,7 +225,7 @@
                 y: data_a[n_data],
                 dataLabels: {
                     enabled: true,
-                    format: data_a[n_data].toLocaleString('es-CO'),
+                    format: data_a[n_data].toLocaleString('pt-BR'),
                     y: y_pos,
                     style: {
                         color: 'blue',
@@ -250,7 +250,7 @@
                 y: data_b[n_data],
                 dataLabels: {
                     enabled: true,
-                    format: data_b[n_data].toLocaleString('es-CO'),
+                    format: data_b[n_data].toLocaleString('pt-BR'),
                     y: y_pos,
                     style: {
                         color: 'green',
@@ -333,14 +333,14 @@
 Suponha que você tenha 100 reais para investir. Você poderá escolher investir tudo em um único investimento, ou dividir o dinheiro entre os dois investimentos. O valor que você ganha depende da quantidade de dinheiro que você distribui para cada opção de investimento.
 <br>
 <br>
-Para escolher quanto deseja investir em cada investimento, clique na barra azul abaixo da tabela e mova a caixa que aparece até obter o valor desejado para cada investimento.
+Para escolher quanto deseja investir em cada opção, clique na barra azul abaixo da tabela e mova a caixa que aparece até obter o valor desejado para cada investimento.
 <br>
 <br>
-Por exemplo, se você mover a caixa totalmente para a DIREITA, você investirá <toMoney>100</toMoney> no <i>Investimento A</i> e <toMoney>0</toMoney> no <i>Investimento B</i>. <br>
-Se você mover a caixa totalmente para a ESQUERDA, você investirá <toMoney>0</toMoney> no <i>Investimento A</i> e <toMoney>100</toMoney> no <i>Investimento B </i>.
+Por exemplo, se você mover a caixa totalmente para a DIREITA, você investirá R$ 100 no <i>Investimento A</i> e R$ 0 no <i>Investimento B</i>. <br>
+Se você mover a caixa totalmente para a ESQUERDA, você investirá R$ 0 no <i>Investimento A</i> e R$ 100 no <i>Investimento B </i>.
 <br>
 <br>
-Na tabela, você pode ver como os retornos mudam dependendo de quanto é investido em cada investimento.
+Na tabela, você pode ver como os retornos mudam dependendo de quanto é investido em cada opção de investimento.
 <br>
 <br>
 <div>

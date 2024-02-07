@@ -81,11 +81,11 @@ class Constants(BaseConstants):
                                 'Médio risco',
                                 'Alto risco'
                             ]
-    insurance_list      =   [
-                                'Sim',
-                                'Não',
-                                'Não sei / Não me lembro'
-                            ]
+    # insurance_list      =   [
+    #                             'Sim',
+    #                             'Não',
+    #                             'Não sei / Não me lembro'
+    #                         ]
     hectares_list       =   [
                                 'Não trabalho com agro / Nenhum',
                                 'Menos de 1 hectare',
@@ -96,20 +96,18 @@ class Constants(BaseConstants):
                                 'Não sei / Não me lembro'
                             ]
     farminc_list        =   [
-                                'Não trabalho com agro',
                                 'Cultivos',
                                 'Gado',
                                 'Pesca',
                                 'Não sei/Não me lembro'
                             ]
     crops_list          =   [
-                                'Não trabalho com agro / Não sei',
                                 'Apenas um cultivo de cada vez',
                                 '2 cultivos ao mesmo tempo',
-                                '3 ou mais cultivos ao mesmo tempo'
+                                '3 ou mais cultivos ao mesmo tempo',
+                                'Não sei'
                             ]
     cropTypes_list      =   [
-                                'Não trabalho com agro / Não sei',
                                 'Hortaliças (por exemplo: alface, rúcula, agrião)',
                                 'Frutas (por exemplo: laranja, banana)',
                                 'Vegetais (por exemplo: abobrinha, chuchu, etc.)',
@@ -119,61 +117,59 @@ class Constants(BaseConstants):
                                 'Soja',
                                 'Milho',
                                 'Pasto',
-                                'Outros'
+                                'Outros',
+                                'Não sei'
                             ]
-    cropImportance_list =   [
-                                'Desempenhos em anos anteriores',
-                                'Retornos esperados para o próximo ano',
-                                'Clima em anos anteriores',
-                                'Clima esperado para o próximo ano',
-                                'Meu conhecimento sobre como cultivar',
-                                'Os cultivos que outros agricultores da região estão cultivando'
-                            ]
+    # cropImportance_list =   [
+    #                             'Desempenhos em anos anteriores',
+    #                             'Retornos esperados para o próximo ano',
+    #                             'Clima em anos anteriores',
+    #                             'Clima esperado para o próximo ano',
+    #                             'Meu conhecimento sobre como cultivar',
+    #                             'Os cultivos que outros agricultores da região estão cultivando'
+    #                         ]
     cropsLoss_list      =   [
-                                'Não trabalho com agro / Não sei',
                                 'Sim uma vez',
                                 'Sim, mais de uma vez',
-                                'Não, nunca'
+                                'Não, nunca',
+                                'Não sei'
                             ]
     savings_list        =   [
-                                'Não trabalho com agro / Não sei',
                                 'Sim',
-                                'Não'
+                                'Não',
+                                'Não sei'
                             ]
     protection_list     =   [
-                                'Ter poupança para poder utilizar em caso de quebra de safra',
-                                'Ter diferentes tipos de cultivos para evitar perdas',
-                                'Ter gado para compensar as perdas nas colheitas',
-                                'Ter outras fontes de renda além do agro (por exemplo: outro emprego ou ocupação)',
-                                'Ter seguro contra quebras de safra (por exemplo: seguro contra intempéries)',
-                                'Pedir ajuda de familiares ou amigos nesses casos'
+                                'Ter dinheiro guardado para poder utilizar em caso de quebra de uma colheita',
+                                'Ter outras fontes de renda (por exemplo: ter outros tipos de cultivo, criar gado, ter outro emprego)',
+                                'Ter seguro contra quebras de colheita'
                             ]
-    climate_list        =   [
-                                'Não trabalho com agro / Não sei',
-                                'Sim',
-                                'Não'
-                            ]
-    events_list         =   [
-                                'Incêndios florestais',
-                                'Inundações',
-                                'Mais chuva que o normal',
-                                'Menos chuva que o normal',
-                                'Secas',
-                                'Temperaturas mais altas que o normal',
-                                'Temperaturas mais baixas que o normal',
-                                'Terremotos / Tremores',
-                                'Outros desastres naturais',
-                                'Nenhum problema',
-                                'Não sei / não me lembro'
-                            ]
-    measures_list       =   [
-                                'Usar as economias próprias',
-                                'Fazer uma dívida',
-                                'Pedir ajuda a alguém conhecido',
-                                'Pedir ajuda a um membro da família',
-                                'Vender algo de valor',
-                                'Reduzir as compras'
-                            ]
+    # climate_list        =   [
+    #                             'Não trabalho com agro / Não sei',
+    #                             'Sim',
+    #                             'Não'
+    #                         ]
+    # events_list         =   [
+    #                             'Incêndios florestais',
+    #                             'Inundações',
+    #                             'Mais chuva que o normal',
+    #                             'Menos chuva que o normal',
+    #                             'Secas',
+    #                             'Temperaturas mais altas que o normal',
+    #                             'Temperaturas mais baixas que o normal',
+    #                             'Terremotos / Tremores',
+    #                             'Outros desastres naturais',
+    #                             'Nenhum problema',
+    #                             'Não sei / não me lembro'
+    #                         ]
+    # measures_list       =   [
+    #                             'Usar as economias próprias',
+    #                             'Fazer uma dívida',
+    #                             'Pedir ajuda a alguém conhecido',
+    #                             'Pedir ajuda a um membro da família',
+    #                             'Vender algo de valor',
+    #                             'Reduzir as compras'
+    #                         ]
 
 
 class Subsession(BaseSubsession):
@@ -191,7 +187,7 @@ class Player(BasePlayer):
     q_gender        = models.StringField()
     q_married       = models.StringField()
     q_family        = models.IntegerField()
-    q_children      = models.IntegerField()
+    # q_children      = models.IntegerField()
     q_workers       = models.IntegerField()
     q_educ          = models.StringField()
     q_job           = models.StringField()
@@ -203,10 +199,10 @@ class Player(BasePlayer):
 # Risk Questions
     q_risk          = models.IntegerField()
     q_riskList      = models.StringField()
-    q_returns       = models.IntegerField()
-    q_riskImportant = models.IntegerField()
-    q_loss          = models.IntegerField()
-    q_insurance     = models.StringField()
+    # q_returns       = models.IntegerField()
+    # q_riskImportant = models.IntegerField()
+    # q_loss          = models.IntegerField()
+    # q_insurance     = models.StringField()
     q_patience      = models.IntegerField()
 
 # Agriculture & Climate Questions
@@ -214,23 +210,20 @@ class Player(BasePlayer):
     q_farminc       = models.StringField()
     q_crops         = models.StringField()
     q_cropTypes     = models.StringField()
-    q_cropsImp_1    = models.IntegerField()
-    q_cropsImp_2    = models.IntegerField()
-    q_cropsImp_3    = models.IntegerField()
-    q_cropsImp_4    = models.IntegerField()
-    q_cropsImp_5    = models.IntegerField()
-    q_cropsImp_6    = models.IntegerField()
+    # q_cropsImp_1    = models.IntegerField()
+    # q_cropsImp_2    = models.IntegerField()
+    # q_cropsImp_3    = models.IntegerField()
+    # q_cropsImp_4    = models.IntegerField()
+    # q_cropsImp_5    = models.IntegerField()
+    # q_cropsImp_6    = models.IntegerField()
     q_cropsLoss     = models.StringField()
     q_savings       = models.StringField()
     q_protection_1  = models.IntegerField()
     q_protection_2  = models.IntegerField()
     q_protection_3  = models.IntegerField()
-    q_protection_4  = models.IntegerField()
-    q_protection_5  = models.IntegerField()
-    q_protection_6  = models.IntegerField()
-    q_climate       = models.StringField()
-    q_events        = models.StringField()
-    q_measures      = models.StringField()
+    # q_climate       = models.StringField()
+    # q_events        = models.StringField()
+    # q_measures      = models.StringField()
 
 
 

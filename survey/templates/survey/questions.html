@@ -160,11 +160,11 @@ Obrigado por concluir as atividades. Antes de concluirmos, faremos algumas pergu
 
 <br>
 
-<div id="q5">
+<!-- <div id="q5">
     <label for="children_box" id="l_children_box"><b>Quantos filhos você tem?</b></label><br>
     <input type="number" name="q_children" id="children_box" class="inNumber" min="0" max="20" oninput="validate_number(this)" required>
     <div style="color:red; text-align: left; display: none;"></div>
-</div>
+</div> -->
 
 <br>
 
@@ -209,7 +209,7 @@ Obrigado por concluir as atividades. Antes de concluirmos, faremos algumas pergu
 <br>
 
 <div id="q10">
-    <label for="incomeRange_list" id="l_incomeRange_list"><b>Tendo em conta a sua resposta anterior, a sua renda média mensal está no intervalo de:</b></label><br>
+    <label for="incomeRange_list" id="l_incomeRange_list"><b>Baseado na sua resposta anterior, a sua renda média mensal está no intervalo de:</b></label><br>
     <select id="incomeRange_list" class="input-list" name="q_incomeRange" required onchange="check_incomeRange(this)">
         <option class="input-list" value disabled selected>---------</option>
         {% for opcion in incomeRange_list %}

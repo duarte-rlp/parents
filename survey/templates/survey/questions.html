@@ -73,7 +73,7 @@
                         show_error(input, div_error, 'Deve ser um valor entre R$ 1 e R$ 100.000.000');
                     } else {
                         if (value != null) {
-                            input.value = "$ " + Number(value).toLocaleString('es-CO');
+                            input.value = "R$ " + Number(value).toLocaleString('pt-BR');
                         }
                     }
                 break
@@ -160,15 +160,7 @@ Obrigado por concluir as atividades. Antes de concluirmos, faremos algumas pergu
 
 <br>
 
-<!-- <div id="q5">
-    <label for="children_box" id="l_children_box"><b>Quantos filhos você tem?</b></label><br>
-    <input type="number" name="q_children" id="children_box" class="inNumber" min="0" max="20" oninput="validate_number(this)" required>
-    <div style="color:red; text-align: left; display: none;"></div>
-</div> -->
-
-<br>
-
-<div id="q6">
+<div id="q5">
     <label for="workers_box" id="l_workers_box"><b>Quantas pessoas contribuem para a renda da sua casa?</b></label><br>
     <input type="number" name="q_workers" id="workers_box" class="inNumber" min="0" oninput="validate_number(this)" required>
     <div style="color:red; text-align: left; display: none;"></div>
@@ -176,7 +168,7 @@ Obrigado por concluir as atividades. Antes de concluirmos, faremos algumas pergu
 
 <br>
 
-<div id="q7">
+<div id="q6">
     <label for="education_list" id="l_education_list"><b>Qual é o nível de ensino mais alto que você concluiu ou está cursando?</b></label><br>
     <select id="education_list" class="input-list" name="q_educ" required>
         <option class="input-list" value disabled selected>---------</option>
@@ -188,7 +180,7 @@ Obrigado por concluir as atividades. Antes de concluirmos, faremos algumas pergu
 
 <br>
 
-<div id="q8">
+<div id="q7">
     <label for="job_list" id="l_job_list"><b>Qual é a sua situação atual de emprego?</b></label><br>
     <select id="job_list" class="input-list" name="q_job" required>
         <option class="input-list" value disabled selected>---------</option>
@@ -200,7 +192,7 @@ Obrigado por concluir as atividades. Antes de concluirmos, faremos algumas pergu
 
 <br>
 
-<div id="q9">
+<div id="q8">
     <label for="income_box" id="l_income_box"><b>Qual é a sua renda média mensal aproximada? (As respostas são anônimas, não é possível identificar participantes)</b></label><br>
     <input type="text" name="q_income" id="income_box" class="inNumber" oninput="validate_number(this)" style="max-width: 200px !important;" required>
     <div style="color:red; text-align: left; display: none;"></div>
@@ -208,7 +200,7 @@ Obrigado por concluir as atividades. Antes de concluirmos, faremos algumas pergu
 
 <br>
 
-<div id="q10">
+<div id="q9">
     <label for="incomeRange_list" id="l_incomeRange_list"><b>Baseado na sua resposta anterior, a sua renda média mensal está no intervalo de:</b></label><br>
     <select id="incomeRange_list" class="input-list" name="q_incomeRange" required onchange="check_incomeRange(this)">
         <option class="input-list" value disabled selected>---------</option>
@@ -221,7 +213,7 @@ Obrigado por concluir as atividades. Antes de concluirmos, faremos algumas pergu
 
 <br>
 
-<div id="q11">
+<div id="q10">
     <label for="expenses_list" id="l_expenses_list"><b>No último mês, as despesas da sua residência foram maiores, menores ou iguais à renda?</b></label><br>
     <select id="expenses_list" class="input-list" name="q_expenses" required>
         <option class="input-list" value disabled selected>---------</option>
@@ -233,7 +225,7 @@ Obrigado por concluir as atividades. Antes de concluirmos, faremos algumas pergu
 
 <br>
 
-<div id="q12">
+<div id="q11">
     <label for="devices_list" id="l_devices_list"><b>De que tipo de dispositivo você está respondendo esta atividade:</b></label><br>
     <select id="devices_list" class="input-list" name="q_device" required>
         <option class="input-list" value disabled selected>---------</option>

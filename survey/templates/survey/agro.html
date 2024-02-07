@@ -88,63 +88,7 @@
 
 <br>
 
-<!-- <div id="q5">
-    <b>Quão importantes são os seguintes critérios ao decidir o que cultivar?</b><br>
-        <table style="width: 100%; text-align: center; margin-top: 5px;">
-            <tr><td colspan="13" style="width: 0.5rem;"><hr width="100%;"></td></tr>
-            {% for i in cropImportance_list %}
-            <table class="table_option">
-                <tr class="row_option_sta" id="row_option_sta_{{ forloop.counter }}"><td colspan="13"><ul><li>{{ i }}</li></ul></td></tr>
-                <tr class="row_option_opt" id="row_option_opt_{{ forloop.counter }}">
-                    <td style="width: 15%;">
-                        Nada importante
-                    </td>
-                    <td>
-                        <input type="radio" id="q_cropsImp_{{ forloop.counter }}_op0" name="q_cropsImp_{{ forloop.counter }}" value="0" class="items01" required><br>0
-                    </td>
-                    <td>
-                        <input type="radio" id="q_cropsImp_{{ forloop.counter }}_op1" name="q_cropsImp_{{ forloop.counter }}" value="1" class="items01"><br>1
-                    </td>
-                    <td>
-                        <input type="radio" id="q_cropsImp_{{ forloop.counter }}_op2" name="q_cropsImp_{{ forloop.counter }}" value="2" class="items01"><br>2
-                    </td>
-                    <td>
-                        <input type="radio" id="q_cropsImp_{{ forloop.counter }}_op3" name="q_cropsImp_{{ forloop.counter }}" value="3" class="items01"><br>3
-                    </td>
-                    <td>
-                        <input type="radio" id="q_cropsImp_{{ forloop.counter }}_op4" name="q_cropsImp_{{ forloop.counter }}" value="4" class="items01"><br>4
-                    </td>
-                    <td>
-                        <input type="radio" id="q_cropsImp_{{ forloop.counter }}_op5" name="q_cropsImp_{{ forloop.counter }}" value="5" class="items01"><br>5
-                    </td>
-                    <td>
-                        <input type="radio" id="q_cropsImp_{{ forloop.counter }}_op6" name="q_cropsImp_{{ forloop.counter }}" value="6" class="items01"><br>6
-                    </td>
-                    <td>
-                        <input type="radio" id="q_cropsImp_{{ forloop.counter }}_op7" name="q_cropsImp_{{ forloop.counter }}" value="7" class="items01"><br>7
-                    </td>
-                    <td>
-                        <input type="radio" id="q_cropsImp_{{ forloop.counter }}_op8" name="q_cropsImp_{{ forloop.counter }}" value="8" class="items01"><br>8
-                    </td>
-                    <td>
-                        <input type="radio" id="q_cropsImp_{{ forloop.counter }}_op9" name="q_cropsImp_{{ forloop.counter }}" value="9" class="items01"><br>9
-                    </td>
-                    <td>
-                        <input type="radio" id="q_cropsImp_{{ forloop.counter }}_op10" name="q_cropsImp_{{ forloop.counter }}" value="10" class="items01"><br>10
-                    </td>
-                    <td style="width: 15%;">
-                        Muito importante
-                    </td>
-                </tr>
-            </table>
-            <tr><td colspan="13"><hr width="100%;"></td></tr>
-            {% endfor %}
-        </table>
-</div>
-
-<br> -->
-
-<div id="q6">
+<div id="q5">
     <label for="cropsLoss_list" id="l_cropsLoss_list"><b>Você já teve uma quebra de safra?</b></label><br>
     <select id="cropsLoss_list" class="input-list" name="q_cropsLoss" required>
         <option class="input-list" value disabled selected>---------</option>
@@ -156,7 +100,7 @@
 
 <br>
 
-<div id="q7">
+<div id="q6">
     <label for="savings_list" id="l_savings_list"><b>Você tem reservas financeiras ou outras formas de renda para se proteger contra quebras de safra?</b></label><br>
     <select id="savings_list" class="input-list" name="q_savings" required>
         <option class="input-list" value disabled selected>---------</option>
@@ -168,7 +112,7 @@
 
 <br>
 
-<div id="q8">
+<div id="q7">
     <b>Com que frequência você realiza alguma das seguintes atividades para proteger sua renda contra quebras de safra?</b><br>
         <table style="width: 100%; text-align: center; margin-top: 5px;">
             <tr><td colspan="13" style="width: 0.5rem;"><hr width="100%;"></td></tr>
@@ -223,40 +167,6 @@
 </div>
 
 <br>
-
-<!-- <div id="q9">
-    <label for="climate_list" id="l_climate_list"><b>Na sua opinião, alterações climáticas já afetaram a produção agrícola?</b></label><br>
-    <select id="climate_list" class="input-list" name="q_climate" required>
-        <option class="input-list" value disabled selected>---------</option>
-        {% for opcion in climate_list %}
-            <option value="{{ opcion }}" class="input-list">{{ opcion }}</option>
-        {% endfor %}
-    </select>
-</div>
-
-<br>
-
-<div id="q10">
-    <b>Durante os últimos 12 meses, ocorreu algum dos seguintes problemas na sua região? (Você pode marcar várias opções)</b><br>
-        {% for opcion in events_list %}
-        <label><input type="checkbox" name="opt_events" value="{{ opcion }}">{{ opcion }}</label><br>
-        {% endfor %}
-        <input type="hidden" id="q_events" name="q_events">
-</div>
-
-<br>
-
-<div id="q11">
-    <label for="measures_list" id="l_measures_list"><b>Se esses eventos afetarem negativamente a sua região, que medidas você tomaria?</b></label><br>
-    <select id="measures_list" class="input-list" name="q_measures" required>
-        <option class="input-list" value disabled selected>---------</option>
-        {% for opcion in measures_list %}
-            <option value="{{ opcion }}" class="input-list">{{ opcion }}</option>
-        {% endfor %}
-    </select>
-</div>
-
-<br> -->
 
 <div class="div_btnNext">
     <input type="button" value="Avançar" class="btnNext" onclick="nextView()" id="btnNext">

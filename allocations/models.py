@@ -249,6 +249,8 @@ class Player(BasePlayer):
     problem_minus50perc_return_b = models.IntegerField()
     problem_minus50perc_expect_return_b = models.IntegerField()
     problem_minus50perc_probability_b = models.IntegerField()
+    problem_minus50perc_maxret = models.IntegerField()
+    problem_minus50perc_minrisk = models.IntegerField()
     problem_minus50perc_risk = models.IntegerField()
     problem_minus50perc_insurance = models.IntegerField()
 

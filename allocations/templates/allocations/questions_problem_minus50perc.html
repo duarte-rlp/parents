@@ -260,7 +260,7 @@
         }
 
         function validate_checker() {
-            if (Number(document.getElementById('check_box_01').value) + Number(document.getElementById('check_radio_01').value) + Number(document.getElementById('check_slider_01').value) + Number(document.getElementById('check_radio_02').value) + Number(document.getElementById('check_radio_03').value) == 5) {
+            if (Number(document.getElementById('check_box_01').value) + Number(document.getElementById('check_radio_01').value) + Number(document.getElementById('check_slider_01').value) + Number(document.getElementById('check_radio_02').value) + Number(document.getElementById('check_radio_03').value) + Number(document.getElementById('check_radio_04').value) + Number(document.getElementById('check_radio_05').value) == 7) {
                 document.getElementById('id_next').style.display = 'block';
                 document.getElementById('id_next').style.margin = '0 auto';
             }
@@ -294,6 +294,16 @@
 
         function checker_radio_3() {
             document.getElementById('check_radio_03').value = 1;
+            validate_checker();
+        }
+
+        function checker_radio_4() {
+            document.getElementById('check_radio_04').value = 1;
+            validate_checker();
+        }
+
+        function checker_radio_5() {
+            document.getElementById('check_radio_05').value = 1;
             validate_checker();
         }
 
@@ -359,6 +369,96 @@
             </table>
         </div>
         
+        <li style="margin-top: 10px;">Quando você estava tomando suas decisões neste exercício, o quão importante foi para você ter <b>retornos máximos?</b></li>
+        <table style="width: 100%; text-align: center; margin-top: 5px;">
+            <tr>
+                <td style="width: 15%;">
+                    Nada importante
+                </td>
+                <td>
+                    <input type="radio" id="maxret_op0" name="problem_minus50perc_maxret" value="0" class="items01" oninput="checker_radio_2()"><br>0
+                </td>
+                <td>
+                    <input type="radio" id="maxret_op1" name="problem_minus50perc_maxret" value="1" class="items01" oninput="checker_radio_2()"><br>1
+                </td>
+                <td>
+                    <input type="radio" id="maxret_op2" name="problem_minus50perc_maxret" value="2" class="items01" oninput="checker_radio_2()"><br>2
+                </td>
+                <td>
+                    <input type="radio" id="maxret_op3" name="problem_minus50perc_maxret" value="3" class="items01" oninput="checker_radio_2()"><br>3
+                </td>
+                <td>
+                    <input type="radio" id="maxret_op4" name="problem_minus50perc_maxret" value="4" class="items01" oninput="checker_radio_2()"><br>4
+                </td>
+                <td>
+                    <input type="radio" id="maxret_op5" name="problem_minus50perc_maxret" value="5" class="items01" oninput="checker_radio_2()"><br>5
+                </td>
+                <td>
+                    <input type="radio" id="maxret_op6" name="problem_minus50perc_maxret" value="6" class="items01" oninput="checker_radio_2()"><br>6
+                </td>
+                <td>
+                    <input type="radio" id="maxret_op7" name="problem_minus50perc_maxret" value="7" class="items01" oninput="checker_radio_2()"><br>7
+                </td>
+                <td>
+                    <input type="radio" id="maxret_op8" name="problem_minus50perc_maxret" value="8" class="items01" oninput="checker_radio_2()"><br>8
+                </td>
+                <td>
+                    <input type="radio" id="maxret_op9" name="problem_minus50perc_maxret" value="9" class="items01" oninput="checker_radio_2()"><br>9
+                </td>
+                <td>
+                    <input type="radio" id="maxret_op10" name="problem_minus50perc_maxret" value="10" class="items01" oninput="checker_radio_2()"><br>10
+                </td>
+                <td style="width: 15%;">
+                    Muito importante
+                </td>
+            </tr>
+        </table>
+
+        <li style="margin-top: 10px;">Quando você estava tomando suas decisões neste exercício, o quão importante foi para você ter <b>risco mínimo?</b></li>
+        <table style="width: 100%; text-align: center; margin-top: 5px;">
+            <tr>
+                <td style="width: 15%;">
+                    Nada importante
+                </td>
+                <td>
+                    <input type="radio" id="minrisk_op0" name="problem_minus50perc_minrisk" value="0" class="items01" oninput="checker_radio_3()"><br>0
+                </td>
+                <td>
+                    <input type="radio" id="minrisk_op1" name="problem_minus50perc_minrisk" value="1" class="items01" oninput="checker_radio_3()"><br>1
+                </td>
+                <td>
+                    <input type="radio" id="minrisk_op2" name="problem_minus50perc_minrisk" value="2" class="items01" oninput="checker_radio_3()"><br>2
+                </td>
+                <td>
+                    <input type="radio" id="minrisk_op3" name="problem_minus50perc_minrisk" value="3" class="items01" oninput="checker_radio_3()"><br>3
+                </td>
+                <td>
+                    <input type="radio" id="minrisk_op4" name="problem_minus50perc_minrisk" value="4" class="items01" oninput="checker_radio_3()"><br>4
+                </td>
+                <td>
+                    <input type="radio" id="minrisk_op5" name="problem_minus50perc_minrisk" value="5" class="items01" oninput="checker_radio_3()"><br>5
+                </td>
+                <td>
+                    <input type="radio" id="minrisk_op6" name="problem_minus50perc_minrisk" value="6" class="items01" oninput="checker_radio_3()"><br>6
+                </td>
+                <td>
+                    <input type="radio" id="minrisk_op7" name="problem_minus50perc_minrisk" value="7" class="items01" oninput="checker_radio_3()"><br>7
+                </td>
+                <td>
+                    <input type="radio" id="minrisk_op8" name="problem_minus50perc_minrisk" value="8" class="items01" oninput="checker_radio_3()"><br>8
+                </td>
+                <td>
+                    <input type="radio" id="minrisk_op9" name="problem_minus50perc_minrisk" value="9" class="items01" oninput="checker_radio_3()"><br>9
+                </td>
+                <td>
+                    <input type="radio" id="minrisk_op10" name="problem_minus50perc_minrisk" value="10" class="items01" oninput="checker_radio_3()"><br>10
+                </td>
+                <td style="width: 15%;">
+                    Muito importante
+                </td>
+            </tr>
+        </table>
+
         <li style="margin-top: 10px;">Quão arriscado você considera seu investimento?</li>
         <table style="width: 100%; text-align: center; margin-top: 5px;">
             <tr>
@@ -366,37 +466,37 @@
                     Sem risco
                 </td>
                 <td>
-                    <input type="radio" id="risk_op0" name="problem_minus50perc_risk" value="0" class="items01" oninput="checker_radio_2()"><br>0
+                    <input type="radio" id="risk_op0" name="problem_minus50perc_risk" value="0" class="items01" oninput="checker_radio_4()"><br>0
                 </td>
                 <td>
-                    <input type="radio" id="risk_op1" name="problem_minus50perc_risk" value="1" class="items01" oninput="checker_radio_2()"><br>1
+                    <input type="radio" id="risk_op1" name="problem_minus50perc_risk" value="1" class="items01" oninput="checker_radio_4()"><br>1
                 </td>
                 <td>
-                    <input type="radio" id="risk_op2" name="problem_minus50perc_risk" value="2" class="items01" oninput="checker_radio_2()"><br>2
+                    <input type="radio" id="risk_op2" name="problem_minus50perc_risk" value="2" class="items01" oninput="checker_radio_4()"><br>2
                 </td>
                 <td>
-                    <input type="radio" id="risk_op3" name="problem_minus50perc_risk" value="3" class="items01" oninput="checker_radio_2()"><br>3
+                    <input type="radio" id="risk_op3" name="problem_minus50perc_risk" value="3" class="items01" oninput="checker_radio_4()"><br>3
                 </td>
                 <td>
-                    <input type="radio" id="risk_op4" name="problem_minus50perc_risk" value="4" class="items01" oninput="checker_radio_2()"><br>4
+                    <input type="radio" id="risk_op4" name="problem_minus50perc_risk" value="4" class="items01" oninput="checker_radio_4()"><br>4
                 </td>
                 <td>
-                    <input type="radio" id="risk_op5" name="problem_minus50perc_risk" value="5" class="items01" oninput="checker_radio_2()"><br>5
+                    <input type="radio" id="risk_op5" name="problem_minus50perc_risk" value="5" class="items01" oninput="checker_radio_4()"><br>5
                 </td>
                 <td>
-                    <input type="radio" id="risk_op6" name="problem_minus50perc_risk" value="6" class="items01" oninput="checker_radio_2()"><br>6
+                    <input type="radio" id="risk_op6" name="problem_minus50perc_risk" value="6" class="items01" oninput="checker_radio_4()"><br>6
                 </td>
                 <td>
-                    <input type="radio" id="risk_op7" name="problem_minus50perc_risk" value="7" class="items01" oninput="checker_radio_2()"><br>7
+                    <input type="radio" id="risk_op7" name="problem_minus50perc_risk" value="7" class="items01" oninput="checker_radio_4()"><br>7
                 </td>
                 <td>
-                    <input type="radio" id="risk_op8" name="problem_minus50perc_risk" value="8" class="items01" oninput="checker_radio_2()"><br>8
+                    <input type="radio" id="risk_op8" name="problem_minus50perc_risk" value="8" class="items01" oninput="checker_radio_4()"><br>8
                 </td>
                 <td>
-                    <input type="radio" id="risk_op9" name="problem_minus50perc_risk" value="9" class="items01" oninput="checker_radio_2()"><br>9
+                    <input type="radio" id="risk_op9" name="problem_minus50perc_risk" value="9" class="items01" oninput="checker_radio_4()"><br>9
                 </td>
                 <td>
-                    <input type="radio" id="risk_op10" name="problem_minus50perc_risk" value="10" class="items01" oninput="checker_radio_2()"><br>10
+                    <input type="radio" id="risk_op10" name="problem_minus50perc_risk" value="10" class="items01" oninput="checker_radio_4()"><br>10
                 </td>
                 <td style="width: 15%;">
                     Muito arriscado
@@ -411,37 +511,37 @@
                     Nada confiante
                 </td>
                 <td>
-                    <input type="radio" id="insurance_op0" name="problem_minus50perc_insurance" value="0" class="items01" oninput="checker_radio_3()"><br>0
+                    <input type="radio" id="insurance_op0" name="problem_minus50perc_insurance" value="0" class="items01" oninput="checker_radio_5()"><br>0
                 </td>
                 <td>
-                    <input type="radio" id="insurance_op1" name="problem_minus50perc_insurance" value="1" class="items01" oninput="checker_radio_3()"><br>1
+                    <input type="radio" id="insurance_op1" name="problem_minus50perc_insurance" value="1" class="items01" oninput="checker_radio_5()"><br>1
                 </td>
                 <td>
-                    <input type="radio" id="insurance_op2" name="problem_minus50perc_insurance" value="2" class="items01" oninput="checker_radio_3()"><br>2
+                    <input type="radio" id="insurance_op2" name="problem_minus50perc_insurance" value="2" class="items01" oninput="checker_radio_5()"><br>2
                 </td>
                 <td>
-                    <input type="radio" id="insurance_op3" name="problem_minus50perc_insurance" value="3" class="items01" oninput="checker_radio_3()"><br>3
+                    <input type="radio" id="insurance_op3" name="problem_minus50perc_insurance" value="3" class="items01" oninput="checker_radio_5()"><br>3
                 </td>
                 <td>
-                    <input type="radio" id="insurance_op4" name="problem_minus50perc_insurance" value="4" class="items01" oninput="checker_radio_3()"><br>4
+                    <input type="radio" id="insurance_op4" name="problem_minus50perc_insurance" value="4" class="items01" oninput="checker_radio_5()"><br>4
                 </td>
                 <td>
-                    <input type="radio" id="insurance_op5" name="problem_minus50perc_insurance" value="5" class="items01" oninput="checker_radio_3()"><br>5
+                    <input type="radio" id="insurance_op5" name="problem_minus50perc_insurance" value="5" class="items01" oninput="checker_radio_5()"><br>5
                 </td>
                 <td>
-                    <input type="radio" id="insurance_op6" name="problem_minus50perc_insurance" value="6" class="items01" oninput="checker_radio_3()"><br>6
+                    <input type="radio" id="insurance_op6" name="problem_minus50perc_insurance" value="6" class="items01" oninput="checker_radio_5()"><br>6
                 </td>
                 <td>
-                    <input type="radio" id="insurance_op7" name="problem_minus50perc_insurance" value="7" class="items01" oninput="checker_radio_3()"><br>7
+                    <input type="radio" id="insurance_op7" name="problem_minus50perc_insurance" value="7" class="items01" oninput="checker_radio_5()"><br>7
                 </td>
                 <td>
-                    <input type="radio" id="insurance_op8" name="problem_minus50perc_insurance" value="8" class="items01" oninput="checker_radio_3()"><br>8
+                    <input type="radio" id="insurance_op8" name="problem_minus50perc_insurance" value="8" class="items01" oninput="checker_radio_5()"><br>8
                 </td>
                 <td>
-                    <input type="radio" id="insurance_op9" name="problem_minus50perc_insurance" value="9" class="items01" oninput="checker_radio_3()"><br>9
+                    <input type="radio" id="insurance_op9" name="problem_minus50perc_insurance" value="9" class="items01" oninput="checker_radio_5()"><br>9
                 </td>
                 <td>
-                    <input type="radio" id="insurance_op10" name="problem_minus50perc_insurance" value="10" class="items01" oninput="checker_radio_3()"><br>10
+                    <input type="radio" id="insurance_op10" name="problem_minus50perc_insurance" value="10" class="items01" oninput="checker_radio_5()"><br>10
                 </td>
                 <td style="width: 15%;">
                     Muito confiante
@@ -462,6 +562,8 @@
 <input type="hidden" name="check_slider_01" value="0" id="check_slider_01">
 <input type="hidden" name="check_radio_02" value="0" id="check_radio_02">
 <input type="hidden" name="check_radio_03" value="0" id="check_radio_03">
+<input type="hidden" name="check_radio_04" value="0" id="check_radio_04">
+<input type="hidden" name="check_radio_05" value="0" id="check_radio_05">
 
         {% endblock %}
 

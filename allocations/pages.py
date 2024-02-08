@@ -186,7 +186,7 @@ class graph_04(Page):
 
 class questions_problem_minus50perc(Page):
     form_model = "player"
-    form_fields = ["problem_minus50perc_return_b", "problem_minus50perc_expect_return_b", "problem_minus50perc_probability_b", 'problem_minus50perc_risk', 'problem_minus50perc_insurance']
+    form_fields = ["problem_minus50perc_return_b", "problem_minus50perc_expect_return_b", "problem_minus50perc_probability_b", 'problem_minus50perc_maxret', 'problem_minus50perc_minrisk', 'problem_minus50perc_risk', 'problem_minus50perc_insurance']
     def vars_for_template(self):
         return {
                 'n_problem': 4,

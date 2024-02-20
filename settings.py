@@ -3,8 +3,8 @@ import os
 
 SESSION_CONFIGS = [
     {
-        'name': 'test',
-        'display_name': 'Test General',
+        'name': 'general',
+        'display_name': 'General',
         'num_demo_participants': 1, 
         'app_sequence': ['home', 'real_effort_numbers', 'checker1', 'choice_2', 'training', 'allocations', 'real', 'choice', 'survey', 'final'],
     },
@@ -91,7 +91,7 @@ SESSION_CONFIG_DEFAULTS = dict(
 
 # ISO-639 code
 # for example: de, fr, ja, ko, zh-hans
-LANGUAGE_CODE = 'pt-BR'
+LANGUAGE_CODE = 'pt'
 
 # e.g. EUR, GBP, CNY, JPY
 REAL_WORLD_CURRENCY_CODE = 'BRL'
@@ -102,7 +102,7 @@ ADMIN_USERNAME = 'rafael'
 ADMIN_PASSWORD = environ.get('OTREE_ADMIN_PASSWORD')
 
 DEMO_PAGE_INTRO_HTML = """ 
-Hola
+Version PT
 """
 
 # if an app is included in SESSION_CONFIGS, you don't need to list it here

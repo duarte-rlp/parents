@@ -59,7 +59,7 @@ window.onload = function(){
 	let elements = document.getElementsByTagName("toNumber");
 	for(let j=0; j<elements.length; j++) {
 		let num = Number(elements[j].innerHTML);
-		elements[j].innerHTML = num.toLocaleString('es-CO').toString();
+		elements[j].innerHTML = num.toLocaleString('pt-BR').toString();
 	}
 
 	// Agregar el enter para los inputs de números
@@ -81,9 +81,9 @@ window.onload = function(){
         let num = Number(mon_elements[j].innerHTML);
         if (num < 0) {
             num = num * -1;
-            mon_elements[j].innerHTML = "- $ " + num.toLocaleString('es-CO').toString();
+            mon_elements[j].innerHTML = "- R$ " + num.toLocaleString('pt-BR').toString();
         }else {
-            mon_elements[j].innerHTML = "$ " + num.toLocaleString('es-CO').toString();
+            mon_elements[j].innerHTML = "R$ " + num.toLocaleString('pt-BR').toString();
         }
     }
 };

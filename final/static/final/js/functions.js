@@ -92,9 +92,21 @@ $(document).ready(function () {
         let num = Number(elements[j].innerHTML);
         if (num < 0) {
             num = num * -1;
-            elements[j].innerHTML = "-$" + num.toLocaleString('es-CO').toString();
+            elements[j].innerHTML = "- R$" + num.toLocaleString('pt-BR').toString();
         }else {
-            elements[j].innerHTML = "$" + num.toLocaleString('es-CO').toString();
+            elements[j].innerHTML = "R$" + num.toLocaleString('pt-BR').toString();
         }
+    }
+
+    // Evitar el enter con el teclado
+    let in_elements = document.getElementsByClassName("inNumber");
+    if(in_elements.length > 0) {
+        for(let i=0; i<in_elements.length; i++) {
+            in_elements[i].addEventListener("keypress", function(event) {
+                if ((event.key === "Enter") || (event.which == 13)) {
+                    event.preventDefault();
+                }
+            }
+        )}
     }
 });

@@ -5,7 +5,44 @@
     
     <script src="{% static 'final/js/functions.js' %}"></script>
     <link href="{% static 'final/css/styles.css' %}" rel="stylesheet">
-    
+    <style>
+        .div_btnNext {
+            width: 100%;
+            align-content: center;
+            text-align: center;
+        }
+
+        .btnNext {
+            cursor: pointer;
+            color: #fff;
+            background-color: #007bff;
+            border-color: #007bff;
+            display: inline-block;
+            font-weight: 400;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            border: 1px solid transparent;
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            border-radius: 0.25rem;
+            transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+        }
+
+        .btnNext:hover {
+            background-color: #0069d9;
+            border-color: #0062cc;
+        }
+    </style>
+
+    <script>
+        function nextView() {
+            let btn = document.getElementById("id_next");
+            btn.removeAttribute("disabled");
+            btn.click();
+        }
+    </script>
 {% endblock %}
 
 {% block title %}
@@ -29,25 +66,25 @@ A moeda foi jogada pelo computador e saiu
     {% elif data.coin_toss == 'tails' %}
         <b>coroa</b>
     {% endif %}
-    dando um ganho de <b><toMoney>{{ data.payoff_amount_app }}</toMoney></b>.
+    dando um ganho de <b>R<toMoney>{{ data.payoff_amount_app }}</toMoney></b>.
 
 {% elif data.nombre_app == 'allocations' %}
 
 Nessa atividade, foi selecionado aleatoriamente o problema <b>{{ data.n_problem }}</b> e o cenário <b>{{ data.n_scene }}</b>.
 <br><br>
-No <b>Investimento A</b>, você investiu <b><toMoney>{{ data.val_invesment_1 }}</toMoney></b> e teve uma porcentagem de retorno de <b>{{ data.per_investment_1 }} %</b>. No <b>Investimento B</b>, você investiu <b><toMoney>{{ data.val_invesment_2 }}</toMoney></b> e teve uma porcentagem de retorno de <b>{{ data.per_investment_2 }} %</b>. No total, você teve  
+No <b>Investimento A</b>, você investiu <b>R<toMoney>{{ data.val_invesment_1 }}</toMoney></b> e teve uma porcentagem de retorno de <b>{{ data.per_investment_1 }} %</b>. No <b>Investimento B</b>, você investiu <b>R<toMoney>{{ data.val_invesment_2 }}</toMoney></b> e teve uma porcentagem de retorno de <b>{{ data.per_investment_2 }} %</b>. No total, você teve  
     {% if data.payoff_amount_app < 0 %}
         uma perda
     {% else %}
         um ganho
     {% endif %}
-de <b><toMoney>{{ data.payoff_amount_app }}</toMoney></b>.
+de <b>R<toMoney>{{ data.payoff_amount_app }}</toMoney></b>.
 
 {% elif data.nombre_app == 'real' %}
 
 Nesta atividade, o cenário selecionado aleatoriamente foi o de número <b>{{ data.n_scene }}</b>.
 <br><br>
-Você investiu <b>{{ data.has_1 }} hectares</b> no <b>Cultivo A</b> dando um retorno de <b><toMoney>{{ data.amount_cultivo_1 }}</toMoney></b> e <b>{{ data.has_2 }} hectares</b> no <b>Cultivo B</b> dando um retorno de <b><toMoney>{{ data.amount_cultivo_2 }}</toMoney></b>. No total, você teve um GANHO de <b><toMoney>{{ data.payoff_amount_app }}</toMoney></b>.
+Você investiu <b>{{ data.has_1 }} hectares</b> no <b>Cultivo A</b> dando um retorno de <b>R<toMoney>{{ data.amount_cultivo_1 }}</toMoney></b> e <b>{{ data.has_2 }} hectares</b> no <b>Cultivo B</b> dando um retorno de <b>R<toMoney>{{ data.amount_cultivo_2 }}</toMoney></b>. No total, você teve um GANHO de <b>R<toMoney>{{ data.payoff_amount_app }}</toMoney></b>.
 
 {% elif data.nombre_app == 'choice' %}
 
@@ -60,9 +97,9 @@ Você selecionou
     {% elif data.eleccion == 1 %}
         LANÇAR a moeda. O computador lançou a moeda e saiu  
             {% if data.coin_toss == 'heads' %}
-                <b>cara</b>, e infelizmente você teve uma <b>perda</b> de <b><toMoney>{{ data.payoff_amount_app }}</toMoney></b>.
+                <b>cara</b>, e infelizmente você teve uma <b>perda</b> de <b>R<toMoney>{{ data.payoff_amount_app }}</toMoney></b>.
             {% elif data.coin_toss == 'tails' %}
-                <b>coroa</b>, e você teve um <b>ganho</b> de <b><toMoney>{{ data.payoff_amount_app }}</toMoney></b>.
+                <b>coroa</b>, e você teve um <b>ganho</b> de <b>R<toMoney>{{ data.payoff_amount_app }}</toMoney></b>.
             {% endif %}
     {% endif %}
 
@@ -70,11 +107,11 @@ Você selecionou
 
 <br>
 <br>
-Ao valor inicial de <toMoney>{{ data.pago_base }}</toMoney> se  
+Ao valor inicial de R<toMoney>{{ data.pago_base }}</toMoney> se  
 {% if data.payoff_amount_app < 0 %}
-    subtrai as PERDAS da atividade selecionada, resultando em um valor menor que 20 reais. Como o seu pagamento total é menor que o mínimo, você receberá <b><toMoney>{{ data.pago_real }}</toMoney></b>.
+    subtrai as PERDAS da atividade selecionada, resultando em um valor menor que 20 reais. Como o seu pagamento total é menor que o mínimo, você receberá <b>R<toMoney>{{ data.pago_real }}</toMoney></b>.
 {% else %}
-    somam os GANHOS da atividade selecionada, resultando em um valor total a ser pago de <b><toMoney>{{ data.pago_real }}</toMoney></b>.
+    somam os GANHOS da atividade selecionada, resultando em um valor total a ser pago de <b>R<toMoney>{{ data.pago_real }}</toMoney></b>.
 {% endif %}
 
 <!-- <div style="text-align: left;">
@@ -87,7 +124,8 @@ Como o seu pagamento total é menor que o mínimo, você receberá <b><toMoney>{
 </div> -->
 
 <div class="div_btnNext">
-    {% next_button %}
+    <input type="button" value="Avançar" class="btnNext" onclick="nextView()" id="btnNext">
+    <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next" disabled>Avançar</button>
 </div>
 
 {% endblock %}

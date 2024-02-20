@@ -25,14 +25,14 @@
 
                     var check_sli = childs[1].lastElementChild;
 
-                    dinero_pa.innerHTML = "$ "+numberWithPoints(slider_value);
-                    dinero_pb.innerHTML = "$ "+numberWithPoints(slider_max-slider_value);
+                    dinero_pa.innerHTML = "R$ "+numberWithPoints(slider_value);
+                    dinero_pb.innerHTML = "R$ "+numberWithPoints(slider_max-slider_value);
                     check_sli.value = 1;
 
                     let val_inv_a = document.getElementById("inv_a");
                     let val_inv_b = document.getElementById("inv_b");
-                    val_inv_a.innerHTML = "$"+numberWithPoints(slider_value);
-                    val_inv_b.innerHTML = "$"+numberWithPoints(slider_max-slider_value);
+                    val_inv_a.innerHTML = "R$"+numberWithPoints(slider_value);
+                    val_inv_b.innerHTML = "R$"+numberWithPoints(slider_max-slider_value);
 
                     var next_button = document.getElementsByClassName('btnNext');
                     next_button[0].style.cssText += 'display: block !important; margin: 0 auto;';

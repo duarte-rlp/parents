@@ -19,24 +19,23 @@ $(document).ready(function () {
 
 	// Usar para agregar punto de miles y el símbolo de pesos
 	let mon_elements = document.getElementsByTagName("toMoney");
-    for(let j=0; j<mon_elements.length; j++) {
-        let num = Number(mon_elements[j].innerHTML);
-        if (num < 0) {
-            num = num * -1;
-            mon_elements[j].innerHTML = "- R$ " + num.toLocaleString('pt-BR').toString();
-        }else {
-            mon_elements[j].innerHTML = "R$ " + num.toLocaleString('pt-BR').toString();
+        for(let j=0; j<mon_elements.length; j++) {
+            let num = Number(mon_elements[j].innerHTML);
+            if (num < 0) {
+                num = num * -1;
+                mon_elements[j].innerHTML = "- R$ " + num.toLocaleString('pt-BR').toString();
+            }else {
+                mon_elements[j].innerHTML = "R$ " + num.toLocaleString('pt-BR').toString();
+            }
         }
-    }
 
 	// Agregar el enter para los inputs de números
 	let in_elements = document.getElementsByClassName("inNumber");
 	if(in_elements.length > 0) {
 		for(let i=0; i<in_elements.length; i++) {
 			in_elements[i].addEventListener("keypress", function(event) {
-				if (event.key === "Enter") {
+				if ((event.key === "Enter") || (event.which == 13)) {
 					event.preventDefault();
-					validate();
 				}
 			}
 		)}

@@ -36,8 +36,16 @@ $(document).ready(function () {
 			in_elements[i].addEventListener("keypress", function(event) {
 				if ((event.key === "Enter") || (event.which == 13)) {
 					event.preventDefault();
+					return false;
 				}
 			}
 		)}
 	}
+
+	$(window).keydown(function(event){
+		if((event.keyCode == 13) || (event.key === "Enter")) {
+            event.preventDefault();
+            return false;
+        }
+    });
 });

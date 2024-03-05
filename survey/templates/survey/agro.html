@@ -41,7 +41,7 @@
 {% block content %}
 
 <div id="q1">
-    <label for="hectares_list" id="l_hectares_list"><b>Qual é o tamanho médio em hectares da fazenda onde você (ou alguém da sua residência) trabalha?</b></label><br>
+    <label for="hectares_list" id="l_hectares_list"><b>Qual é o tamanho médio em hectares do sítio ou fazenda onde você (ou alguém da sua residência) trabalha?</b></label><br>
     <select id="hectares_list" class="input-list" name="q_hectares" required>
         <option class="input-list" value disabled selected>---------</option>
         {% for opcion in hectares_list %}
@@ -53,7 +53,7 @@
 <br>
 
 <div id="q2">
-    <label for="farminc_list" id="l_farminc_list"><b>Qual é a principal fonte de renda da fazenda onde você (ou alguém da sua residência) trabalha?</b></label><br>
+    <label for="farminc_list" id="l_farminc_list"><b>Qual é a principal fonte de renda do sítio ou fazenda onde você (ou alguém da sua residência) trabalha?</b></label><br>
     <select id="farminc_list" class="input-list" name="q_farminc" required>
         <option class="input-list" value disabled selected>---------</option>
         {% for opcion in farminc_list %}
